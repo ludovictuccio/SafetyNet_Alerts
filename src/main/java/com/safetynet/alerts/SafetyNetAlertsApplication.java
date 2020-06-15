@@ -1,4 +1,4 @@
-package src.main.java.com.safetynet.alerts;
+package com.safetynet.alerts;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
