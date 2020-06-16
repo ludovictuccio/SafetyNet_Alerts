@@ -51,3 +51,19 @@
 [DEBUG] 15 juin 2020 11:28:31 [main] SafetyNetAlertsApplication - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
 [INFO ] 15 juin 2020 11:28:31 [main] SafetyNetAlertsApplication - No active profile set, falling back to default profiles: default
 [INFO ] 15 juin 2020 11:28:37 [main] SafetyNetAlertsApplication - Started SafetyNetAlertsApplication in 7.777 seconds (JVM running for 10.346)
+[INFO ] 16 juin 2020 10:41:59 [main] SafetyNetAlertsApplication - Starting SafetyNetAlertsApplication on PC-de-Ludo with PID 3524 (C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts\target\classes started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 16 juin 2020 10:41:59 [main] SafetyNetAlertsApplication - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 16 juin 2020 10:41:59 [main] SafetyNetAlertsApplication - No active profile set, falling back to default profiles: default
+[INFO ] 16 juin 2020 10:42:07 [main] SafetyNetAlertsApplication - Started SafetyNetAlertsApplication in 9.328 seconds (JVM running for 22.394)
+[INFO ] 16 juin 2020 10:53:51 [main] SafetyNetAlertsApplication - Starting SafetyNetAlertsApplication on PC-de-Ludo with PID 2000 (C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts\target\classes started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 16 juin 2020 10:53:51 [main] SafetyNetAlertsApplication - Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+[INFO ] 16 juin 2020 10:53:51 [main] SafetyNetAlertsApplication - No active profile set, falling back to default profiles: default
+[INFO ] 16 juin 2020 10:53:56 [main] SafetyNetAlertsApplication - Started SafetyNetAlertsApplication in 5.894 seconds (JVM running for 7.735)
+[INFO ] 16 juin 2020 10:56:52 [main] SafetyNetAlertsApplication - Starting SafetyNetAlertsApplication on PC-de-Ludo with PID 14840 (C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts\target\classes started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 16 juin 2020 10:56:52 [main] SafetyNetAlertsApplication - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 16 juin 2020 10:56:52 [main] SafetyNetAlertsApplication - No active profile set, falling back to default profiles: default
+[INFO ] 16 juin 2020 10:56:59 [main] SafetyNetAlertsApplication - Started SafetyNetAlertsApplication in 8.152 seconds (JVM running for 10.062)
+[INFO ] 16 juin 2020 11:04:52 [main] SafetyNetAlertsApplication - Starting SafetyNetAlertsApplication on PC-de-Ludo with PID 2620 (C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts\target\classes started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 16 juin 2020 11:04:53 [main] SafetyNetAlertsApplication - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 16 juin 2020 11:04:53 [main] SafetyNetAlertsApplication - No active profile set, falling back to default profiles: default
+[INFO ] 16 juin 2020 11:04:58 [main] SafetyNetAlertsApplication - Started SafetyNetAlertsApplication in 5.85 seconds (JVM running for 7.632)
