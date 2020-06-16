@@ -3,38 +3,46 @@ package com.safetynet.alerts.model;
 import java.util.List;
 
 /**
+ * Households class.
+ *
  * @author Ludovic Tuccio
  *
  */
 public class Households {
 
-   private List<Person> personsPerHousehold;
+   /**
+    * The list of persons by household.
+    */
+   private List<Person> householdsComposition;
 
    /**
     * @param personsPerHousehold
     */
-   public Households(List<Person> personsPerHousehold) {
+   public Households(final List<Person> personsPerHousehold) {
       super();
-      this.personsPerHousehold = personsPerHousehold;
+      this.householdsComposition = personsPerHousehold;
    }
 
    /**
-    * @return the personsPerHousehold
+    * @return householdsComposition
     */
    public List<Person> getPersonsPerHousehold() {
-      return personsPerHousehold;
+      return householdsComposition;
    }
 
    /**
     * @param personsPerHousehold the personsPerHousehold to set
     */
-   public void setPersonsPerHousehold(List<Person> personsPerHousehold) {
-      this.personsPerHousehold = personsPerHousehold;
+   public void setPersonsPerHousehold(final List<Person> personsPerHousehold) {
+      this.householdsComposition = personsPerHousehold;
    }
 
+   /**
+    * A toString class method().
+    */
    public String toString() {
       return "Households composition [Persons per household="
-                  + personsPerHousehold
+                  + householdsComposition
                   + "]";
    }
 

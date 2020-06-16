@@ -4,13 +4,24 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * InfosRetrieval class. Used to retrieve models classes informations.
+ *
  * @author Ludovic Tuccio
  *
  */
 public class InfosRetrieval {
 
+   /**
+    * The persons list.
+    */
    private List<Person> personsList;
+   /**
+    * The firestations mapping (adresses and firestation number).
+    */
    private Map<Integer, FireStation> firestations;
+   /**
+    * The households composition mapping (adresses and persons list).
+    */
    private Map<String, List<Person>> personsPerHousehold;
 
    /**
@@ -18,13 +29,13 @@ public class InfosRetrieval {
     * @param firestations
     * @param personsPerHousehold
     */
-   public InfosRetrieval(List<Person> personsList,
-               Map<Integer, FireStation> firestations,
-               Map<String, List<Person>> personsPerHousehold) {
+   public InfosRetrieval(final List<Person> persons,
+               final Map<Integer, FireStation> stations,
+               final Map<String, List<Person>> households) {
       super();
-      this.personsList = personsList;
-      this.firestations = firestations;
-      this.personsPerHousehold = personsPerHousehold;
+      this.personsList = persons;
+      this.firestations = stations;
+      this.personsPerHousehold = households;
    }
 
    /**
@@ -37,8 +48,8 @@ public class InfosRetrieval {
    /**
     * @param personsList the personsList to set
     */
-   public void setPersonsList(List<Person> personsList) {
-      this.personsList = personsList;
+   public void setPersonsList(final List<Person> persons) {
+      this.personsList = persons;
    }
 
    /**
@@ -51,8 +62,8 @@ public class InfosRetrieval {
    /**
     * @param firestations the firestations to set
     */
-   public void setFirestations(Map<Integer, FireStation> firestations) {
-      this.firestations = firestations;
+   public void setFirestations(final Map<Integer, FireStation> stations) {
+      this.firestations = stations;
    }
 
    /**
@@ -66,10 +77,13 @@ public class InfosRetrieval {
     * @param personsPerHousehold the personsPerHousehold to set
     */
    public void setPersonsPerHousehold(
-               Map<String, List<Person>> personsPerHousehold) {
-      this.personsPerHousehold = personsPerHousehold;
+               final Map<String, List<Person>> households) {
+      this.personsPerHousehold = households;
    }
 
+   /**
+    * A toString class method().
+    */
    public String toString() {
       return "Infos retrieval [Persons list="
                   + personsList

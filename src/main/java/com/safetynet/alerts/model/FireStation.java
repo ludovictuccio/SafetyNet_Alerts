@@ -3,22 +3,31 @@ package com.safetynet.alerts.model;
 import java.util.HashSet;
 
 /**
+ * FireStation class.
+ *
  * @author Ludovic Tuccio
  *
  */
 public class FireStation {
 
+   /**
+    * A String HashSet used to group adresses under responsibility.
+    */
    private HashSet<String> adresses;
+   /**
+    * The fire station number.
+    */
    private int station;
 
    /**
-    * @param adresses
-    * @param station
+    * @param stationsAdresses
+    * @param stationNumber
     */
-   public FireStation(HashSet<String> adresses, int station) {
+   public FireStation(final HashSet<String> stationsAdresses,
+               final int stationNumber) {
       super();
-      this.adresses = adresses;
-      this.station = station;
+      this.adresses = stationsAdresses;
+      this.station = stationNumber;
    }
 
    /**
@@ -29,10 +38,10 @@ public class FireStation {
    }
 
    /**
-    * @param adresses the adresses to set
+    * @param stationsAdresses the stations adresses to set
     */
-   public void setAdresses(HashSet<String> adresses) {
-      this.adresses = adresses;
+   public void setAdresses(final HashSet<String> stationsAdresses) {
+      this.adresses = stationsAdresses;
    }
 
    /**
@@ -43,12 +52,15 @@ public class FireStation {
    }
 
    /**
-    * @param station the station to set
+    * @param stationNumber the station number to set
     */
-   public void setStation(int station) {
-      this.station = station;
+   public void setStation(final int stationNumber) {
+      this.station = stationNumber;
    }
 
+   /**
+    * A toString class method().
+    */
    public String toString() {
       return "FireStation [adresses="
                   + adresses

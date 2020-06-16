@@ -3,23 +3,32 @@ package com.safetynet.alerts.model;
 import java.util.List;
 
 /**
+ * AdultsAndChildrenPerStation class.
+ *
  * @author Ludovic Tuccio
  *
  */
 public class AdultsAndChildrenPerStation {
 
+   /**
+    * The list of persons per station.
+    */
    private List<Person> personsPerStation;
+
+   /**
+    * The station number.
+    */
    private int station;
 
    /**
-    * @param personsPerStation
-    * @param station
+    * @param personsPerStationList
+    * @param firestationNumber
     */
-   public AdultsAndChildrenPerStation(List<Person> personsPerStation,
-               int station) {
+   public AdultsAndChildrenPerStation(final List<Person> personsPerStationList,
+               final int firestationNumber) {
       super();
-      this.personsPerStation = personsPerStation;
-      this.station = station;
+      this.personsPerStation = personsPerStationList;
+      this.station = firestationNumber;
    }
 
    /**
@@ -30,10 +39,10 @@ public class AdultsAndChildrenPerStation {
    }
 
    /**
-    * @param personsPerStation the personsPerStation to set
+    * @param personsPerStationList the personsPerStation to set
     */
-   public void setPersonsPerStation(List<Person> personsPerStation) {
-      this.personsPerStation = personsPerStation;
+   public void setPersonsPerStation(final List<Person> personsPerStationList) {
+      this.personsPerStation = personsPerStationList;
    }
 
    /**
@@ -44,12 +53,15 @@ public class AdultsAndChildrenPerStation {
    }
 
    /**
-    * @param station the station to set
+    * @param stationNumber the station number to set
     */
-   public void setStation(int station) {
-      this.station = station;
+   public void setStation(final int stationNumber) {
+      this.station = stationNumber;
    }
 
+   /**
+    * A toString class method().
+    */
    public String toString() {
       return "Adults and children per station [Persons per station="
                   + personsPerStation

@@ -1,45 +1,76 @@
 package com.safetynet.alerts.model;
 
 /**
+ * Person class.
+ *
  * @author Ludovic Tuccio
  *
  */
 public class Person {
 
+   /**
+    * The person's first name.
+    */
    private String firstName;
+   /**
+    * The person's last name.
+    */
    private String lastName;
+   /**
+    * The person's age.
+    */
    private int age;
+   /**
+    * The person's adress.
+    */
    private String adress;
+   /**
+    * The person's city.
+    */
    private String city;
+   /**
+    * The person's zip.
+    */
    private int zip;
+   /**
+    * The person's phone number.
+    */
    private String phone;
+   /**
+    * The person's email adress.
+    */
    private String email;
+   /**
+    * The person's medical record.
+    */
    private MedicalRecord medicalRecord;
 
    /**
-    * @param firstName
-    * @param lastName
-    * @param age
-    * @param adress
-    * @param city
-    * @param zip
-    * @param phone
-    * @param email
-    * @param medicalRecord
+    * @param personsFirstName
+    * @param personsLastName
+    * @param personsAge
+    * @param personsAdress
+    * @param personsCity
+    * @param personsZip
+    * @param personsPhoneNumber
+    * @param personsEmail
+    * @param personsMedicalRecord
     */
-   public Person(String firstName, String lastName, int age, String adress,
-               String city, int zip, String phone, String email,
-               MedicalRecord medicalRecord) {
+   public Person(final String personsFirstName, final String personsLastName,
+               final int personsAge, final String personsAdress,
+               final String personsCity, final int personsZip,
+               final String personsPhoneNumber, final String personsEmail,
+               final MedicalRecord personsMedicalRecord) {
       super();
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.age = age;
-      this.adress = adress;
-      this.city = city;
-      this.zip = zip;
-      this.phone = phone;
-      this.email = email;
-      this.medicalRecord = medicalRecord;
+      this.firstName = personsFirstName;
+      this.lastName = personsLastName;
+      this.age = personsAge;
+      this.adress = personsAdress;
+      this.city = personsCity;
+      this.zip = personsZip;
+      this.phone = personsPhoneNumber;
+      this.email = personsEmail;
+      this.medicalRecord = personsMedicalRecord;
    }
 
    /**
@@ -50,10 +81,10 @@ public class Person {
    }
 
    /**
-    * @param firstName the firstName to set
+    * @param personsFirstName the person's first name to set
     */
-   public void setFirstName(String firstName) {
-      this.firstName = firstName;
+   public void setFirstName(final String personsFirstName) {
+      this.firstName = personsFirstName;
    }
 
    /**
@@ -64,10 +95,10 @@ public class Person {
    }
 
    /**
-    * @param lastName the lastName to set
+    * @param personsLastName the person's last name to set
     */
-   public void setLastName(String lastName) {
-      this.lastName = lastName;
+   public void setLastName(final String personsLastName) {
+      this.lastName = personsLastName;
    }
 
    /**
@@ -78,10 +109,10 @@ public class Person {
    }
 
    /**
-    * @param age the age to set
+    * @param personsAge the person's age to set
     */
-   public void setAge(int age) {
-      this.age = age;
+   public void setAge(final int personsAge) {
+      this.age = personsAge;
    }
 
    /**
@@ -92,10 +123,10 @@ public class Person {
    }
 
    /**
-    * @param adress the adress to set
+    * @param personsAdress the person's adress to set
     */
-   public void setAdress(String adress) {
-      this.adress = adress;
+   public void setAdress(final String personsAdress) {
+      this.adress = personsAdress;
    }
 
    /**
@@ -106,10 +137,10 @@ public class Person {
    }
 
    /**
-    * @param city the city to set
+    * @param personsCity the person's city to set
     */
-   public void setCity(String city) {
-      this.city = city;
+   public void setCity(final String personsCity) {
+      this.city = personsCity;
    }
 
    /**
@@ -120,10 +151,10 @@ public class Person {
    }
 
    /**
-    * @param zip the zip to set
+    * @param personsZip the person's zip to set
     */
-   public void setZip(int zip) {
-      this.zip = zip;
+   public void setZip(final int personsZip) {
+      this.zip = personsZip;
    }
 
    /**
@@ -134,10 +165,10 @@ public class Person {
    }
 
    /**
-    * @param phone the phone to set
+    * @param personsPhoneNumber the person's phone number to set
     */
-   public void setPhone(String phone) {
-      this.phone = phone;
+   public void setPhone(final String personsPhoneNumber) {
+      this.phone = personsPhoneNumber;
    }
 
    /**
@@ -148,10 +179,10 @@ public class Person {
    }
 
    /**
-    * @param email the email to set
+    * @param personsEmail the person's email to set
     */
-   public void setEmail(String email) {
-      this.email = email;
+   public void setEmail(final String personsEmail) {
+      this.email = personsEmail;
    }
 
    /**
@@ -162,12 +193,15 @@ public class Person {
    }
 
    /**
-    * @param medicalRecord the medicalRecord to set
+    * @param personsMedicalRecord the person's medical record to set
     */
-   public void setMedicalRecord(MedicalRecord medicalRecord) {
-      this.medicalRecord = medicalRecord;
+   public void setMedicalRecord(final MedicalRecord personsMedicalRecord) {
+      this.medicalRecord = personsMedicalRecord;
    }
 
+   /**
+    * The toString() method class.
+    */
    public String toString() {
       return "Person [firstName="
                   + firstName

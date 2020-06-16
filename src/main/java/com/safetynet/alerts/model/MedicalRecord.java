@@ -4,26 +4,38 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
+ * MedicalRecord class.
+ * 
  * @author Ludovic Tuccio
  *
  */
 public class MedicalRecord {
 
+   /**
+    * The person's birthdate.
+    */
    private LocalDate birthdate;
+   /**
+    * The person medications list.
+    */
    private List<String> medications;
+   /**
+    * The person allergies list.
+    */
    private List<String> allergies;
 
    /**
-    * @param birthdate
-    * @param medications
-    * @param allergies
+    * @param personsBirthdate
+    * @param personMedicationsFollowed
+    * @param personAllergies
     */
-   public MedicalRecord(LocalDate birthdate, List<String> medications,
-               List<String> allergies) {
+   public MedicalRecord(final LocalDate personsBirthdate,
+               final List<String> personMedicationsFollowed,
+               final List<String> personAllergies) {
       super();
-      this.birthdate = birthdate;
-      this.medications = medications;
-      this.allergies = allergies;
+      this.birthdate = personsBirthdate;
+      this.medications = personMedicationsFollowed;
+      this.allergies = personAllergies;
    }
 
    /**
@@ -34,10 +46,10 @@ public class MedicalRecord {
    }
 
    /**
-    * @param birthdate the birthdate to set
+    * @param personsBirthdate the birthdate to set
     */
-   public void setBirthdate(LocalDate birthdate) {
-      this.birthdate = birthdate;
+   public void setBirthdate(final LocalDate personsBirthdate) {
+      this.birthdate = personsBirthdate;
    }
 
    /**
@@ -48,10 +60,10 @@ public class MedicalRecord {
    }
 
    /**
-    * @param medications the medications to set
+    * @param personMedicationsFollowed the medications to set
     */
-   public void setMedications(List<String> medications) {
-      this.medications = medications;
+   public void setMedications(final List<String> personMedicationsFollowed) {
+      this.medications = personMedicationsFollowed;
    }
 
    /**
@@ -62,12 +74,15 @@ public class MedicalRecord {
    }
 
    /**
-    * @param allergies the allergies to set
+    * @param personAllergies the person's allergies to set
     */
-   public void setAllergies(List<String> allergies) {
-      this.allergies = allergies;
+   public void setAllergies(final List<String> personAllergies) {
+      this.allergies = personAllergies;
    }
 
+   /**
+    * A toString class method().
+    */
    public String toString() {
       return "Medical Record [birthdate="
                   + birthdate
