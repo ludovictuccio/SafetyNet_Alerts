@@ -3,8 +3,8 @@ package com.safetynet.alerts.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.FireStation;
-import com.safetynet.alerts.model.InfosRetrieval;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.service.IPersonService;
 
@@ -19,7 +19,7 @@ public class PersonController {
    /**
     * Used to retrieve persons informations.
     */
-   private InfosRetrieval infosRetrieval;
+   private EntitiesInfosStorage entitiesInfosStorage;
    /**
     * Used to retrieve persons service informations.
     */

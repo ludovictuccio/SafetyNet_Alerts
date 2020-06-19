@@ -3,9 +3,8 @@ package com.safetynet.alerts.service;
 import java.util.List;
 import java.util.Map;
 
-import com.safetynet.alerts.model.AdultsAndChildrenPerStation;
+import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.FireStation;
-import com.safetynet.alerts.model.InfosRetrieval;
 import com.safetynet.alerts.model.Person;
 
 /**
@@ -21,7 +20,7 @@ public interface IFireStationService {
     * 
     * @param firestation
     */
-   InfosRetrieval createFireStation(FireStation firestation);
+   EntitiesInfosStorage createFireStation(FireStation firestation);
 
    /**
     * updateFireStation() method.
@@ -44,16 +43,22 @@ public interface IFireStationService {
    /**
     * stationNumber() method.
     */
-   AdultsAndChildrenPerStation stationNumber();
+   List<Person> stationNumber(int stationNumber);
 
    /**
     * fire() method.
     */
-   List<Person> fire();
+   List<Person> fire(String householdAdress);
 
    /**
     * flood() method.
     */
-   List<Person> flood();
+   List<Person> flood(int stationsNumber);
+
+   /**
+    * @param fireStationNumber
+    * 
+    */
+   List<String> phoneAlert(int fireStationNumber);
 
 }

@@ -2,7 +2,7 @@ package com.safetynet.alerts.service;
 
 import org.springframework.stereotype.Service;
 
-import com.safetynet.alerts.model.InfosRetrieval;
+import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.MedicalRecord;
 
 /**
@@ -17,7 +17,7 @@ public class MedicalRecordService implements IMedicalRecordService {
    /**
     * Used to retrieve persons informations.
     */
-   private InfosRetrieval infosRetrieval;
+   private EntitiesInfosStorage infosRetrieval;
 
    /**
     * Public class constructor.

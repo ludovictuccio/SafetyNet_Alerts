@@ -9,7 +9,7 @@ import java.util.Map;
  * @author Ludovic Tuccio
  *
  */
-public class InfosRetrieval {
+public class EntitiesInfosStorage {
 
    /**
     * The persons list.
@@ -29,7 +29,7 @@ public class InfosRetrieval {
     * @param firestations
     * @param personsPerHousehold
     */
-   public InfosRetrieval(final List<Person> persons,
+   public EntitiesInfosStorage(final List<Person> persons,
                final Map<Integer, FireStation> stations,
                final Map<String, List<Person>> households) {
       super();

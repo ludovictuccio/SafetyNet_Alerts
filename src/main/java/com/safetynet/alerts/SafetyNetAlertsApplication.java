@@ -3,7 +3,7 @@ package com.safetynet.alerts;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.safetynet.alerts.model.InfosRetrieval;
+import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.service.DataLoader;
 
 /**
@@ -39,7 +39,7 @@ public class SafetyNetAlertsApplication {
     * 
     * @return file
     */
-   public InfosRetrieval readData() {
+   public EntitiesInfosStorage readData() {
       return readFile.readFile(file);
    }
 

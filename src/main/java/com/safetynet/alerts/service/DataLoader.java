@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.safetynet.alerts.model.InfosRetrieval;
+import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.Person;
 
 /**
@@ -27,7 +27,7 @@ public class DataLoader implements IDataLoader {
     * @param jsonFile
     * @return
     */
-   public InfosRetrieval readFile(final String jsonFile) {
+   public EntitiesInfosStorage readFile(final String jsonFile) {
 
       return null;
    }

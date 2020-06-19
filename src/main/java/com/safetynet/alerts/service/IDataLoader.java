@@ -2,7 +2,7 @@ package com.safetynet.alerts.service;
 
 import java.util.List;
 
-import com.safetynet.alerts.model.InfosRetrieval;
+import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.Person;
 
 /**
@@ -18,7 +18,7 @@ public interface IDataLoader {
     * 
     * @param jsonFile
     */
-   InfosRetrieval readFile(String jsonFile);
+   EntitiesInfosStorage readFile(String jsonFile);
 
    /**
     * searchPerson() method.

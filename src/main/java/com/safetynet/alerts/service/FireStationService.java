@@ -5,9 +5,8 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.safetynet.alerts.model.AdultsAndChildrenPerStation;
+import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.FireStation;
-import com.safetynet.alerts.model.InfosRetrieval;
 import com.safetynet.alerts.model.Person;
 
 /**
@@ -22,7 +21,7 @@ public class FireStationService implements IFireStationService {
    /**
     * Used to retrieve persons informations.
     */
-   private InfosRetrieval infosRetrieval;
+   private EntitiesInfosStorage entitiesInfosStorage;
 
    /**
     * Public class constructor.
@@ -35,7 +34,8 @@ public class FireStationService implements IFireStationService {
     * @param firestation
     * @return
     */
-   public InfosRetrieval createFireStation(final FireStation firestation) {
+   public EntitiesInfosStorage createFireStation(
+               final FireStation firestation) {
       return null;
 
    }
@@ -63,25 +63,37 @@ public class FireStationService implements IFireStationService {
    }
 
    /**
+    * @param stationNumber
     * @return
     */
-   public AdultsAndChildrenPerStation stationNumber() {
+   public List<Person> stationNumber(final int stationNumber) {
       return null;
 
    }
 
    /**
+    * @param householdAdress
     * @return
     */
-   public List<Person> fire() {
+   public List<Person> fire(final String householdAdress) {
       return null;
 
    }
 
    /**
+    * @param stationsNumber
     * @return
     */
-   public List<Person> flood() {
+   public List<Person> flood(final int stationsNumber) {
+      return null;
+
+   }
+
+   /**
+    * @param fireStationNumber
+    * @return
+    */
+   public List<String> phoneAlert(final int fireStationNumber) {
       return null;
 
    }

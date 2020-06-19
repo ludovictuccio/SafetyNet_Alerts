@@ -16,6 +16,10 @@ public class MedicalRecord {
     */
    private LocalDate birthdate;
    /**
+    * The person's age.
+    */
+   private int age;
+   /**
     * The person medications list.
     */
    private List<String> medications;
@@ -23,6 +27,12 @@ public class MedicalRecord {
     * The person allergies list.
     */
    private List<String> allergies;
+
+   /**
+    * Empty class constructor.
+    */
+   public MedicalRecord() {
+   }
 
    /**
     * @param personsBirthdate
@@ -46,10 +56,10 @@ public class MedicalRecord {
    }
 
    /**
-    * @param personsBirthdate the birthdate to set
+    * @param personBirthdate the birthdate to set
     */
-   public void setBirthdate(final LocalDate personsBirthdate) {
-      this.birthdate = personsBirthdate;
+   public void setBirthdate(final LocalDate personBirthdate) {
+      this.birthdate = personBirthdate;
    }
 
    /**
@@ -78,6 +88,13 @@ public class MedicalRecord {
     */
    public void setAllergies(final List<String> personAllergies) {
       this.allergies = personAllergies;
+   }
+
+   /**
+    * @return age
+    */
+   public int getAge() {
+      return age;
    }
 
    /**

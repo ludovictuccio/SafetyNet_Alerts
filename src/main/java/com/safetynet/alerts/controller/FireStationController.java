@@ -3,9 +3,8 @@ package com.safetynet.alerts.controller;
 import java.util.List;
 import java.util.Map;
 
-import com.safetynet.alerts.model.AdultsAndChildrenPerStation;
+import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.FireStation;
-import com.safetynet.alerts.model.InfosRetrieval;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.service.IFireStationService;
 
@@ -20,7 +19,7 @@ public class FireStationController {
    /**
     * Used to retrieve persons informations.
     */
-   private InfosRetrieval infosRetrieval;
+   private EntitiesInfosStorage entitiesInfosStorage;
    /**
     * Used to retrieve firestations informations.
     */
@@ -30,7 +29,8 @@ public class FireStationController {
     * @param firestation
     * @return
     */
-   public InfosRetrieval createFireStation(final FireStation firestation) {
+   public EntitiesInfosStorage createFireStation(
+               final FireStation firestation) {
       return null;
 
    }
@@ -58,25 +58,37 @@ public class FireStationController {
    }
 
    /**
+    * @param stationNumber
     * @return
     */
-   public AdultsAndChildrenPerStation stationNumber() {
+   public List<Person> stationNumber(final int stationNumber) {
       return null;
 
    }
 
    /**
+    * @param householdAdress
     * @return
     */
-   public List<Person> fire() {
+   public List<Person> fire(final String householdAdress) {
       return null;
 
    }
 
    /**
+    * @param stationsNumber
     * @return
     */
-   public List<Person> flood() {
+   public List<Person> flood(final int stationsNumber) {
+      return null;
+
+   }
+
+   /**
+    * @param fireStationNumber
+    * @return
+    */
+   public List<String> phoneAlert(final int fireStationNumber) {
       return null;
 
    }

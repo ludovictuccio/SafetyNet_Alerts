@@ -1,6 +1,6 @@
 package com.safetynet.alerts.controller;
 
-import com.safetynet.alerts.model.InfosRetrieval;
+import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.MedicalRecord;
 import com.safetynet.alerts.service.IMedicalRecordService;
 
@@ -16,7 +16,7 @@ public class MedicalRecordController {
    /**
     * Used to retrieve persons informations.
     */
-   private InfosRetrieval infosRetrieval;
+   private EntitiesInfosStorage entitiesInfosStorage;
    /**
     * Used to retrieve persons medical record.
     */

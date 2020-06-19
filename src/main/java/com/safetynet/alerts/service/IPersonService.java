@@ -1,10 +1,7 @@
 package com.safetynet.alerts.service;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 
-import com.safetynet.alerts.model.FireStation;
 import com.safetynet.alerts.model.Person;
 
 /**
@@ -18,12 +15,13 @@ public interface IPersonService {
    /**
     * @param person
     */
-   List<Person> createPerson(Person person);
+   Person createPerson(Person person);
 
    /**
-    * @param person
+    * @param firstName
+    * @param lastName
     */
-   List<Person> updatePerson(Person person);
+   List<Person> updatePerson(String firstName, String lastName);
 
    /**
     * @param firstName
@@ -40,36 +38,27 @@ public interface IPersonService {
     * @param firstName
     * @param lastName
     */
-   List<Person> getPersonByName(String firstName, String lastName);
-
-   /**
-    * @param birthdate
-    */
-   boolean isChildren(LocalDate birthdate);
-
-   /**
-    * @return
-    */
-   List<Person> getChildrenList();
+   List<Person> personInfo(String firstName, String lastName);
 
    /**
     * @param age
     */
-   int getPersonsAge(LocalDate age);
+   boolean isChildren(int age);
+
+   /**
+    * @return
+    */
+   List<Person> childAlert(String adress);
+
+   /**
+    * @param personMedicalRecord
+    */
+   int getPersonsAge(Person personMedicalRecord);
 
    /**
     * @param email
     * @param communityPersons
     */
-   List<String> getCommunityEmail(String email, List<Person> communityPersons);
-
-   /**
-    * @param phoneNumber
-    * @param responsibleFireStation
-    * @param personsUnderFirestationResponsibility
-    */
-   List<String> getPhoneAlert(String phoneNumber,
-               Map<Integer, FireStation> responsibleFireStation,
-               List<Person> personsUnderFirestationResponsibility);
+   List<String> communityEmail(String email);
 
 }

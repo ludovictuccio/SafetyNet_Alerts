@@ -17,7 +17,7 @@ public class Person {
     */
    private String lastName;
    /**
-    * The person's age.
+    * The person's age .
     */
    private int age;
    /**
@@ -28,10 +28,6 @@ public class Person {
     * The person's city.
     */
    private String city;
-   /**
-    * The person's zip.
-    */
-   private int zip;
    /**
     * The person's phone number.
     */
@@ -57,17 +53,13 @@ public class Person {
     * @param personsMedicalRecord
     */
    public Person(final String personsFirstName, final String personsLastName,
-               final int personsAge, final String personsAdress,
-               final String personsCity, final int personsZip,
-               final String personsPhoneNumber, final String personsEmail,
+               final String personsAdress, final String personsPhoneNumber,
+               final String personsEmail,
                final MedicalRecord personsMedicalRecord) {
       super();
       this.firstName = personsFirstName;
       this.lastName = personsLastName;
-      this.age = personsAge;
       this.adress = personsAdress;
-      this.city = personsCity;
-      this.zip = personsZip;
       this.phone = personsPhoneNumber;
       this.email = personsEmail;
       this.medicalRecord = personsMedicalRecord;
@@ -109,7 +101,7 @@ public class Person {
    }
 
    /**
-    * @param personsAge the person's age to set
+    * @param age the person's age to set
     */
    public void setAge(final int personsAge) {
       this.age = personsAge;
@@ -141,20 +133,6 @@ public class Person {
     */
    public void setCity(final String personsCity) {
       this.city = personsCity;
-   }
-
-   /**
-    * @return the zip
-    */
-   public int getZip() {
-      return zip;
-   }
-
-   /**
-    * @param personsZip the person's zip to set
-    */
-   public void setZip(final int personsZip) {
-      this.zip = personsZip;
    }
 
    /**
@@ -207,14 +185,8 @@ public class Person {
                   + firstName
                   + ", lastName="
                   + lastName
-                  + ", age="
-                  + age
                   + ", adress="
                   + adress
-                  + ", city="
-                  + city
-                  + ", zip="
-                  + zip
                   + ", phone="
                   + phone
                   + ", email="

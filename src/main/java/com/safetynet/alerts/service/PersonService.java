@@ -1,13 +1,17 @@
 package com.safetynet.alerts.service;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.safetynet.alerts.model.FireStation;
-import com.safetynet.alerts.model.InfosRetrieval;
+import com.safetynet.alerts.model.EntitiesInfosStorage;
+import com.safetynet.alerts.model.Households;
+import com.safetynet.alerts.model.MedicalRecord;
 import com.safetynet.alerts.model.Person;
 
 /**
@@ -22,7 +26,12 @@ public class PersonService implements IPersonService {
    /**
     * Used to retrieve persons informations.
     */
-   private InfosRetrieval infosRetrieval;
+   private EntitiesInfosStorage infosRetrieval;
+   /**
+    * Logger
+    */
+   private static final Logger LOGGER = LogManager
+               .getLogger(PersonService.class);
 
    /**
     * Public class constructor.
@@ -35,7 +44,20 @@ public class PersonService implements IPersonService {
     * @param person
     * @return
     */
-   public List<Person> createPerson(final Person person) {
+   @RequestMapping(value = "/person", method = RequestMethod.POST)
+   public Person createPerson(final Person person) {
+
+      return person;
+
+   }
+
+   /**
+    * @param person
+    * @return
+    */
+   @RequestMapping(value = "/person", method = RequestMethod.PUT)
+   public List<Person> updatePerson(final String firstName,
+               final String lastName) {
       return null;
 
    }
@@ -44,15 +66,7 @@ public class PersonService implements IPersonService {
     * @param person
     * @return
     */
-   public List<Person> updatePerson(final Person person) {
-      return null;
-
-   }
-
-   /**
-    * @param person
-    * @return
-    */
+   @RequestMapping(value = "/person", method = RequestMethod.DELETE)
    public List<Person> deletePerson(final String firstName,
                final String lastName) {
       return null;
@@ -72,58 +86,47 @@ public class PersonService implements IPersonService {
     * @param lastName
     * @return
     */
-   public List<Person> getPersonByName(final String firstName,
+   public List<Person> personInfo(final String firstName,
                final String lastName) {
       return null;
 
    }
 
    /**
-    * @param birthdate
-    * @return boolean
+    * @param adress
+    * @return personsList
     */
-   public boolean isChildren(final LocalDate birthdate) {
-      return false;
+   public List<Person> childAlert(final String adress) {
 
-   }
+      List<Person> personsList = new ArrayList<>();
+      Households houshold = new Households(personsList);
 
-   /**
-    * @return
-    */
-   public List<Person> getChildrenList() {
-      return null;
-
+      return personsList;
    }
 
    /**
     * @param age
+    */
+   public boolean isChildren(final int age) {
+
+      MedicalRecord medicalRecord = new MedicalRecord();
+      return false;
+   }
+
+   /**
+    * @param personMedicalRecord
     * @return
     */
-   public int getPersonsAge(final LocalDate age) {
+   public int getPersonsAge(final Person personMedicalRecord) {
       return 0;
 
    }
 
    /**
-    * @param email
-    * @param communityPersons
+    * @param city
     * @return
     */
-   public List<String> getCommunityEmail(final String email,
-               final List<Person> communityPersons) {
-      return null;
-
-   }
-
-   /**
-    * @param phoneNumber
-    * @param responsibleFireStation
-    * @param personsUnderFirestationResponsibility
-    * @return
-    */
-   public List<String> getPhoneAlert(final String phoneNumber,
-               final Map<Integer, FireStation> responsibleFireStation,
-               final List<Person> personsUnderFirestationResponsibility) {
+   public List<String> communityEmail(final String city) {
       return null;
 
    }
