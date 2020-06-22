@@ -103,3 +103,17 @@
 [DEBUG] 16 juin 2020 15:16:02 [main] SafetyNetAlertsApplication - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
 [INFO ] 16 juin 2020 15:16:02 [main] SafetyNetAlertsApplication - The following profiles are active: dev
 [INFO ] 16 juin 2020 15:16:07 [main] SafetyNetAlertsApplication - Started SafetyNetAlertsApplication in 6.298 seconds (JVM running for 8.299)
+[INFO ] 22 juin 2020 14:26:42 [main] SafetyNetAlertsApplication - Starting SafetyNetAlertsApplication on PC-de-Ludo with PID 19300 (C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts\target\classes started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 22 juin 2020 14:26:42 [main] SafetyNetAlertsApplication - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 22 juin 2020 14:26:42 [main] SafetyNetAlertsApplication - The following profiles are active: dev
+[INFO ] 22 juin 2020 14:26:50 [main] SafetyNetAlertsApplication - Started SafetyNetAlertsApplication in 9.007 seconds (JVM running for 12.023)
+[DEBUG] 22 juin 2020 14:26:50 [main] DataLoader - Persons loaded from a Json file.
+[DEBUG] 22 juin 2020 14:26:50 [main] DataLoader - Fire Stations loaded from a Json file.
+[DEBUG] 22 juin 2020 14:26:50 [main] DataLoader - Medical Records loaded from a Json file.
+[INFO ] 22 juin 2020 14:34:36 [main] SafetyNetAlertsApplication - Starting SafetyNetAlertsApplication on PC-de-Ludo with PID 15916 (C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts\target\classes started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 22 juin 2020 14:34:36 [main] SafetyNetAlertsApplication - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 22 juin 2020 14:34:36 [main] SafetyNetAlertsApplication - The following profiles are active: dev
+[INFO ] 22 juin 2020 14:34:47 [main] SafetyNetAlertsApplication - Started SafetyNetAlertsApplication in 16.392 seconds (JVM running for 18.809)
+[DEBUG] 22 juin 2020 14:34:47 [main] DataLoader - Persons loaded from a Json file.
+[DEBUG] 22 juin 2020 14:34:47 [main] DataLoader - Fire Stations loaded from a Json file.
+[DEBUG] 22 juin 2020 14:34:47 [main] DataLoader - Medical Records loaded from a Json file.

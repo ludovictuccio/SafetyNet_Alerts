@@ -17,17 +17,31 @@ public class FireStation {
    /**
     * The fire station number.
     */
-   private int station;
+   private String station;
 
    /**
     * @param stationsAdresses
     * @param stationNumber
     */
    public FireStation(final HashSet<String> stationsAdresses,
-               final int stationNumber) {
+               final String stationNumber) {
       super();
       this.adresses = stationsAdresses;
       this.station = stationNumber;
+   }
+
+   public FireStation(final String stationsAdresses,
+               final String stationNumber) {
+
+   }
+
+   /**
+    * Constructor used to convert json to java object.
+    *
+    * @param stationNumber
+    */
+   public FireStation(final String stationNumber) {
+
    }
 
    /**
@@ -47,14 +61,14 @@ public class FireStation {
    /**
     * @return the station
     */
-   public int getStation() {
+   public String getStation() {
       return station;
    }
 
    /**
     * @param stationNumber the station number to set
     */
-   public void setStation(final int stationNumber) {
+   public void setStation(final String stationNumber) {
       this.station = stationNumber;
    }
 

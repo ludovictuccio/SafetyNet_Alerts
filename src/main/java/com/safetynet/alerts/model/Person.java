@@ -29,6 +29,10 @@ public class Person {
     */
    private String city;
    /**
+    * The person's zip.
+    */
+   private String zip;
+   /**
     * The person's phone number.
     */
    private String phone;
@@ -41,13 +45,17 @@ public class Person {
     */
    private MedicalRecord medicalRecord;
 
+//   /**
+//    * Empty class constructor;
+//    */
+//   public Person() {
+//
+//   }
    /**
+    *
     * @param personsFirstName
     * @param personsLastName
-    * @param personsAge
     * @param personsAdress
-    * @param personsCity
-    * @param personsZip
     * @param personsPhoneNumber
     * @param personsEmail
     * @param personsMedicalRecord
@@ -63,6 +71,32 @@ public class Person {
       this.phone = personsPhoneNumber;
       this.email = personsEmail;
       this.medicalRecord = personsMedicalRecord;
+   }
+
+   /**
+    * Constructor used to convert json data in java object.
+    *
+    * @param personsFirstName
+    * @param personsLastName
+    * @param personsAdress
+    * @param personsCity
+    * @param personsZip
+    * @param personsPhoneNumber
+    * @param personsEmail
+    *
+    */
+   public Person(final String personsFirstName, final String personsLastName,
+               final String personsAdress, final String personsCity,
+               final String personsZip, final String personsPhoneNumber,
+               final String personsEmail) {
+      super();
+      this.firstName = personsFirstName;
+      this.lastName = personsLastName;
+      this.adress = personsAdress;
+      this.city = personsCity;
+      this.zip = personsZip;
+      this.phone = personsPhoneNumber;
+      this.email = personsEmail;
    }
 
    /**
@@ -133,6 +167,20 @@ public class Person {
     */
    public void setCity(final String personsCity) {
       this.city = personsCity;
+   }
+
+   /**
+    * @return the zip
+    */
+   public String getZip() {
+      return zip;
+   }
+
+   /**
+    * @param zip the zip to set
+    */
+   public void setZip(String zip) {
+      this.zip = zip;
    }
 
    /**

@@ -1,6 +1,5 @@
 package com.safetynet.alerts.model;
 
-import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -11,14 +10,12 @@ import java.util.List;
  */
 public class MedicalRecord {
 
+   private String firstName;
+   private String lastName;
    /**
     * The person's birthdate.
     */
-   private LocalDate birthdate;
-   /**
-    * The person's age.
-    */
-   private int age;
+   private String birthdate;
    /**
     * The person medications list.
     */
@@ -39,7 +36,7 @@ public class MedicalRecord {
     * @param personMedicationsFollowed
     * @param personAllergies
     */
-   public MedicalRecord(final LocalDate personsBirthdate,
+   public MedicalRecord(final String personsBirthdate,
                final List<String> personMedicationsFollowed,
                final List<String> personAllergies) {
       super();
@@ -49,16 +46,42 @@ public class MedicalRecord {
    }
 
    /**
+    * @param firstName
+    * @param lastName
+    * @param birthdate
+    */
+   public MedicalRecord(final String personsFirstName,
+               final String personsLastName, final String personsBirthdate) {
+      super();
+      this.firstName = personsFirstName;
+      this.lastName = personsLastName;
+      this.birthdate = personsBirthdate;
+   }
+
+   // Jsoniterato & any constructor.
+   public MedicalRecord(final String personsFirstName,
+               final String personsLastName, final String personsBirthdate,
+               final List<String> personMedicationsFollowed,
+               final List<String> personAllergies) {
+      super();
+      this.firstName = personsFirstName;
+      this.lastName = personsLastName;
+      this.birthdate = personsBirthdate;
+      this.medications = personMedicationsFollowed;
+      this.allergies = personAllergies;
+   }
+
+   /**
     * @return the birthdate
     */
-   public LocalDate getBirthdate() {
+   public String getBirthdate() {
       return birthdate;
    }
 
    /**
     * @param personBirthdate the birthdate to set
     */
-   public void setBirthdate(final LocalDate personBirthdate) {
+   public void setBirthdate(final String personBirthdate) {
       this.birthdate = personBirthdate;
    }
 
@@ -91,13 +114,6 @@ public class MedicalRecord {
    }
 
    /**
-    * @return age
-    */
-   public int getAge() {
-      return age;
-   }
-
-   /**
     * A toString class method().
     */
    public String toString() {
@@ -108,6 +124,44 @@ public class MedicalRecord {
                   + ", allergies="
                   + allergies
                   + "]";
+   }
+
+   public void addAllergies(String string) {
+      // TODO Auto-generated method stub
+
+   }
+
+   public void addMedications(String string) {
+      // TODO Auto-generated method stub
+
+   }
+
+   /**
+    * @return the firstName
+    */
+   public String getFirstName() {
+      return firstName;
+   }
+
+   /**
+    * @param firstName the firstName to set
+    */
+   public void setFirstName(String firstName) {
+      this.firstName = firstName;
+   }
+
+   /**
+    * @return the lastName
+    */
+   public String getLastName() {
+      return lastName;
+   }
+
+   /**
+    * @param lastName the lastName to set
+    */
+   public void setLastName(String lastName) {
+      this.lastName = lastName;
    }
 
 }

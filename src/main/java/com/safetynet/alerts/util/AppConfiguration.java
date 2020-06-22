@@ -1,4 +1,4 @@
-package com.safetynet.alerts;
+package com.safetynet.alerts.util;
 
 import org.springframework.boot.actuate.trace.http.HttpTraceRepository;
 import org.springframework.boot.actuate.trace.http.InMemoryHttpTraceRepository;

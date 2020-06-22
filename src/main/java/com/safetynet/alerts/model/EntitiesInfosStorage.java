@@ -18,11 +18,19 @@ public class EntitiesInfosStorage {
    /**
     * The firestations mapping (adresses and firestation number).
     */
-   private Map<Integer, FireStation> firestations;
+   private Map<String, FireStation> firestations;
+
    /**
     * The households composition mapping (adresses and persons list).
     */
    private Map<String, List<Person>> personsPerHousehold;
+
+   /**
+    * Empty class constructor.
+    */
+   public EntitiesInfosStorage() {
+
+   }
 
    /**
     * @param personsList
@@ -30,7 +38,7 @@ public class EntitiesInfosStorage {
     * @param personsPerHousehold
     */
    public EntitiesInfosStorage(final List<Person> persons,
-               final Map<Integer, FireStation> stations,
+               final Map<String, FireStation> stations,
                final Map<String, List<Person>> households) {
       super();
       this.personsList = persons;
@@ -55,14 +63,14 @@ public class EntitiesInfosStorage {
    /**
     * @return the firestations
     */
-   public Map<Integer, FireStation> getFirestations() {
+   public Map<String, FireStation> getFirestations() {
       return firestations;
    }
 
    /**
     * @param firestations the firestations to set
     */
-   public void setFirestations(final Map<Integer, FireStation> stations) {
+   public void setFirestations(final Map<String, FireStation> stations) {
       this.firestations = stations;
    }
 
