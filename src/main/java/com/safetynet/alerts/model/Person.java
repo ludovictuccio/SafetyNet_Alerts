@@ -45,12 +45,13 @@ public class Person {
     */
    private MedicalRecord medicalRecord;
 
-//   /**
-//    * Empty class constructor;
-//    */
-//   public Person() {
-//
-//   }
+   /**
+    * Empty class constructor;
+    */
+   public Person() {
+
+   }
+
    /**
     *
     * @param personsFirstName

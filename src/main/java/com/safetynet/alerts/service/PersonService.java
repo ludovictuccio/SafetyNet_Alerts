@@ -26,15 +26,15 @@ public class PersonService implements IPersonService {
    /**
     * Used to retrieve persons informations.
     */
-   private EntitiesInfosStorage infosRetrieval;
+   private EntitiesInfosStorage entitiesInfosStorage;
    /**
-    * Logger
+    * Logger class.
     */
    private static final Logger LOGGER = LogManager
                .getLogger(PersonService.class);
 
    /**
-    * Public class constructor.
+    * Empty class constructor.
     */
    public PersonService() {
 
@@ -73,13 +73,13 @@ public class PersonService implements IPersonService {
 
    }
 
-   /**
-    * @return
-    */
-   public List<Person> getAllPersons() {
-      return null;
-
-   }
+//   /**
+//    * @return all persons, entitiesInfosStorage.getPersonsList()
+//    */
+//   public List<Person> getAllPersons() {
+//
+//      return entitiesInfosStorage.getPersonsList();
+//   }
 
    /**
     * @param firstName
@@ -126,9 +126,17 @@ public class PersonService implements IPersonService {
     * @param city
     * @return
     */
-   public List<String> communityEmail(final String city) {
-      return null;
+   public List<String> communityEmail(final String city,
+               final List<Person> personsList) {
 
+      List<String> personsEmail = new ArrayList<>();
+
+      for (Person person : personsList) {
+         if (person.getCity().equals(city)) {
+            personsEmail.add(person.getEmail());
+         }
+      }
+      return personsEmail;
    }
 
 }
