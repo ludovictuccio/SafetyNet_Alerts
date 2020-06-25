@@ -1,47 +1,63 @@
 package com.safetynet.alerts.util;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.safetynet.alerts.model.MedicalRecord;
-
 /**
+ * Age calculator class, used to determine the person's age.
+ *
  * @author Ludovic Tuccio
  *
  */
 public class AgeCalculator {
 
-   private static final Logger logger = LogManager
+   /**
+    * Logger class.
+    */
+   private static final Logger LOGGER = LogManager
                .getLogger(AgeCalculator.class);
-   private LocalDate currentDate = LocalDate.now();
-   private MedicalRecord medicalRecord = new MedicalRecord();
-   private LocalDate birthDate = medicalRecord.getBirthdate();
-   private int age;
-   private DateTimeFormatter formatter = DateTimeFormatter
-               .ofPattern("dd/MM/yyyy");
-   private LocalDate date = birthDate;
 
-   public AgeCalculator() {
+   /**
+    * @param birthdate
+    * @return age
+    * @throws ParseException
+    */
+   public int ageCalculation(final String birthdate) throws ParseException {
+      LOGGER.debug("Age calculation initialization");
 
-   }
+      SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+      Date personsBirthdate = null;
+      personsBirthdate = dateFormatter.parse(birthdate);
 
-   public AgeCalculator(int localDate) {
-      this.age = localDate;
-   }
+      Calendar birthdateData = Calendar.getInstance();
+      Calendar currentDate = Calendar.getInstance();
+      birthdateData.setTime(personsBirthdate);
 
-   public int getAge() {
+      if (birthdateData.after(currentDate)) {
+         LOGGER.error("Bithdate person's invalid (in the future)");
+         throw new IllegalArgumentException("Can't be born in the future");
+      }
+
+      int year1 = currentDate.get(Calendar.YEAR);
+      int year2 = birthdateData.get(Calendar.YEAR);
+      int age = year1 - year2;
+      int month1 = currentDate.get(Calendar.MONTH);
+      int month2 = birthdateData.get(Calendar.MONTH);
+      if (month2 > month1) {
+         age--;
+      } else if (month1 == month2) {
+         int day1 = currentDate.get(Calendar.DAY_OF_MONTH);
+         int day2 = birthdateData.get(Calendar.DAY_OF_MONTH);
+         if (day2 > day1) {
+            age--;
+         }
+      }
       return age;
    }
 
-   public static int calculateAge(LocalDate birthDate, LocalDate currentDate) {
-      if ((birthDate != null) && (currentDate != null)) {
-         return Period.between(birthDate, currentDate).getYears();
-      } else {
-         return 0;
-      }
-   }
 }

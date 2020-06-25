@@ -4,4 +4,4 @@
  * @author Ludovic Tuccio
  *
  */
-package src.test.java.com.safetynet.alerts.unit.service;
+package com.safetynet.alerts.unit.service;
