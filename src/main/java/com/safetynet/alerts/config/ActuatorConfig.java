@@ -1,4 +1,4 @@
-package com.safetynet.alerts.util;
+package com.safetynet.alerts.config;
 
 import org.springframework.boot.actuate.trace.http.HttpTraceRepository;
 import org.springframework.boot.actuate.trace.http.InMemoryHttpTraceRepository;
@@ -6,13 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Application configuration.
+ * Actuator configuration.
  * 
  * @author Ludovic Tuccio
  *
  */
 @Configuration
-public class AppConfiguration {
+public class ActuatorConfig {
 
    /**
     * Method used to configure httptrace endpoint with actuator.
