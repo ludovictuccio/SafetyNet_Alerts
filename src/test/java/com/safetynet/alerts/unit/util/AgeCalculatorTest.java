@@ -11,7 +11,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.safetynet.alerts.SafetyNetAlertsApplication;
 import com.safetynet.alerts.constants.Constants;
 import com.safetynet.alerts.util.AgeCalculator;
 
@@ -21,9 +26,13 @@ import com.safetynet.alerts.util.AgeCalculator;
  * @author Ludovic Tuccio
  *
  */
+@WebMvcTest(AgeCalculator.class)
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = SafetyNetAlertsApplication.class)
 public class AgeCalculatorTest {
 
    private AgeCalculator ageCalculator;
+
    private String birthdate;
    private DateTimeFormatter formatter;
    private LocalDate currentDate;
@@ -78,7 +87,7 @@ public class AgeCalculatorTest {
    @Test
    @Tag("Invalid")
    @DisplayName("Invalid - Null birthdate")
-   public void givenNuyllBirthdate_whenAgeCalculation_thenReturnException() {
+   public void givenNuyllBirthdate_whenAgeCalculation_thenReturnNullPointerException() {
 
       String birthdate = null;
 
@@ -90,7 +99,7 @@ public class AgeCalculatorTest {
    @Test
    @Tag("Invalid")
    @DisplayName("Invalid - Minus 1 yo")
-   public void givenOneNegativeYo_whenAgeCalculation_thenReturnException() {
+   public void givenOneNegativeYo_whenAgeCalculation_thenReturnIllegalArgumentException() {
 
       currentDate = LocalDate.now().plusYears(1);
       birthdate = formatter.format(currentDate);
@@ -103,7 +112,7 @@ public class AgeCalculatorTest {
    @Test
    @Tag("Invalid")
    @DisplayName("Invalid - Minus 1 month")
-   public void givenOneMonthNegativeYo_whenAgeCalculation_thenReturnException() {
+   public void givenOneMonthNegativeYo_whenAgeCalculation_thenReturnIllegalArgumentException() {
 
       currentDate = LocalDate.now().plusMonths(1);
       birthdate = formatter.format(currentDate);
@@ -116,7 +125,7 @@ public class AgeCalculatorTest {
    @Test
    @Tag("Invalid")
    @DisplayName("Invalid - Minus 1 day")
-   public void givenOneDayNegativeYo_whenAgeCalculation_thenReturnException() {
+   public void givenOneDayNegativeYo_whenAgeCalculation_thenReturnIllegalArgumentException() {
 
       currentDate = LocalDate.now().plusDays(1);
       birthdate = formatter.format(currentDate);
