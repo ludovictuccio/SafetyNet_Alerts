@@ -16,10 +16,10 @@ public class Person {
     * The person's last name.
     */
    private String lastName;
-   /**
-    * The person's age .
-    */
-   private int age;
+//   /**
+//    * The person's age .
+//    */
+//   private int age;
    /**
     * The person's adress.
     */
@@ -45,33 +45,8 @@ public class Person {
     */
    private MedicalRecord medicalRecord;
 
-   /**
-    * Empty class constructor;
-    */
    public Person() {
 
-   }
-
-   /**
-    *
-    * @param personsFirstName
-    * @param personsLastName
-    * @param personsAdress
-    * @param personsPhoneNumber
-    * @param personsEmail
-    * @param personsMedicalRecord
-    */
-   public Person(final String personsFirstName, final String personsLastName,
-               final String personsAdress, final String personsPhoneNumber,
-               final String personsEmail,
-               final MedicalRecord personsMedicalRecord) {
-      super();
-      this.firstName = personsFirstName;
-      this.lastName = personsLastName;
-      this.adress = personsAdress;
-      this.phone = personsPhoneNumber;
-      this.email = personsEmail;
-      this.medicalRecord = personsMedicalRecord;
    }
 
    /**
@@ -90,7 +65,6 @@ public class Person {
                final String personsAdress, final String personsCity,
                final String personsZip, final String personsPhoneNumber,
                final String personsEmail) {
-      super();
       this.firstName = personsFirstName;
       this.lastName = personsLastName;
       this.adress = personsAdress;
@@ -98,6 +72,33 @@ public class Person {
       this.zip = personsZip;
       this.phone = personsPhoneNumber;
       this.email = personsEmail;
+   }
+
+   /**
+    *
+    * @param personsFirstName
+    * @param personsLastName
+    * @param personsAdress
+    * @param personsCity
+    * @param personsZip
+    * @param personsPhoneNumber
+    * @param personsEmail
+    * @param personsMedicalRecord
+    *
+    */
+   public Person(final String personsFirstName, final String personsLastName,
+               final String personsAdress, final String personsCity,
+               final String personsZip, final String personsPhoneNumber,
+               final String personsEmail,
+               final MedicalRecord personsMedicalRecord) {
+      this.firstName = personsFirstName;
+      this.lastName = personsLastName;
+      this.adress = personsAdress;
+      this.city = personsCity;
+      this.zip = personsZip;
+      this.phone = personsPhoneNumber;
+      this.email = personsEmail;
+      this.medicalRecord = personsMedicalRecord;
    }
 
    /**
@@ -127,20 +128,20 @@ public class Person {
    public void setLastName(final String personsLastName) {
       this.lastName = personsLastName;
    }
-
-   /**
-    * @return the age
-    */
-   public int getAge() {
-      return age;
-   }
-
-   /**
-    * @param age the person's age to set
-    */
-   public void setAge(final int personsAge) {
-      this.age = personsAge;
-   }
+//
+//   /**
+//    * @return the age
+//    */
+//   public int getAge() {
+//      return age;
+//   }
+//
+//   /**
+//    * @param age the person's age to set
+//    */
+//   public void setAge(final int personsAge) {
+//      this.age = personsAge;
+//   }
 
    /**
     * @return the adress

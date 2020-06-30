@@ -10,8 +10,6 @@ import java.util.List;
  */
 public class MedicalRecord {
 
-   private String firstName;
-   private String lastName;
    /**
     * The person's birthdate.
     */
@@ -26,12 +24,6 @@ public class MedicalRecord {
    private List<String> allergies;
 
    /**
-    * Empty class constructor.
-    */
-   public MedicalRecord() {
-   }
-
-   /**
     * @param personsBirthdate
     * @param personMedicationsFollowed
     * @param personAllergies
@@ -39,33 +31,6 @@ public class MedicalRecord {
    public MedicalRecord(final String personsBirthdate,
                final List<String> personMedicationsFollowed,
                final List<String> personAllergies) {
-      super();
-      this.birthdate = personsBirthdate;
-      this.medications = personMedicationsFollowed;
-      this.allergies = personAllergies;
-   }
-
-   /**
-    * @param firstName
-    * @param lastName
-    * @param birthdate
-    */
-   public MedicalRecord(final String personsFirstName,
-               final String personsLastName, final String personsBirthdate) {
-      super();
-      this.firstName = personsFirstName;
-      this.lastName = personsLastName;
-      this.birthdate = personsBirthdate;
-   }
-
-   // Jsoniterato & any constructor.
-   public MedicalRecord(final String personsFirstName,
-               final String personsLastName, final String personsBirthdate,
-               final List<String> personMedicationsFollowed,
-               final List<String> personAllergies) {
-      super();
-      this.firstName = personsFirstName;
-      this.lastName = personsLastName;
       this.birthdate = personsBirthdate;
       this.medications = personMedicationsFollowed;
       this.allergies = personAllergies;
@@ -124,44 +89,6 @@ public class MedicalRecord {
                   + ", allergies="
                   + allergies
                   + "]";
-   }
-
-   public void addAllergies(String string) {
-      // TODO Auto-generated method stub
-
-   }
-
-   public void addMedications(String string) {
-      // TODO Auto-generated method stub
-
-   }
-
-   /**
-    * @return the firstName
-    */
-   public String getFirstName() {
-      return firstName;
-   }
-
-   /**
-    * @param firstName the firstName to set
-    */
-   public void setFirstName(String firstName) {
-      this.firstName = firstName;
-   }
-
-   /**
-    * @return the lastName
-    */
-   public String getLastName() {
-      return lastName;
-   }
-
-   /**
-    * @param lastName the lastName to set
-    */
-   public void setLastName(String lastName) {
-      this.lastName = lastName;
    }
 
 }

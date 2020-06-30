@@ -4,10 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * InfosRetrieval class. Used to retrieve models classes informations.
+ * EntitiesInfosStorage class. Used to retrieve models classes informations.
  *
  * @author Ludovic Tuccio
- *
  */
 public class EntitiesInfosStorage {
 
@@ -18,29 +17,20 @@ public class EntitiesInfosStorage {
    /**
     * The firestations mapping (adresses and firestation number).
     */
-   private Map<String, FireStation> firestations;
-
+   private Map<Integer, FireStation> firestations;
    /**
     * The households composition mapping (adresses and persons list).
     */
    private Map<String, List<Person>> personsPerHousehold;
 
    /**
-    * Empty class constructor.
-    */
-   public EntitiesInfosStorage() {
-
-   }
-
-   /**
     * @param personsList
-    * @param firestations
+    * @param stations
     * @param personsPerHousehold
     */
-   public EntitiesInfosStorage(final List<Person> persons,
-               final Map<String, FireStation> stations,
-               final Map<String, List<Person>> households) {
-      super();
+   public EntitiesInfosStorage(List<Person> persons,
+               Map<Integer, FireStation> stations,
+               Map<String, List<Person>> households) {
       this.personsList = persons;
       this.firestations = stations;
       this.personsPerHousehold = households;
@@ -63,14 +53,14 @@ public class EntitiesInfosStorage {
    /**
     * @return the firestations
     */
-   public Map<String, FireStation> getFirestations() {
+   public Map<Integer, FireStation> getFirestations() {
       return firestations;
    }
 
    /**
     * @param firestations the firestations to set
     */
-   public void setFirestations(final Map<String, FireStation> stations) {
+   public void setFirestations(final Map<Integer, FireStation> stations) {
       this.firestations = stations;
    }
 
@@ -93,7 +83,7 @@ public class EntitiesInfosStorage {
     * A toString class method().
     */
    public String toString() {
-      return "Infos retrieval [Persons list="
+      return "Infos [Persons list="
                   + personsList
                   + ", firestations="
                   + firestations

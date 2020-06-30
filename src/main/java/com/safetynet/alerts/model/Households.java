@@ -1,6 +1,8 @@
 package com.safetynet.alerts.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Households class.
@@ -13,27 +15,27 @@ public class Households {
    /**
     * The list of persons by household.
     */
-   private List<Person> householdsComposition;
+   private Map<String, List<Person>> householdsComposition = new HashMap<>();
 
    /**
     * @param personsPerHousehold
     */
-   public Households(final List<Person> personsPerHousehold) {
-      super();
+   public Households(final Map<String, List<Person>> personsPerHousehold) {
       this.householdsComposition = personsPerHousehold;
    }
 
    /**
     * @return householdsComposition
     */
-   public List<Person> getPersonsPerHousehold() {
+   public Map<String, List<Person>> getPersonsPerHousehold() {
       return householdsComposition;
    }
 
    /**
     * @param personsPerHousehold the personsPerHousehold to set
     */
-   public void setPersonsPerHousehold(final List<Person> personsPerHousehold) {
+   public void setPersonsPerHousehold(
+               final Map<String, List<Person>> personsPerHousehold) {
       this.householdsComposition = personsPerHousehold;
    }
 

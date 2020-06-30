@@ -1,6 +1,7 @@
 package com.safetynet.alerts.model;
 
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * FireStation class.
@@ -13,64 +14,55 @@ public class FireStation {
    /**
     * A String HashSet used to group adresses under responsibility.
     */
-   private HashSet<String> adresses;
+   private Set<String> adresses = new HashSet<>();
    /**
     * The fire station number.
     */
-   private String station;
+   private int station;
 
-   /**
-    * @param stationsAdresses
-    * @param stationNumber
-    */
-   public FireStation(final HashSet<String> stationsAdresses,
-               final String stationNumber) {
-      super();
-      this.adresses = stationsAdresses;
-      this.station = stationNumber;
-   }
-
-   public FireStation(final String stationsAdresses,
-               final String stationNumber) {
+   public FireStation() {
 
    }
 
    /**
-    * Constructor used to convert json to java object.
     *
     * @param stationNumber
     */
-   public FireStation(final String stationNumber) {
+   public FireStation(final int stationNumber) {
+      this.station = stationNumber;
+   }
 
+   public void addAddress(final String newAdress) {
+      adresses.add(newAdress);
    }
 
    /**
     * @return the adresses
     */
-   public HashSet<String> getAdresses() {
+   public Set<String> getAdresses() {
       return adresses;
    }
 
-   /**
-    * @param stationsAdresses the stations adresses to set
-    */
-   public void setAdresses(final HashSet<String> stationsAdresses) {
-      this.adresses = stationsAdresses;
-   }
+//   /**
+//    * @param stationsAdresses the stations adresses to set
+//    */
+//   public void setAdresses(final String stationsAdresses) {
+//      adresses.add(stationsAdresses);
+//   }
 
    /**
     * @return the station
     */
-   public String getStation() {
+   public int getStation() {
       return station;
    }
-
-   /**
-    * @param stationNumber the station number to set
-    */
-   public void setStation(final String stationNumber) {
-      this.station = stationNumber;
-   }
+//
+//   /**
+//    * @param stationNumber the station number to set
+//    */
+//   public void setStation(final int stationNumber) {
+//      this.station = stationNumber;
+//   }
 
    /**
     * A toString class method().

@@ -1,5 +1,11 @@
 package com.safetynet.alerts.service;
 
+import java.io.IOException;
+import java.util.List;
+
+import com.safetynet.alerts.model.EntitiesInfosStorage;
+import com.safetynet.alerts.model.Person;
+
 /**
  * Data loader interface.
  *
@@ -9,13 +15,15 @@ package com.safetynet.alerts.service;
 public interface IDataLoader {
 
    /**
-    * Json file loader method.
+    * Method used to read the json file and store data to object.
+    *
+    * @throws IOException
     */
-   void startAppWithJsonFile();
+   EntitiesInfosStorage readJsonFile(String file) throws IOException;
 
    /**
-    * Error display method when json file failed to load.
+    * Method used to search a person from the json data file.
     */
-   void EventListenerExecuteFailed();
+   Person searchPerson(String firstName, String lastName, List<Person> persons);
 
 }
