@@ -5,9 +5,8 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.Households;
@@ -18,33 +17,45 @@ import com.safetynet.alerts.model.Person;
  * Person service class.
  *
  * @author Ludovic Tuccio
- *
  */
 @Service
 public class PersonService implements IPersonService {
 
    /**
-    * Used to retrieve persons informations.
-    */
-   private EntitiesInfosStorage entitiesInfosStorage;
-   /**
     * Logger class.
     */
    private static final Logger LOGGER = LogManager
                .getLogger(PersonService.class);
+   /**
+    * Used to retrieve persons informations.
+    */
+   @Autowired
+   private EntitiesInfosStorage entitiesInfosStorage;
 
    /**
-    * Empty class constructor.
+    * @param city
+    * @param personsList
+    * @return personsEmail
     */
-   public PersonService() {
+   public List<String> communityEmail(final String city,
+               final List<Person> personsList) {
 
+      LOGGER.debug("CommunityEmail request initialization");
+      List<String> personsEmail = new ArrayList<>();
+
+      for (Person person : personsList) {
+         if (person.getCity().equals(city)) {
+            personsEmail.add(person.getEmail());
+         }
+      }
+      LOGGER.info("CommunityEmail request successfuly");
+      return personsEmail;
    }
 
    /**
     * @param person
     * @return
     */
-   @RequestMapping(value = "/person", method = RequestMethod.POST)
    public Person createPerson(final Person person) {
 
       return person;
@@ -55,7 +66,6 @@ public class PersonService implements IPersonService {
     * @param person
     * @return
     */
-   @RequestMapping(value = "/person", method = RequestMethod.PUT)
    public List<Person> updatePerson(final String firstName,
                final String lastName) {
       return null;
@@ -66,7 +76,6 @@ public class PersonService implements IPersonService {
     * @param person
     * @return
     */
-   @RequestMapping(value = "/person", method = RequestMethod.DELETE)
    public List<Person> deletePerson(final String firstName,
                final String lastName) {
       return null;
@@ -99,7 +108,7 @@ public class PersonService implements IPersonService {
    public List<Person> childAlert(final String adress) {
 
       List<Person> personsList = new ArrayList<>();
-      Households houshold = new Households(personsList);
+      Households houshold = new Households(null);
 
       return personsList;
    }
@@ -109,7 +118,7 @@ public class PersonService implements IPersonService {
     */
    public boolean isChildren(final int age) {
 
-      MedicalRecord medicalRecord = new MedicalRecord();
+      MedicalRecord medicalRecord = new MedicalRecord(null, null, null);
       return false;
    }
 
@@ -120,23 +129,6 @@ public class PersonService implements IPersonService {
    public int getPersonsAge(final Person personMedicalRecord) {
       return 0;
 
-   }
-
-   /**
-    * @param city
-    * @return
-    */
-   public List<String> communityEmail(final String city,
-               final List<Person> personsList) {
-
-      List<String> personsEmail = new ArrayList<>();
-
-      for (Person person : personsList) {
-         if (person.getCity().equals(city)) {
-            personsEmail.add(person.getEmail());
-         }
-      }
-      return personsEmail;
    }
 
 }

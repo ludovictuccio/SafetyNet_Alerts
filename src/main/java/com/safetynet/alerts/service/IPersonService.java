@@ -29,11 +29,6 @@ public interface IPersonService {
     */
    List<Person> deletePerson(String firstName, String lastName);
 
-//   /**
-//    * @return
-//    */
-//   List<Person> getAllPersons();
-
    /**
     * @param firstName
     * @param lastName
@@ -56,9 +51,9 @@ public interface IPersonService {
    int getPersonsAge(Person personMedicalRecord);
 
    /**
-    * @param email
+    * @param city
     * @param personsList
     */
-   List<String> communityEmail(String email, List<Person> personsList);
+   List<String> communityEmail(String city, List<Person> personsList);
 
 }
