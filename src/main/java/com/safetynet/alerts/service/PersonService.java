@@ -33,6 +33,9 @@ public class PersonService implements IPersonService {
    private EntitiesInfosStorage entitiesInfosStorage;
 
    /**
+    * This method service is used to create a list of persons for a city
+    * entered.
+    * 
     * @param city
     * @param personsList
     * @return personsEmail
