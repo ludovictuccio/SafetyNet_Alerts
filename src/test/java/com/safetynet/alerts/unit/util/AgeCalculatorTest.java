@@ -9,8 +9,11 @@ import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.ContextConfiguration;
@@ -29,6 +32,7 @@ import com.safetynet.alerts.util.AgeCalculator;
 @WebMvcTest(AgeCalculator.class)
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = SafetyNetAlertsApplication.class)
+@TestMethodOrder(OrderAnnotation.class)
 public class AgeCalculatorTest {
 
    private AgeCalculator ageCalculator;
@@ -44,6 +48,7 @@ public class AgeCalculatorTest {
    }
 
    @Test
+   @Order(1)
    @Tag("Valid")
    @DisplayName("Valid - 20 yo")
    public void givenATwentyYoPersons_whenAgeCalculation_thenReturnCorrectAge() {
@@ -58,6 +63,7 @@ public class AgeCalculatorTest {
    }
 
    @Test
+   @Order(2)
    @Tag("Valid")
    @DisplayName("Valid - 1 yo")
    public void givenAOneYoPersons_whenAgeCalculation_thenReturnCorrectAge() {
@@ -72,6 +78,7 @@ public class AgeCalculatorTest {
    }
 
    @Test
+   @Order(3)
    @Tag("Valid")
    @DisplayName("Valid - 6 months baby - Return 1 yo")
    public void givenASixMonthsBaby_whenAgeCalculation_thenReturnOne() {
@@ -85,6 +92,7 @@ public class AgeCalculatorTest {
    }
 
    @Test
+   @Order(4)
    @Tag("Invalid")
    @DisplayName("Invalid - Null birthdate")
    public void givenNuyllBirthdate_whenAgeCalculation_thenReturnNullPointerException() {
@@ -97,6 +105,7 @@ public class AgeCalculatorTest {
    }
 
    @Test
+   @Order(5)
    @Tag("Invalid")
    @DisplayName("Invalid - Minus 1 yo")
    public void givenOneNegativeYo_whenAgeCalculation_thenReturnIllegalArgumentException() {
@@ -110,6 +119,7 @@ public class AgeCalculatorTest {
    }
 
    @Test
+   @Order(6)
    @Tag("Invalid")
    @DisplayName("Invalid - Minus 1 month")
    public void givenOneMonthNegativeYo_whenAgeCalculation_thenReturnIllegalArgumentException() {
@@ -123,6 +133,7 @@ public class AgeCalculatorTest {
    }
 
    @Test
+   @Order(7)
    @Tag("Invalid")
    @DisplayName("Invalid - Minus 1 day")
    public void givenOneDayNegativeYo_whenAgeCalculation_thenReturnIllegalArgumentException() {

@@ -32,8 +32,10 @@ public interface IPersonService {
    /**
     * @param firstName
     * @param lastName
+    * @param personsList
     */
-   List<Person> personInfo(String firstName, String lastName);
+   List<Person> personInfo(String firstName, String lastName,
+               List<Person> personsList);
 
    /**
     * @param age

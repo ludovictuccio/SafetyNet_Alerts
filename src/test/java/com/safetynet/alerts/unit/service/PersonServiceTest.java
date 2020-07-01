@@ -24,7 +24,6 @@ import com.safetynet.alerts.model.FireStation;
 import com.safetynet.alerts.model.MedicalRecord;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.service.PersonService;
-import com.safetynet.alerts.util.AgeCalculator;
 
 /**
  * PersonService units tests class.
@@ -40,15 +39,14 @@ public class PersonServiceTest {
 
    private static EntitiesInfosStorage entitiesInfosStorage;
 
-   private static AgeCalculator ageCalculator;
+   // private AgeCalculator ageCalculator;
+
+   private static String birthdate = "01/01/1990";
 
    private static Person person1;
    private static Person person2;
    private static Person person3;
-   private static MedicalRecord medicalRecord1;
-   private static MedicalRecord medicalRecord2;
-
-   private static String birthdate = "01/01/1990";
+   private static MedicalRecord medicalRecord;
 
    @BeforeAll
    private static void setUp() {
@@ -57,7 +55,7 @@ public class PersonServiceTest {
 
    @BeforeEach
    private void setUpPerTest() {
-      ageCalculator = new AgeCalculator();
+      // ageCalculator = new AgeCalculator();
 
       List<String> medicationsList = new ArrayList<>();
       medicationsList.add("medication1");
@@ -65,18 +63,14 @@ public class PersonServiceTest {
       List<String> allergiesList = new ArrayList<>();
       allergiesList.add("allergies");
 
-      medicalRecord1 = new MedicalRecord(birthdate, null, null);
-      medicalRecord2 = new MedicalRecord(birthdate, null, null);
-      medicalRecord1.setMedications(medicationsList);
-      medicalRecord1.setAllergies(allergiesList);
-      medicalRecord2.setAllergies(allergiesList);
-
+      medicalRecord = new MedicalRecord(birthdate, medicationsList,
+                  allergiesList);
       person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
-                  "841-874-6512", "jaboyd@email.com");
+                  "841-874-6512", "jaboyd@email.com", medicalRecord);
       person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
-                  "841-874-6513", "drk@email.com");
+                  "841-874-6513", "drk@email.com", medicalRecord);
       person3 = new Person("Eric", "Cadigan", "951 LoneTree Rd", "Culver",
-                  "97451", "841-874-7458", "gramps@email.com");
+                  "97451", "841-874-7458", "gramps@email.com", medicalRecord);
 
       List<Person> personList = new ArrayList<>();
       personList.add(person1);
@@ -94,7 +88,6 @@ public class PersonServiceTest {
    @Tag("CommunityEmail")
    @DisplayName("CommunityEmail - Valid city entry")
    public void givenCityEntry_whenExistingCity_thenReturnAllPersonsEmailAdressesList() {
-
       Person otherCityPerson = new Person("Other", "Unknow", "Other city",
                   "Other city", "00000", "111-111-111", "other@email.com");
 
@@ -118,9 +111,7 @@ public class PersonServiceTest {
    @Tag("CommunityEmail")
    @DisplayName("CommunityEmail - Bad city entry")
    public void givenCityEntry_whenUnknowCityEntry_thenReturnEmptyPersonsList() {
-
       List<Person> persons = entitiesInfosStorage.getPersonsList();
-
       List<String> personsEmails = personService.communityEmail("Other city",
                   persons);
 
@@ -128,7 +119,83 @@ public class PersonServiceTest {
       assertThat(personsEmails).isEmpty();
    }
 
+   @Test
+   @Order(3)
+   @Tag("PersonInfo")
+   @DisplayName("PersonInfo - Existing person")
+   public void givenPersonInfo_whenEntryFirstAndLastName_thenReturnNoEmptyPersonsList() {
+      List<Person> personsList = entitiesInfosStorage.getPersonsList();
+      List<Person> personsInfosList = personService.personInfo("Eric",
+                  "Cadigan", personsList);
+
+      assertThat(personsInfosList.isEmpty()).isFalse();
+   }
+
+   @Test
+   @Order(4)
+   @Tag("PersonInfo")
+   @DisplayName("PersonInfo - Unknow person")
+   public void givenPersonInfoMethodAndEntryFirstAndLastName_whenNoOneHasThatName_thenReturnEmptyList() {
+      List<Person> personsList = entitiesInfosStorage.getPersonsList();
+      List<Person> personsInfosList = personService.personInfo("Unknow",
+                  "Person", personsList);
+
+      assertThat(personsInfosList.isEmpty()).isTrue();
+   }
+
 //   @Test
+//   @Order(3)
+//   @Tag("ChildAlert")
+//   @DisplayName("childAlert - adress with children")
+//   public void givenChildAlert_whenAdressEnteredWithChildren_thenReturnHouseholdsChildrenComposition() {
+//
+//      // 2 yo
+//      LocalDate person1Birthdate = LocalDate.of(2018, Month.JANUARY, 01);
+//      person1.setMedicalRecord(medicalRecord1);
+//      medicalRecord1.setBirthdate(person1Birthdate);
+//      person2.setAdress("1509 Culver St");
+//
+//      // 40 yo
+//      LocalDate person2Birthdate = LocalDate.of(1980, Month.JANUARY, 01);
+//      person2.setMedicalRecord(medicalRecord2);
+//      medicalRecord2.setBirthdate(person2Birthdate);
+//      person2.setAdress("1509 Culver St");
+//
+//      List<Person> household = personService.childAlert("1509 Culver St");
+//
+//      assertThat(household.contains(person1)).isTrue();
+//      assertThat(household.contains(person2)).isTrue();
+//      assertThat(household.size()).isEqualTo(2);
+//   }
+//
+//   @Test
+//   @Order(4)
+//   @Tag("ChildAlert")
+//   @DisplayName("childAlert - adress without children - empty list ")
+//   public void givenChildAlert_whenAdressEnteredWithoutChildren_thenReturnEmptyList() {
+//
+//      // 50 yo
+//      LocalDate person1Birthdate = LocalDate.of(1970, Month.JANUARY, 01);
+//      person1.setMedicalRecord(medicalRecord1);
+//      medicalRecord1.setBirthdate(person1Birthdate);
+//      person2.setAdress("1509 Culver St");
+//
+//      // 40 yo
+//      LocalDate person2Birthdate = LocalDate.of(1980, Month.JANUARY, 01);
+//      person2.setMedicalRecord(medicalRecord2);
+//      medicalRecord2.setBirthdate(person2Birthdate);
+//      person2.setAdress("1509 Culver St");
+//
+//      List<Person> household = personService.childAlert("1509 Culver St");
+//
+//      assertThat(household.contains(person1)).isFalse();
+//      assertThat(household.contains(person2)).isFalse();
+//      assertThat(household.size()).isEqualTo(0);
+//      assertThat(household.isEmpty()).isTrue();
+//   }
+
+//   @Test
+//   @Order(3)
 //   @Tag("POST")
 //   @DisplayName("Create - new person")
 //   public void givenPersonEndpoint_whenCreatePerson_thenReturnPersonCreated() {
@@ -142,6 +209,7 @@ public class PersonServiceTest {
 //   }
 //
 //   @Test
+//   @Order(4)
 //   @Tag("POST")
 //   @DisplayName("Create - existing person - error")
 //   public void givenPersonEndpoint_whenCreateExistingPerson_thenReturnNull() {
@@ -153,7 +221,7 @@ public class PersonServiceTest {
 //
 //      assertThat(personCreated).isNull();
 //   }
-//
+
 //   @Test
 //   @Tag("PUT")
 //   @DisplayName("Update - existing person")
@@ -214,28 +282,6 @@ public class PersonServiceTest {
 //                  person3);
 //   }
 
-//   @Test
-//   @Tag("PersonInfo")
-//   @DisplayName("personInfo - existing person ")
-//   public void givenGetPersonByNameMethod_whenEntryFirstAndLastName_thenReturnAllPersonsWithSameFirstnameList() {
-//
-//      List<Person> personNameRecovery = personService.personInfo("John",
-//                  "Boyd");
-//
-//      assertThat(personNameRecovery).isEqualTo(person1);
-//   }
-//
-//   @Test
-//   @Tag("PersonInfo")
-//   @DisplayName("personInfo - unknow person ")
-//   public void givenGetPersonByNameMethodAndEntryFirstAndLastName_whenNoOneHasThatName_thenReturnNullList() {
-//
-//      List<Person> personNameRecovery = personService.personInfo("Unknow",
-//                  "Person");
-//
-//      assertThat(personNameRecovery).isNull();
-//   }
-//
 //   @Test
 //   @Tag("isChildren")
 //   @DisplayName("isChildren - 5 years - true")
@@ -313,55 +359,6 @@ public class PersonServiceTest {
 //
 //      assertThat(person1.getMedicalRecord().getAge()).isNull();
 //      assertThat(age).isNull();
-//   }
-//
-//   @Test
-//   @Tag("ChildAlert")
-//   @DisplayName("childAlert - adress with children")
-//   public void givenChildAlert_whenAdressEnteredWithChildren_thenReturnHouseholdsChildrenComposition() {
-//
-//      // 2 yo
-//      LocalDate person1Birthdate = LocalDate.of(2018, Month.JANUARY, 01);
-//      person1.setMedicalRecord(medicalRecord1);
-//      medicalRecord1.setBirthdate(person1Birthdate);
-//      person2.setAdress("1509 Culver St");
-//
-//      // 40 yo
-//      LocalDate person2Birthdate = LocalDate.of(1980, Month.JANUARY, 01);
-//      person2.setMedicalRecord(medicalRecord2);
-//      medicalRecord2.setBirthdate(person2Birthdate);
-//      person2.setAdress("1509 Culver St");
-//
-//      List<Person> household = personService.childAlert("1509 Culver St");
-//
-//      assertThat(household.contains(person1)).isTrue();
-//      assertThat(household.contains(person2)).isTrue();
-//      assertThat(household.size()).isEqualTo(2);
-//   }
-//
-//   @Test
-//   @Tag("ChildAlert")
-//   @DisplayName("childAlert - adress without children - empty list ")
-//   public void givenChildAlert_whenAdressEnteredWithoutChildren_thenReturnEmptyList() {
-//
-//      // 50 yo
-//      LocalDate person1Birthdate = LocalDate.of(1970, Month.JANUARY, 01);
-//      person1.setMedicalRecord(medicalRecord1);
-//      medicalRecord1.setBirthdate(person1Birthdate);
-//      person2.setAdress("1509 Culver St");
-//
-//      // 40 yo
-//      LocalDate person2Birthdate = LocalDate.of(1980, Month.JANUARY, 01);
-//      person2.setMedicalRecord(medicalRecord2);
-//      medicalRecord2.setBirthdate(person2Birthdate);
-//      person2.setAdress("1509 Culver St");
-//
-//      List<Person> household = personService.childAlert("1509 Culver St");
-//
-//      assertThat(household.contains(person1)).isFalse();
-//      assertThat(household.contains(person2)).isFalse();
-//      assertThat(household.size()).isEqualTo(0);
-//      assertThat(household.isEmpty()).isTrue();
 //   }
 
 }

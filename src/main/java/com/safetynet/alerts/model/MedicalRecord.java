@@ -2,6 +2,8 @@ package com.safetynet.alerts.model;
 
 import java.util.List;
 
+import com.safetynet.alerts.util.AgeCalculator;
+
 /**
  * MedicalRecord class.
  * 
@@ -22,6 +24,10 @@ public class MedicalRecord {
     * The person allergies list.
     */
    private List<String> allergies;
+
+   private int age;
+
+   private AgeCalculator ageCalculator;
 
    /**
     * @param personsBirthdate
@@ -50,6 +56,13 @@ public class MedicalRecord {
       this.birthdate = personBirthdate;
    }
 
+   public int getAge() {
+      ageCalculator = new AgeCalculator();
+      String personsBirthdate = getBirthdate();
+      int personsAge = ageCalculator.ageCalculation(personsBirthdate);
+      return personsAge;
+   }
+
    /**
     * @return the medications
     */
@@ -62,6 +75,8 @@ public class MedicalRecord {
     */
    public void setMedications(final List<String> personMedicationsFollowed) {
       this.medications = personMedicationsFollowed;
+      medications.clear();
+      medications.addAll(personMedicationsFollowed);
    }
 
    /**
@@ -76,6 +91,8 @@ public class MedicalRecord {
     */
    public void setAllergies(final List<String> personAllergies) {
       this.allergies = personAllergies;
+      allergies.clear();
+      allergies.addAll(personAllergies);
    }
 
    /**

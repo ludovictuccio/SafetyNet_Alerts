@@ -12,6 +12,7 @@ import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.Households;
 import com.safetynet.alerts.model.MedicalRecord;
 import com.safetynet.alerts.model.Person;
+import com.safetynet.alerts.util.AgeCalculator;
 
 /**
  * Person service class.
@@ -32,6 +33,36 @@ public class PersonService implements IPersonService {
    @Autowired
    private EntitiesInfosStorage entitiesInfosStorage;
 
+   private AgeCalculator ageCalculator = new AgeCalculator();;
+
+   /**
+    * @param firstName
+    * @param lastName
+    * @param personsList
+    * @return personsInfosList, Persons List
+    */
+   public List<Person> personInfo(final String firstName, final String lastName,
+               final List<Person> personsList) {
+      LOGGER.debug("PersonInfo request initialization");
+      List<Person> personsInfosList = new ArrayList<>();
+
+      for (Person person : personsList) {
+         if (person.getLastName().equals(lastName)) {
+
+            int personsAge = ageCalculator.ageCalculation(
+                        person.getMedicalRecord().getBirthdate());
+
+            Person personsInfos = new Person(person.getFirstName(),
+                        person.getLastName(), personsAge, person.getAdress(),
+                        person.getCity(), person.getZip(), person.getPhone(),
+                        person.getEmail(), person.getMedicalRecord());
+            personsInfosList.add(personsInfos);
+         }
+      }
+      LOGGER.debug("PersonInfo request successfuly");
+      return personsInfosList;
+   }
+
    /**
     * This method service is used to create a list of persons for a city
     * entered.
@@ -51,7 +82,7 @@ public class PersonService implements IPersonService {
             personsEmail.add(person.getEmail());
          }
       }
-      LOGGER.info("CommunityEmail request successfuly");
+      LOGGER.debug("CommunityEmail request successfuly");
       return personsEmail;
    }
 
@@ -85,30 +116,19 @@ public class PersonService implements IPersonService {
 
    }
 
-//   /**
-//    * @return all persons, entitiesInfosStorage.getPersonsList()
-//    */
-//   public List<Person> getAllPersons() {
-//
-//      return entitiesInfosStorage.getPersonsList();
-//   }
-
    /**
-    * @param firstName
-    * @param lastName
-    * @return
+    * @return all persons, entitiesInfosStorage.getPersonsList()
     */
-   public List<Person> personInfo(final String firstName,
-               final String lastName) {
-      return null;
+   public List<Person> getAllPersons() {
 
+      return entitiesInfosStorage.getPersonsList();
    }
 
    /**
-    * @param adress
+    * @param address
     * @return personsList
     */
-   public List<Person> childAlert(final String adress) {
+   public List<Person> childAlert(final String address) {
 
       List<Person> personsList = new ArrayList<>();
       Households houshold = new Households(null);

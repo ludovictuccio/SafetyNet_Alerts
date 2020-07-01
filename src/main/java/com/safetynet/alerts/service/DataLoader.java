@@ -25,7 +25,6 @@ import com.safetynet.alerts.model.Person;
  * @author Ludovic Tuccio
  *
  */
-//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 @Service
 public class DataLoader implements IDataLoader {
 
@@ -92,13 +91,13 @@ public class DataLoader implements IDataLoader {
          String birthdate = medicalRecordJson.get("birthdate").toString();
 
          List<String> medications = new ArrayList<>();
-         Any medicationsAny = medicalRecordJson.get("medications");
-         medicationsAny.forEach(medicationJson -> medications
+         Any anyMedications = medicalRecordJson.get("medications");
+         anyMedications.forEach(medicationJson -> medications
                      .add(medicationJson.toString()));
 
          List<String> allergies = new ArrayList<>();
-         Any allergiesAny = medicalRecordJson.get("allergies");
-         allergiesAny.forEach(
+         Any anyAllergies = medicalRecordJson.get("allergies");
+         anyAllergies.forEach(
                      allergyJson -> allergies.add(allergyJson.toString()));
          LOGGER.debug("MedicalRecords loaded from a Json file");
 
