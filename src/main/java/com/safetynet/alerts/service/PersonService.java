@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.safetynet.alerts.model.EntitiesInfosStorage;
-import com.safetynet.alerts.model.Households;
-import com.safetynet.alerts.model.MedicalRecord;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.util.AgeCalculator;
 
@@ -126,32 +124,40 @@ public class PersonService implements IPersonService {
 
    /**
     * @param address
-    * @return personsList
-    */
-   public List<Person> childAlert(final String address) {
-
-      List<Person> personsList = new ArrayList<>();
-      Households houshold = new Households(null);
-
-      return personsList;
-   }
-
-   /**
-    * @param age
-    */
-   public boolean isChildren(final int age) {
-
-      MedicalRecord medicalRecord = new MedicalRecord(null, null, null);
-      return false;
-   }
-
-   /**
-    * @param personMedicalRecord
     * @return
     */
-   public int getPersonsAge(final Person personMedicalRecord) {
-      return 0;
+   public List<Person> childAlert(final String adress) {
+      return null;
+   }
 
+   /**
+    * Method used to determinate adults and children persons.
+    *
+    * @param age
+    * @return isChild boolean
+    */
+   public boolean isChildren(final Person person) {
+      LOGGER.debug("IsChildren method initialization");
+      boolean isChild = false;
+
+      try {
+         LOGGER.debug("IsChildren method initialization");
+         int personsAge = ageCalculator
+                     .ageCalculation(person.getMedicalRecord().getBirthdate());
+
+         if (personsAge > 18) {
+            LOGGER.debug("Person = Adult");
+         } else {
+            LOGGER.debug("Person = Child");
+            isChild = true;
+         }
+      } catch (NullPointerException np) {
+         LOGGER.error(
+                     "NullPointerException. Please verify person's birthdate.");
+         throw new NullPointerException(np.toString());
+      }
+      LOGGER.debug("IsChildren method succes");
+      return isChild;
    }
 
 }

@@ -1,6 +1,7 @@
 package com.safetynet.alerts.unit.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,7 +40,7 @@ public class PersonServiceTest {
 
    private static EntitiesInfosStorage entitiesInfosStorage;
 
-   // private AgeCalculator ageCalculator;
+   // private static AgeCalculator ageCalculator;
 
    private static String birthdate = "01/01/1990";
 
@@ -51,6 +52,7 @@ public class PersonServiceTest {
    @BeforeAll
    private static void setUp() {
       personService = new PersonService();
+      // ageCalculator = new AgeCalculator();
    }
 
    @BeforeEach
@@ -142,6 +144,44 @@ public class PersonServiceTest {
                   "Person", personsList);
 
       assertThat(personsInfosList.isEmpty()).isTrue();
+   }
+
+   @Test
+   @Order(5)
+   @Tag("isChildren")
+   @DisplayName("isChildren - Child")
+   public void givenChild_whenIsChildrenMethod_thenReturnTrue() {
+      boolean isChild;
+      person1.getMedicalRecord().setBirthdate("01/01/2020");
+
+      isChild = personService.isChildren(person1);
+
+      assertThat(isChild).isTrue();
+   }
+
+   @Test
+   @Order(6)
+   @Tag("isChildren")
+   @DisplayName("isChildren - Adult")
+   public void givenAdult_whenIsChildrenMethod_thenReturnFalse() {
+      boolean isChild;
+      person1.getMedicalRecord().setBirthdate("01/01/2000");
+
+      isChild = personService.isChildren(person1);
+
+      assertThat(isChild).isFalse();
+   }
+
+   @Test
+   @Order(7)
+   @Tag("isChildren")
+   @DisplayName("isChildren - Null birthdate")
+   public void givenNullPersonsBirthdate_whenIsChildrenMethod_thenReturnNullPointerException() {
+      person1.getMedicalRecord().setBirthdate(null);
+
+      assertThatNullPointerException().isThrownBy(() -> {
+         personService.isChildren(person1);
+      });
    }
 
 //   @Test
@@ -282,46 +322,6 @@ public class PersonServiceTest {
 //      assertThat(personService.getAllPersons()).contains(person1, person2,
 //                  person3);
 //   }
-
-//   @Test
-//   @Tag("isChildren")
-//   @DisplayName("isChildren - 5 years - true")
-//   public void givenAFiveYearOldChild_whenIsChildrenMethod_thenReturnTrue() {
-//
-//      boolean isChild;
-//      int personsAge = 5;
-//
-//      isChild = personService.isChildren(personsAge);
-//
-//      assertThat(isChild).isTrue();
-//   }
-//
-//   @Test
-//   @Tag("isChildren")
-//   @DisplayName("isChildren - 18 years - true")
-//   public void givenAEighteenYearOldChild_whenIsChildrenMethod_thenReturnTrue() {
-//
-//      boolean isChild;
-//      int personsAge = 18;
-//
-//      isChild = personService.isChildren(personsAge);
-//
-//      assertThat(isChild).isTrue();
-//   }
-//
-//   @Test
-//   @Tag("isChildren")
-//   @DisplayName("isChildren - 19 years - false")
-//   public void givenANineteenYearOldPerson_whenIsChildrenMethod_thenReturnFalse() {
-//
-//      boolean isChild;
-//      int personsAge = 19;
-//
-//      isChild = personService.isChildren(personsAge);
-//
-//      assertThat(isChild).isFalse();
-//   }
-
 //   @Test
 //   @Tag("getPersonsAge")
 //   @DisplayName("getPersonsAge - 20 yo person")

@@ -38,9 +38,9 @@ public interface IPersonService {
                List<Person> personsList);
 
    /**
-    * @param age
+    * @param person
     */
-   boolean isChildren(int age);
+   boolean isChildren(Person person);
 
    /**
     * @param adress
@@ -48,14 +48,8 @@ public interface IPersonService {
    List<Person> childAlert(String adress);
 
    /**
-    * @param personMedicalRecord
-    */
-   int getPersonsAge(Person personMedicalRecord);
-
-   /**
     * @param city
     * @param personsList
     */
    List<String> communityEmail(String city, List<Person> personsList);
-
 }
