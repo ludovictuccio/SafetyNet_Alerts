@@ -1,9 +1,13 @@
 package com.safetynet.alerts.unit.controller;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.Before;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -12,12 +16,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.safetynet.alerts.controller.PersonController;
 
@@ -28,7 +33,7 @@ import com.safetynet.alerts.controller.PersonController;
  */
 @WebMvcTest(PersonController.class)
 @ExtendWith(SpringExtension.class)
-@WebAppConfiguration
+@AutoConfigureMockMvc
 @TestMethodOrder(OrderAnnotation.class)
 @ComponentScan({ "com.safetynet.alerts.service", "com.safetynet.alerts.model" })
 public class PersonControllerTest {
@@ -36,14 +41,22 @@ public class PersonControllerTest {
    @Autowired
    private MockMvc mockMvc;
 
+   @Autowired
+   private WebApplicationContext webContext;
+
+   @Before
+   public void setUp() {
+      mockMvc = MockMvcBuilders.webAppContextSetup(webContext).build();
+   }
+
    @Test
    @Order(1)
    @Tag("CommunityEmail")
    @DisplayName("CommunityEmail - Valid city entry (Culver) ")
    public void givenCityEntry_whenExistingCity_thenReturnAllPersonsEmailAdressesListForCityPersons()
                throws Exception {
-      this.mockMvc.perform(MockMvcRequestBuilders
-                  .get("/communityEmail").param("city", "Culver"))
+      this.mockMvc.perform(get("/communityEmail")
+                  .contentType(APPLICATION_JSON).param("city", "Culver"))
                   .andExpect(status().isOk())
                   .andExpect(content().string("[\"jaboyd@email.com\","
                               + "\"drk@email.com\","
@@ -68,7 +81,7 @@ public class PersonControllerTest {
                               + "\"bstel@email.com\","
                               + "\"clivfd@ymail.com\","
                               + "\"gramps@email.com\"]"))
-                  .andExpect(status().isOk());
+                  .andExpect(jsonPath("$.length()", is(23)));
    }
 
    @Test
@@ -77,9 +90,36 @@ public class PersonControllerTest {
    @DisplayName("CommunityEmail - Bad city entry (Los Angeles)")
    public void givenCityEntry_whenIncorrectCity_thenReturnEmptyList()
                throws Exception {
-      this.mockMvc.perform(get("/communityEmail").param("city", "Los Angeles"))
+      this.mockMvc.perform(get("/communityEmail").contentType(APPLICATION_JSON)
+                  .param("city", "Los Angeles"))
                   .andExpect(status().isNotFound()).andExpect(content().string(
                               "[\"No person's email adresses founded for: Los Angeles\"]"));
+   }
+
+   @Test
+   @Order(3)
+   @Tag("PersonInfo")
+   @DisplayName("PersonInfo - Correct last name")
+   public void givenLastnameEntry_whenPersonInfoRequest_thenReturnInfosForPersonsWithThisLastname()
+               throws Exception {
+      this.mockMvc.perform(get("/personInfo").contentType(APPLICATION_JSON)
+                  .param("firstName", "Tessa").param("lastName", "Carman"))
+                  .andExpect(status().isOk())
+                  .andExpect(jsonPath("$.length()", is(1)))
+                  .andExpect(content().string(
+                              "[{\"firstName\":\"Tessa\",\"lastName\":\"Carman\",\"age\":8,\"city\":\"Culver\",\"zip\":\"97451\",\"phone\":\"841-874-6512\",\"email\":\"tenz@email.com\",\"medicalRecord\":{\"birthdate\":\"02/18/2012\",\"medications\":[],\"allergies\":[],\"age\":8},\"adress\":\"834 Binoc Ave\"}]"));
+   }
+
+   @Test
+   @Order(4)
+   @Tag("PersonInfo")
+   @DisplayName("PersonInfo - Unknow last name")
+   public void givenUnknowLastnameEntry_whenPersonInfoRequest_thenReturnEmptyList()
+               throws Exception {
+      this.mockMvc.perform(get("/personInfo").contentType(APPLICATION_JSON)
+                  .param("firstName", "Unknow").param("lastName", "Unknow"))
+                  .andExpect(status().isNotFound())
+                  .andExpect(jsonPath("$.length()", is(0)));
    }
 
 }

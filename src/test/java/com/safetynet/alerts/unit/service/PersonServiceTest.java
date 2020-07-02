@@ -125,10 +125,11 @@ public class PersonServiceTest {
    @DisplayName("PersonInfo - Existing person")
    public void givenPersonInfo_whenEntryFirstAndLastName_thenReturnNoEmptyPersonsList() {
       List<Person> personsList = entitiesInfosStorage.getPersonsList();
-      List<Person> personsInfosList = personService.personInfo("Eric",
-                  "Cadigan", personsList);
+      List<Person> personsInfosList = personService.personInfo("John", "Boyd",
+                  personsList);
 
       assertThat(personsInfosList.isEmpty()).isFalse();
+      assertThat(personsInfosList.size()).isEqualTo(2);
    }
 
    @Test

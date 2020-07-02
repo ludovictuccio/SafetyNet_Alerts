@@ -19,6 +19,8 @@ import com.safetynet.alerts.model.FireStation;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.service.PersonService;
 
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+
 /**
  * Person controller class.
  *
@@ -44,29 +46,58 @@ public class PersonController {
    @Autowired
    private PersonService personService;
 
-   private List<Person> listPerson = null;
+   private static List<Person> listPerson = null;
 
    /**
-    * This method service is used to return the email addresses of people in the
-    * city entered.
+    * This method service is used to return the persons informations for the
+    * same last name entered.
+    *
+    * @param firstName
+    * @param lastName
+    * @return personInfos, Persons list
+    */
+   @GetMapping(value = "/personInfo")
+   public List<Person> personInfo(@RequestParam String firstName,
+               @NotNull @RequestParam String lastName,
+               HttpServletResponse response) {
+      LOGGER.debug("GET request received for personInfos: {}", lastName);
+      listPerson = entitiesInfosStorage.getPersonsList();
+      List<Person> personInfos = personService.personInfo(firstName, lastName,
+                  listPerson);
+
+      if (!personInfos.isEmpty()) {
+         LOGGER.debug("SUCCESS - personInfos HTTP GET request sucess");
+         response.setStatus(200);
+      } else {
+         LOGGER.debug("FAILED - No person's founded for last name: {}",
+                     lastName);
+         response.setStatus(404);
+      }
+      return personInfos;
+   }
+
+   /**
+    * This method service is used to return the email addresses of persons in
+    * the city entered.
     *
     * @param city
-    * @return communityEmail
+    * @return communityEmail, email addresses list
     */
    @GetMapping(value = "/communityEmail")
-   public List<String> getCommunityEmail(@RequestParam final String city,
-               final HttpServletResponse response) {
+   public List<String> getCommunityEmail(
+               @NotNull @RequestParam(value = "city") String city,
+               HttpServletResponse response) {
       LOGGER.debug("GET request received for getCommunityEmail: {}", city);
-
       listPerson = entitiesInfosStorage.getPersonsList();
-
       List<String> communityEmail = personService.communityEmail(city,
                   listPerson);
 
       if (!communityEmail.isEmpty()) {
-         LOGGER.debug("SUCCESS getCommunityEmail HTTP GET request");
+         LOGGER.debug("SUCCESS - CommunityEmail HTTP GET request sucess");
          response.setStatus(200);
       } else {
+         LOGGER.debug("FAILED - No person's email adresses founded for: {}",
+                     city);
          String notFounded = "No person's email adresses founded for: "
                      + city;
          communityEmail.add(notFounded);
@@ -111,14 +142,6 @@ public class PersonController {
     * @return
     */
    public List<Person> childAlert() {
-      return null;
-
-   }
-
-   /**
-    * @return
-    */
-   public List<Person> personInfos() {
       return null;
 
    }
