@@ -1,5 +1,8 @@
 package com.safetynet.alerts.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.safetynet.alerts.model.EntitiesInfosStorage;
@@ -15,8 +18,14 @@ import com.safetynet.alerts.model.MedicalRecord;
 public class MedicalRecordService implements IMedicalRecordService {
 
    /**
+    * Logger class.
+    */
+   private static final Logger LOGGER = LogManager
+               .getLogger(MedicalRecordService.class);
+   /**
     * Used to retrieve persons informations.
     */
+   @Autowired
    private EntitiesInfosStorage infosRetrieval;
 
    /**

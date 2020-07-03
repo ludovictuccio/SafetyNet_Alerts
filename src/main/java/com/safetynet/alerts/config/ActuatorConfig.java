@@ -7,16 +7,15 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Actuator configuration.
- * 
- * @author Ludovic Tuccio
  *
+ * @author Ludovic Tuccio
  */
 @Configuration
 public class ActuatorConfig {
 
    /**
     * Method used to configure httptrace endpoint with actuator.
-    * 
+    *
     * @return new InMemoryHttpTraceRepository
     */
    @Bean

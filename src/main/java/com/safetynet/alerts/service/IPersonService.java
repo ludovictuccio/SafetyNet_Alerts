@@ -1,6 +1,7 @@
 package com.safetynet.alerts.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.safetynet.alerts.model.Person;
 
@@ -38,14 +39,12 @@ public interface IPersonService {
                List<Person> personsList);
 
    /**
-    * @param person
-    */
-   boolean isChildren(Person person);
-
-   /**
     * @param adress
+    * @param personsList
+    * @param household
     */
-   List<Person> childAlert(String adress);
+   List<Person> childAlert(String address, List<Person> personsList,
+               Map<String, List<Person>> household);
 
    /**
     * @param city

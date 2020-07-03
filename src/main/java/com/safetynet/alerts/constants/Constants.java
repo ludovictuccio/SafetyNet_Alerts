@@ -4,7 +4,6 @@ package com.safetynet.alerts.constants;
  * Constants class.
  *
  * @author Ludovic Tuccio
- *
  */
 public class Constants {
 

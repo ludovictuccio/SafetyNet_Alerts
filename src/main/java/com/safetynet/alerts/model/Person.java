@@ -88,13 +88,13 @@ public class Person {
     *
     */
    public Person(final String personsFirstName, final String personsLastName,
-               final int personsage, final String personsAdress,
+               final int personsAge, final String personsAdress,
                final String personsCity, final String personsZip,
                final String personsPhoneNumber, final String personsEmail,
                final MedicalRecord personsMedicalRecord) {
       this.firstName = personsFirstName;
       this.lastName = personsLastName;
-      this.age = personsage;
+      this.age = personsAge;
       this.address = personsAdress;
       this.city = personsCity;
       this.zip = personsZip;
@@ -116,6 +116,15 @@ public class Person {
       this.phone = personsPhoneNumber;
       this.email = personsEmail;
       this.medicalRecord = personsMedicalRecord;
+   }
+
+   // Children
+   public Person(final String personsFirstName, final String personsLastName,
+               final int personsAge, final String personsAdress) {
+      this.firstName = personsFirstName;
+      this.lastName = personsLastName;
+      this.age = personsAge;
+      this.address = personsAdress;
    }
 
    /**

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.FireStation;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.service.PersonService;
@@ -38,15 +37,15 @@ public class PersonController {
    /**
     * Used to retrieve persons informations.
     */
-   @Autowired
-   private EntitiesInfosStorage entitiesInfosStorage;
+//   @Autowired
+//   private EntitiesInfosStorage entitiesInfosStorage;
    /**
     * Used to retrieve persons service informations.
     */
    @Autowired
    private PersonService personService;
 
-   private static List<Person> listPerson = null;
+   private List<Person> listPerson = null;
 
    /**
     * This method service is used to return the persons informations for the
@@ -61,7 +60,7 @@ public class PersonController {
                @NotNull @RequestParam String lastName,
                HttpServletResponse response) {
       LOGGER.debug("GET request received for personInfos: {}", lastName);
-      listPerson = entitiesInfosStorage.getPersonsList();
+      // listPerson = entitiesInfosStorage.getPersonsList();
       List<Person> personInfos = personService.personInfo(firstName, lastName,
                   listPerson);
 
@@ -88,7 +87,7 @@ public class PersonController {
                @NotNull @RequestParam(value = "city") String city,
                HttpServletResponse response) {
       LOGGER.debug("GET request received for getCommunityEmail: {}", city);
-      listPerson = entitiesInfosStorage.getPersonsList();
+      // listPerson = entitiesInfosStorage.getPersonsList();
       List<String> communityEmail = personService.communityEmail(city,
                   listPerson);
 

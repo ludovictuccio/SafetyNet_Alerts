@@ -1,7 +1,6 @@
-package com.safetynet.alerts.unit.service;
+package com.safetynet.alerts.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,61 +10,45 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.FireStation;
 import com.safetynet.alerts.model.MedicalRecord;
 import com.safetynet.alerts.model.Person;
-import com.safetynet.alerts.service.PersonService;
 
 /**
  * PersonService units tests class.
  *
  * @author Ludovic Tuccio
  */
-@SpringBootTest
-@ExtendWith(SpringExtension.class)
-@TestMethodOrder(OrderAnnotation.class)
+//@SpringBootTest
+//@ExtendWith(SpringExtension.class)
 public class PersonServiceTest {
 
    private static PersonService personService;
-
    private static EntitiesInfosStorage entitiesInfosStorage;
-
-   // private static AgeCalculator ageCalculator;
-
-   private static String birthdate = "01/01/1990";
-
+   private static String adultBirthdate = "01/01/1990";
+   private static MedicalRecord medicalRecord;
    private static Person person1;
    private static Person person2;
    private static Person person3;
-   private static MedicalRecord medicalRecord;
 
    @BeforeAll
    private static void setUp() {
       personService = new PersonService();
-      // ageCalculator = new AgeCalculator();
    }
 
    @BeforeEach
    private void setUpPerTest() {
-      // ageCalculator = new AgeCalculator();
-
       List<String> medicationsList = new ArrayList<>();
       medicationsList.add("medication1");
 
       List<String> allergiesList = new ArrayList<>();
       allergiesList.add("allergies");
 
-      medicalRecord = new MedicalRecord(birthdate, medicationsList,
+      medicalRecord = new MedicalRecord(adultBirthdate, medicationsList,
                   allergiesList);
       person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
                   "841-874-6512", "jaboyd@email.com", medicalRecord);
@@ -86,7 +69,6 @@ public class PersonServiceTest {
    }
 
    @Test
-   @Order(1)
    @Tag("CommunityEmail")
    @DisplayName("CommunityEmail - Valid city entry")
    public void givenCityEntry_whenExistingCity_thenReturnAllPersonsEmailAdressesList() {
@@ -109,7 +91,6 @@ public class PersonServiceTest {
    }
 
    @Test
-   @Order(2)
    @Tag("CommunityEmail")
    @DisplayName("CommunityEmail - Bad city entry")
    public void givenCityEntry_whenUnknowCityEntry_thenReturnEmptyPersonsList() {
@@ -122,7 +103,6 @@ public class PersonServiceTest {
    }
 
    @Test
-   @Order(3)
    @Tag("PersonInfo")
    @DisplayName("PersonInfo - Existing person")
    public void givenPersonInfo_whenEntryFirstAndLastName_thenReturnNoEmptyPersonsList() {
@@ -135,7 +115,6 @@ public class PersonServiceTest {
    }
 
    @Test
-   @Order(4)
    @Tag("PersonInfo")
    @DisplayName("PersonInfo - Unknow person")
    public void givenPersonInfoMethodAndEntryFirstAndLastName_whenNoOneHasThatName_thenReturnEmptyList() {
@@ -147,96 +126,94 @@ public class PersonServiceTest {
    }
 
    @Test
-   @Order(5)
-   @Tag("isChildren")
-   @DisplayName("isChildren - Child")
-   public void givenChild_whenIsChildrenMethod_thenReturnTrue() {
-      boolean isChild;
-      person1.getMedicalRecord().setBirthdate("01/01/2020");
+   @Tag("ChildAlert")
+   @DisplayName("ChildAlert - Adult and child with the same address")
+   public void givenChildAndAdultOnTheSameAddress_whenChildAlertAddress_thenReturnTwoHouseholdListSize() {
+      List<Person> personsList = new ArrayList<>();
+      Map<String, List<Person>> household = entitiesInfosStorage
+                  .getPersonsPerHousehold();
+      household.clear();
 
-      isChild = personService.isChildren(person1);
+      List<String> medicationsList = new ArrayList<>();
+      medicationsList.add("medication");
+      List<String> allergiesList = new ArrayList<>();
+      allergiesList.add("allergies");
 
-      assertThat(isChild).isTrue();
+      // Child
+      String person1Birthdate = "01/01/2020";
+      MedicalRecord medicalRecordP1 = new MedicalRecord(person1Birthdate,
+                  medicationsList, allergiesList);
+      person1.setMedicalRecord(medicalRecordP1);
+      personsList.add(person1);
+
+      // Adult
+      String person2Birthdate = "01/01/1990";
+      MedicalRecord medicalRecordP2 = new MedicalRecord(person2Birthdate,
+                  medicationsList, allergiesList);
+      person2.setMedicalRecord(medicalRecordP2);
+      personsList.add(person2);
+
+      List<Person> result = personService.childAlert("1509 Culver St",
+                  personsList, household);
+
+      assertThat(result.size()).isEqualTo(2);
+      assertThat(result.isEmpty()).isFalse();
    }
 
    @Test
-   @Order(6)
-   @Tag("isChildren")
-   @DisplayName("isChildren - Adult")
-   public void givenAdult_whenIsChildrenMethod_thenReturnFalse() {
-      boolean isChild;
-      person1.getMedicalRecord().setBirthdate("01/01/2000");
+   @Tag("ChildAlert")
+   @DisplayName("ChildAlert - Address without children")
+   public void givenTwoAdultsOnTheSameAddress_whenChildAlertAddress_thenReturnEmptyList() {
+      List<Person> personsList = new ArrayList<>();
+      Map<String, List<Person>> household = entitiesInfosStorage
+                  .getPersonsPerHousehold();
+      household.clear();
 
-      isChild = personService.isChildren(person1);
+      List<String> medicationsList = new ArrayList<>();
+      medicationsList.add("medication");
+      List<String> allergiesList = new ArrayList<>();
+      allergiesList.add("allergies");
 
-      assertThat(isChild).isFalse();
+      // Adult 1
+      String person1Birthdate = "01/01/1960";
+      MedicalRecord medicalRecordP1 = new MedicalRecord(person1Birthdate,
+                  medicationsList, allergiesList);
+      person1.setMedicalRecord(medicalRecordP1);
+      personsList.add(person1);
+
+      // Adult 2
+      String person2Birthdate = "01/01/1990";
+      MedicalRecord medicalRecordP2 = new MedicalRecord(person2Birthdate,
+                  medicationsList, allergiesList);
+      person2.setMedicalRecord(medicalRecordP2);
+      personsList.add(person2);
+
+      List<Person> result = personService.childAlert("1509 Culver St",
+                  personsList, household);
+
+      assertThat(result.size()).isEqualTo(0);
+      assertThat(result.isEmpty()).isTrue();
    }
 
    @Test
-   @Order(7)
-   @Tag("isChildren")
-   @DisplayName("isChildren - Null birthdate")
-   public void givenNullPersonsBirthdate_whenIsChildrenMethod_thenReturnNullPointerException() {
-      person1.getMedicalRecord().setBirthdate(null);
+   @Tag("ChildAlert")
+   @DisplayName("ChildAlert - Unknow address")
+   public void givenUnknowAddressEntered_whenChildAlert_thenReturnEmptyList() {
 
-      assertThatNullPointerException().isThrownBy(() -> {
-         personService.isChildren(person1);
-      });
+      List<Person> personsList = entitiesInfosStorage.getPersonsList();
+      Map<String, List<Person>> household = entitiesInfosStorage
+                  .getPersonsPerHousehold();
+      personsList.clear();
+      household.clear();
+
+      List<Person> result = personService.childAlert("Unknow address",
+                  personsList, household);
+
+      assertThat(result.size()).isEqualTo(0);
+      assertThat(result.isEmpty()).isTrue();
    }
 
 //   @Test
-//   @Order(3)
-//   @Tag("ChildAlert")
-//   @DisplayName("childAlert - adress with children")
-//   public void givenChildAlert_whenAdressEnteredWithChildren_thenReturnHouseholdsChildrenComposition() {
-//
-//      // 2 yo
-//      LocalDate person1Birthdate = LocalDate.of(2018, Month.JANUARY, 01);
-//      person1.setMedicalRecord(medicalRecord1);
-//      medicalRecord1.setBirthdate(person1Birthdate);
-//      person2.setAdress("1509 Culver St");
-//
-//      // 40 yo
-//      LocalDate person2Birthdate = LocalDate.of(1980, Month.JANUARY, 01);
-//      person2.setMedicalRecord(medicalRecord2);
-//      medicalRecord2.setBirthdate(person2Birthdate);
-//      person2.setAdress("1509 Culver St");
-//
-//      List<Person> household = personService.childAlert("1509 Culver St");
-//
-//      assertThat(household.contains(person1)).isTrue();
-//      assertThat(household.contains(person2)).isTrue();
-//      assertThat(household.size()).isEqualTo(2);
-//   }
-//
-//   @Test
-//   @Order(4)
-//   @Tag("ChildAlert")
-//   @DisplayName("childAlert - adress without children - empty list ")
-//   public void givenChildAlert_whenAdressEnteredWithoutChildren_thenReturnEmptyList() {
-//
-//      // 50 yo
-//      LocalDate person1Birthdate = LocalDate.of(1970, Month.JANUARY, 01);
-//      person1.setMedicalRecord(medicalRecord1);
-//      medicalRecord1.setBirthdate(person1Birthdate);
-//      person2.setAdress("1509 Culver St");
-//
-//      // 40 yo
-//      LocalDate person2Birthdate = LocalDate.of(1980, Month.JANUARY, 01);
-//      person2.setMedicalRecord(medicalRecord2);
-//      medicalRecord2.setBirthdate(person2Birthdate);
-//      person2.setAdress("1509 Culver St");
-//
-//      List<Person> household = personService.childAlert("1509 Culver St");
-//
-//      assertThat(household.contains(person1)).isFalse();
-//      assertThat(household.contains(person2)).isFalse();
-//      assertThat(household.size()).isEqualTo(0);
-//      assertThat(household.isEmpty()).isTrue();
-//   }
-
-//   @Test
-//   @Order(3)
 //   @Tag("POST")
 //   @DisplayName("Create - new person")
 //   public void givenPersonEndpoint_whenCreatePerson_thenReturnPersonCreated() {
@@ -250,7 +227,6 @@ public class PersonServiceTest {
 //   }
 //
 //   @Test
-//   @Order(4)
 //   @Tag("POST")
 //   @DisplayName("Create - existing person - error")
 //   public void givenPersonEndpoint_whenCreateExistingPerson_thenReturnNull() {

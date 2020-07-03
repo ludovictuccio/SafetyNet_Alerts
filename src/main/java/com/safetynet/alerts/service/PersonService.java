@@ -2,6 +2,8 @@ package com.safetynet.alerts.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,7 +33,9 @@ public class PersonService implements IPersonService {
    @Autowired
    private EntitiesInfosStorage entitiesInfosStorage;
 
-   private AgeCalculator ageCalculator = new AgeCalculator();;
+   // private static AgeCalculator ageCalculator = new AgeCalculator();
+
+   // private Households households;
 
    /**
     * @param firstName
@@ -47,7 +51,7 @@ public class PersonService implements IPersonService {
       for (Person person : personsList) {
          if (person.getLastName().equals(lastName)) {
 
-            int personsAge = ageCalculator.ageCalculation(
+            int personsAge = AgeCalculator.ageCalculation(
                         person.getMedicalRecord().getBirthdate());
 
             Person personsInfos = new Person(person.getFirstName(),
@@ -115,49 +119,54 @@ public class PersonService implements IPersonService {
    }
 
    /**
-    * @return all persons, entitiesInfosStorage.getPersonsList()
+    * Method used to retrieve the list of all persons.
+    *
+    * @return all persons list, entitiesInfosStorage.getPersonsList()
     */
    public List<Person> getAllPersons() {
-
       return entitiesInfosStorage.getPersonsList();
    }
 
    /**
-    * @param address
-    * @return
-    */
-   public List<Person> childAlert(final String adress) {
-      return null;
-   }
-
-   /**
-    * Method used to determinate adults and children persons.
+    * Method used to retrieve the households list with minors, with information
+    * on all persons who lives in.
     *
-    * @param age
-    * @return isChild boolean
+    * @param address
+    * @param personsList
+    * @param household
+    * @return personsList
     */
-   public boolean isChildren(final Person person) {
-      LOGGER.debug("IsChildren method initialization");
-      boolean isChild = false;
+   public List<Person> childAlert(final String address,
+               final List<Person> personsList,
+               final Map<String, List<Person>> household) {
+      LOGGER.debug("ChildAlert request initialization");
 
-      try {
-         LOGGER.debug("IsChildren method initialization");
-         int personsAge = ageCalculator
-                     .ageCalculation(person.getMedicalRecord().getBirthdate());
-
-         if (personsAge > 18) {
-            LOGGER.debug("Person = Adult");
-         } else {
-            LOGGER.debug("Person = Child");
-            isChild = true;
+      for (Entry<String, List<Person>> entry : household.entrySet()) {
+         String householdAdress = entry.getKey();
+         if (!address.equals(householdAdress)) {
+            continue;
          }
-      } catch (NullPointerException np) {
-         LOGGER.error(
-                     "NullPointerException. Please verify person's birthdate.");
-         throw new NullPointerException(np.toString());
+         List<Person> householdMembersList = entry.getValue();
+         for (Person person : householdMembersList) {
+            if (AgeCalculator.isChild(person)) {
+               int personsAge = AgeCalculator.ageCalculation(
+                           person.getMedicalRecord().getBirthdate());
+
+               Person child = new Person(person.getFirstName(),
+                           person.getLastName(), personsAge,
+                           person.getAdress());
+               personsList.add(child);
+
+               if (address.equals(child.getAdress())) {
+                  Person childMemberFamily = new Person(person.getFirstName(),
+                              person.getLastName(), personsAge,
+                              person.getAdress());
+                  personsList.add(childMemberFamily);
+               }
+            }
+         }
       }
-      LOGGER.debug("IsChildren method succes");
-      return isChild;
+      return personsList;
    }
 
 }

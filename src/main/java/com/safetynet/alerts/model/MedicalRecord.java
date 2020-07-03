@@ -6,9 +6,8 @@ import com.safetynet.alerts.util.AgeCalculator;
 
 /**
  * MedicalRecord class.
- * 
- * @author Ludovic Tuccio
  *
+ * @author Ludovic Tuccio
  */
 public class MedicalRecord {
 
@@ -59,7 +58,7 @@ public class MedicalRecord {
    public int getAge() {
       ageCalculator = new AgeCalculator();
       String personsBirthdate = getBirthdate();
-      int personsAge = ageCalculator.ageCalculation(personsBirthdate);
+      int personsAge = AgeCalculator.ageCalculation(personsBirthdate);
       return personsAge;
    }
 

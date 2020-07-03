@@ -4,37 +4,30 @@ import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.safetynet.alerts.model.EntitiesInfosStorage;
-import com.safetynet.alerts.service.IDataLoader;
+import com.safetynet.alerts.util.DataLoader;
 
 /**
  * SafetyNetAlertsApplication class with method main.
  *
  * @author Ludovic Tuccio
- *
  */
 @SpringBootApplication
 public class SafetyNetAlertsApplication {
-
    /**
     * Logger class.
     */
-   private static Logger LOGGER = LogManager
+   private static final Logger LOGGER = LogManager
                .getLogger(SafetyNetAlertsApplication.class);
    /**
-    * Json file path.
+    * Json file path, defined in the configuration file.
     */
-   private String jsonFile = "./src/main/resources/data.json";
-   /**
-    * IDataLoader variable.
-    */
-   @Autowired
-   private IDataLoader dataLoader;
+   // @Value("${spring.config.location}")
+   private static String jsonFile = "./src/main/resources/data/data.json";
 
    /**
     * App method main.
@@ -42,7 +35,6 @@ public class SafetyNetAlertsApplication {
     * @param args
     */
    public static void main(final String[] args) {
-      LOGGER.debug("SafetyNet Alerts Application initialization");
       SpringApplication.run(SafetyNetAlertsApplication.class, args);
    }
 
@@ -53,8 +45,9 @@ public class SafetyNetAlertsApplication {
     * @throws IOException
     */
    @Bean
-   public EntitiesInfosStorage jsonFileLoader() throws IOException {
-      LOGGER.debug("Reading file");
-      return dataLoader.readJsonFile(jsonFile);
+   public static EntitiesInfosStorage jsonFileLoader() throws IOException {
+      LOGGER.debug("Json File Loader");
+      return DataLoader.readJsonFile(jsonFile);
    }
+
 }
