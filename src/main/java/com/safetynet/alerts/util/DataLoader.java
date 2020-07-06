@@ -20,7 +20,7 @@ import com.safetynet.alerts.model.MedicalRecord;
 import com.safetynet.alerts.model.Person;
 
 /**
- * Data loader class.
+ * DataLoader class.
  *
  * @author Ludovic Tuccio
  */
@@ -48,13 +48,13 @@ public class DataLoader {
     * Method used to retrieve data from json file when the application starts,
     * and convert it to an object.
     *
-    * @param file
+    * @param dataFile
     * @return entitiesInfosStorage
     */
-   public static EntitiesInfosStorage readJsonFile(final String file)
+   public static EntitiesInfosStorage readJsonFile(final String dataFile)
                throws IOException, NullPointerException {
       LOGGER.debug("ReadJsonFile initialization");
-      byte[] byteArray = Files.readAllBytes(new File(file).toPath());
+      byte[] byteArray = Files.readAllBytes(new File(dataFile).toPath());
       JsonIterator jsonIterator = JsonIterator.parse(byteArray);
       Any any = jsonIterator.readAny(); // Jsoniter container
 
@@ -114,12 +114,13 @@ public class DataLoader {
                      new MedicalRecord(birthdate, medications, allergies));
          medicalrecordCounter++;
       });
-      LOGGER.debug(String.valueOf(personCounter)
-                  + " persons loaded from a Json file");
-      LOGGER.debug(String.valueOf(firestationCounter)
-                  + " firestations loaded from a Json file");
-      LOGGER.debug(String.valueOf(medicalrecordCounter)
-                  + " medicalrecords loaded from a Json file");
+      LOGGER.debug("Loaded from a Json file : \r\n"
+                  + String.valueOf(personCounter)
+                  + " persons \r\n"
+                  + String.valueOf(firestationCounter)
+                  + " firestations \r\n"
+                  + String.valueOf(medicalrecordCounter)
+                  + " medicalrecords");
 
       EntitiesInfosStorage entitiesInfosStorage = new EntitiesInfosStorage(
                   persons, firestations, households);

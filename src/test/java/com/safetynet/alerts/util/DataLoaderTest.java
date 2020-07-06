@@ -12,6 +12,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.Person;
@@ -21,18 +23,20 @@ import com.safetynet.alerts.model.Person;
  *
  * @author Ludovic Tuccio
  */
+@SpringBootTest
 public class DataLoaderTest {
 
-   private static DataLoader dataLoader;
-   private static EntitiesInfosStorage entitiesInfoStorage;
-   private static String jsonFile = "./src/main/resources/data.json";
-   private static Person person1;
-   private static Person person2;
-   private static Person personFounded;
+   private EntitiesInfosStorage entitiesInfoStorage;
+
+   @Value("${info.data}")
+   private String jsonFile;
+
+   private Person person1;
+   private Person person2;
+   private Person personFounded;
 
    @BeforeEach
    private void setUp() throws IOException {
-      dataLoader = new DataLoader();
       person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
                   "841-874-6512", "jaboyd@email.com");
       person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
@@ -74,7 +78,7 @@ public class DataLoaderTest {
                throws IOException {
 
       assertThatNullPointerException().isThrownBy(() -> {
-         dataLoader.readJsonFile(null);
+         DataLoader.readJsonFile(null);
       });
    }
 
@@ -84,7 +88,7 @@ public class DataLoaderTest {
    public void givenCorrectFilepath_whenReadJsonFileWithPersons_thenReturnVariableLoaded()
                throws IOException {
 
-      entitiesInfoStorage = dataLoader.readJsonFile(jsonFile);
+      entitiesInfoStorage = DataLoader.readJsonFile(jsonFile);
 
       assertThat(entitiesInfoStorage.getPersonsList()).isNotNull();
    }
@@ -95,7 +99,7 @@ public class DataLoaderTest {
    public void givenCorrectFilepath_whenReadJsonFileWithFireStations_thenReturnVariableLoaded()
                throws IOException {
 
-      entitiesInfoStorage = dataLoader.readJsonFile(jsonFile);
+      entitiesInfoStorage = DataLoader.readJsonFile(jsonFile);
 
       assertThat(entitiesInfoStorage.getFirestations()).isNotNull();
    }
@@ -106,7 +110,7 @@ public class DataLoaderTest {
    public void givenCorrectFilepath_whenReadJsonFileWithHouseholds_thenReturnVariableLoaded()
                throws IOException {
 
-      entitiesInfoStorage = dataLoader.readJsonFile(jsonFile);
+      entitiesInfoStorage = DataLoader.readJsonFile(jsonFile);
 
       assertThat(entitiesInfoStorage.getPersonsPerHousehold()).isNotNull();
    }

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -24,10 +25,10 @@ public class SafetyNetAlertsApplication {
    private static final Logger LOGGER = LogManager
                .getLogger(SafetyNetAlertsApplication.class);
    /**
-    * Json file path, defined in the configuration file.
+    * Data filepath, defined in application.properties file.
     */
-   // @Value("${spring.config.location}")
-   private static String jsonFile = "./src/main/resources/data/data.json";
+   @Value("${info.data}")
+   private String dataFile;
 
    /**
     * App method main.
@@ -39,15 +40,15 @@ public class SafetyNetAlertsApplication {
    }
 
    /**
-    * Method used to read json file.
+    * Method used to read json data file.
     *
     * @return entitiesInfosStorage
     * @throws IOException
     */
    @Bean
-   public static EntitiesInfosStorage jsonFileLoader() throws IOException {
-      LOGGER.debug("Json File Loader");
-      return DataLoader.readJsonFile(jsonFile);
+   public EntitiesInfosStorage jsonFileLoader() throws IOException {
+      LOGGER.debug("Loading Data File");
+      return DataLoader.readJsonFile(dataFile);
    }
 
 }
