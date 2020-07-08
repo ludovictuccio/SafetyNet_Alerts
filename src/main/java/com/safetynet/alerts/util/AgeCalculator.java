@@ -23,6 +23,10 @@ public class AgeCalculator {
     */
    private static final Logger LOGGER = LogManager
                .getLogger(AgeCalculator.class);
+   /**
+    * Minor age threshold; more is considerate as adult person.
+    */
+   private static final int MINOR_AGE_THRESHOLD = 18;
 
    /**
     * Age calculation method.
@@ -33,8 +37,6 @@ public class AgeCalculator {
     * @throws IllegalArgumentException
     */
    public static int ageCalculation(final String birthdate) {
-      LOGGER.debug("Age calculation initialization");
-
       DateTimeFormatter formatter = DateTimeFormatter
                   .ofPattern(Constants.DATE_PATTERN);
       LocalDate personsBirthdate = LocalDate.parse(birthdate, formatter);
@@ -47,11 +49,11 @@ public class AgeCalculator {
          throw new IllegalArgumentException(
                      "ERROR - Person's bithdate in the future");
       } else if (age == 0) {
+         LOGGER.debug("Baby with age less than 1 year");
          age++;
       } else {
          return age;
       }
-      LOGGER.debug("Age calculation success");
       return age;
    }
 
@@ -67,7 +69,7 @@ public class AgeCalculator {
       boolean isChild = false;
       int personsAge = AgeCalculator
                   .ageCalculation(person.getMedicalRecord().getBirthdate());
-      if (personsAge > 18) {
+      if (personsAge > MINOR_AGE_THRESHOLD) {
          LOGGER.debug("Person = Adult");
       } else {
          LOGGER.debug("Person = Child");

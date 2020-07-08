@@ -1,8 +1,8 @@
 package com.safetynet.alerts.service;
 
 import java.util.List;
-import java.util.Map;
 
+import com.safetynet.alerts.model.Household;
 import com.safetynet.alerts.model.Person;
 
 /**
@@ -33,22 +33,19 @@ public interface IPersonService {
    /**
     * @param firstName
     * @param lastName
-    * @param personsList
     */
-   List<Person> personInfo(String firstName, String lastName,
-               List<Person> personsList);
+   List<Person> personInfo(String firstName, String lastName);
 
    /**
     * @param adress
     * @param personsList
     * @param household
     */
-   List<Person> childAlert(String address, List<Person> personsList,
-               Map<String, List<Person>> household);
+   List<Household> childAlert(String address);
 
    /**
     * @param city
     * @param personsList
     */
-   List<String> communityEmail(String city, List<Person> personsList);
+   List<String> communityEmail(String city);
 }

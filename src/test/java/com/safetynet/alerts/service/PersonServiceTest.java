@@ -1,86 +1,153 @@
 package com.safetynet.alerts.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 
 import com.safetynet.alerts.model.EntitiesInfosStorage;
-import com.safetynet.alerts.model.FireStation;
+import com.safetynet.alerts.model.Household;
 import com.safetynet.alerts.model.MedicalRecord;
 import com.safetynet.alerts.model.Person;
+import com.safetynet.alerts.util.AgeCalculator;
 
 /**
  * PersonService units tests class.
  *
  * @author Ludovic Tuccio
  */
-//@SpringBootTest
-//@ExtendWith(SpringExtension.class)
+@WebMvcTest(PersonService.class)
+@ExtendWith(MockitoExtension.class)
 public class PersonServiceTest {
 
-   private static PersonService personService;
-   private static EntitiesInfosStorage entitiesInfosStorage;
+   @InjectMocks
+   private PersonService personService;
+
+   @Mock
+   private EntitiesInfosStorage entitiesInfosStorage;
+
    private static String adultBirthdate = "01/01/1990";
-   private static MedicalRecord medicalRecord;
+   private static String childBirthdate = "01/01/2020";
+   private static MedicalRecord medicalRecordAdult;
+   private static MedicalRecord medicalRecordChild;
    private static Person person1;
    private static Person person2;
    private static Person person3;
 
-   @BeforeAll
-   private static void setUp() {
-      personService = new PersonService();
-   }
-
    @BeforeEach
    private void setUpPerTest() {
+
       List<String> medicationsList = new ArrayList<>();
       medicationsList.add("medication1");
 
       List<String> allergiesList = new ArrayList<>();
       allergiesList.add("allergies");
 
-      medicalRecord = new MedicalRecord(adultBirthdate, medicationsList,
+      medicalRecordAdult = new MedicalRecord(adultBirthdate, medicationsList,
                   allergiesList);
+      medicalRecordChild = new MedicalRecord(childBirthdate, medicationsList,
+                  allergiesList);
+
+//      List<Person> personsList = new ArrayList<>();
+//      person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
+//                  "841-874-6512", "jaboyd@email.com", medicalRecord);
+//      person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
+//                  "841-874-6513", "drk@email.com", medicalRecord);
+//      person3 = new Person("Eric", "Cadigan", "951 LoneTree Rd", "Culver",
+//                  "97451", "841-874-7458", "gramps@email.com", medicalRecord);
+//      personsList.add(person1);
+//      personsList.add(person2);
+//
+//      Map<Integer, FireStation> stations = new HashMap<Integer, FireStation>();
+//      Map<String, List<Person>> households = new HashMap<String, List<Person>>();
+//
+//      entitiesInfosStorage = new EntitiesInfosStorage(personsList, stations,
+//                  households);
+   }
+
+   @Test
+   @Tag("PersonInfo")
+   @DisplayName("PersonInfo - Existing person")
+   public void givenPersonInfo_whenEntryFirstAndLastName_thenReturnNoEmptyPersonsList() {
+      List<Person> personsList = new ArrayList<>();
       person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
-                  "841-874-6512", "jaboyd@email.com", medicalRecord);
+                  "841-874-6512", "jaboyd@email.com", medicalRecordAdult);
       person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
-                  "841-874-6513", "drk@email.com", medicalRecord);
+                  "841-874-6513", "drk@email.com", medicalRecordAdult);
       person3 = new Person("Eric", "Cadigan", "951 LoneTree Rd", "Culver",
-                  "97451", "841-874-7458", "gramps@email.com", medicalRecord);
+                  "97451", "841-874-7458", "gramps@email.com",
+                  medicalRecordAdult);
+      personsList.add(person1);
+      personsList.add(person2);
+      personsList.add(person3);
 
-      List<Person> personList = new ArrayList<>();
-      personList.add(person1);
-      personList.add(person2);
-      personList.add(person3);
-      Map<Integer, FireStation> stations = new HashMap<Integer, FireStation>();
-      Map<String, List<Person>> households = new HashMap<String, List<Person>>();
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
 
-      entitiesInfosStorage = new EntitiesInfosStorage(personList, stations,
-                  households);
+      List<Person> result = personService.personInfo("John", "Boyd");
+
+      assertThat(result.isEmpty()).isFalse();
+      assertThat(result.size()).isEqualTo(2);
+   }
+
+   @Test
+   @Tag("PersonInfo")
+   @DisplayName("PersonInfo - Unknow person")
+   public void givenPersonInfoMethodAndEntryFirstAndLastName_whenNoOneHasThatName_thenReturnEmptyList() {
+      List<Person> personsList = new ArrayList<>();
+      person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6512", "jaboyd@email.com", medicalRecordAdult);
+      person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6513", "drk@email.com", medicalRecordAdult);
+      person3 = new Person("Eric", "Cadigan", "951 LoneTree Rd", "Culver",
+                  "97451", "841-874-7458", "gramps@email.com",
+                  medicalRecordAdult);
+      personsList.add(person1);
+      personsList.add(person2);
+      personsList.add(person3);
+
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      List<Person> result = personService.personInfo("Unknow", "Person");
+
+      assertThat(result.isEmpty()).isTrue();
+      assertThat(result.size()).isEqualTo(0);
    }
 
    @Test
    @Tag("CommunityEmail")
    @DisplayName("CommunityEmail - Valid city entry")
    public void givenCityEntry_whenExistingCity_thenReturnAllPersonsEmailAdressesList() {
+      List<Person> personsList = new ArrayList<>();
+      person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6512", "jaboyd@email.com", medicalRecordAdult);
+      person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6513", "drk@email.com", medicalRecordAdult);
+      person3 = new Person("Eric", "Cadigan", "951 LoneTree Rd", "Culver",
+                  "97451", "841-874-7458", "gramps@email.com",
+                  medicalRecordAdult);
       Person otherCityPerson = new Person("Other", "Unknow", "Other city",
                   "Other city", "00000", "111-111-111", "other@email.com");
+      personsList.add(person1);
+      personsList.add(person2);
+      personsList.add(person3);
+      personsList.add(otherCityPerson);
 
-      List<Person> persons = entitiesInfosStorage.getPersonsList();
-      persons.add(otherCityPerson); // Other city
-      entitiesInfosStorage.setPersonsList(persons);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
 
-      List<String> personsEmails = personService.communityEmail("Culver",
-                  persons);
+      List<String> personsEmails = personService.communityEmail("Culver");
 
       assertThat(personsEmails.size()).isEqualTo(3);
       assertThat(personsEmails.toString()).isEqualTo(
@@ -94,67 +161,73 @@ public class PersonServiceTest {
    @Tag("CommunityEmail")
    @DisplayName("CommunityEmail - Bad city entry")
    public void givenCityEntry_whenUnknowCityEntry_thenReturnEmptyPersonsList() {
-      List<Person> persons = entitiesInfosStorage.getPersonsList();
-      List<String> personsEmails = personService.communityEmail("Other city",
-                  persons);
+      List<Person> personsList = new ArrayList<>();
+      person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6512", "jaboyd@email.com", medicalRecordAdult);
+      person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6513", "drk@email.com", medicalRecordAdult);
+      person3 = new Person("Eric", "Cadigan", "951 LoneTree Rd", "Culver",
+                  "97451", "841-874-7458", "gramps@email.com",
+                  medicalRecordAdult);
+      personsList.add(person1);
+      personsList.add(person2);
+      personsList.add(person3);
+
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      List<String> personsEmails = personService.communityEmail("Other city");
 
       assertThat(personsEmails.size()).isEqualTo(0);
       assertThat(personsEmails).isEmpty();
    }
 
    @Test
-   @Tag("PersonInfo")
-   @DisplayName("PersonInfo - Existing person")
-   public void givenPersonInfo_whenEntryFirstAndLastName_thenReturnNoEmptyPersonsList() {
-      List<Person> personsList = entitiesInfosStorage.getPersonsList();
-      List<Person> personsInfosList = personService.personInfo("John", "Boyd",
-                  personsList);
-
-      assertThat(personsInfosList.isEmpty()).isFalse();
-      assertThat(personsInfosList.size()).isEqualTo(2);
-   }
-
-   @Test
-   @Tag("PersonInfo")
-   @DisplayName("PersonInfo - Unknow person")
-   public void givenPersonInfoMethodAndEntryFirstAndLastName_whenNoOneHasThatName_thenReturnEmptyList() {
-      List<Person> personsList = entitiesInfosStorage.getPersonsList();
-      List<Person> personsInfosList = personService.personInfo("Unknow",
-                  "Person", personsList);
-
-      assertThat(personsInfosList.isEmpty()).isTrue();
-   }
-
-   @Test
    @Tag("ChildAlert")
-   @DisplayName("ChildAlert - Adult and child with the same address")
+   @DisplayName("ChildAlert - Adult & child - Same address")
    public void givenChildAndAdultOnTheSameAddress_whenChildAlertAddress_thenReturnTwoHouseholdListSize() {
-      List<Person> personsList = new ArrayList<>();
-      Map<String, List<Person>> household = entitiesInfosStorage
-                  .getPersonsPerHousehold();
-      household.clear();
+      List<Household> childAlert = new ArrayList<>();
 
-      List<String> medicationsList = new ArrayList<>();
-      medicationsList.add("medication");
-      List<String> allergiesList = new ArrayList<>();
-      allergiesList.add("allergies");
+      // Child 1 - Good address
+      person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6512", "jaboyd@email.com", medicalRecordChild);
+      int childAge = AgeCalculator
+                  .ageCalculation(person1.getMedicalRecord().getBirthdate());
+      Household child1 = new Household(childAge, person1.getFirstName(),
+                  person1.getLastName());
+      childAlert.add(child1);
 
-      // Child
-      String person1Birthdate = "01/01/2020";
-      MedicalRecord medicalRecordP1 = new MedicalRecord(person1Birthdate,
-                  medicationsList, allergiesList);
-      person1.setMedicalRecord(medicalRecordP1);
-      personsList.add(person1);
+      // Adult - Good address
+      person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6513", "drk@email.com", medicalRecordAdult);
+      int adultAge = AgeCalculator
+                  .ageCalculation(person2.getMedicalRecord().getBirthdate());
+      Household adult1 = new Household(adultAge, person2.getFirstName(),
+                  person2.getLastName());
+      childAlert.add(adult1);
 
-      // Adult
-      String person2Birthdate = "01/01/1990";
-      MedicalRecord medicalRecordP2 = new MedicalRecord(person2Birthdate,
-                  medicationsList, allergiesList);
-      person2.setMedicalRecord(medicalRecordP2);
-      personsList.add(person2);
+      // Child 2 - Bad address
+      person3 = new Person("Eric", "Cadigan", "951 LoneTree Rd", "Culver",
+                  "97451", "841-874-7458", "gramps@email.com",
+                  medicalRecordChild);
+      int childAge2 = AgeCalculator
+                  .ageCalculation(person3.getMedicalRecord().getBirthdate());
+      Household child2 = new Household(childAge2, person3.getFirstName(),
+                  person3.getLastName());
+      childAlert.add(child2);
 
-      List<Person> result = personService.childAlert("1509 Culver St",
-                  personsList, household);
+      // Add only same household persons
+      List<Person> householdMembersList = new ArrayList<>();
+      householdMembersList.add(person1);
+      householdMembersList.add(person2);
+
+      Map<String, List<Person>> households = new HashMap<>();
+      households.put(person1.getAddress(), householdMembersList);
+      households.put(person2.getAddress(), householdMembersList);
+      households.put(person3.getAddress(), householdMembersList);
+
+      when(entitiesInfosStorage.getHouseholds()).thenReturn(households);
+
+      List<Household> result = personService.childAlert("1509 Culver St");
 
       assertThat(result.size()).isEqualTo(2);
       assertThat(result.isEmpty()).isFalse();
@@ -164,32 +237,37 @@ public class PersonServiceTest {
    @Tag("ChildAlert")
    @DisplayName("ChildAlert - Address without children")
    public void givenTwoAdultsOnTheSameAddress_whenChildAlertAddress_thenReturnEmptyList() {
-      List<Person> personsList = new ArrayList<>();
-      Map<String, List<Person>> household = entitiesInfosStorage
-                  .getPersonsPerHousehold();
-      household.clear();
-
-      List<String> medicationsList = new ArrayList<>();
-      medicationsList.add("medication");
-      List<String> allergiesList = new ArrayList<>();
-      allergiesList.add("allergies");
+      List<Household> childAlert = new ArrayList<>();
 
       // Adult 1
-      String person1Birthdate = "01/01/1960";
-      MedicalRecord medicalRecordP1 = new MedicalRecord(person1Birthdate,
-                  medicationsList, allergiesList);
-      person1.setMedicalRecord(medicalRecordP1);
-      personsList.add(person1);
+      person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6512", "jaboyd@email.com", medicalRecordAdult);
+      int adultAge1 = AgeCalculator
+                  .ageCalculation(person1.getMedicalRecord().getBirthdate());
+      Household adult1 = new Household(adultAge1, person1.getFirstName(),
+                  person1.getLastName());
+      childAlert.add(adult1);
 
       // Adult 2
-      String person2Birthdate = "01/01/1990";
-      MedicalRecord medicalRecordP2 = new MedicalRecord(person2Birthdate,
-                  medicationsList, allergiesList);
-      person2.setMedicalRecord(medicalRecordP2);
-      personsList.add(person2);
+      person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6513", "drk@email.com", medicalRecordAdult);
+      int adultAge2 = AgeCalculator
+                  .ageCalculation(person2.getMedicalRecord().getBirthdate());
+      Household adult2 = new Household(adultAge2, person2.getFirstName(),
+                  person2.getLastName());
+      childAlert.add(adult2);
 
-      List<Person> result = personService.childAlert("1509 Culver St",
-                  personsList, household);
+      List<Person> householdMembersList = new ArrayList<>();
+      householdMembersList.add(person1);
+      householdMembersList.add(person2);
+
+      Map<String, List<Person>> households = new HashMap<>();
+      households.put(person1.getAddress(), householdMembersList);
+      households.put(person2.getAddress(), householdMembersList);
+
+      when(entitiesInfosStorage.getHouseholds()).thenReturn(households);
+
+      List<Household> result = personService.childAlert("1509 Culver St");
 
       assertThat(result.size()).isEqualTo(0);
       assertThat(result.isEmpty()).isTrue();
@@ -199,20 +277,41 @@ public class PersonServiceTest {
    @Tag("ChildAlert")
    @DisplayName("ChildAlert - Unknow address")
    public void givenUnknowAddressEntered_whenChildAlert_thenReturnEmptyList() {
+      List<Household> childAlert = new ArrayList<>();
 
-      List<Person> personsList = entitiesInfosStorage.getPersonsList();
-      Map<String, List<Person>> household = entitiesInfosStorage
-                  .getPersonsPerHousehold();
-      personsList.clear();
-      household.clear();
+      // Adult 1
+      person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6512", "jaboyd@email.com", medicalRecordChild);
+      int adultAge1 = AgeCalculator
+                  .ageCalculation(person1.getMedicalRecord().getBirthdate());
+      Household adult1 = new Household(adultAge1, person1.getFirstName(),
+                  person1.getLastName());
+      childAlert.add(adult1);
 
-      List<Person> result = personService.childAlert("Unknow address",
-                  personsList, household);
+      // Adult 2
+      person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6513", "drk@email.com", medicalRecordAdult);
+      int adultAge2 = AgeCalculator
+                  .ageCalculation(person2.getMedicalRecord().getBirthdate());
+      Household adult2 = new Household(adultAge2, person2.getFirstName(),
+                  person2.getLastName());
+      childAlert.add(adult2);
+
+      List<Person> householdMembersList = new ArrayList<>();
+      householdMembersList.add(person1);
+      householdMembersList.add(person2);
+
+      Map<String, List<Person>> households = new HashMap<>();
+      households.put(person1.getAddress(), householdMembersList);
+      households.put(person2.getAddress(), householdMembersList);
+
+      when(entitiesInfosStorage.getHouseholds()).thenReturn(households);
+
+      List<Household> result = personService.childAlert("Unknow address");
 
       assertThat(result.size()).isEqualTo(0);
       assertThat(result.isEmpty()).isTrue();
    }
-
 //   @Test
 //   @Tag("POST")
 //   @DisplayName("Create - new person")

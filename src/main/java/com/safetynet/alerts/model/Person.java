@@ -19,7 +19,7 @@ public class Person {
    /**
     * The person's age .
     */
-   private int age;
+   // private int age;
    /**
     * The person's adress.
     */
@@ -44,6 +44,10 @@ public class Person {
     * The person's medical record.
     */
    private MedicalRecord medicalRecord;
+
+//   private Person person;
+//
+//   private List<Person> householdMembers;
 
    public Person() {
 
@@ -74,34 +78,35 @@ public class Person {
       this.email = personsEmail;
    }
 
-   /**
-    *
-    * @param personsFirstName
-    * @param personsLastName
-    * @param personsage
-    * @param personsAdress
-    * @param personsCity
-    * @param personsZip
-    * @param personsPhoneNumber
-    * @param personsEmail
-    * @param personsMedicalRecord
-    *
-    */
-   public Person(final String personsFirstName, final String personsLastName,
-               final int personsAge, final String personsAdress,
-               final String personsCity, final String personsZip,
-               final String personsPhoneNumber, final String personsEmail,
-               final MedicalRecord personsMedicalRecord) {
-      this.firstName = personsFirstName;
-      this.lastName = personsLastName;
-      this.age = personsAge;
-      this.address = personsAdress;
-      this.city = personsCity;
-      this.zip = personsZip;
-      this.phone = personsPhoneNumber;
-      this.email = personsEmail;
-      this.medicalRecord = personsMedicalRecord;
-   }
+//   /**
+//    * Used to personInfo service.
+//    *
+//    * @param personsFirstName
+//    * @param personsLastName
+//    * @param personsage
+//    * @param personsAdress
+//    * @param personsCity
+//    * @param personsZip
+//    * @param personsPhoneNumber
+//    * @param personsEmail
+//    * @param personsMedicalRecord
+//    *
+//    */
+//   public Person(final String personsFirstName, final String personsLastName,
+//               final int personsAge, final String personsAdress,
+//               final String personsCity, final String personsZip,
+//               final String personsPhoneNumber, final String personsEmail,
+//               final MedicalRecord personsMedicalRecord) {
+//      this.firstName = personsFirstName;
+//      this.lastName = personsLastName;
+//     // this.age = personsAge;
+//      this.address = personsAdress;
+//      this.city = personsCity;
+//      this.zip = personsZip;
+//      this.phone = personsPhoneNumber;
+//      this.email = personsEmail;
+//      this.medicalRecord = personsMedicalRecord;
+//   }
 
    public Person(final String personsFirstName, final String personsLastName,
                final String personsAdress, final String personsCity,
@@ -118,14 +123,37 @@ public class Person {
       this.medicalRecord = personsMedicalRecord;
    }
 
-   // Children
-   public Person(final String personsFirstName, final String personsLastName,
-               final int personsAge, final String personsAdress) {
-      this.firstName = personsFirstName;
-      this.lastName = personsLastName;
-      this.age = personsAge;
-      this.address = personsAdress;
-   }
+//   // Children
+//   public Person(final String personsFirstName, final String personsLastName,
+//               final int personsAge, final String personsAdress) {
+//      this.firstName = personsFirstName;
+//      this.lastName = personsLastName;
+//      this.age = personsAge;
+//      this.address = personsAdress;
+//   }
+
+//   public Person(final int personsAge, final Person personChild,
+//               final List<Person> householdMembersList) {
+//      this.age = personsAge;
+//      this.person = personChild;
+//      this.householdMembers = householdMembersList;
+//   }
+//
+//   public Person getPerson() {
+//      return person;
+//   }
+//
+//   public void setPerson(final Person personChild) {
+//      this.person = personChild;
+//   }
+//
+//   public List<Person> getHouseholdMembers() {
+//      return householdMembers;
+//   }
+//
+//   public void setHouseholdMembers(List<Person> householdMembersList) {
+//      this.householdMembers = householdMembersList;
+//   }
 
    /**
     * @return the firstName
@@ -155,26 +183,26 @@ public class Person {
       this.lastName = personsLastName;
    }
 
-   public int getAge() {
-
-      return age;
-   }
-
-   public void setAge(int personsAge) {
-      this.age = personsAge;
-   }
+//   public int getAge() {
+//
+//      return age;
+//   }
+//
+//   public void setAge(int personsAge) {
+//      this.age = personsAge;
+//   }
 
    /**
     * @return the adress
     */
-   public String getAdress() {
+   public String getAddress() {
       return address;
    }
 
    /**
     * @param personsAddress the person's adress to set
     */
-   public void setAdress(final String personsAddress) {
+   public void setAddress(final String personsAddress) {
       this.address = personsAddress;
    }
 
@@ -256,7 +284,7 @@ public class Person {
                   + firstName
                   + ", lastName="
                   + lastName
-                  + ", adress="
+                  + ", address="
                   + address
                   + ", phone="
                   + phone

@@ -24,8 +24,6 @@ import com.safetynet.alerts.model.Person;
  */
 public class AgeCalculatorTest {
 
-   private AgeCalculator ageCalculator;
-
    private String birthdate;
    private DateTimeFormatter formatter;
    private LocalDate currentDate;
@@ -34,7 +32,6 @@ public class AgeCalculatorTest {
 
    @BeforeEach
    private void setUp() {
-      ageCalculator = new AgeCalculator();
       formatter = DateTimeFormatter.ofPattern(Constants.DATE_PATTERN);
       medicalRecord = new MedicalRecord("01/01/2020", null, null);
       person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",

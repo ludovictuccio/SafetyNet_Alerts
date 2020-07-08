@@ -67,7 +67,7 @@ public class EntitiesInfosStorage {
    /**
     * @return the personsPerHousehold
     */
-   public Map<String, List<Person>> getPersonsPerHousehold() {
+   public Map<String, List<Person>> getHouseholds() {
       return personsPerHousehold;
    }
 

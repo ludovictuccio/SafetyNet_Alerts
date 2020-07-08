@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.safetynet.alerts.model.EntitiesInfosStorage;
+import com.safetynet.alerts.model.Household;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.util.AgeCalculator;
 
@@ -28,34 +29,31 @@ public class PersonService implements IPersonService {
    private static final Logger LOGGER = LogManager
                .getLogger(PersonService.class);
    /**
-    * Used to retrieve persons informations.
+    * EntitiesInfosStorage variable used to retrieve persons informations from
+    * model classes.
     */
    @Autowired
    private EntitiesInfosStorage entitiesInfosStorage;
 
-   // private static AgeCalculator ageCalculator = new AgeCalculator();
-
-   // private Households households;
-
    /**
+    * This method service is used to return the persons informations for the
+    * same last name entered.
+    * 
     * @param firstName
     * @param lastName
     * @param personsList
     * @return personsInfosList, Persons List
     */
-   public List<Person> personInfo(final String firstName, final String lastName,
-               final List<Person> personsList) {
-      LOGGER.debug("PersonInfo request initialization");
+   public List<Person> personInfo(final String firstName,
+               final String lastName) {
+      LOGGER.debug("PersonInfo request - initialization");
       List<Person> personsInfosList = new ArrayList<>();
+      List<Person> personsList = entitiesInfosStorage.getPersonsList();
 
       for (Person person : personsList) {
          if (person.getLastName().equals(lastName)) {
-
-            int personsAge = AgeCalculator.ageCalculation(
-                        person.getMedicalRecord().getBirthdate());
-
             Person personsInfos = new Person(person.getFirstName(),
-                        person.getLastName(), personsAge, person.getAdress(),
+                        person.getLastName(), person.getAddress(),
                         person.getCity(), person.getZip(), person.getPhone(),
                         person.getEmail(), person.getMedicalRecord());
             personsInfosList.add(personsInfos);
@@ -68,16 +66,15 @@ public class PersonService implements IPersonService {
    /**
     * This method service is used to create a list of persons for a city
     * entered.
-    * 
+    *
     * @param city
     * @param personsList
-    * @return personsEmail
+    * @return personsEmail, emails List<String>
     */
-   public List<String> communityEmail(final String city,
-               final List<Person> personsList) {
-
+   public List<String> communityEmail(final String city) {
       LOGGER.debug("CommunityEmail request initialization");
       List<String> personsEmail = new ArrayList<>();
+      List<Person> personsList = entitiesInfosStorage.getPersonsList();
 
       for (Person person : personsList) {
          if (person.getCity().equals(city)) {
@@ -86,6 +83,56 @@ public class PersonService implements IPersonService {
       }
       LOGGER.debug("CommunityEmail request successfuly");
       return personsEmail;
+   }
+
+   /**
+    * This method service is used to return the households composition, if the
+    * adress entered contains children.
+    *
+    * @param address
+    * @return childAlert, a Household List
+    */
+   public List<Household> childAlert(final String address) {
+      LOGGER.debug("ChildAlert request initialization");
+      List<Household> childAlert = new ArrayList<>();
+      Map<String, List<Person>> households = entitiesInfosStorage
+                  .getHouseholds();
+      boolean isListWithChildren = false;
+
+      for (Entry<String, List<Person>> entry : households.entrySet()) {
+         String householdAddress = entry.getKey();
+         if (!address.equals(householdAddress)) {
+            continue;
+         }
+         List<Person> householdMembersList = entry.getValue();
+         for (Person person : householdMembersList) {
+
+            // If child
+            if (AgeCalculator.isChild(person)) {
+               int childAge = AgeCalculator.ageCalculation(
+                           person.getMedicalRecord().getBirthdate());
+               Household child = new Household(childAge,
+                           person.getFirstName(), person.getLastName());
+               childAlert.add(child);
+               isListWithChildren = true;
+
+               // If adult
+            } else if (!AgeCalculator.isChild(person)) {
+               int adultAge = AgeCalculator.ageCalculation(
+                           person.getMedicalRecord().getBirthdate());
+               Household adultHouseholdMember = new Household(adultAge,
+                           person.getFirstName(), person.getLastName());
+               childAlert.add(adultHouseholdMember);
+            }
+         }
+      }
+      // Return empty list if no contains child
+      if (isListWithChildren) {
+         return childAlert;
+      } else {
+         childAlert.clear();
+         return childAlert;
+      }
    }
 
    /**
@@ -125,48 +172,6 @@ public class PersonService implements IPersonService {
     */
    public List<Person> getAllPersons() {
       return entitiesInfosStorage.getPersonsList();
-   }
-
-   /**
-    * Method used to retrieve the households list with minors, with information
-    * on all persons who lives in.
-    *
-    * @param address
-    * @param personsList
-    * @param household
-    * @return personsList
-    */
-   public List<Person> childAlert(final String address,
-               final List<Person> personsList,
-               final Map<String, List<Person>> household) {
-      LOGGER.debug("ChildAlert request initialization");
-
-      for (Entry<String, List<Person>> entry : household.entrySet()) {
-         String householdAdress = entry.getKey();
-         if (!address.equals(householdAdress)) {
-            continue;
-         }
-         List<Person> householdMembersList = entry.getValue();
-         for (Person person : householdMembersList) {
-            if (AgeCalculator.isChild(person)) {
-               int personsAge = AgeCalculator.ageCalculation(
-                           person.getMedicalRecord().getBirthdate());
-
-               Person child = new Person(person.getFirstName(),
-                           person.getLastName(), personsAge,
-                           person.getAdress());
-               personsList.add(child);
-
-               if (address.equals(child.getAdress())) {
-                  Person childMemberFamily = new Person(person.getFirstName(),
-                              person.getLastName(), personsAge,
-                              person.getAdress());
-                  personsList.add(childMemberFamily);
-               }
-            }
-         }
-      }
-      return personsList;
    }
 
 }

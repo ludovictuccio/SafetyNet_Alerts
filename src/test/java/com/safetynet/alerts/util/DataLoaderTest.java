@@ -112,7 +112,7 @@ public class DataLoaderTest {
 
       entitiesInfoStorage = DataLoader.readJsonFile(jsonFile);
 
-      assertThat(entitiesInfoStorage.getPersonsPerHousehold()).isNotNull();
+      assertThat(entitiesInfoStorage.getHouseholds()).isNotNull();
    }
 
 }
