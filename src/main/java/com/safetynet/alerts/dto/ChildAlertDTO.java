@@ -82,6 +82,7 @@ public class ChildAlertDTO {
                   + lastName
                   + ", Age="
                   + age
+                  + " years old"
                   + "]";
    }
 

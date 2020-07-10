@@ -23,13 +23,13 @@ public interface IPersonService {
     * @param firstName
     * @param lastName
     */
-   List<Person> updatePerson(String firstName, String lastName);
+   boolean updatePerson(Person personToUpdate);
 
    /**
     * @param firstName
     * @param lastName
     */
-   List<Person> deletePerson(String firstName, String lastName);
+   void deletePerson(String firstName, String lastName);
 
    /**
     * @param firstName

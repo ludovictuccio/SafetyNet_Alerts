@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -56,6 +57,27 @@ public class PersonControllerTest {
                   .contentType(MediaType.APPLICATION_JSON_VALUE)
                   .content("{\"firstName\":\"John\",\"lastName\":\"Boyd\",\"address\":\"1509 Culver St\",\"city\":\"Culver\",\"zip\":\"97451\",\"phone\":\"841-874-6512\",\"email\":\"jaboyd@email.com\"}"))
                   .andExpect(status().isConflict());
+   }
+
+   @Test
+   @Tag("UpdatePerson")
+   @DisplayName("UpdatePerson - OK")
+   public void g() throws Exception {
+      this.mockMvc.perform(put("/person").contentType(APPLICATION_JSON).content(
+                  "{\"firstName\": \"Jacob\",\"lastName\": \"Boyd\",\"address\": \"1509 Culver St\",\"city\": \"Culver\",\"zip\": \"97451\",\"phone\": \"841-874-6513\",\"email\": \"drk@email.com\"}")
+                  .accept(MediaType.APPLICATION_JSON))
+                  .andDo(MockMvcResultHandlers.print())
+                  .andExpect(status().isOk());
+   }
+
+   @Test
+   @Tag("UpdatePerson")
+   @DisplayName("UpdatePerson - ERROR ")
+   public void gg() throws Exception {
+      this.mockMvc.perform(put("/person")
+                  .contentType(MediaType.APPLICATION_JSON_VALUE)
+                  .content("{\"firstName\":\"UNKNOW\",\"lastName\":\"PERSON\",\"address\":\"1509 Culver St\",\"city\":\"Culver\",\"zip\":\"97451\",\"phone\":\"841-874-6512\",\"email\":\"jaboyd@email.com\"}"))
+                  .andExpect(status().isNotFound());
    }
 
    @Test

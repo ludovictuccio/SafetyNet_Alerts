@@ -184,22 +184,37 @@ public class PersonService implements IPersonService {
    }
 
    /**
-    * @param person
-    * @return
+    * This method service is used to update a person.
+    *
+    * @param personToUpdate
+    * @return isUpdated boolean
     */
-   public List<Person> updatePerson(final String firstName,
-               final String lastName) {
-      return null;
+   public boolean updatePerson(final Person personToUpdate) {
+      List<Person> personsList = entitiesInfosStorage.getPersonsList();
+      boolean isUpdated = false;
 
+      for (Person personRecovered : personsList) {
+         if (personRecovered.getFirstName()
+                     .equals(personToUpdate.getFirstName())
+                     && personRecovered.getLastName()
+                                 .equals(personToUpdate.getLastName())) {
+            personRecovered.setAddress(personToUpdate.getAddress());
+            personRecovered.setCity(personToUpdate.getCity());
+            personRecovered.setZip(personToUpdate.getZip());
+            personRecovered.setPhone(personToUpdate.getPhone());
+            personRecovered.setEmail(personToUpdate.getEmail());
+
+            entitiesInfosStorage.setPersonsList(personsList);
+            isUpdated = true;
+         }
+      }
+      return isUpdated;
    }
 
    /**
     * @param person
-    * @return
     */
-   public List<Person> deletePerson(final String firstName,
-               final String lastName) {
-      return null;
+   public void deletePerson(final String firstName, final String lastName) {
 
    }
 

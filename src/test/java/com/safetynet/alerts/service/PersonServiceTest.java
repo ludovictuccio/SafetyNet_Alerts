@@ -442,33 +442,51 @@ public class PersonServiceTest {
                   });
    }
 
-//   @Test
-//   @Tag("PUT")
-//   @DisplayName("Update - existing person")
-//   public void givenPersonEndpoint_whenUpdatePerson_thenReturnUpdatedPerson() {
-//
-//      Person personToUpdate = person1;
-//      personToUpdate.setAdress("NEW ADRESS");
-//
-//      personService.updatePerson("John", "Boyd");
-//
-//      assertThat(personToUpdate.getAdress()).isEqualTo("NEW ADRESS");
-//   }
-//
-//   @Test
-//   @Tag("PUT")
-//   @DisplayName("Update - unknow person - error")
-//   public void givenPersonEndpoint_whenUpdateUnknowPerson_thenReturnNull() {
-//
-//      Person unknowPerson = new Person("Unknow", "Person", "1509 Culver unknow",
-//                  "841-874", "unknowperson@email.com", medicalRecord1);
-//
-//      personService.updatePerson("John", "Boyd");
-//
-//      assertThat(personService.personInfo(unknowPerson.getFirstName(),
-//                  unknowPerson.getLastName())).isNull();
-//   }
-//
+   @Test
+   @Tag("PUT")
+   @DisplayName("Update - Existing person ")
+   public void givenPersonEndpoint_whenUpdatePerson_thenReturnUpdatedPerson() {
+      // GIVEN
+      List<Person> personsList = new ArrayList<>();
+      person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6512", "jaboyd@email.com");
+      personsList.add(person1);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      Person personToUpdate = new Person("John", "Boyd", "NEW ADDRESS", "city",
+                  "zip", "phone", "email");
+
+      // WHEN
+      personService.updatePerson(personToUpdate);
+
+      // THEN
+      assertThat(personsList.size()).isEqualTo(1);
+      assertThat(personsList.toString()).contains(personToUpdate.toString());
+   }
+
+   @Test
+   @Tag("PUT")
+   @DisplayName("Update - Unknow person")
+   public void givenPersonEndpoint_whenUpdateUnknowPerson_thenReturnNull() {
+      // GIVEN
+      List<Person> personsList = new ArrayList<>();
+      person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6512", "jaboyd@email.com");
+      personsList.add(person1);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      Person personToUpdate = new Person("UNKNOW", "PERSON", "NEW ADDRESS",
+                  "city", "zip", "phone", "email");
+
+      // WHEN
+      personService.updatePerson(personToUpdate);
+
+      // THEN
+      assertThat(personsList.size()).isEqualTo(1);
+      assertThat(personsList.toString())
+                  .doesNotContain(personToUpdate.toString());
+   }
+
 //   @Test
 //   @Tag("DELETE")
 //   @DisplayName("Delete - existing person")

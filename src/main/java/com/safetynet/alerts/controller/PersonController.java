@@ -62,11 +62,11 @@ public class PersonController {
 
       if (!personInfos.isEmpty()) {
          LOGGER.info("SUCCESS - personInfos GET request");
-         response.setStatus(Constants.STATUS_200);
+         response.setStatus(Constants.STATUS_OK_200);
       } else {
          LOGGER.error("FAILED - No person's founded for last name: {}",
                      lastName);
-         response.setStatus(Constants.ERROR_404);
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
       }
       return personInfos;
    }
@@ -88,14 +88,14 @@ public class PersonController {
 
       if (!communityEmail.isEmpty()) {
          LOGGER.info("SUCCESS - CommunityEmail GET request");
-         response.setStatus(Constants.STATUS_200);
+         response.setStatus(Constants.STATUS_OK_200);
       } else {
          LOGGER.error("FAILED - No person's email adresses founded for: {}",
                      city);
          String notFounded = "No person's email adresses founded for: "
                      + city;
          communityEmail.add(notFounded);
-         response.setStatus(Constants.ERROR_404);
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
       }
       return communityEmail;
    }
@@ -117,11 +117,11 @@ public class PersonController {
 
       if (!childAlert.isEmpty()) {
          LOGGER.info("SUCCESS - ChildAlert GET request");
-         response.setStatus(Constants.STATUS_200);
+         response.setStatus(Constants.STATUS_OK_200);
       } else {
          LOGGER.error("FAILED - No household with child founded for: {}",
                      address);
-         response.setStatus(Constants.ERROR_404);
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
       }
       return childAlert;
    }
@@ -134,27 +134,38 @@ public class PersonController {
     */
    @PostMapping("/person")
    public void createPerson(
-               @NotNull @RequestBody Map<String, String> personToCreate,
+               @NotNull @RequestBody final Map<String, String> personToCreate,
                final HttpServletResponse response) {
       Person personsCreated = personService.createPerson(personToCreate);
 
       if (personsCreated != null) {
          LOGGER.info("SUCCESS - CreatePerson POST request");
-         response.setStatus(Constants.STATUS_201);
+         response.setStatus(Constants.STATUS_CREATED_201);
       } else {
          response.setStatus(Constants.ERROR_CONFLICT_409);
       }
    }
 
    /**
-    * @param person
-    * @return
+    * This void method controller is used to update a person.
+    *
+    * @param personToUpdate
     */
    @PutMapping("/person")
-   public List<Person> updatePerson(
-               @NotNull @RequestParam final Person person) {
-      return null;
+   public void updatePerson(@NotNull @RequestBody final Person personToUpdate,
+               final HttpServletResponse response) {
 
+      boolean isUpdated = personService.updatePerson(personToUpdate);
+
+      if (isUpdated) {
+         LOGGER.info("SUCCESS - UpdatePerson PUT request");
+         response.setStatus(Constants.STATUS_OK_200);
+      } else {
+         LOGGER.error("No person founded for: {} {}",
+                     personToUpdate.getFirstName(),
+                     personToUpdate.getLastName());
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
+      }
    }
 
    /**
@@ -164,8 +175,9 @@ public class PersonController {
     */
    @DeleteMapping("/person")
    public List<Person> deletePerson(
-               @NotNull @RequestParam final String firstName,
-               @NotNull @RequestParam final String lastName) {
+               @NotNull @RequestBody final String firstName,
+               @NotNull @RequestBody final String lastName,
+               final HttpServletResponse response) {
       return null;
 
    }
@@ -178,7 +190,8 @@ public class PersonController {
     */
    public List<String> getPhoneAlert(final String phoneNumber,
                final Map<Integer, FireStation> responsibleFireStation,
-               final List<Person> personsUnderFirestationResponsibility) {
+               final List<Person> personsUnderFirestationResponsibility,
+               final HttpServletResponse response) {
       return null;
 
    }

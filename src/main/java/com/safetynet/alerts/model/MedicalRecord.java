@@ -24,10 +24,6 @@ public class MedicalRecord {
     */
    private List<String> allergies;
 
-   private int age;
-
-   private AgeCalculator ageCalculator;
-
    /**
     * @param personsBirthdate
     * @param personMedicationsFollowed
@@ -55,10 +51,11 @@ public class MedicalRecord {
       this.birthdate = personBirthdate;
    }
 
+   /**
+    * @return personsAge
+    */
    public int getAge() {
-      ageCalculator = new AgeCalculator();
-      String personsBirthdate = getBirthdate();
-      int personsAge = AgeCalculator.ageCalculation(personsBirthdate);
+      int personsAge = AgeCalculator.ageCalculation(this.birthdate);
       return personsAge;
    }
 
