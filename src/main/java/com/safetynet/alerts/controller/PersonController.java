@@ -8,14 +8,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.safetynet.alerts.constants.Constants;
+import com.safetynet.alerts.dto.ChildAlertDTO;
+import com.safetynet.alerts.dto.PersonInfoDTO;
 import com.safetynet.alerts.model.FireStation;
-import com.safetynet.alerts.model.Household;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.service.IPersonService;
 
@@ -28,13 +32,11 @@ import groovyjarjarantlr4.v4.runtime.misc.NotNull;
  */
 @RestController
 public class PersonController {
-
    /**
     * Logger class.
     */
    private static final Logger LOGGER = LogManager
                .getLogger(PersonController.class);
-
    /**
     * PersonService interface variable used to acces to service & model classes.
     */
@@ -47,23 +49,24 @@ public class PersonController {
     *
     * @param firstName
     * @param lastName
-    * @return personInfos, Persons list
+    * @return personInfos, PersonInfoDTO list
     */
-   @GetMapping(value = "/personInfo")
-   public List<Person> personInfo(@RequestParam String firstName,
-               @NotNull @RequestParam String lastName,
-               HttpServletResponse response) {
+   @GetMapping("/personInfo")
+   public List<PersonInfoDTO> personInfo(@RequestParam final String firstName,
+               @NotNull @RequestParam final String lastName,
+               final HttpServletResponse response) {
       LOGGER.debug("GET request received for personInfos: {}", lastName);
 
-      List<Person> personInfos = personService.personInfo(firstName, lastName);
+      List<PersonInfoDTO> personInfos = personService.personInfo(firstName,
+                  lastName);
 
       if (!personInfos.isEmpty()) {
-         LOGGER.debug("SUCCESS - personInfos HTTP GET request sucess");
-         response.setStatus(200);
+         LOGGER.info("SUCCESS - personInfos GET request");
+         response.setStatus(Constants.STATUS_200);
       } else {
-         LOGGER.debug("FAILED - No person's founded for last name: {}",
+         LOGGER.error("FAILED - No person's founded for last name: {}",
                      lastName);
-         response.setStatus(404);
+         response.setStatus(Constants.ERROR_404);
       }
       return personInfos;
    }
@@ -75,24 +78,24 @@ public class PersonController {
     * @param city
     * @return communityEmail, email addresses list
     */
-   @GetMapping(value = "/communityEmail")
+   @GetMapping("/communityEmail")
    public List<String> getCommunityEmail(
-               @NotNull @RequestParam(value = "city") String city,
-               HttpServletResponse response) {
+               @NotNull @RequestParam(value = "city") final String city,
+               final HttpServletResponse response) {
       LOGGER.debug("GET request received for getCommunityEmail: {}", city);
 
       List<String> communityEmail = personService.communityEmail(city);
 
       if (!communityEmail.isEmpty()) {
-         LOGGER.debug("SUCCESS - CommunityEmail HTTP GET request sucess");
-         response.setStatus(200);
+         LOGGER.info("SUCCESS - CommunityEmail GET request");
+         response.setStatus(Constants.STATUS_200);
       } else {
-         LOGGER.debug("FAILED - No person's email adresses founded for: {}",
+         LOGGER.error("FAILED - No person's email adresses founded for: {}",
                      city);
          String notFounded = "No person's email adresses founded for: "
                      + city;
          communityEmail.add(notFounded);
-         response.setStatus(404);
+         response.setStatus(Constants.ERROR_404);
       }
       return communityEmail;
    }
@@ -102,43 +105,54 @@ public class PersonController {
     * the adress entered contains children.
     *
     * @param address
-    * @return childAlert, households with children list
+    * @return childAlert, ChildAlertDTO list
     */
-   @GetMapping(value = "/childAlert")
-   public List<Household> getChildAlert(
-               @NotNull @RequestParam(value = "address") String address,
-               HttpServletResponse response) {
+   @GetMapping("/childAlert")
+   public List<ChildAlertDTO> getChildAlert(
+               @NotNull @RequestParam(value = "address") final String address,
+               final HttpServletResponse response) {
       LOGGER.debug("GET request received for getChildAlert: {}", address);
 
-      List<Household> childAlert = personService.childAlert(address);
+      List<ChildAlertDTO> childAlert = personService.childAlert(address);
 
       if (!childAlert.isEmpty()) {
-         LOGGER.debug("SUCCESS - ChildAlert HTTP GET request sucess");
-         response.setStatus(200);
+         LOGGER.info("SUCCESS - ChildAlert GET request");
+         response.setStatus(Constants.STATUS_200);
       } else {
-         LOGGER.debug("FAILED - No household with child founded for: {}",
+         LOGGER.error("FAILED - No household with child founded for: {}",
                      address);
-         response.setStatus(404);
+         response.setStatus(Constants.ERROR_404);
       }
       return childAlert;
    }
 
    /**
-    * @param person
-    * @return
+    * This method controller is used to create a new Person with the service
+    * method.
+    *
+    * @param personToCreate
     */
-   @RequestMapping(value = "/person", method = RequestMethod.POST)
-   public List<Person> createPerson(final Person person) {
-      return null;
+   @PostMapping("/person")
+   public void createPerson(
+               @NotNull @RequestBody Map<String, String> personToCreate,
+               final HttpServletResponse response) {
+      Person personsCreated = personService.createPerson(personToCreate);
 
+      if (personsCreated != null) {
+         LOGGER.info("SUCCESS - CreatePerson POST request");
+         response.setStatus(Constants.STATUS_201);
+      } else {
+         response.setStatus(Constants.ERROR_CONFLICT_409);
+      }
    }
 
    /**
     * @param person
     * @return
     */
-   @RequestMapping(value = "/person", method = RequestMethod.PUT)
-   public List<Person> updatePerson(final Person person) {
+   @PutMapping("/person")
+   public List<Person> updatePerson(
+               @NotNull @RequestParam final Person person) {
       return null;
 
    }
@@ -148,9 +162,10 @@ public class PersonController {
     * @param lastName
     * @return
     */
-   @RequestMapping(value = "/person", method = RequestMethod.DELETE)
-   public List<Person> deletePerson(final String firstName,
-               final String lastName) {
+   @DeleteMapping("/person")
+   public List<Person> deletePerson(
+               @NotNull @RequestParam final String firstName,
+               @NotNull @RequestParam final String lastName) {
       return null;
 
    }

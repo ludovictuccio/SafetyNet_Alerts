@@ -1,5 +1,7 @@
 package com.safetynet.alerts.model;
 
+import java.util.List;
+
 /**
  * Households class.
  *
@@ -7,72 +9,42 @@ package com.safetynet.alerts.model;
  */
 public class Household {
 
-   private String firstName;
-   private String lastName;
-   private int age;
+   /**
+    * The list of persons by household.
+    */
+   private List<Person> householdsComposition;
+
+//   private int totalAdultsNumber;
+//   private int totalChildrenNumber;
 
    /**
-    * @param childAge
-    * @param personFirstName
-    * @param personLastName
+    * @param personsPerHousehold
     */
-   public Household(final int childAge, final String personFirstName,
-               final String personLastName) {
-      this.age = childAge;
-      this.firstName = personFirstName;
-      this.lastName = personLastName;
+   public Household(final List<Person> personsPerHousehold) {
+      this.householdsComposition = personsPerHousehold;
    }
 
    /**
-    * @return the firstName
+    * @return the personsPerHousehold
+    * @return householdsComposition
     */
-   public String getFirstName() {
-      return firstName;
+   public List<Person> getPersonsPerHousehold() {
+      return householdsComposition;
    }
 
    /**
-    * @param firstName the firstName to set
+    * @param personsPerHousehold the personsPerHousehold to set
     */
-   public void setFirstName(final String firstName) {
-      this.firstName = firstName;
+   public void setPersonsPerHousehold(final List<Person> personsPerHousehold) {
+      this.householdsComposition = personsPerHousehold;
    }
 
    /**
-    * @return the lastName
+    * A toString class method().
     */
-   public String getLastName() {
-      return lastName;
-   }
-
-   /**
-    * @param lastName the lastName to set
-    */
-   public void setLastName(final String lastName) {
-      this.lastName = lastName;
-   }
-
-   /**
-    * @return age
-    */
-   public int getAge() {
-      return age;
-   }
-
-   /**
-    * @param personAge
-    */
-   public void setAge(final int personAge) {
-      this.age = personAge;
-   }
-
    public String toString() {
-      return "Households"
-                  + " [FirstName="
-                  + firstName
-                  + ", LastName="
-                  + lastName
-                  + ", Age="
-                  + age
+      return "Household [Household composition="
+                  + householdsComposition
                   + "]";
    }
 

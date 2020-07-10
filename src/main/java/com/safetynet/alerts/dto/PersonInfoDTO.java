@@ -1,11 +1,15 @@
-package com.safetynet.alerts.model;
+package com.safetynet.alerts.dto;
+
+import com.safetynet.alerts.model.MedicalRecord;
 
 /**
- * Person class.
+ * PersonInfoDTO class.
  *
  * @author Ludovic Tuccio
  */
-public class Person {
+public class PersonInfoDTO {
+
+// int age ? dans medicalrecord ?
 
    /**
     * The person's first name.
@@ -28,10 +32,6 @@ public class Person {
     */
    private String zip;
    /**
-    * The person's phone number.
-    */
-   private String phone;
-   /**
     * The person's email adress.
     */
    private String email;
@@ -40,58 +40,16 @@ public class Person {
     */
    private MedicalRecord medicalRecord;
 
-   public Person() {
-
-   }
-
-   /**
-    * Constructor used to convert json data in java object.
-    *
-    * @param personsFirstName
-    * @param personsLastName
-    * @param personsAdress
-    * @param personsCity
-    * @param personsZip
-    * @param personsPhoneNumber
-    * @param personsEmail
-    *
-    */
-   public Person(final String personsFirstName, final String personsLastName,
-               final String personsAdress, final String personsCity,
-               final String personsZip, final String personsPhoneNumber,
-               final String personsEmail) {
-      this.firstName = personsFirstName;
-      this.lastName = personsLastName;
-      this.address = personsAdress;
-      this.city = personsCity;
-      this.zip = personsZip;
-      this.phone = personsPhoneNumber;
-      this.email = personsEmail;
-   }
-
-   /**
-    * Constructor with medicalrecord.
-    *
-    * @param personsFirstName
-    * @param personsLastName
-    * @param personsAdress
-    * @param personsCity
-    * @param personsZip
-    * @param personsPhoneNumber
-    * @param personsEmail
-    * @param personsMedicalRecord
-    */
-   public Person(final String personsFirstName, final String personsLastName,
-               final String personsAdress, final String personsCity,
-               final String personsZip, final String personsPhoneNumber,
+   public PersonInfoDTO(final String personsFirstName,
+               final String personsLastName, final String personsAddress,
+               final String personsCity, final String personsZip,
                final String personsEmail,
                final MedicalRecord personsMedicalRecord) {
       this.firstName = personsFirstName;
       this.lastName = personsLastName;
-      this.address = personsAdress;
+      this.address = personsAddress;
       this.city = personsCity;
       this.zip = personsZip;
-      this.phone = personsPhoneNumber;
       this.email = personsEmail;
       this.medicalRecord = personsMedicalRecord;
    }
@@ -104,7 +62,7 @@ public class Person {
    }
 
    /**
-    * @param personsFirstName the person's first name to set
+    * @param personsFirstName the firstName to set
     */
    public void setFirstName(final String personsFirstName) {
       this.firstName = personsFirstName;
@@ -118,21 +76,21 @@ public class Person {
    }
 
    /**
-    * @param personsLastName the person's last name to set
+    * @param personsLastName the lastName to set
     */
    public void setLastName(final String personsLastName) {
       this.lastName = personsLastName;
    }
 
    /**
-    * @return the adress
+    * @return the address
     */
    public String getAddress() {
       return address;
    }
 
    /**
-    * @param personsAddress the person's adress to set
+    * @param personsAddress the address to set
     */
    public void setAddress(final String personsAddress) {
       this.address = personsAddress;
@@ -146,7 +104,7 @@ public class Person {
    }
 
    /**
-    * @param personsCity the person's city to set
+    * @param personsCity the city to set
     */
    public void setCity(final String personsCity) {
       this.city = personsCity;
@@ -160,24 +118,10 @@ public class Person {
    }
 
    /**
-    * @param zip the zip to set
+    * @param personsZip the zip to set
     */
-   public void setZip(final String zip) {
-      this.zip = zip;
-   }
-
-   /**
-    * @return the phone
-    */
-   public String getPhone() {
-      return phone;
-   }
-
-   /**
-    * @param personsPhoneNumber the person's phone number to set
-    */
-   public void setPhone(final String personsPhoneNumber) {
-      this.phone = personsPhoneNumber;
+   public void setZip(final String personsZip) {
+      this.zip = personsZip;
    }
 
    /**
@@ -188,7 +132,7 @@ public class Person {
    }
 
    /**
-    * @param personsEmail the person's email to set
+    * @param personsEmail the email to set
     */
    public void setEmail(final String personsEmail) {
       this.email = personsEmail;
@@ -202,17 +146,14 @@ public class Person {
    }
 
    /**
-    * @param personsMedicalRecord the person's medical record to set
+    * @param personsMedicalRecord the medicalRecord to set
     */
    public void setMedicalRecord(final MedicalRecord personsMedicalRecord) {
       this.medicalRecord = personsMedicalRecord;
    }
 
-   /**
-    * The toString() method class.
-    */
    public String toString() {
-      return "Person [firstName="
+      return "PersonInfoDTO [FirstName="
                   + firstName
                   + ", lastName="
                   + lastName
@@ -222,8 +163,6 @@ public class Person {
                   + city
                   + ", zip="
                   + zip
-                  + ", phone="
-                  + phone
                   + ", email="
                   + email
                   + ", medicalRecord="

@@ -1,6 +1,7 @@
 package com.safetynet.alerts.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -18,8 +19,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 
+import com.safetynet.alerts.dto.ChildAlertDTO;
+import com.safetynet.alerts.dto.PersonInfoDTO;
 import com.safetynet.alerts.model.EntitiesInfosStorage;
-import com.safetynet.alerts.model.Household;
 import com.safetynet.alerts.model.MedicalRecord;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.util.AgeCalculator;
@@ -96,7 +98,7 @@ public class PersonServiceTest {
 
       when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
 
-      List<Person> result = personService.personInfo("John", "Boyd");
+      List<PersonInfoDTO> result = personService.personInfo("John", "Boyd");
 
       assertThat(result.isEmpty()).isFalse();
       assertThat(result.size()).isEqualTo(2);
@@ -120,7 +122,7 @@ public class PersonServiceTest {
 
       when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
 
-      List<Person> result = personService.personInfo("Unknow", "Person");
+      List<PersonInfoDTO> result = personService.personInfo("Unknow", "Person");
 
       assertThat(result.isEmpty()).isTrue();
       assertThat(result.size()).isEqualTo(0);
@@ -150,8 +152,6 @@ public class PersonServiceTest {
       List<String> personsEmails = personService.communityEmail("Culver");
 
       assertThat(personsEmails.size()).isEqualTo(3);
-      assertThat(personsEmails.toString()).isEqualTo(
-                  "[jaboyd@email.com, drk@email.com, gramps@email.com]");
       assertThat(personsEmails.get(0)).isEqualTo("jaboyd@email.com");
       assertThat(personsEmails.get(1)).isEqualTo("drk@email.com");
       assertThat(personsEmails.get(2)).isEqualTo("gramps@email.com");
@@ -185,14 +185,14 @@ public class PersonServiceTest {
    @Tag("ChildAlert")
    @DisplayName("ChildAlert - Adult & child - Same address")
    public void givenChildAndAdultOnTheSameAddress_whenChildAlertAddress_thenReturnTwoHouseholdListSize() {
-      List<Household> childAlert = new ArrayList<>();
+      List<ChildAlertDTO> childAlert = new ArrayList<>();
 
       // Child 1 - Good address
       person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
                   "841-874-6512", "jaboyd@email.com", medicalRecordChild);
       int childAge = AgeCalculator
                   .ageCalculation(person1.getMedicalRecord().getBirthdate());
-      Household child1 = new Household(childAge, person1.getFirstName(),
+      ChildAlertDTO child1 = new ChildAlertDTO(childAge, person1.getFirstName(),
                   person1.getLastName());
       childAlert.add(child1);
 
@@ -201,7 +201,7 @@ public class PersonServiceTest {
                   "841-874-6513", "drk@email.com", medicalRecordAdult);
       int adultAge = AgeCalculator
                   .ageCalculation(person2.getMedicalRecord().getBirthdate());
-      Household adult1 = new Household(adultAge, person2.getFirstName(),
+      ChildAlertDTO adult1 = new ChildAlertDTO(adultAge, person2.getFirstName(),
                   person2.getLastName());
       childAlert.add(adult1);
 
@@ -211,8 +211,8 @@ public class PersonServiceTest {
                   medicalRecordChild);
       int childAge2 = AgeCalculator
                   .ageCalculation(person3.getMedicalRecord().getBirthdate());
-      Household child2 = new Household(childAge2, person3.getFirstName(),
-                  person3.getLastName());
+      ChildAlertDTO child2 = new ChildAlertDTO(childAge2,
+                  person3.getFirstName(), person3.getLastName());
       childAlert.add(child2);
 
       // Add only same household persons
@@ -227,7 +227,7 @@ public class PersonServiceTest {
 
       when(entitiesInfosStorage.getHouseholds()).thenReturn(households);
 
-      List<Household> result = personService.childAlert("1509 Culver St");
+      List<ChildAlertDTO> result = personService.childAlert("1509 Culver St");
 
       assertThat(result.size()).isEqualTo(2);
       assertThat(result.isEmpty()).isFalse();
@@ -237,15 +237,15 @@ public class PersonServiceTest {
    @Tag("ChildAlert")
    @DisplayName("ChildAlert - Address without children")
    public void givenTwoAdultsOnTheSameAddress_whenChildAlertAddress_thenReturnEmptyList() {
-      List<Household> childAlert = new ArrayList<>();
+      List<ChildAlertDTO> childAlert = new ArrayList<>();
 
       // Adult 1
       person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
                   "841-874-6512", "jaboyd@email.com", medicalRecordAdult);
       int adultAge1 = AgeCalculator
                   .ageCalculation(person1.getMedicalRecord().getBirthdate());
-      Household adult1 = new Household(adultAge1, person1.getFirstName(),
-                  person1.getLastName());
+      ChildAlertDTO adult1 = new ChildAlertDTO(adultAge1,
+                  person1.getFirstName(), person1.getLastName());
       childAlert.add(adult1);
 
       // Adult 2
@@ -253,8 +253,8 @@ public class PersonServiceTest {
                   "841-874-6513", "drk@email.com", medicalRecordAdult);
       int adultAge2 = AgeCalculator
                   .ageCalculation(person2.getMedicalRecord().getBirthdate());
-      Household adult2 = new Household(adultAge2, person2.getFirstName(),
-                  person2.getLastName());
+      ChildAlertDTO adult2 = new ChildAlertDTO(adultAge2,
+                  person2.getFirstName(), person2.getLastName());
       childAlert.add(adult2);
 
       List<Person> householdMembersList = new ArrayList<>();
@@ -267,7 +267,7 @@ public class PersonServiceTest {
 
       when(entitiesInfosStorage.getHouseholds()).thenReturn(households);
 
-      List<Household> result = personService.childAlert("1509 Culver St");
+      List<ChildAlertDTO> result = personService.childAlert("1509 Culver St");
 
       assertThat(result.size()).isEqualTo(0);
       assertThat(result.isEmpty()).isTrue();
@@ -277,15 +277,15 @@ public class PersonServiceTest {
    @Tag("ChildAlert")
    @DisplayName("ChildAlert - Unknow address")
    public void givenUnknowAddressEntered_whenChildAlert_thenReturnEmptyList() {
-      List<Household> childAlert = new ArrayList<>();
+      List<ChildAlertDTO> childAlert = new ArrayList<>();
 
       // Adult 1
       person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
                   "841-874-6512", "jaboyd@email.com", medicalRecordChild);
       int adultAge1 = AgeCalculator
                   .ageCalculation(person1.getMedicalRecord().getBirthdate());
-      Household adult1 = new Household(adultAge1, person1.getFirstName(),
-                  person1.getLastName());
+      ChildAlertDTO adult1 = new ChildAlertDTO(adultAge1,
+                  person1.getFirstName(), person1.getLastName());
       childAlert.add(adult1);
 
       // Adult 2
@@ -293,8 +293,8 @@ public class PersonServiceTest {
                   "841-874-6513", "drk@email.com", medicalRecordAdult);
       int adultAge2 = AgeCalculator
                   .ageCalculation(person2.getMedicalRecord().getBirthdate());
-      Household adult2 = new Household(adultAge2, person2.getFirstName(),
-                  person2.getLastName());
+      ChildAlertDTO adult2 = new ChildAlertDTO(adultAge2,
+                  person2.getFirstName(), person2.getLastName());
       childAlert.add(adult2);
 
       List<Person> householdMembersList = new ArrayList<>();
@@ -307,36 +307,140 @@ public class PersonServiceTest {
 
       when(entitiesInfosStorage.getHouseholds()).thenReturn(households);
 
-      List<Household> result = personService.childAlert("Unknow address");
+      List<ChildAlertDTO> result = personService.childAlert("Unknow address");
 
       assertThat(result.size()).isEqualTo(0);
       assertThat(result.isEmpty()).isTrue();
    }
-//   @Test
-//   @Tag("POST")
-//   @DisplayName("Create - new person")
-//   public void givenPersonEndpoint_whenCreatePerson_thenReturnPersonCreated() {
-//
-//      Person newPerson = new Person("New", "Person", "new adress", "123-456",
-//                  "newperson@email.com", medicalRecord1);
-//
-//      Person personCreated = personService.createPerson(newPerson);
-//
-//      assertThat(personCreated).isEqualTo(newPerson);
-//   }
-//
-//   @Test
-//   @Tag("POST")
-//   @DisplayName("Create - existing person - error")
-//   public void givenPersonEndpoint_whenCreateExistingPerson_thenReturnNull() {
-//
-//      Person newPerson = new Person("John", "Boyd", "1509 Culver St",
-//                  "841-874-6512", "jaboyd@email.com", medicalRecord1);
-//
-//      Person personCreated = personService.createPerson(newPerson);
-//
-//      assertThat(personCreated).isNull();
-//   }
+
+   @Test
+   @Tag("POST")
+   @DisplayName("Create - New person")
+   public void givenPersonEndpoint_whenCreateNewPerson_thenReturnPersonCreated() {
+      // GIVEN
+      Map<String, String> personToCreate = new HashMap<String, String>();
+      Person newPerson = new Person("New", "Person", "address", "City", "zip",
+                  "phone", "email");
+      personToCreate.put("firstName", newPerson.getFirstName());
+      personToCreate.put("lastName", newPerson.getLastName());
+      personToCreate.put("address", newPerson.getAddress());
+      personToCreate.put("city", newPerson.getCity());
+      personToCreate.put("zip", newPerson.getZip());
+      personToCreate.put("phone", newPerson.getPhone());
+      personToCreate.put("email", newPerson.getEmail());
+
+      List<Person> personsList = new ArrayList<>();
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      Map<String, List<Person>> households = new HashMap<>();
+      when(entitiesInfosStorage.getHouseholds()).thenReturn(households);
+
+      // WHEN
+      Person result = personService.createPerson(personToCreate);
+
+      // THEN
+      assertThat(result).isNotNull()
+                  .hasFieldOrPropertyWithValue("firstName",
+                              newPerson.getFirstName())
+                  .hasFieldOrPropertyWithValue("lastName",
+                              newPerson.getLastName())
+                  .hasFieldOrPropertyWithValue("address",
+                              newPerson.getAddress())
+                  .hasFieldOrPropertyWithValue("city", newPerson.getCity())
+                  .hasFieldOrPropertyWithValue("zip", newPerson.getZip())
+                  .hasFieldOrPropertyWithValue("phone", newPerson.getPhone())
+                  .hasFieldOrPropertyWithValue("email", newPerson.getEmail());
+      assertThat(personsList.contains(result)).isTrue();
+      assertThat(households.containsKey(result.getAddress())).isTrue();
+      assertThat(households.get(result.getAddress()).contains(result));
+   }
+
+   @Test
+   @Tag("POST")
+   @DisplayName("Create - Verification persons added to all Persons list")
+   public void givenListWithOnePerson_whenSuccessNewPersonCreation_thenReturnSizeListAtTwo() {
+      // GIVEN
+      Map<String, String> personToCreate = new HashMap<String, String>();
+      Person householdPerson1 = new Person("New", "Person", "1509 Culver St",
+                  "Culver", "97451", "841-874-6512", "jaboyd@email.com");
+      personToCreate.put("firstName", householdPerson1.getFirstName());
+      personToCreate.put("lastName", householdPerson1.getLastName());
+      personToCreate.put("address", householdPerson1.getAddress());
+      personToCreate.put("city", householdPerson1.getCity());
+      personToCreate.put("zip", householdPerson1.getZip());
+      personToCreate.put("phone", householdPerson1.getPhone());
+      personToCreate.put("email", householdPerson1.getEmail());
+
+      List<Person> personsList = new ArrayList<>();
+      Person householdPerson2 = new Person("John", "Boyd", "1509 Culver St",
+                  "Culver", "97451", "841-874-6512", "jaboyd@email.com");
+      personsList.add(householdPerson2);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      Map<String, List<Person>> households = new HashMap<>();
+      when(entitiesInfosStorage.getHouseholds()).thenReturn(households);
+
+      // WHEN
+      Person result = personService.createPerson(personToCreate);
+
+      // THEN
+      assertThat(personsList.contains(result)).isTrue();
+      assertThat(households.containsKey(result.getAddress())).isTrue();
+      assertThat(households.get(result.getAddress()).contains(result));
+      assertThat(personsList.size()).isEqualTo(2);
+   }
+
+   @Test
+   @Tag("POST")
+   @DisplayName("Create - Existing person - List size unchanged")
+   public void givenPersonEndpoint_whenCreateExistingPerson_thenReturnListSizeUnchanged() {
+      // GIVEN
+      Map<String, String> personToCreate = new HashMap<String, String>();
+      Person newPerson = new Person("John", "Boyd", "1509 Culver St", "Culver",
+                  "97451", "841-874-6512", "jaboyd@email.com");
+      personToCreate.put("firstName", newPerson.getFirstName());
+      personToCreate.put("lastName", newPerson.getLastName());
+      personToCreate.put("address", newPerson.getAddress());
+      personToCreate.put("city", newPerson.getCity());
+      personToCreate.put("zip", newPerson.getZip());
+      personToCreate.put("phone", newPerson.getPhone());
+      personToCreate.put("email", newPerson.getEmail());
+
+      List<Person> personsList = new ArrayList<>();
+      Person existingPerson = new Person("John", "Boyd", "1509 Culver St",
+                  "Culver", "97451", "841-874-6512", "jaboyd@email.com");
+      personsList.add(existingPerson);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      // WHEN
+      Person result = personService.createPerson(personToCreate);
+
+      // THEN
+      assertThat(personsList.contains(result)).isFalse();
+      assertThat(personsList.contains(existingPerson)).isTrue();
+      assertThat(personsList.size()).isEqualTo(1);
+   }
+
+   @Test
+   @Tag("POST")
+   @DisplayName("Create - Null information entered")
+   public void givenExistingPersonCreation_whenEmptyInformationEntered_thenReturnException() {
+      Map<String, String> personToCreate = new HashMap<String, String>();
+      Person personWithoutFirstname = new Person("", "Person", "address",
+                  "City", "zip", "phone", "email");
+      personToCreate.put("firstName", personWithoutFirstname.getFirstName());
+      personToCreate.put("lastName", personWithoutFirstname.getLastName());
+      personToCreate.put("address", personWithoutFirstname.getAddress());
+      personToCreate.put("city", personWithoutFirstname.getCity());
+      personToCreate.put("zip", personWithoutFirstname.getZip());
+      personToCreate.put("phone", personWithoutFirstname.getPhone());
+      personToCreate.put("email", personWithoutFirstname.getEmail());
+
+      assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+                  .isThrownBy(() -> {
+                     personService.createPerson(personToCreate);
+                  });
+   }
 
 //   @Test
 //   @Tag("PUT")

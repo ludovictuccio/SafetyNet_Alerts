@@ -3,11 +3,11 @@ package com.safetynet.alerts.controller;
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Before;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -16,10 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 /**
  * PersonController unit tests class.
@@ -35,12 +35,27 @@ public class PersonControllerTest {
    @Autowired
    private MockMvc mockMvc;
 
-   @Autowired
-   private WebApplicationContext webContext;
+   @Test
+   @Tag("CreatePerson")
+   @DisplayName("CreatePerson - OK")
+   public void givenPersonCreation_whenAllCorrectInfos_thenReturnPersonCreated()
+               throws Exception {
+      this.mockMvc.perform(post("/person").contentType(APPLICATION_JSON)
+                  .content("{\"firstName\": \"Ludovic\",\"lastName\": \"Tuccio\",\"address\": \"1 rue albert\",\"city\": \"Orleans\",\"zip\": \"45000\",\"phone\": \"06123456789\",\"email\": \"ludotuc@hot.fr\"}")
+                  .accept(APPLICATION_JSON))
+                  .andDo(MockMvcResultHandlers.print())
+                  .andExpect(status().isCreated());
+   }
 
-   @Before
-   public void setUp() {
-      mockMvc = MockMvcBuilders.webAppContextSetup(webContext).build();
+   @Test
+   @Tag("CreatePerson")
+   @DisplayName("CreatePerson - ERROR ")
+   public void givenPersonCreation_whenAlreadyExistingPerson_thenReturnErrorConflict()
+               throws Exception {
+      this.mockMvc.perform(post("/person")
+                  .contentType(MediaType.APPLICATION_JSON_VALUE)
+                  .content("{\"firstName\":\"John\",\"lastName\":\"Boyd\",\"address\":\"1509 Culver St\",\"city\":\"Culver\",\"zip\":\"97451\",\"phone\":\"841-874-6512\",\"email\":\"jaboyd@email.com\"}"))
+                  .andExpect(status().isConflict());
    }
 
    @Test
@@ -98,7 +113,7 @@ public class PersonControllerTest {
                   .andExpect(status().isOk())
                   .andExpect(jsonPath("$.length()", is(1)))
                   .andExpect(content().string(
-                              "[{\"firstName\":\"Tessa\",\"lastName\":\"Carman\",\"address\":\"834 Binoc Ave\",\"city\":\"Culver\",\"zip\":\"97451\",\"phone\":\"841-874-6512\",\"email\":\"tenz@email.com\",\"medicalRecord\":{\"birthdate\":\"02/18/2012\",\"medications\":[],\"allergies\":[],\"age\":8}}]"));
+                              "[{\"firstName\":\"Tessa\",\"lastName\":\"Carman\",\"address\":\"834 Binoc Ave\",\"city\":\"Culver\",\"zip\":\"97451\",\"email\":\"tenz@email.com\",\"medicalRecord\":{\"birthdate\":\"02/18/2012\",\"medications\":[],\"allergies\":[],\"age\":8}}]"));
    }
 
    @Test

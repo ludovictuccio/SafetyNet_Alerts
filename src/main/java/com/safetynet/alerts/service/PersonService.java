@@ -10,8 +10,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.safetynet.alerts.dto.ChildAlertDTO;
+import com.safetynet.alerts.dto.PersonInfoDTO;
 import com.safetynet.alerts.model.EntitiesInfosStorage;
-import com.safetynet.alerts.model.Household;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.util.AgeCalculator;
 
@@ -41,20 +42,19 @@ public class PersonService implements IPersonService {
     * 
     * @param firstName
     * @param lastName
-    * @param personsList
-    * @return personsInfosList, Persons List
+    * @return personsInfosList, PersonInfoDTO List
     */
-   public List<Person> personInfo(final String firstName,
+   public List<PersonInfoDTO> personInfo(final String firstName,
                final String lastName) {
       LOGGER.debug("PersonInfo request - initialization");
-      List<Person> personsInfosList = new ArrayList<>();
+      List<PersonInfoDTO> personsInfosList = new ArrayList<>();
       List<Person> personsList = entitiesInfosStorage.getPersonsList();
 
       for (Person person : personsList) {
          if (person.getLastName().equals(lastName)) {
-            Person personsInfos = new Person(person.getFirstName(),
-                        person.getLastName(), person.getAddress(),
-                        person.getCity(), person.getZip(), person.getPhone(),
+            PersonInfoDTO personsInfos = new PersonInfoDTO(
+                        person.getFirstName(), person.getLastName(),
+                        person.getAddress(), person.getCity(), person.getZip(),
                         person.getEmail(), person.getMedicalRecord());
             personsInfosList.add(personsInfos);
          }
@@ -69,7 +69,7 @@ public class PersonService implements IPersonService {
     *
     * @param city
     * @param personsList
-    * @return personsEmail, emails List<String>
+    * @return personsEmail, email addresses List
     */
    public List<String> communityEmail(final String city) {
       LOGGER.debug("CommunityEmail request initialization");
@@ -90,11 +90,11 @@ public class PersonService implements IPersonService {
     * adress entered contains children.
     *
     * @param address
-    * @return childAlert, a Household List
+    * @return childAlert, a ChildAlertDTO List
     */
-   public List<Household> childAlert(final String address) {
+   public List<ChildAlertDTO> childAlert(final String address) {
       LOGGER.debug("ChildAlert request initialization");
-      List<Household> childAlert = new ArrayList<>();
+      List<ChildAlertDTO> childAlert = new ArrayList<>();
       Map<String, List<Person>> households = entitiesInfosStorage
                   .getHouseholds();
       boolean isListWithChildren = false;
@@ -106,21 +106,19 @@ public class PersonService implements IPersonService {
          }
          List<Person> householdMembersList = entry.getValue();
          for (Person person : householdMembersList) {
-
             // If child
             if (AgeCalculator.isChild(person)) {
                int childAge = AgeCalculator.ageCalculation(
                            person.getMedicalRecord().getBirthdate());
-               Household child = new Household(childAge,
+               ChildAlertDTO child = new ChildAlertDTO(childAge,
                            person.getFirstName(), person.getLastName());
                childAlert.add(child);
                isListWithChildren = true;
-
                // If adult
             } else if (!AgeCalculator.isChild(person)) {
                int adultAge = AgeCalculator.ageCalculation(
                            person.getMedicalRecord().getBirthdate());
-               Household adultHouseholdMember = new Household(adultAge,
+               ChildAlertDTO adultHouseholdMember = new ChildAlertDTO(adultAge,
                            person.getFirstName(), person.getLastName());
                childAlert.add(adultHouseholdMember);
             }
@@ -136,13 +134,53 @@ public class PersonService implements IPersonService {
    }
 
    /**
-    * @param person
-    * @return
+    * This method service is used to create a new Person,and update households
+    * list.
+    *
+    * @param personToCreate
+    * @return Person newPerson
     */
-   public Person createPerson(final Person person) {
+   public Person createPerson(final Map<String, String> personToCreate) {
+      // Added first letter uppecase for firstname, lastname & city
+      Person newPerson = new Person(
+                  personToCreate.get("firstName").toString().substring(0, 1)
+                              .toUpperCase()
+                              + personToCreate.get("firstName").toString()
+                                          .substring(1).toLowerCase(),
+                  personToCreate.get("lastName").toString().substring(0, 1)
+                              .toUpperCase()
+                              + personToCreate.get("lastName").toString()
+                                          .substring(1).toLowerCase(),
+                  personToCreate.get("address").toString(),
+                  personToCreate.get("city").toString().substring(0, 1)
+                              .toUpperCase()
+                              + personToCreate.get("city").toString()
+                                          .substring(1).toLowerCase(),
+                  personToCreate.get("zip").toString(),
+                  personToCreate.get("phone").toString(),
+                  personToCreate.get("email").toString());
+      List<Person> personsList = entitiesInfosStorage.getPersonsList();
 
-      return person;
+      // Verification for not create a person already existing in the list
+      for (Person existingPerson : personsList) {
+         if (existingPerson.getFirstName().equals(newPerson.getFirstName())
+                     && existingPerson.getLastName()
+                                 .equals(newPerson.getLastName())) {
+            LOGGER.error(
+                        "FAILED to create the person: {} {}, this person already exists.",
+                        newPerson.getFirstName(), newPerson.getLastName());
+            return null;
+         }
+      }
+      personsList.add(newPerson);
 
+      // Update households
+      Map<String, List<Person>> households = entitiesInfosStorage
+                  .getHouseholds();
+      List<Person> newPersonHousehold = households.computeIfAbsent(
+                  newPerson.getAddress(), temp -> new ArrayList<>());
+      newPersonHousehold.add(newPerson);
+      return newPerson;
    }
 
    /**
@@ -163,15 +201,6 @@ public class PersonService implements IPersonService {
                final String lastName) {
       return null;
 
-   }
-
-   /**
-    * Method used to retrieve the list of all persons.
-    *
-    * @return all persons list, entitiesInfosStorage.getPersonsList()
-    */
-   public List<Person> getAllPersons() {
-      return entitiesInfosStorage.getPersonsList();
    }
 
 }
