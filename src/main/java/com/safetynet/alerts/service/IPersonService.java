@@ -20,16 +20,14 @@ public interface IPersonService {
    Person createPerson(Map<String, String> personToCreate);
 
    /**
-    * @param firstName
-    * @param lastName
+    * @param personToUpdate
     */
    boolean updatePerson(Person personToUpdate);
 
    /**
-    * @param firstName
-    * @param lastName
+    * @param personToDelete
     */
-   void deletePerson(String firstName, String lastName);
+   boolean deletePerson(Person personToDelete);
 
    /**
     * @param firstName
@@ -38,7 +36,7 @@ public interface IPersonService {
    List<PersonInfoDTO> personInfo(String firstName, String lastName);
 
    /**
-    * @param adress
+    * @param address
     */
    List<ChildAlertDTO> childAlert(String address);
 

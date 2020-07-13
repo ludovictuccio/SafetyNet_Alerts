@@ -2,9 +2,6 @@ package com.safetynet.alerts.controller;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -19,7 +16,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 /**
@@ -29,6 +28,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
  */
 @WebMvcTest(PersonController.class)
 @ExtendWith(SpringExtension.class)
+@WebAppConfiguration()
 @AutoConfigureMockMvc
 @ComponentScan({ "com.safetynet.alerts.service", "com.safetynet.alerts.model" })
 public class PersonControllerTest {
@@ -41,7 +41,8 @@ public class PersonControllerTest {
    @DisplayName("CreatePerson - OK")
    public void givenPersonCreation_whenAllCorrectInfos_thenReturnPersonCreated()
                throws Exception {
-      this.mockMvc.perform(post("/person").contentType(APPLICATION_JSON)
+      this.mockMvc.perform(MockMvcRequestBuilders.post("/person")
+                  .contentType(APPLICATION_JSON)
                   .content("{\"firstName\": \"Ludovic\",\"lastName\": \"Tuccio\",\"address\": \"1 rue albert\",\"city\": \"Orleans\",\"zip\": \"45000\",\"phone\": \"06123456789\",\"email\": \"ludotuc@hot.fr\"}")
                   .accept(APPLICATION_JSON))
                   .andDo(MockMvcResultHandlers.print())
@@ -53,18 +54,20 @@ public class PersonControllerTest {
    @DisplayName("CreatePerson - ERROR ")
    public void givenPersonCreation_whenAlreadyExistingPerson_thenReturnErrorConflict()
                throws Exception {
-      this.mockMvc.perform(post("/person")
+      this.mockMvc.perform(MockMvcRequestBuilders.post("/person")
                   .contentType(MediaType.APPLICATION_JSON_VALUE)
-                  .content("{\"firstName\":\"John\",\"lastName\":\"Boyd\",\"address\":\"1509 Culver St\",\"city\":\"Culver\",\"zip\":\"97451\",\"phone\":\"841-874-6512\",\"email\":\"jaboyd@email.com\"}"))
+                  .content("{\"firstName\":\"Roger\",\"lastName\":\"Boyd\",\"address\":\"1509 Culver St\",\"city\":\"Culver\",\"zip\":\"97451\",\"phone\":\"841-874-6512\",\"email\":\"jaboyd@email.com\"}"))
                   .andExpect(status().isConflict());
    }
 
    @Test
    @Tag("UpdatePerson")
    @DisplayName("UpdatePerson - OK")
-   public void g() throws Exception {
-      this.mockMvc.perform(put("/person").contentType(APPLICATION_JSON).content(
-                  "{\"firstName\": \"Jacob\",\"lastName\": \"Boyd\",\"address\": \"1509 Culver St\",\"city\": \"Culver\",\"zip\": \"97451\",\"phone\": \"841-874-6513\",\"email\": \"drk@email.com\"}")
+   public void givenUpdatingPerson_whenPersonExists_thenReturnUpdatedPerson()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.put("/person")
+                  .contentType(APPLICATION_JSON)
+                  .content("{\"firstName\": \"Jacob\",\"lastName\": \"Boyd\",\"address\": \"1509 Culver St\",\"city\": \"Culver\",\"zip\": \"97451\",\"phone\": \"841-874-6513\",\"email\": \"drk@email.com\"}")
                   .accept(MediaType.APPLICATION_JSON))
                   .andDo(MockMvcResultHandlers.print())
                   .andExpect(status().isOk());
@@ -73,10 +76,35 @@ public class PersonControllerTest {
    @Test
    @Tag("UpdatePerson")
    @DisplayName("UpdatePerson - ERROR ")
-   public void gg() throws Exception {
-      this.mockMvc.perform(put("/person")
-                  .contentType(MediaType.APPLICATION_JSON_VALUE)
+   public void givenUpdatingPerson_whenUnkowPerson_thenReturnPersonNotFounded()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.put("/person")
+                  .contentType(APPLICATION_JSON)
                   .content("{\"firstName\":\"UNKNOW\",\"lastName\":\"PERSON\",\"address\":\"1509 Culver St\",\"city\":\"Culver\",\"zip\":\"97451\",\"phone\":\"841-874-6512\",\"email\":\"jaboyd@email.com\"}"))
+                  .andExpect(status().isNotFound());
+   }
+
+   @Test
+   @Tag("DeletePerson")
+   @DisplayName("DeletePerson - OK")
+   public void g() throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.delete("/person")
+                  .contentType(APPLICATION_JSON)
+                  .content("{\"firstName\": \"John\",\"lastName\": \"Boyd\"}")
+                  .accept(MediaType.APPLICATION_JSON))
+                  .andDo(MockMvcResultHandlers.print())
+                  .andExpect(status().isOk());
+   }
+
+   @Test
+   @Tag("DeletePerson")
+   @DisplayName("DeletePerson - ERROR")
+   public void b() throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.delete("/person")
+                  .contentType(APPLICATION_JSON)
+                  .content("{\"firstName\": \"Unknow\",\"lastName\": \"Person\"}")
+                  .accept(MediaType.APPLICATION_JSON))
+                  .andDo(MockMvcResultHandlers.print())
                   .andExpect(status().isNotFound());
    }
 
@@ -85,7 +113,7 @@ public class PersonControllerTest {
    @DisplayName("CommunityEmail - Valid city entry (Culver) ")
    public void givenCityEntry_whenExistingCity_thenReturnAllPersonsEmailAdressesListForCityPersons()
                throws Exception {
-      this.mockMvc.perform(get("/communityEmail")
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/communityEmail")
                   .contentType(APPLICATION_JSON).param("city", "Culver"))
                   .andExpect(status().isOk())
                   .andExpect(content().string("[\"jaboyd@email.com\","
@@ -119,8 +147,8 @@ public class PersonControllerTest {
    @DisplayName("CommunityEmail - Bad city entry (Los Angeles)")
    public void givenCityEntry_whenIncorrectCity_thenReturnEmptyList()
                throws Exception {
-      this.mockMvc.perform(get("/communityEmail").contentType(APPLICATION_JSON)
-                  .param("city", "Los Angeles"))
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/communityEmail")
+                  .contentType(APPLICATION_JSON).param("city", "Los Angeles"))
                   .andExpect(status().isNotFound()).andExpect(content().string(
                               "[\"No person's email adresses founded for: Los Angeles\"]"));
    }
@@ -130,9 +158,9 @@ public class PersonControllerTest {
    @DisplayName("PersonInfo - Correct last name")
    public void givenLastnameEntry_whenPersonInfoRequest_thenReturnInfosForPersonsWithThisLastname()
                throws Exception {
-      this.mockMvc.perform(get("/personInfo").contentType(APPLICATION_JSON)
-                  .param("firstName", "Tessa").param("lastName", "Carman"))
-                  .andExpect(status().isOk())
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/personInfo")
+                  .contentType(APPLICATION_JSON).param("firstName", "Tessa")
+                  .param("lastName", "Carman")).andExpect(status().isOk())
                   .andExpect(jsonPath("$.length()", is(1)))
                   .andExpect(content().string(
                               "[{\"firstName\":\"Tessa\",\"lastName\":\"Carman\",\"address\":\"834 Binoc Ave\",\"city\":\"Culver\",\"zip\":\"97451\",\"email\":\"tenz@email.com\",\"medicalRecord\":{\"birthdate\":\"02/18/2012\",\"medications\":[],\"allergies\":[],\"age\":8}}]"));
@@ -143,9 +171,9 @@ public class PersonControllerTest {
    @DisplayName("PersonInfo - Unknow last name")
    public void givenUnknowLastnameEntry_whenPersonInfoRequest_thenReturnEmptyList()
                throws Exception {
-      this.mockMvc.perform(get("/personInfo").contentType(APPLICATION_JSON)
-                  .param("firstName", "Unknow").param("lastName", "Unknow"))
-                  .andExpect(status().isNotFound())
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/personInfo")
+                  .contentType(APPLICATION_JSON).param("firstName", "Unknow")
+                  .param("lastName", "Unknow")).andExpect(status().isNotFound())
                   .andExpect(jsonPath("$.length()", is(0)));
    }
 
@@ -154,7 +182,8 @@ public class PersonControllerTest {
    @DisplayName("ChildAlert - Address with children)")
    public void givenAddressWithChildrenAnAdults_whenChildAlert_thenReturnHouseholdComposition()
                throws Exception {
-      this.mockMvc.perform(get("/childAlert").contentType(APPLICATION_JSON)
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/childAlert")
+                  .contentType(APPLICATION_JSON)
                   .param("address", "1509 Culver St"))
                   .andExpect(status().isOk()).andExpect(content().string(
                               "[{\"firstName\":\"John\",\"lastName\":\"Boyd\",\"age\":36},{\"firstName\":\"Jacob\",\"lastName\":\"Boyd\",\"age\":31},{\"firstName\":\"Tenley\",\"lastName\":\"Boyd\",\"age\":8},{\"firstName\":\"Roger\",\"lastName\":\"Boyd\",\"age\":2},{\"firstName\":\"Felicia\",\"lastName\":\"Boyd\",\"age\":34}]"));
@@ -165,8 +194,9 @@ public class PersonControllerTest {
    @DisplayName("ChildAlert - Address without child")
    public void givenAddressWithoutChild_whenChildAlert_thenReturnEmptyList()
                throws Exception {
-      this.mockMvc.perform(get("/childAlert").contentType(APPLICATION_JSON)
-                  .param("address", "Unknow")).andExpect(status().isNotFound())
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/childAlert")
+                  .contentType(APPLICATION_JSON).param("address", "Unknow"))
+                  .andExpect(status().isNotFound())
                   .andExpect(jsonPath("$.length()", is(0)));
    }
 

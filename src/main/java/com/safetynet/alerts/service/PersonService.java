@@ -1,6 +1,7 @@
 package com.safetynet.alerts.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -35,103 +36,6 @@ public class PersonService implements IPersonService {
     */
    @Autowired
    private EntitiesInfosStorage entitiesInfosStorage;
-
-   /**
-    * This method service is used to return the persons informations for the
-    * same last name entered.
-    * 
-    * @param firstName
-    * @param lastName
-    * @return personsInfosList, PersonInfoDTO List
-    */
-   public List<PersonInfoDTO> personInfo(final String firstName,
-               final String lastName) {
-      LOGGER.debug("PersonInfo request - initialization");
-      List<PersonInfoDTO> personsInfosList = new ArrayList<>();
-      List<Person> personsList = entitiesInfosStorage.getPersonsList();
-
-      for (Person person : personsList) {
-         if (person.getLastName().equals(lastName)) {
-            PersonInfoDTO personsInfos = new PersonInfoDTO(
-                        person.getFirstName(), person.getLastName(),
-                        person.getAddress(), person.getCity(), person.getZip(),
-                        person.getEmail(), person.getMedicalRecord());
-            personsInfosList.add(personsInfos);
-         }
-      }
-      LOGGER.debug("PersonInfo request successfuly");
-      return personsInfosList;
-   }
-
-   /**
-    * This method service is used to create a list of persons for a city
-    * entered.
-    *
-    * @param city
-    * @param personsList
-    * @return personsEmail, email addresses List
-    */
-   public List<String> communityEmail(final String city) {
-      LOGGER.debug("CommunityEmail request initialization");
-      List<String> personsEmail = new ArrayList<>();
-      List<Person> personsList = entitiesInfosStorage.getPersonsList();
-
-      for (Person person : personsList) {
-         if (person.getCity().equals(city)) {
-            personsEmail.add(person.getEmail());
-         }
-      }
-      LOGGER.debug("CommunityEmail request successfuly");
-      return personsEmail;
-   }
-
-   /**
-    * This method service is used to return the households composition, if the
-    * adress entered contains children.
-    *
-    * @param address
-    * @return childAlert, a ChildAlertDTO List
-    */
-   public List<ChildAlertDTO> childAlert(final String address) {
-      LOGGER.debug("ChildAlert request initialization");
-      List<ChildAlertDTO> childAlert = new ArrayList<>();
-      Map<String, List<Person>> households = entitiesInfosStorage
-                  .getHouseholds();
-      boolean isListWithChildren = false;
-
-      for (Entry<String, List<Person>> entry : households.entrySet()) {
-         String householdAddress = entry.getKey();
-         if (!address.equals(householdAddress)) {
-            continue;
-         }
-         List<Person> householdMembersList = entry.getValue();
-         for (Person person : householdMembersList) {
-            // If child
-            if (AgeCalculator.isChild(person)) {
-               int childAge = AgeCalculator.ageCalculation(
-                           person.getMedicalRecord().getBirthdate());
-               ChildAlertDTO child = new ChildAlertDTO(childAge,
-                           person.getFirstName(), person.getLastName());
-               childAlert.add(child);
-               isListWithChildren = true;
-               // If adult
-            } else if (!AgeCalculator.isChild(person)) {
-               int adultAge = AgeCalculator.ageCalculation(
-                           person.getMedicalRecord().getBirthdate());
-               ChildAlertDTO adultHouseholdMember = new ChildAlertDTO(adultAge,
-                           person.getFirstName(), person.getLastName());
-               childAlert.add(adultHouseholdMember);
-            }
-         }
-      }
-      // Return empty list if no contains child
-      if (isListWithChildren) {
-         return childAlert;
-      } else {
-         childAlert.clear();
-         return childAlert;
-      }
-   }
 
    /**
     * This method service is used to create a new Person,and update households
@@ -193,16 +97,15 @@ public class PersonService implements IPersonService {
       List<Person> personsList = entitiesInfosStorage.getPersonsList();
       boolean isUpdated = false;
 
-      for (Person personRecovered : personsList) {
-         if (personRecovered.getFirstName()
-                     .equals(personToUpdate.getFirstName())
-                     && personRecovered.getLastName()
+      for (Person existingPerson : personsList) {
+         if (existingPerson.getFirstName().equals(personToUpdate.getFirstName())
+                     && existingPerson.getLastName()
                                  .equals(personToUpdate.getLastName())) {
-            personRecovered.setAddress(personToUpdate.getAddress());
-            personRecovered.setCity(personToUpdate.getCity());
-            personRecovered.setZip(personToUpdate.getZip());
-            personRecovered.setPhone(personToUpdate.getPhone());
-            personRecovered.setEmail(personToUpdate.getEmail());
+            existingPerson.setAddress(personToUpdate.getAddress());
+            existingPerson.setCity(personToUpdate.getCity());
+            existingPerson.setZip(personToUpdate.getZip());
+            existingPerson.setPhone(personToUpdate.getPhone());
+            existingPerson.setEmail(personToUpdate.getEmail());
 
             entitiesInfosStorage.setPersonsList(personsList);
             isUpdated = true;
@@ -212,10 +115,124 @@ public class PersonService implements IPersonService {
    }
 
    /**
-    * @param person
+    * This method service is used to delete a person.
+    *
+    * @param personToDelete
+    * @return isDeleted boolean
     */
-   public void deletePerson(final String firstName, final String lastName) {
+   public boolean deletePerson(final Person personToDelete) {
+      List<Person> personsList = entitiesInfosStorage.getPersonsList();
+      boolean isDeleted = false;
 
+      for (Iterator<Person> iter = personsList.iterator(); iter.hasNext();) {
+         Person existingPerson = iter.next();
+
+         if (existingPerson.getFirstName()
+                     .matches(personToDelete.getFirstName())
+                     && existingPerson.getLastName()
+                                 .matches(personToDelete.getLastName())) {
+            iter.remove();
+            isDeleted = true;
+         }
+      }
+      return isDeleted;
+   }
+
+   /**
+    * This method service is used to return the persons informations for the
+    * same last name entered.
+    * 
+    * @param firstName
+    * @param lastName
+    * @return personsInfosList, PersonInfoDTO List
+    */
+   public List<PersonInfoDTO> personInfo(final String firstName,
+               final String lastName) {
+      LOGGER.debug("PersonInfo request - initialization");
+      List<PersonInfoDTO> personsInfosList = new ArrayList<>();
+      List<Person> personsList = entitiesInfosStorage.getPersonsList();
+
+      for (Person person : personsList) {
+         if (person.getLastName().equals(lastName)) {
+            PersonInfoDTO personsInfos = new PersonInfoDTO(
+                        person.getFirstName(), person.getLastName(),
+                        person.getAddress(), person.getCity(), person.getZip(),
+                        person.getEmail(), person.getMedicalRecord());
+            personsInfosList.add(personsInfos);
+         }
+      }
+      LOGGER.debug("PersonInfo request successfuly");
+      return personsInfosList;
+   }
+
+   /**
+    * This method service is used to return the households composition, if the
+    * adress entered contains children.
+    *
+    * @param address
+    * @return childAlert, a ChildAlertDTO List
+    */
+   public List<ChildAlertDTO> childAlert(final String address) {
+      LOGGER.debug("ChildAlert request initialization");
+      List<ChildAlertDTO> childAlert = new ArrayList<>();
+      Map<String, List<Person>> households = entitiesInfosStorage
+                  .getHouseholds();
+      boolean isListWithChildren = false;
+
+      for (Entry<String, List<Person>> entry : households.entrySet()) {
+         String householdAddress = entry.getKey();
+         if (!address.equals(householdAddress)) {
+            continue;
+         }
+         List<Person> householdMembersList = entry.getValue();
+         for (Person person : householdMembersList) {
+            // If child
+            if (AgeCalculator.isChild(person)) {
+               int childAge = AgeCalculator.ageCalculation(
+                           person.getMedicalRecord().getBirthdate());
+               ChildAlertDTO child = new ChildAlertDTO(childAge,
+                           person.getFirstName(), person.getLastName());
+               childAlert.add(child);
+               isListWithChildren = true;
+               // If adult
+            } else if (!AgeCalculator.isChild(person)) {
+               int adultAge = AgeCalculator.ageCalculation(
+                           person.getMedicalRecord().getBirthdate());
+               ChildAlertDTO adultHouseholdMember = new ChildAlertDTO(adultAge,
+                           person.getFirstName(), person.getLastName());
+               childAlert.add(adultHouseholdMember);
+            }
+         }
+      }
+      // Return empty list if no contains child
+      if (isListWithChildren) {
+         return childAlert;
+      } else {
+         childAlert.clear();
+         return childAlert;
+      }
+   }
+
+   /**
+    * This method service is used to create a list of persons for a city
+    * entered.
+    *
+    * @param city
+    * @param personsList
+    * @return personsEmail, email addresses List
+    */
+   public List<String> communityEmail(final String city) {
+      LOGGER.debug("CommunityEmail request initialization");
+      List<String> personsEmail = new ArrayList<>();
+      List<Person> personsList = entitiesInfosStorage.getPersonsList();
+
+      for (Person person : personsList) {
+         if (person.getCity().equals(city)) {
+            personsEmail.add(person.getEmail());
+         }
+      }
+      LOGGER.debug("CommunityEmail request successfuly");
+      return personsEmail;
    }
 
 }

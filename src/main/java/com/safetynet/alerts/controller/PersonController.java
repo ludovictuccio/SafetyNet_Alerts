@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.safetynet.alerts.constants.Constants;
 import com.safetynet.alerts.dto.ChildAlertDTO;
 import com.safetynet.alerts.dto.PersonInfoDTO;
-import com.safetynet.alerts.model.FireStation;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.service.IPersonService;
 
@@ -169,31 +168,24 @@ public class PersonController {
    }
 
    /**
-    * @param firstName
-    * @param lastName
-    * @return
+    * This method controller is used to delete a person.
+    *
+    * @param personToDelete
     */
    @DeleteMapping("/person")
-   public List<Person> deletePerson(
-               @NotNull @RequestBody final String firstName,
-               @NotNull @RequestBody final String lastName,
+   public void deletePerson(@NotNull @RequestBody final Person personToDelete,
                final HttpServletResponse response) {
-      return null;
 
+      boolean isDeleted = personService.deletePerson(personToDelete);
+
+      if (isDeleted) {
+         LOGGER.info("SUCCESS - DeletePerson DELETE request");
+         response.setStatus(Constants.STATUS_OK_200);
+      } else {
+         LOGGER.error("No person founded for: {} {}",
+                     personToDelete.getFirstName(),
+                     personToDelete.getLastName());
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
+      }
    }
-
-   /**
-    * @param phoneNumber
-    * @param responsibleFireStation
-    * @param personsUnderFirestationResponsibility
-    * @return
-    */
-   public List<String> getPhoneAlert(final String phoneNumber,
-               final Map<Integer, FireStation> responsibleFireStation,
-               final List<Person> personsUnderFirestationResponsibility,
-               final HttpServletResponse response) {
-      return null;
-
-   }
-
 }

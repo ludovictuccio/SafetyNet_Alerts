@@ -487,76 +487,51 @@ public class PersonServiceTest {
                   .doesNotContain(personToUpdate.toString());
    }
 
-//   @Test
-//   @Tag("DELETE")
-//   @DisplayName("Delete - existing person")
-//   public void givenPersonEndpoint_whenDeletePerson_thenReturnDeletedPerson() {
-//
-//      personService.deletePerson("John", "Boyd");
-//
-//      assertThat(person1).isNull();
-//   }
+   @Test
+   @Tag("DELETE")
+   @DisplayName("Delete - Existing person")
+   public void givenPersonEndpoint_whenDeletePerson_thenReturnDeletedPerson() {
+      // GIVEN
+      List<Person> personsList = new ArrayList<>();
+      person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6512", "jaboyd@email.com");
+      person2 = new Person("Jacob", "Tenley", "1509 Culver St", "Culver",
+                  "97451", "841-874-6513", "drk@email.com");
+      personsList.add(person1);
+      personsList.add(person2);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
 
-//   @Test
-//   @Tag("DELETE")
-//   @DisplayName("Delete - unknow person - error")
-//   public void givenPersonEndpoint_whenDeleteUnknowPerson_thenReturnAllPersonsListSizeUnchanged() {
-//
-//      personService.deletePerson("unknow", "person");
-//
-//      assertThat(personService.getAllPersons().size()).isEqualTo(3);
-//   }
+      Person personToDelete = person1;
 
-//   @Test
-//   @Tag("AllPersons")
-//   @DisplayName("getAllPersons list")
-//   public void givenPersonEndpoint_whenGetAllPersons_thenReturnAllPersonsList() {
-//
-//      personService.getAllPersons();
-//
-//      assertThat(personService.getAllPersons().isEmpty()).isFalse();
-//      assertThat(personService.getAllPersons().size()).isEqualTo(3);
-//      assertThat(personService.getAllPersons()).contains(person1, person2,
-//                  person3);
-//   }
-//   @Test
-//   @Tag("getPersonsAge")
-//   @DisplayName("getPersonsAge - 20 yo person")
-//   public void givenExistingPerson_whenTwentyYearOldPerson_thenReturnCorrectPersonsAge() {
-//
-//      LocalDate personBirthdate = LocalDate.of(1990, Month.JANUARY, 01);
-//      LocalDate currentDate = LocalDate.of(2020, Month.JANUARY, 02);
-//
-//      person1.setMedicalRecord(medicalRecord);
-//      medicalRecord.setBirthdate(personBirthdate);
-//
-//      int age = AgeCalculator.calculateAge(medicalRecord.getBirthdate(),
-//                  currentDate);
-//
-//      personService.getPersonsAge(person1);
-//
-//      assertThat(person1.getMedicalRecord().getAge()).isEqualTo(age);
-//      assertThat(person1.getMedicalRecord().getAge()).isEqualTo(20);
-//   }
-//
-//   @Test
-//   @Tag("getPersonsAge")
-//   @DisplayName("getPersonsAge - unknow person")
-//   public void givenunknowPerson_whenGetPersonAgeMethod_thenReturnNull() {
-//
-//      LocalDate personBirthdate = null;
-//      LocalDate currentDate = LocalDate.of(2020, Month.JANUARY, 02);
-//
-//      person1.setMedicalRecord(medicalRecord);
-//      medicalRecord.setBirthdate(personBirthdate);
-//
-//      int age = AgeCalculator.calculateAge(medicalRecord.getBirthdate(),
-//                  currentDate);
-//
-//      personService.getPersonsAge(person1);
-//
-//      assertThat(person1.getMedicalRecord().getAge()).isNull();
-//      assertThat(age).isNull();
-//   }
+      // WHEN
+      personService.deletePerson(personToDelete);
+
+      // THEN
+      assertThat(personsList.size()).isEqualTo(1);
+   }
+
+   @Test
+   @Tag("DELETE")
+   @DisplayName("Delete - Unknow person")
+   public void givenPersonEndpoint_whenDeleteUnknowPerson_thenReturnAllPersonsListSizeUnchanged() {
+      // GIVEN
+      List<Person> personsList = new ArrayList<>();
+      person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
+                  "841-874-6512", "jaboyd@email.com");
+      person2 = new Person("Jacob", "Tenley", "1509 Culver St", "Culver",
+                  "97451", "841-874-6513", "drk@email.com");
+      personsList.add(person1);
+      personsList.add(person2);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      Person personToDelete = new Person("Unknow", "Person", "1509 Culver St",
+                  "Culver", "97451", "841-874-6512", "jaboyd@email.com");
+
+      // WHEN
+      personService.deletePerson(personToDelete);
+
+      // THEN
+      assertThat(personsList.size()).isEqualTo(2); // Check unchanged size list
+   }
 
 }
