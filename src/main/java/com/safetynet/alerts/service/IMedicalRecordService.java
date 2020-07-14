@@ -17,7 +17,7 @@ public interface IMedicalRecordService {
    /**
     * @param medicalRecord
     */
-   // void updateMedicalRecord(MedicalRecord medicalRecord);
+   boolean updateMedicalRecord(MedicalRecord medicalRecord);
 
    /**
     * @param firstName

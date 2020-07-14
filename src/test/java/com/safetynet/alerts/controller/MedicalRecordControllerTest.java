@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -49,7 +50,7 @@ public class MedicalRecordControllerTest {
 //   }
 //
 //   @Test
-//   @Tag("CreateMedicalRecord")
+//   @Tag("CREATE")
 //   @DisplayName("CREATE - OK")
 //   public void givenPersonWithoutMedicalrecord_whenCreation_thenReturnMedicalrecordAttribution()
 //               throws Exception {
@@ -85,9 +86,9 @@ public class MedicalRecordControllerTest {
 //   }
 
    @Test
-   @Tag("CreateMedicalRecord")
-   @DisplayName("CREATE - ERROR ")
-   public void givenUnknowPerson_whenCreation_thenReturnError()
+   @Tag("CREATE")
+   @DisplayName("CREATE - ERROR")
+   public void givenPersonWithMedicalrecord_whenCreation_thenReturnConflict()
                throws Exception {
       this.mockMvc.perform(MockMvcRequestBuilders.post("/medicalRecord")
                   .contentType(APPLICATION_JSON).content(" { \r\n"
@@ -100,5 +101,39 @@ public class MedicalRecordControllerTest {
                   .accept(APPLICATION_JSON))
                   .andDo(MockMvcResultHandlers.print())
                   .andExpect(status().isConflict());
+   }
+
+   @Test
+   @Tag("UPDATE")
+   @DisplayName("UPDATE - OK")
+   public void givenPersonWithMedicalrecord_whenUpdate_thenReturnMedicalrecordUpdated()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.put("/medicalRecord")
+                  .contentType(APPLICATION_JSON).content(" { \r\n"
+                              + "     \"firstName\":\"John\", \r\n"
+                              + "     \"lastName\":\"Boyd\", \r\n"
+                              + "     \"birthdate\":\"01/01/1950\", \r\n"
+                              + "     \"medications\":[\"NEW MEDICATION:350mg\", \"hydrapermazol:100mg\"], \r\n"
+                              + "     \"allergies\":[\"NEW ALLERGY\"] \r\n"
+                              + "     }")
+                  .accept(MediaType.APPLICATION_JSON))
+                  .andDo(MockMvcResultHandlers.print())
+                  .andExpect(status().isOk());
+   }
+
+   @Test
+   @Tag("UPDATE")
+   @DisplayName("UPDATE - ERROR")
+   public void givenUnknowPerson_whenUpdate_thenReturnNotFoundedPerson()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.put("/medicalRecord")
+                  .contentType(APPLICATION_JSON).content(" { \r\n"
+                              + "     \"firstName\":\"UNKNOW\", \r\n"
+                              + "     \"lastName\":\"PERSON\", \r\n"
+                              + "     \"birthdate\":\"01/01/1950\", \r\n"
+                              + "     \"medications\":[\"NEW MEDICATION:350mg\", \"hydrapermazol:100mg\"], \r\n"
+                              + "     \"allergies\":[\"NEW ALLERGY\"] \r\n"
+                              + "     }"))
+                  .andExpect(status().isNotFound());
    }
 }

@@ -150,4 +150,75 @@ public class MedicalRecordServiceTest {
       // THEN
       assertThat(result).isNull();
    }
+
+   @Test
+   @Tag("PUT")
+   @DisplayName("UPDATE - OK - Person with medicalrecord")
+   public void givenPersonWithMedicalrecord_whenUpdate_thenReturnUpdatedMedicalrecord() {
+      // GIVEN
+      List<Person> personsList = new ArrayList<>();
+      Person person1 = new Person("John", "Boyd", "1509 Culver St", "Culver",
+                  "97451", "841-874-6512", "jaboyd@email.com",
+                  medicalRecordAdult);
+      personsList.add(person1);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      List<String> medicationsList = new ArrayList<>();
+      medicationsList.add("newMedic:100mg");
+
+      List<String> allergiesList = new ArrayList<>();
+      allergiesList.add("newAllergy");
+
+      MedicalRecord medicalRecordUpdated = new MedicalRecord("John", "Boyd",
+                  "01/01/1903", medicationsList, allergiesList);
+
+      // WHEN
+      boolean result = medicalRecordService
+                  .updateMedicalRecord(medicalRecordUpdated);
+
+      // THEN
+      assertThat(result).isTrue();
+      assertThat(person1.getFirstName()).isEqualTo("John");
+      assertThat(person1.getMedicalRecord().getBirthdate())
+                  .isEqualTo("01/01/1903");
+      assertThat(person1.getMedicalRecord().getAllergies().toString())
+                  .isEqualTo("[newAllergy]");
+      assertThat(person1.getMedicalRecord().getMedications().toString())
+                  .isEqualTo("[newMedic:100mg]");
+   }
+
+   @Test
+   @Tag("PUT")
+   @DisplayName("UPDATE - ERROR - Unknow person")
+   public void givenUnknowPerson_whenUpdate_thenReturnNoUpdatedAndBooleanFalse() {
+      // GIVEN
+      List<Person> personsList = new ArrayList<>();
+      Person person1 = new Person("John", "Boyd", "1509 Culver St", "Culver",
+                  "97451", "841-874-6512", "jaboyd@email.com",
+                  medicalRecordAdult);
+      personsList.add(person1);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      List<String> medicationsList = new ArrayList<>();
+      medicationsList.add("newMedic:100mg");
+
+      List<String> allergiesList = new ArrayList<>();
+      allergiesList.add("newAllergy");
+
+      MedicalRecord medicalRecordUpdated = new MedicalRecord("Unknow", "Person",
+                  "01/01/1903", medicationsList, allergiesList);
+
+      // WHEN
+      boolean result = medicalRecordService
+                  .updateMedicalRecord(medicalRecordUpdated);
+
+      // THEN
+      assertThat(result).isFalse();
+      assertThat(person1.getMedicalRecord().getBirthdate())
+                  .isEqualTo("01/01/1990");
+      assertThat(person1.getMedicalRecord().getAllergies().toString())
+                  .isEqualTo("[allergies]");
+      assertThat(person1.getMedicalRecord().getMedications().toString())
+                  .isEqualTo("[medication1]");
+   }
 }

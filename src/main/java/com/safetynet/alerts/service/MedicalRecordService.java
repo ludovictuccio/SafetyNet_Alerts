@@ -25,8 +25,8 @@ public class MedicalRecordService implements IMedicalRecordService {
    private static final Logger LOGGER = LogManager
                .getLogger(MedicalRecordService.class);
    /**
-    * EntitiesInfosStorage variable used to retrieve persons informations from
-    * model classes.
+    * EntitiesInfosStorage variable used to retrieve informations from model
+    * classes.
     */
    @Autowired
    private EntitiesInfosStorage entitiesInfosStorage;
@@ -35,8 +35,8 @@ public class MedicalRecordService implements IMedicalRecordService {
     * This method service is used to create a new medicalrecord for existing
     * person without medicalrecord.
     *
-    * @param personToCreate
-    * @return Person newPerson
+    * @param newMedicalRecord
+    * @return MedicalRecord newMedicalRecord or null
     */
    public MedicalRecord createMedicalRecord(
                final MedicalRecord newMedicalRecord) {
@@ -61,39 +61,30 @@ public class MedicalRecordService implements IMedicalRecordService {
       return null;
    }
 
-//   /**
-//    * @param medicalRecord
-//    */
-//   public void updateMedicalRecord(final MedicalRecord medicalRecord) {
-//
-//      String birthdate = medicalRecord.set("birthdate").toString();
-//      List<String> medications = (List<String>) medicalRecord
-//                  .get("medications");
-//      List<String> allergies = (List<String>) medicalRecord.get("allergies");
-//
-//      MedicalRecord medicalrecord = new MedicalRecord(birthdate, medications,
-//                  allergies);
-//
-//      List<Person> personsList = entitiesInfosStorage.getPersonsList();
-//
-//      // Verification for not create a medicalrecord for nonexistent person
-//      for (Person existingPerson : personsList) {
-//         if (existingPerson.getFirstName()
-//                     .equals(medicalRecord.get("firstName").toString())
-//                     && existingPerson.getLastName().equals(
-//                                 medicalRecord.get("lastName").toString())) {
-//            existingPerson.setMedicalRecord(medicalrecord);
-//         } else {
-//            LOGGER.error(
-//                        "FAILED to create the medicalrecord for: {} {}, nonexistent person.",
-//                        medicalRecord.get("firstName").toString(),
-//                        medicalRecord.get("lastName").toString());
-//
-//         }
-//      }
-//   }
-//
-//   }
+   /**
+    * This method service is used to update an existing medicalrecord.
+    *
+    * @param medicalRecord
+    * @return boolean isUpdated
+    */
+   public boolean updateMedicalRecord(final MedicalRecord medicalRecord) {
+      boolean isUpdated = false;
+      List<Person> personsList = entitiesInfosStorage.getPersonsList();
+
+      // For update an existing person's medicalrecord.
+      for (Person existingPerson : personsList) {
+         if (existingPerson.getMedicalRecord() != null
+                     && existingPerson.getFirstName().toUpperCase().equals(
+                                 medicalRecord.getFirstName().toUpperCase())
+                     && existingPerson.getLastName().toUpperCase().equals(
+                                 medicalRecord.getLastName().toUpperCase())) {
+
+            existingPerson.setMedicalRecord(medicalRecord);
+            isUpdated = true;
+         }
+      }
+      return isUpdated;
+   }
 
    /**
     * @param firstName

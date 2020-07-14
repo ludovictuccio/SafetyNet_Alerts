@@ -15,6 +15,8 @@ import com.safetynet.alerts.constants.Constants;
 import com.safetynet.alerts.model.MedicalRecord;
 import com.safetynet.alerts.service.IMedicalRecordService;
 
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+
 /**
  * MedicalRecord Controller class.
  *
@@ -57,18 +59,32 @@ public class MedicalRecordController {
    }
 
    /**
+    * This method controller is used to update an existing medicalrecord.
+    *
     * @param medicalRecord
-    * @return
     */
    @PutMapping("/medicalRecord")
-   public void updateMedicalRecord(final MedicalRecord medicalRecord) {
+   public void updateMedicalRecord(
+               @NotNull @RequestBody final MedicalRecord medicalRecord,
+               final HttpServletResponse response) {
 
+      boolean isUpdated = medicalRecordService
+                  .updateMedicalRecord(medicalRecord);
+
+      if (isUpdated) {
+         LOGGER.info("SUCCESS - Update MedicalRecord PUT request");
+         response.setStatus(Constants.STATUS_OK_200);
+      } else {
+         LOGGER.error(
+                     "FAILED to update medicalrecord for person: {} {}. Unknow person.",
+                     medicalRecord.getFirstName(), medicalRecord.getLastName());
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
+      }
    }
 
    /**
     * @param firstName
     * @param lastName
-    * @return
     */
    @DeleteMapping("/medicalRecord")
    public void deleteMedicalRecord(final String firstName,
