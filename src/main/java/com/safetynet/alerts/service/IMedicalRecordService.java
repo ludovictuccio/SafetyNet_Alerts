@@ -23,6 +23,6 @@ public interface IMedicalRecordService {
     * @param firstName
     * @param lastName
     */
-   void deleteMedicalRecord(String firstName, String lastName);
+   boolean deleteMedicalRecord(String firstName, String lastName);
 
 }

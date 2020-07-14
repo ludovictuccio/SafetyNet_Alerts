@@ -218,7 +218,6 @@ public class PersonService implements IPersonService {
     * entered.
     *
     * @param city
-    * @param personsList
     * @return personsEmail, email addresses List
     */
    public List<String> communityEmail(final String city) {

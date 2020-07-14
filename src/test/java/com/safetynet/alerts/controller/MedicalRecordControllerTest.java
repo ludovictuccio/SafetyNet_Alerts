@@ -136,4 +136,25 @@ public class MedicalRecordControllerTest {
                               + "     }"))
                   .andExpect(status().isNotFound());
    }
+
+   @Test
+   @Tag("DELETE")
+   @DisplayName("DELETE - OK")
+   public void givenPersonInTheListWithMedicalrecord_whenDeleteMedicalrecord_thenReturnDeleted()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.delete("/medicalRecord")
+                  .param("firstName", "John").param("lastName", "Boyd"))
+                  .andExpect(status().isOk());
+   }
+
+   @Test
+   @Tag("DELETE")
+   @DisplayName("DELETE - ERROR")
+   public void givenUnknowPerson_whenDeleteMedicalrecord_thenReturnNotFounded()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.delete("/medicalRecord")
+                  .param("firstName", "Unknow").param("lastName", "Person"))
+                  .andExpect(status().isNotFound());
+   }
+
 }

@@ -87,7 +87,8 @@ public class PersonControllerTest {
    @Test
    @Tag("DeletePerson")
    @DisplayName("DeletePerson - OK")
-   public void g() throws Exception {
+   public void givenPersonInTheList_whenDeletePerson_thenReturnDeletedPerson()
+               throws Exception {
       this.mockMvc.perform(MockMvcRequestBuilders.delete("/person")
                   .contentType(APPLICATION_JSON)
                   .content("{\"firstName\": \"John\",\"lastName\": \"Boyd\"}")
@@ -99,7 +100,8 @@ public class PersonControllerTest {
    @Test
    @Tag("DeletePerson")
    @DisplayName("DeletePerson - ERROR")
-   public void b() throws Exception {
+   public void givenUnknowPerson_whenDeletePerson_thenReturnPersonNotFounded()
+               throws Exception {
       this.mockMvc.perform(MockMvcRequestBuilders.delete("/person")
                   .contentType(APPLICATION_JSON)
                   .content("{\"firstName\": \"Unknow\",\"lastName\": \"Person\"}")

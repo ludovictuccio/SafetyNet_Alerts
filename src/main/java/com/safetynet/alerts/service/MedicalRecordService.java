@@ -87,11 +87,29 @@ public class MedicalRecordService implements IMedicalRecordService {
    }
 
    /**
+    * This method service is used to delete an existing medicalrecord.
+    *
     * @param firstName
     * @param lastName
+    * @return boolean isDeleted
     */
-   public void deleteMedicalRecord(final String firstName,
+   public boolean deleteMedicalRecord(final String firstName,
                final String lastName) {
+      boolean isDeleted = false;
+      List<Person> personsList = entitiesInfosStorage.getPersonsList();
 
+      // For delete an existing person's medicalrecord.
+      for (Person existingPerson : personsList) {
+         if (existingPerson.getMedicalRecord() != null
+                     && existingPerson.getFirstName().toUpperCase()
+                                 .equals(firstName.toUpperCase())
+                     && existingPerson.getLastName().toUpperCase()
+                                 .equals(lastName.toUpperCase())) {
+
+            existingPerson.setMedicalRecord(null);
+            isDeleted = true;
+         }
+      }
+      return isDeleted;
    }
 }

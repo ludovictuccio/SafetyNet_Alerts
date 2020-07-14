@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.safetynet.alerts.constants.Constants;
@@ -83,12 +84,27 @@ public class MedicalRecordController {
    }
 
    /**
-    * @param firstName
-    * @param lastName
+    * This method controller is used to delete an existing medicalrecord.
+    *
+    * @param medicalRecord
     */
    @DeleteMapping("/medicalRecord")
-   public void deleteMedicalRecord(final String firstName,
-               final String lastName) {
+   public void deleteMedicalRecord(
+               @NotNull @RequestParam final String firstName,
+               @NotNull @RequestParam final String lastName,
+               final HttpServletResponse response) {
 
+      boolean isDeleted = medicalRecordService.deleteMedicalRecord(firstName,
+                  lastName);
+
+      if (isDeleted) {
+         LOGGER.info("SUCCESS - Delete MedicalRecord DELETE request");
+         response.setStatus(Constants.STATUS_OK_200);
+      } else {
+         LOGGER.error(
+                     "FAILED to delete medicalrecord for person: {} {}. Person without medicalrecord or unknow person.",
+                     firstName, lastName);
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
+      }
    }
 }

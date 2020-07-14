@@ -5,7 +5,7 @@ import java.util.List;
 import com.safetynet.alerts.util.AgeCalculator;
 
 /**
- * MedicalRecord class.
+ * MedicalRecord model class.
  *
  * @author Ludovic Tuccio
  */
@@ -67,26 +67,12 @@ public class MedicalRecord {
       return firstName;
    }
 
-//   /**
-//    * @param personsFirstName the person's first name to set
-//    */
-//   public void setFirstName(final String personsFirstName) {
-//      this.firstName = personsFirstName;
-//   }
-
    /**
     * @return the lastName
     */
    public String getLastName() {
       return lastName;
    }
-
-//   /**
-//    * @param personsLastName the person's last name to set
-//    */
-//   public void setLastName(final String personsLastName) {
-//      this.lastName = personsLastName;
-//   }
 
    /**
     * @return the birthdate
@@ -122,8 +108,6 @@ public class MedicalRecord {
     */
    public void setMedications(final List<String> personMedicationsFollowed) {
       this.medications = personMedicationsFollowed;
-      // medications.clear();
-      // medications.addAll(personMedicationsFollowed);
    }
 
    /**
@@ -138,8 +122,6 @@ public class MedicalRecord {
     */
    public void setAllergies(final List<String> personAllergies) {
       this.allergies = personAllergies;
-      // allergies.clear();
-      // allergies.addAll(personAllergies);
    }
 
    /**

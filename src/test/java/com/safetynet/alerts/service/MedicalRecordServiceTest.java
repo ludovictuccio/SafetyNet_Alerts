@@ -36,12 +36,8 @@ public class MedicalRecordServiceTest {
    private EntitiesInfosStorage entitiesInfosStorage;
 
    private static String adultBirthdate = "01/01/1990";
-   private static String childBirthdate = "01/01/2020";
+
    private static MedicalRecord medicalRecordAdult;
-   private static MedicalRecord medicalRecordChild;
-   private static Person person1;
-   private static Person person2;
-   private static Person person3;
 
    @BeforeEach
    private void setUpPerTest() {
@@ -53,8 +49,6 @@ public class MedicalRecordServiceTest {
       allergiesList.add("allergies");
 
       medicalRecordAdult = new MedicalRecord(adultBirthdate, medicationsList,
-                  allergiesList);
-      medicalRecordChild = new MedicalRecord(childBirthdate, medicationsList,
                   allergiesList);
    }
 
@@ -220,5 +214,66 @@ public class MedicalRecordServiceTest {
                   .isEqualTo("[allergies]");
       assertThat(person1.getMedicalRecord().getMedications().toString())
                   .isEqualTo("[medication1]");
+   }
+
+   @Test
+   @Tag("DELETE")
+   @DisplayName("DELETE - OK - Person with medicalrecord")
+   public void givenPersonWithMedicalrecord_whenDelete_thenReturnDeletedMedicalrecord() {
+      // GIVEN
+      List<Person> personsList = new ArrayList<>();
+      Person person1 = new Person("John", "Boyd", "1509 Culver St", "Culver",
+                  "97451", "841-874-6512", "jaboyd@email.com",
+                  medicalRecordAdult);
+      personsList.add(person1);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      // WHEN
+      boolean result = medicalRecordService.deleteMedicalRecord("John", "Boyd");
+
+      // THEN
+      assertThat(result).isTrue();
+      assertThat(person1.getFirstName()).isEqualTo("John");
+      assertThat(person1.getMedicalRecord()).isNull();
+   }
+
+   @Test
+   @Tag("DELETE")
+   @DisplayName("DELETE - ERROR - Person without medicalrecord")
+   public void givenPersonWithoutMedicalrecord_whenDelete_thenReturnError() {
+      // GIVEN
+      List<Person> personsList = new ArrayList<>();
+      Person person1 = new Person("John", "Boyd", "1509 Culver St", "Culver",
+                  "97451", "841-874-6512", "jaboyd@email.com");
+      personsList.add(person1);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      // WHEN
+      boolean result = medicalRecordService.deleteMedicalRecord("John", "Boyd");
+
+      // THEN
+      assertThat(result).isFalse();
+      assertThat(person1.getFirstName()).isEqualTo("John");
+      assertThat(person1.getMedicalRecord()).isNull();
+   }
+
+   @Test
+   @Tag("DELETE")
+   @DisplayName("DELETE - ERROR - Unknow Person")
+   public void givenUnknowPerson_whenDelete_thenReturnError() {
+      // GIVEN
+      List<Person> personsList = new ArrayList<>();
+      Person person1 = new Person("John", "Boyd", "1509 Culver St", "Culver",
+                  "97451", "841-874-6512", "jaboyd@email.com",
+                  medicalRecordAdult);
+      personsList.add(person1);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      // WHEN
+      boolean result = medicalRecordService.deleteMedicalRecord("Unknow",
+                  "Person");
+
+      // THEN
+      assertThat(result).isFalse();
    }
 }

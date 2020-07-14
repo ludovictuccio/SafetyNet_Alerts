@@ -6,15 +6,15 @@
 
 **Author:** Ludovic Tuccio
 
-**Java version:** 1.8
+- **Java version:** 1.8
 
-**Actuators in service:** healt, info, httptrace & metrics
+- **Actuators in service:** healt, info, httptrace & metrics
 
-**JSON data:** available in *"src/main/resources/data"*, and it's **loaded from application.properties** in *"src/main/resources"*.
+- **JSON data:** available in *"src/main/resources/data"*, and it's **loaded from application.properties** in *"src/main/resources"*.
 
-**Loggers:** the logging properties file is available in *"src/main/resources"*.
+- **Loggers:** the logging properties file is available in *"src/main/resources"*.
 
-**Tests:** The app has unit tests and integration tests written.
+- **Tests:** The app has unit tests and integration tests written.
 
 ## Installing
 
@@ -124,13 +124,8 @@ https://maven.apache.org/install.html
         "allergies":["NEW ALLERGIE"] 
     }</pre></code>
 
-**DELETE** - http://localhost:8080/medicalRecord >>> delete a person's medicalrecord.
+**DELETE** - http://localhost:8080/medicalRecord{firstName}/{lastName} >>> delete a person's medicalrecord.
 
-<pre><code>
-    {
-        "firstName": "John",
-        "lastName": "Boyd",
-    }</pre></code>
 
 ## Firestation number endpoint 
 
