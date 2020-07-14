@@ -22,7 +22,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 /**
- * PersonController unit tests class.
+ * PersonController tests class.
  *
  * @author Ludovic Tuccio
  */

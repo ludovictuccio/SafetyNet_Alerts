@@ -103,7 +103,7 @@ https://maven.apache.org/install.html
 
 ## Medicalrecord endpoint
 
-**POST** - http://localhost:8080/medicalRecord/{firstName}/{lastName} >>> add a new medicalrecord for a person who has not assigned one.
+**POST** - http://localhost:8080/medicalRecord >>> add a new medicalrecord for a person created without medicalrecord.
 
 <pre><code>    {
         "firstName": "John",
@@ -113,9 +113,9 @@ https://maven.apache.org/install.html
         "allergies":["nillacilan"]
     }</pre></code>
 
-**PUT** - http://localhost:8080/medicalRecord/{firstName}/{lastName} >>> update a person's medicalrecord. 
+**PUT** - http://localhost:8080/medicalRecord >>> update a person's medicalrecord. 
 
-<pre><code>Response 201 Created or 404 Not found
+<pre><code>
     {
         "firstName": "John",
         "lastName": "Boyd",
@@ -124,7 +124,13 @@ https://maven.apache.org/install.html
         "allergies":["NEW ALLERGIE"] 
     }</pre></code>
 
-**DELETE** - http://localhost:8080/medicalRecord/{firstName}/{lastName} >>> delete a person's medicalrecord.
+**DELETE** - http://localhost:8080/medicalRecord >>> delete a person's medicalrecord.
+
+<pre><code>
+    {
+        "firstName": "John",
+        "lastName": "Boyd",
+    }</pre></code>
 
 ## Firestation number endpoint 
 

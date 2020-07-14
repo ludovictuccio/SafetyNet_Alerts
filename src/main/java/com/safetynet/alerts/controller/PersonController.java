@@ -43,89 +43,6 @@ public class PersonController {
    private IPersonService personService;
 
    /**
-    * This method controller is used to return the persons informations for the
-    * same last name entered.
-    *
-    * @param firstName
-    * @param lastName
-    * @return personInfos, PersonInfoDTO list
-    */
-   @GetMapping("/personInfo")
-   public List<PersonInfoDTO> personInfo(@RequestParam final String firstName,
-               @NotNull @RequestParam final String lastName,
-               final HttpServletResponse response) {
-      LOGGER.debug("GET request received for personInfos: {}", lastName);
-
-      List<PersonInfoDTO> personInfos = personService.personInfo(firstName,
-                  lastName);
-
-      if (!personInfos.isEmpty()) {
-         LOGGER.info("SUCCESS - personInfos GET request");
-         response.setStatus(Constants.STATUS_OK_200);
-      } else {
-         LOGGER.error("FAILED - No person's founded for last name: {}",
-                     lastName);
-         response.setStatus(Constants.ERROR_NOT_FOUND_404);
-      }
-      return personInfos;
-   }
-
-   /**
-    * This method controller is used to return the email addresses of persons in
-    * the city entered.
-    *
-    * @param city
-    * @return communityEmail, email addresses list
-    */
-   @GetMapping("/communityEmail")
-   public List<String> getCommunityEmail(
-               @NotNull @RequestParam(value = "city") final String city,
-               final HttpServletResponse response) {
-      LOGGER.debug("GET request received for getCommunityEmail: {}", city);
-
-      List<String> communityEmail = personService.communityEmail(city);
-
-      if (!communityEmail.isEmpty()) {
-         LOGGER.info("SUCCESS - CommunityEmail GET request");
-         response.setStatus(Constants.STATUS_OK_200);
-      } else {
-         LOGGER.error("FAILED - No person's email adresses founded for: {}",
-                     city);
-         String notFounded = "No person's email adresses founded for: "
-                     + city;
-         communityEmail.add(notFounded);
-         response.setStatus(Constants.ERROR_NOT_FOUND_404);
-      }
-      return communityEmail;
-   }
-
-   /**
-    * This method controller is used to return the households composition, if
-    * the adress entered contains children.
-    *
-    * @param address
-    * @return childAlert, ChildAlertDTO list
-    */
-   @GetMapping("/childAlert")
-   public List<ChildAlertDTO> getChildAlert(
-               @NotNull @RequestParam(value = "address") final String address,
-               final HttpServletResponse response) {
-      LOGGER.debug("GET request received for getChildAlert: {}", address);
-
-      List<ChildAlertDTO> childAlert = personService.childAlert(address);
-
-      if (!childAlert.isEmpty()) {
-         LOGGER.info("SUCCESS - ChildAlert GET request");
-         response.setStatus(Constants.STATUS_OK_200);
-      } else {
-         LOGGER.error("FAILED - No household with child founded for: {}",
-                     address);
-         response.setStatus(Constants.ERROR_NOT_FOUND_404);
-      }
-      return childAlert;
-   }
-
-   /**
     * This method controller is used to create a new Person with the service
     * method.
     *
@@ -138,7 +55,9 @@ public class PersonController {
       Person personsCreated = personService.createPerson(personToCreate);
 
       if (personsCreated != null) {
-         LOGGER.info("SUCCESS - CreatePerson POST request");
+         LOGGER.info("SUCCESS - CreatePerson POST request for {} {}",
+                     personsCreated.getFirstName(),
+                     personsCreated.getLastName());
          response.setStatus(Constants.STATUS_CREATED_201);
       } else {
          response.setStatus(Constants.ERROR_CONFLICT_409);
@@ -188,4 +107,88 @@ public class PersonController {
          response.setStatus(Constants.ERROR_NOT_FOUND_404);
       }
    }
+
+   /**
+    * This method controller is used to return the persons informations for the
+    * same last name entered.
+    *
+    * @param firstName
+    * @param lastName
+    * @return personInfos, PersonInfoDTO list
+    */
+   @GetMapping("/personInfo")
+   public List<PersonInfoDTO> personInfo(@RequestParam final String firstName,
+               @NotNull @RequestParam final String lastName,
+               final HttpServletResponse response) {
+      LOGGER.debug("GET request received for personInfos: {}", lastName);
+
+      List<PersonInfoDTO> personInfos = personService.personInfo(firstName,
+                  lastName);
+
+      if (!personInfos.isEmpty()) {
+         LOGGER.info("SUCCESS - personInfos GET request");
+         response.setStatus(Constants.STATUS_OK_200);
+      } else {
+         LOGGER.error("FAILED - No person's founded for last name: {}",
+                     lastName);
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
+      }
+      return personInfos;
+   }
+
+   /**
+    * This method controller is used to return the households composition, if
+    * the adress entered contains children.
+    *
+    * @param address
+    * @return childAlert, ChildAlertDTO list
+    */
+   @GetMapping("/childAlert")
+   public List<ChildAlertDTO> getChildAlert(
+               @NotNull @RequestParam(value = "address") final String address,
+               final HttpServletResponse response) {
+      LOGGER.debug("GET request received for getChildAlert: {}", address);
+
+      List<ChildAlertDTO> childAlert = personService.childAlert(address);
+
+      if (!childAlert.isEmpty()) {
+         LOGGER.info("SUCCESS - ChildAlert GET request");
+         response.setStatus(Constants.STATUS_OK_200);
+      } else {
+         LOGGER.error("FAILED - No household with child founded for: {}",
+                     address);
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
+      }
+      return childAlert;
+   }
+
+   /**
+    * This method controller is used to return the email addresses of persons in
+    * the city entered.
+    *
+    * @param city
+    * @return communityEmail, email addresses list
+    */
+   @GetMapping("/communityEmail")
+   public List<String> getCommunityEmail(
+               @NotNull @RequestParam(value = "city") final String city,
+               final HttpServletResponse response) {
+      LOGGER.debug("GET request received for getCommunityEmail: {}", city);
+
+      List<String> communityEmail = personService.communityEmail(city);
+
+      if (!communityEmail.isEmpty()) {
+         LOGGER.info("SUCCESS - CommunityEmail GET request");
+         response.setStatus(Constants.STATUS_OK_200);
+      } else {
+         LOGGER.error("FAILED - No person's email adresses founded for: {}",
+                     city);
+         String notFounded = "No person's email adresses founded for: "
+                     + city;
+         communityEmail.add(notFounded);
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
+      }
+      return communityEmail;
+   }
+
 }

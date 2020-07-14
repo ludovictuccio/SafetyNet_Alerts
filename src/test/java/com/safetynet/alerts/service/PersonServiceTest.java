@@ -62,22 +62,6 @@ public class PersonServiceTest {
                   allergiesList);
       medicalRecordChild = new MedicalRecord(childBirthdate, medicationsList,
                   allergiesList);
-
-//      List<Person> personsList = new ArrayList<>();
-//      person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
-//                  "841-874-6512", "jaboyd@email.com", medicalRecord);
-//      person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
-//                  "841-874-6513", "drk@email.com", medicalRecord);
-//      person3 = new Person("Eric", "Cadigan", "951 LoneTree Rd", "Culver",
-//                  "97451", "841-874-7458", "gramps@email.com", medicalRecord);
-//      personsList.add(person1);
-//      personsList.add(person2);
-//
-//      Map<Integer, FireStation> stations = new HashMap<Integer, FireStation>();
-//      Map<String, List<Person>> households = new HashMap<String, List<Person>>();
-//
-//      entitiesInfosStorage = new EntitiesInfosStorage(personsList, stations,
-//                  households);
    }
 
    @Test

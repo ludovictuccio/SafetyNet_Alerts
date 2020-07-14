@@ -12,6 +12,14 @@ import com.safetynet.alerts.util.AgeCalculator;
 public class MedicalRecord {
 
    /**
+    * The person's first name.
+    */
+   private String firstName;
+   /**
+    * The person's last name.
+    */
+   private String lastName;
+   /**
     * The person's birthdate.
     */
    private String birthdate;
@@ -23,6 +31,21 @@ public class MedicalRecord {
     * The person allergies list.
     */
    private List<String> allergies;
+
+   public MedicalRecord() {
+
+   }
+
+   public MedicalRecord(final String personsFirstName,
+               final String personsLastName, final String personsBirthdate,
+               final List<String> personMedicationsFollowed,
+               final List<String> personAllergies) {
+      this.firstName = personsFirstName;
+      this.lastName = personsLastName;
+      this.birthdate = personsBirthdate;
+      this.medications = personMedicationsFollowed;
+      this.allergies = personAllergies;
+   }
 
    /**
     * @param personsBirthdate
@@ -36,6 +59,34 @@ public class MedicalRecord {
       this.medications = personMedicationsFollowed;
       this.allergies = personAllergies;
    }
+
+   /**
+    * @return the firstName
+    */
+   public String getFirstName() {
+      return firstName;
+   }
+
+//   /**
+//    * @param personsFirstName the person's first name to set
+//    */
+//   public void setFirstName(final String personsFirstName) {
+//      this.firstName = personsFirstName;
+//   }
+
+   /**
+    * @return the lastName
+    */
+   public String getLastName() {
+      return lastName;
+   }
+
+//   /**
+//    * @param personsLastName the person's last name to set
+//    */
+//   public void setLastName(final String personsLastName) {
+//      this.lastName = personsLastName;
+//   }
 
    /**
     * @return the birthdate
@@ -71,8 +122,8 @@ public class MedicalRecord {
     */
    public void setMedications(final List<String> personMedicationsFollowed) {
       this.medications = personMedicationsFollowed;
-      medications.clear();
-      medications.addAll(personMedicationsFollowed);
+      // medications.clear();
+      // medications.addAll(personMedicationsFollowed);
    }
 
    /**
@@ -87,8 +138,8 @@ public class MedicalRecord {
     */
    public void setAllergies(final List<String> personAllergies) {
       this.allergies = personAllergies;
-      allergies.clear();
-      allergies.addAll(personAllergies);
+      // allergies.clear();
+      // allergies.addAll(personAllergies);
    }
 
    /**
