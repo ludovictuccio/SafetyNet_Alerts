@@ -245,3 +245,104 @@
 23 medicalrecords
 [INFO ] 15 juil. 2020 11:33:27 [main] SafetyNetAlertsApplication - Started SafetyNetAlertsApplication in 6.602 seconds (JVM running for 9.388)
 [INFO ] 15 juil. 2020 11:33:38 [http-nio-8080-exec-3] FireStationController - SUCCESS - UpdateFireStation PUT request -  Firestation number: 1, Address: 1509 Culver St
+[INFO ] 15 juil. 2020 12:12:00 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 13316 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 15 juil. 2020 12:12:00 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 15 juil. 2020 12:12:00 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 15 juil. 2020 12:12:03 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 15 juil. 2020 12:12:03 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 15 juil. 2020 12:12:03 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 15 juil. 2020 12:12:05 [main] FireStationServiceTest - Started FireStationServiceTest in 6.052 seconds (JVM running for 11.654)
+[ERROR] 15 juil. 2020 12:12:05 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 15 juil. 2020 12:12:05 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 15 juil. 2020 12:12:05 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 15 juil. 2020 12:12:53 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 292 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 15 juil. 2020 12:12:53 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 15 juil. 2020 12:12:53 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 15 juil. 2020 12:12:55 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 15 juil. 2020 12:12:55 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 15 juil. 2020 12:12:55 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 15 juil. 2020 12:12:58 [main] FireStationServiceTest - Started FireStationServiceTest in 5.517 seconds (JVM running for 9.43)
+[ERROR] 15 juil. 2020 12:12:58 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 15 juil. 2020 12:12:58 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 15 juil. 2020 12:12:58 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 15 juil. 2020 12:25:37 [main] FireStationControllerTest - Starting FireStationControllerTest on PC-de-Ludo with PID 17172 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 15 juil. 2020 12:25:37 [main] FireStationControllerTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 15 juil. 2020 12:25:37 [main] FireStationControllerTest - The following profiles are active: dev
+[DEBUG] 15 juil. 2020 12:25:39 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 15 juil. 2020 12:25:39 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 15 juil. 2020 12:25:39 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 15 juil. 2020 12:25:42 [main] FireStationControllerTest - Started FireStationControllerTest in 5.08 seconds (JVM running for 8.558)
+[INFO ] 15 juil. 2020 12:25:42 [main] FireStationController - SUCCESS - DeleteFireStation DELETE request -  Address: 1509 Culver St
+[ERROR] 15 juil. 2020 12:25:42 [main] FireStationService - The address entered for: Los angeles does not exist.
+[INFO ] 15 juil. 2020 12:25:42 [main] FireStationController - SUCCESS - AddAddressForFirestation POST request -  Firestation number: 1, Address: NEW ADDRESS
+[ERROR] 15 juil. 2020 12:25:42 [main] FireStationService - The address entered for: [Unknow address, 3] does not exist.
+[ERROR] 15 juil. 2020 12:25:42 [main] FireStationService - The address entered for: [NEW ADDRESS, 999] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 15 juil. 2020 12:25:42 [main] FireStationService - The address entered for: [1509 Culver St, 1] does not exist.
+[INFO ] 15 juil. 2020 12:26:32 [main] FireStationControllerTest - Starting FireStationControllerTest on PC-de-Ludo with PID 248 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 15 juil. 2020 12:26:32 [main] FireStationControllerTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 15 juil. 2020 12:26:32 [main] FireStationControllerTest - The following profiles are active: dev
+[DEBUG] 15 juil. 2020 12:26:34 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 15 juil. 2020 12:26:34 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 15 juil. 2020 12:26:34 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 15 juil. 2020 12:26:36 [main] FireStationControllerTest - Started FireStationControllerTest in 4.895 seconds (JVM running for 8.568)
+[INFO ] 15 juil. 2020 12:26:37 [main] FireStationController - SUCCESS - DeleteFireStation DELETE request -  Address: 29 15th St
+[ERROR] 15 juil. 2020 12:26:37 [main] FireStationService - The address entered for: Los angeles does not exist.
+[INFO ] 15 juil. 2020 12:26:37 [main] FireStationController - SUCCESS - AddAddressForFirestation POST request -  Firestation number: 1, Address: NEW ADDRESS
+[ERROR] 15 juil. 2020 12:26:37 [main] FireStationService - The address entered for: [Unknow address, 3] does not exist.
+[ERROR] 15 juil. 2020 12:26:37 [main] FireStationService - The address entered for: [NEW ADDRESS, 999] already exists for a mapping. Please delete or update a mapping.
+[INFO ] 15 juil. 2020 12:26:37 [main] FireStationController - SUCCESS - UpdateFireStation PUT request -  Firestation number: 1, Address: 1509 Culver St
+[INFO ] 15 juil. 2020 12:27:35 [main] FireStationControllerTest - Starting FireStationControllerTest on PC-de-Ludo with PID 15560 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 15 juil. 2020 12:27:35 [main] FireStationControllerTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 15 juil. 2020 12:27:35 [main] FireStationControllerTest - The following profiles are active: dev
+[DEBUG] 15 juil. 2020 12:27:37 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 15 juil. 2020 12:27:37 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 15 juil. 2020 12:27:37 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 15 juil. 2020 12:27:42 [main] FireStationControllerTest - Started FireStationControllerTest in 7.464 seconds (JVM running for 11.465)
+[INFO ] 15 juil. 2020 12:27:43 [main] FireStationController - SUCCESS - DeleteFireStation DELETE request -  Address: 29 15th St
+[INFO ] 15 juil. 2020 12:27:43 [main] FireStationController - SUCCESS - AddAddressForFirestation POST request -  Firestation number: 1, Address: NEW ADDRESS
+[ERROR] 15 juil. 2020 12:27:43 [main] FireStationService - The address entered for: [Unknow address, 3] does not exist.
+[ERROR] 15 juil. 2020 12:27:43 [main] FireStationService - The address entered for: [NEW ADDRESS, 999] already exists for a mapping. Please delete or update a mapping.
+[INFO ] 15 juil. 2020 12:27:43 [main] FireStationController - SUCCESS - UpdateFireStation PUT request -  Firestation number: 1, Address: 1509 Culver St
+[ERROR] 15 juil. 2020 12:27:43 [main] FireStationService - The address entered for: Los angeles does not exist.
+[INFO ] 15 juil. 2020 12:29:13 [main] FireStationControllerTest - Starting FireStationControllerTest on PC-de-Ludo with PID 9608 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 15 juil. 2020 12:29:13 [main] FireStationControllerTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 15 juil. 2020 12:29:13 [main] FireStationControllerTest - The following profiles are active: dev
+[DEBUG] 15 juil. 2020 12:29:15 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 15 juil. 2020 12:29:15 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 15 juil. 2020 12:29:15 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 15 juil. 2020 12:29:17 [main] FireStationControllerTest - Started FireStationControllerTest in 4.579 seconds (JVM running for 7.347)
+[INFO ] 15 juil. 2020 12:29:18 [main] FireStationController - SUCCESS - DeleteFireStation DELETE request -  Address: 29 15th St
+[INFO ] 15 juil. 2020 12:29:18 [main] FireStationController - SUCCESS - AddAddressForFirestation POST request -  Firestation number: 1, Address: NEW ADDRESS
+[ERROR] 15 juil. 2020 12:29:18 [main] FireStationService - The address entered for: [Unknow address, 3] does not exist.
+[ERROR] 15 juil. 2020 12:29:18 [main] FireStationService - The address entered for: [NEW ADDRESS, 999] already exists for a mapping. Please delete or update a mapping.
+[INFO ] 15 juil. 2020 12:29:18 [main] FireStationController - SUCCESS - UpdateFireStation PUT request -  Firestation number: 1, Address: 1509 Culver St
+[ERROR] 15 juil. 2020 12:29:18 [main] FireStationService - The address entered for: Los angeles does not exist.
+[INFO ] 15 juil. 2020 12:30:01 [main] SafetyNetAlertsApplication - Starting SafetyNetAlertsApplication on PC-de-Ludo with PID 8980 (C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts\target\classes started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 15 juil. 2020 12:30:01 [main] SafetyNetAlertsApplication - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 15 juil. 2020 12:30:01 [main] SafetyNetAlertsApplication - The following profiles are active: dev
+[DEBUG] 15 juil. 2020 12:30:07 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 15 juil. 2020 12:30:07 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 15 juil. 2020 12:30:07 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 15 juil. 2020 12:30:08 [main] SafetyNetAlertsApplication - Started SafetyNetAlertsApplication in 7.397 seconds (JVM running for 9.48)
+[INFO ] 15 juil. 2020 12:30:50 [http-nio-8080-exec-4] FireStationController - SUCCESS - DeleteFireStation DELETE request -  Address: 1509 Culver St

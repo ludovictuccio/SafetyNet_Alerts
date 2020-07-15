@@ -144,7 +144,7 @@ public class FireStationServiceTest {
       when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
 
       boolean isUpdated = fireStationService
-                  .updateFireStation(firestationMappingToUpdate);
+                  .updateAddressForFireStation(firestationMappingToUpdate);
 
       assertThat(isUpdated).isTrue();
       assertThat(firestationsList.get("1").getAddresses()
@@ -182,7 +182,7 @@ public class FireStationServiceTest {
       when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
 
       boolean isUpdated = fireStationService
-                  .updateFireStation(firestationMappingToUpdate);
+                  .updateAddressForFireStation(firestationMappingToUpdate);
 
       assertThat(isUpdated).isTrue();
       assertThat(firestationsList.get("3").getAddresses()
@@ -211,7 +211,8 @@ public class FireStationServiceTest {
       when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
 
       assertThatNullPointerException().isThrownBy(() -> {
-         fireStationService.updateFireStation(firestationMappingToUpdate);
+         fireStationService
+                     .updateAddressForFireStation(firestationMappingToUpdate);
       });
    }
 
@@ -241,7 +242,7 @@ public class FireStationServiceTest {
       when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
 
       boolean isUpdated = fireStationService
-                  .updateFireStation(firestationMappingToUpdate);
+                  .updateAddressForFireStation(firestationMappingToUpdate);
 
       assertThat(isUpdated).isFalse();
       assertThat(firestationsList.get("1").getAddresses()
@@ -254,29 +255,48 @@ public class FireStationServiceTest {
                   .contains("Unknow address")).isFalse();
    }
 
-//   @Test
-//   @DisplayName("Delete firestation")
-//   public void givenFirestationEndpoint_whenDeleteFirestation_thenReturnDeletedFirestation() {
-//
-//       Map<Integer, FireStation> deleteFireStation(
-//               final int firestationNumber, final String firestationAdress) ;
-//
-//      FireStation firestation1 = new FireStation("", 1);
-//      FireStation firestation2 = new FireStation("", 2);
-//      FireStation firestation3 = new FireStation("", 3);
-//
-//      Map<Integer, FireStation> firestationsList = new HashMap<>();
-//      firestationsList.put(1, firestation1);
-//      firestationsList.put(2, firestation2);
-//      firestationsList.put(3, firestation3);
-//
-//      assertThat(firestationsList.size() == 3).isTrue();
-//
-//      fireStationService.deleteFireStation(2, "1509 Culver St");
-//
-//      assertThat(firestationsList.size() == 2).isTrue();
-//   }
-//
+   @Test
+   @Tag("DELETE")
+   @DisplayName("Delete - OK - Valid address")
+   public void givenValidAddress_whenDelete_thenReturnAddressDeletedFomStationMapping() {
+
+      // Initilization station=1 with 2 addresses
+      FireStation firestation1 = new FireStation("1");
+      firestation1.addAddress("908 73rd St");
+      firestation1.addAddress("644 Gershwin Cir");
+      Map<String, FireStation> firestationsList = new HashMap<String, FireStation>();
+      firestationsList.put("1", firestation1);
+
+      when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
+
+      boolean isDeleted = fireStationService
+                  .deleteAddressForFireStation("908 73rd St");
+
+      assertThat(isDeleted).isTrue();
+      assertThat(firestationsList.get("1").getAddresses()
+                  .contains("908 73rd St")).isFalse();
+      assertThat(firestationsList.size()).isEqualTo(1);
+   }
+
+   @Test
+   @Tag("DELETE")
+   @DisplayName("Delete - Bad address entered")
+   public void givenUnknowAddress_whenDelete_thenReturnFalse() {
+
+      // Initilization station=1 with 2 addresses
+      FireStation firestation1 = new FireStation("1");
+      firestation1.addAddress("908 73rd St");
+      firestation1.addAddress("644 Gershwin Cir");
+      Map<String, FireStation> firestationsList = new HashMap<String, FireStation>();
+      firestationsList.put("1", firestation1);
+
+      when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
+
+      boolean isDeleted = fireStationService
+                  .deleteAddressForFireStation("Unknow address");
+
+      assertThat(isDeleted).isFalse();
+   }
 //   @Test
 //   @DisplayName("stationNumber")
 //   public void givenFirestationEndpoint_whenFirestationNumberInput_thenReturnPersonsUnderStationResponsibilityList() {

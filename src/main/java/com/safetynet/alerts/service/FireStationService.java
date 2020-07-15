@@ -82,7 +82,7 @@ public class FireStationService implements IFireStationService {
     * @param firestationMappingToCreate
     * @return isUpdated boolean
     */
-   public boolean updateFireStation(
+   public boolean updateAddressForFireStation(
                final Map<String, String> firestationMappingToCreate) {
       boolean isUpdated = false;
       try {
@@ -107,8 +107,7 @@ public class FireStationService implements IFireStationService {
                return isUpdated = true;
             }
          }
-         LOGGER.error(
-                     "The address entered for: {} already exists for a mapping. Please delete or update a mapping.",
+         LOGGER.error("The address entered for: {} does not exist.",
                      firestationMappingToCreate.values());
          return isUpdated;
       } catch (NullPointerException np) {
@@ -119,16 +118,28 @@ public class FireStationService implements IFireStationService {
    }
 
    /**
-    * @param firestationNumber
-    * @param firestationAdress
-    * @return
+    * This method service is used to delete an existing address, and update the
+    * address/station mapping.
+    *
+    * @param address
+    * @return isDeleted boolean
     */
-   public boolean deleteFireStation(final String firestationNumber,
-               final String firestationAdress) {
-      return false;
-      // supprimer addresse pour une station ou toutes les adresses de la
-      // station
+   public boolean deleteAddressForFireStation(final String address) {
+      boolean isDeleted = false;
+      Map<String, FireStation> allFirestationsMapping = entitiesInfosStorage
+                  .getFirestations();
 
+      for (Entry<String, FireStation> entry : allFirestationsMapping
+                  .entrySet()) {
+         FireStation firestationsNumber = entry.getValue();
+
+         if (firestationsNumber.getAddresses().toString().contains(address)) {
+            firestationsNumber.getAddresses().remove(address);
+            return isDeleted = true;
+         }
+      }
+      LOGGER.error("The address entered for: {} does not exist.", address);
+      return isDeleted;
    }
 
    /**

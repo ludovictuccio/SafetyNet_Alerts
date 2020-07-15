@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.safetynet.alerts.constants.Constants;
@@ -70,12 +72,12 @@ public class FireStationController {
     * @param firestationMappingToCreate
     */
    @PutMapping("/firestation")
-   public void updateFireStation(
+   public void updateAddressForFireStation(
                @NotNull @RequestBody final Map<String, String> firestationMappingToCreate,
                final HttpServletResponse response) {
 
       boolean isUpdated = fireStationService
-                  .updateFireStation(firestationMappingToCreate);
+                  .updateAddressForFireStation(firestationMappingToCreate);
 
       if (isUpdated) {
          LOGGER.info("SUCCESS - UpdateFireStation PUT request -  Firestation number: {}, Address: {}",
@@ -88,14 +90,26 @@ public class FireStationController {
    }
 
    /**
-    * @param firestationNumber
-    * @param firestationAdress
-    * @return
+    * This method controller is used to delete an existing address, and update
+    * the address/station mapping.
+    *
+    * @param address
     */
-   public Map<Integer, FireStation> deleteFireStation(
-               final int firestationNumber, final String firestationAdress) {
-      return null;
+   @DeleteMapping("/firestation")
+   public void deleteAddressForFireStation(
+               @NotNull @RequestParam final String address,
+               final HttpServletResponse response) {
 
+      boolean isDeleted = fireStationService
+                  .deleteAddressForFireStation(address);
+
+      if (isDeleted) {
+         LOGGER.info("SUCCESS - DeleteFireStation DELETE request -  Address: {}",
+                     address);
+         response.setStatus(Constants.STATUS_OK_200);
+      } else {
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
+      }
    }
 
    /**

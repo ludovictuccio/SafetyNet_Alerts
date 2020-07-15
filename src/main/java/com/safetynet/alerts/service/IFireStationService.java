@@ -20,14 +20,12 @@ public interface IFireStationService {
    /**
     * @param firestationToUpdate
     */
-   boolean updateFireStation(Map<String, String> firestationToUpdate);
+   boolean updateAddressForFireStation(Map<String, String> firestationToUpdate);
 
    /**
-    * @param firestationNumber
-    * @param firestationAdress
+    * @param address
     */
-   boolean deleteFireStation(String firestationNumber,
-               String firestationAdress);
+   public boolean deleteAddressForFireStation(String address);
 
    /**
     * @param stationNumber

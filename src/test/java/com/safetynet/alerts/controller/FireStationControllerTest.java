@@ -80,4 +80,26 @@ public class FireStationControllerTest {
                   .content("{\"address\": \"Unknow address\",\"station\": \"3\"}"))
                   .andExpect(status().isNotFound());
    }
+
+   @Test
+   @Tag("DELETE")
+   @DisplayName("Delete - OK")
+   public void givenExistingAddress_whenDelete_thenReturnOk() throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.delete("/firestation")
+                  .contentType(APPLICATION_JSON).param("address", "29 15th St")
+                  .accept(MediaType.APPLICATION_JSON))
+                  .andExpect(status().isOk());
+   }
+
+   @Test
+   @Tag("DELETE")
+   @DisplayName("Delete - ERROR")
+   public void givenNonexistantAddress_whenDelete_thenReturnNotFound()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.delete("/firestation")
+                  .contentType(APPLICATION_JSON).param("address", "Los angeles")
+                  .accept(MediaType.APPLICATION_JSON))
+                  .andDo(MockMvcResultHandlers.print())
+                  .andExpect(status().isNotFound());
+   }
 }
