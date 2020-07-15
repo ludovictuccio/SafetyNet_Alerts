@@ -46,7 +46,7 @@ public class FireStation {
    /**
     * @return the adresses
     */
-   public Set<String> getAdresses() {
+   public Set<String> getAddresses() {
       return addresses;
    }
 

@@ -92,11 +92,11 @@ https://maven.apache.org/install.html
         "address": "New address"
     }</pre></code>
 
-**PUT** - http://localhost:8080/firestation{address} >>> update firestation number for an entered address.
+**PUT** - http://localhost:8080/firestation >>> update firestation number for an entered address.
 
 <pre><code>{
-        "station": "3",
-        "address": "New address"
+        "station": "1",
+        "address": "1509 Culver St"
     }</pre></code>
 
 **DELETE** - http://localhost:8080/firestation{address} >>> delete an address with his firestation number association.

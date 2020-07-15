@@ -3,7 +3,6 @@ package com.safetynet.alerts.service;
 import java.util.List;
 import java.util.Map;
 
-import com.safetynet.alerts.model.FireStation;
 import com.safetynet.alerts.model.Person;
 
 /**
@@ -16,28 +15,25 @@ public interface IFireStationService {
    /**
     * @param firestationToCreate
     */
-   boolean addAddressForFirestation(
-               final Map<String, String> firestationToCreate);
+   boolean addAddressForFirestation(Map<String, String> firestationToCreate);
+
+   /**
+    * @param firestationToUpdate
+    */
+   boolean updateFireStation(Map<String, String> firestationToUpdate);
 
    /**
     * @param firestationNumber
     * @param firestationAdress
     */
-   Map<Integer, FireStation> updateFireStation(int firestationNumber,
-               String firestationAdress);
-
-   /**
-    * @param firestationNumber
-    * @param firestationAdress
-    */
-   Map<Integer, FireStation> deleteFireStation(int firestationNumber,
+   boolean deleteFireStation(String firestationNumber,
                String firestationAdress);
 
    /**
     * @param stationNumber
     * @return
     */
-   List<Person> firestationNumber(int stationNumber);
+   List<Person> firestationNumber(String stationNumber);
 
    /**
     * @param householdAdress
@@ -47,11 +43,11 @@ public interface IFireStationService {
    /**
     * @param stationsNumber
     */
-   List<Person> flood(int stationsNumber);
+   List<Person> flood(String stationsNumber);
 
    /**
     * @param fireStationNumber
     */
-   List<String> phoneAlert(int fireStationNumber);
+   List<String> phoneAlert(String fireStationNumber);
 
 }

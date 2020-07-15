@@ -57,7 +57,7 @@ public class FireStationService implements IFireStationService {
             FireStation firestationsNumber = entry.getValue();
 
             // For not add the same address already added
-            if (firestationsNumber.getAdresses().toString()
+            if (firestationsNumber.getAddresses().toString()
                         .contains(newAddress.toString())) {
                LOGGER.error(
                            "The address entered for: {} already exists for a mapping. Please delete or update a mapping.",
@@ -76,14 +76,46 @@ public class FireStationService implements IFireStationService {
    }
 
    /**
-    * @param firestationNumber
-    * @param firestationAdress
-    * @return
+    * This method service is used to update an existing address for other
+    * existing firestation.
+    *
+    * @param firestationMappingToCreate
+    * @return isUpdated boolean
     */
-   public Map<Integer, FireStation> updateFireStation(
-               final int firestationNumber, final String firestationAdress) {
-      return null;
+   public boolean updateFireStation(
+               final Map<String, String> firestationMappingToCreate) {
+      boolean isUpdated = false;
+      try {
+         Map<String, FireStation> allFirestationsMapping = entitiesInfosStorage
+                     .getFirestations();
 
+         String address = firestationMappingToCreate.get("address").toString();
+         FireStation firestationNumberRecovered = allFirestationsMapping
+                     .get(firestationMappingToCreate.get("station").toString());
+
+         for (Entry<String, FireStation> entry : allFirestationsMapping
+                     .entrySet()) {
+            FireStation firestationsNumber = entry.getValue();
+
+            // 1.Verify existing address
+            // 2.Remove the address that was assigned to another station
+            // 3.Update address with the other station
+            if (firestationsNumber.getAddresses().toString()
+                        .contains(address)) {
+               firestationsNumber.getAddresses().remove(address);
+               firestationNumberRecovered.addAddress(address);
+               return isUpdated = true;
+            }
+         }
+         LOGGER.error(
+                     "The address entered for: {} already exists for a mapping. Please delete or update a mapping.",
+                     firestationMappingToCreate.values());
+         return isUpdated;
+      } catch (NullPointerException np) {
+         throw new NullPointerException(
+                     "NullPointerException. Please verify the station number entered."
+                                 + np);
+      }
    }
 
    /**
@@ -91,9 +123,11 @@ public class FireStationService implements IFireStationService {
     * @param firestationAdress
     * @return
     */
-   public Map<Integer, FireStation> deleteFireStation(
-               final int firestationNumber, final String firestationAdress) {
-      return null;
+   public boolean deleteFireStation(final String firestationNumber,
+               final String firestationAdress) {
+      return false;
+      // supprimer addresse pour une station ou toutes les adresses de la
+      // station
 
    }
 
@@ -101,7 +135,7 @@ public class FireStationService implements IFireStationService {
     * @param stationNumber
     * @return
     */
-   public List<Person> firestationNumber(final int stationNumber) {
+   public List<Person> firestationNumber(final String stationNumber) {
       return null;
 
    }
@@ -119,7 +153,7 @@ public class FireStationService implements IFireStationService {
     * @param stationsNumber
     * @return
     */
-   public List<Person> flood(final int stationsNumber) {
+   public List<Person> flood(final String stationsNumber) {
       return null;
 
    }
@@ -128,7 +162,7 @@ public class FireStationService implements IFireStationService {
     * @param fireStationNumber
     * @return
     */
-   public List<String> phoneAlert(final int fireStationNumber) {
+   public List<String> phoneAlert(final String fireStationNumber) {
       return null;
 
    }

@@ -56,13 +56,13 @@ public class FireStationServiceTest {
                   .addAddressForFirestation(firestationMappingToCreate);
 
       assertThat(isAdded).isTrue();
-      assertThat(firestationsList.get("1").getAdresses()
+      assertThat(firestationsList.get("1").getAddresses()
                   .contains("new address")).isTrue();
    }
 
    @Test
    @Tag("CREATE")
-   @DisplayName("Create - Bad firestation entry")
+   @DisplayName("Create - Bad firestation entered")
    public void givenNonexistantStationNumber_whenCreate_thenReturnNull() {
 
       // Initilization station=1 with 2 addresses
@@ -114,19 +114,146 @@ public class FireStationServiceTest {
                   .addAddressForFirestation(firestationMappingToCreate);
 
       assertThat(isAdded).isFalse();
-      assertThat(firestationsList.get("2").getAdresses()
+      assertThat(firestationsList.get("2").getAddresses()
                   .contains("908 73rd St")).isFalse();
    }
 
-//   @Test
-//   @DisplayName("Update firestation")
-//   public void givenFirestationEndpoint_whenUpdateFirestation_thenReturnUpdatedFirestation() {
-//
-//      Map<Integer, FireStation> updateFireStation(
-//                  final int firestationNumber, final String firestationAdress);
-//
-//   }
-//
+   @Test
+   @Tag("UPDATE")
+   @DisplayName("Update - OK")
+   public void givenExistingAddressAndExistingStation_whenUpdate_thenReturnUpdated() {
+
+      // Initilization station=1 with 2 addresses
+      FireStation firestation1 = new FireStation("1");
+      firestation1.addAddress("908 73rd St");
+      firestation1.addAddress("644 Gershwin Cir");
+
+      // Initilization station=2 with 1 addresses
+      FireStation firestation2 = new FireStation("2");
+      firestation2.addAddress("29 15th St");
+
+      Map<String, FireStation> firestationsList = new HashMap<String, FireStation>();
+      firestationsList.put("1", firestation1);
+      firestationsList.put("2", firestation2);
+
+      // Add existing address for other station
+      Map<String, String> firestationMappingToUpdate = new HashMap<String, String>();
+      firestationMappingToUpdate.put("station", "2");
+      firestationMappingToUpdate.put("address", "908 73rd St");
+
+      when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
+
+      boolean isUpdated = fireStationService
+                  .updateFireStation(firestationMappingToUpdate);
+
+      assertThat(isUpdated).isTrue();
+      assertThat(firestationsList.get("1").getAddresses()
+                  .contains("908 73rd St")).isFalse();
+      assertThat(firestationsList.get("2").getAddresses()
+                  .contains("908 73rd St")).isTrue();
+   }
+
+   @Test
+   @Tag("UPDATE")
+   @DisplayName("Update - OK - browse all list")
+   public void givenThreeStationsToBrowse_whenUpdate_thenReturnUpdated() {
+      // Initilization station=1 with 1 address
+      FireStation firestation1 = new FireStation("1");
+      firestation1.addAddress("644 Gershwin Cir");
+
+      // Initilization station=2 with 1 addresses
+      FireStation firestation2 = new FireStation("2");
+      firestation2.addAddress("29 15th St");
+
+      // Initilization station=3 with 1 addresses
+      FireStation firestation3 = new FireStation("3");
+      firestation3.addAddress("908 73rd St");
+
+      Map<String, FireStation> firestationsList = new HashMap<String, FireStation>();
+      firestationsList.put("1", firestation1);
+      firestationsList.put("2", firestation2);
+      firestationsList.put("3", firestation3);
+
+      // Add existing address for other station
+      Map<String, String> firestationMappingToUpdate = new HashMap<String, String>();
+      firestationMappingToUpdate.put("station", "2");
+      firestationMappingToUpdate.put("address", "908 73rd St");
+
+      when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
+
+      boolean isUpdated = fireStationService
+                  .updateFireStation(firestationMappingToUpdate);
+
+      assertThat(isUpdated).isTrue();
+      assertThat(firestationsList.get("3").getAddresses()
+                  .contains("908 73rd St")).isFalse();
+      assertThat(firestationsList.get("2").getAddresses()
+                  .contains("908 73rd St")).isTrue();
+   }
+
+   @Test
+   @Tag("UPDATE")
+   @DisplayName("Update - Bad firestation entered")
+   public void givenExistingAddressAndNonExistantStation_whenUpdate_thenReturnError() {
+
+      // Initilization station=1 with 2 addresses
+      FireStation firestation1 = new FireStation("1");
+      firestation1.addAddress("908 73rd St");
+      firestation1.addAddress("644 Gershwin Cir");
+      Map<String, FireStation> firestationsList = new HashMap<String, FireStation>();
+      firestationsList.put("1", firestation1);
+
+      // Add a new address for firestation1
+      Map<String, String> firestationMappingToUpdate = new HashMap<String, String>();
+      firestationMappingToUpdate.put("station", "488");
+      firestationMappingToUpdate.put("address", "908 73rd St");
+
+      when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
+
+      assertThatNullPointerException().isThrownBy(() -> {
+         fireStationService.updateFireStation(firestationMappingToUpdate);
+      });
+   }
+
+   @Test
+   @Tag("UPDATE")
+   @DisplayName("Update - Bad address entered")
+   public void givenNonexistantAddressEntered_whenUpdate_thenReturnError() {
+
+      // Initilization station=1 with 2 addresses
+      FireStation firestation1 = new FireStation("1");
+      firestation1.addAddress("908 73rd St");
+      firestation1.addAddress("644 Gershwin Cir");
+
+      // Initilization station=2 with 1 addresses
+      FireStation firestation2 = new FireStation("2");
+      firestation2.addAddress("29 15th St");
+
+      Map<String, FireStation> firestationsList = new HashMap<String, FireStation>();
+      firestationsList.put("1", firestation1);
+      firestationsList.put("2", firestation2);
+
+      // Add existant address
+      Map<String, String> firestationMappingToUpdate = new HashMap<String, String>();
+      firestationMappingToUpdate.put("station", "2");
+      firestationMappingToUpdate.put("address", "Unknow address");
+
+      when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
+
+      boolean isUpdated = fireStationService
+                  .updateFireStation(firestationMappingToUpdate);
+
+      assertThat(isUpdated).isFalse();
+      assertThat(firestationsList.get("1").getAddresses()
+                  .contains("908 73rd St")).isTrue();
+      assertThat(firestationsList.get("1").getAddresses()
+                  .contains("644 Gershwin Cir")).isTrue();
+      assertThat(firestationsList.get("2").getAddresses()
+                  .contains("29 15th St")).isTrue();
+      assertThat(firestationsList.get("2").getAddresses()
+                  .contains("Unknow address")).isFalse();
+   }
+
 //   @Test
 //   @DisplayName("Delete firestation")
 //   public void givenFirestationEndpoint_whenDeleteFirestation_thenReturnDeletedFirestation() {

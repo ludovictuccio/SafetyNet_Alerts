@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -54,8 +55,8 @@ public class FireStationController {
 
       if (isAdded) {
          LOGGER.info("SUCCESS - AddAddressForFirestation POST request -  Firestation number: {}, Address: {}",
-                     firestationToCreate.get("address"),
-                     firestationToCreate.get("station"));
+                     firestationToCreate.get("station"),
+                     firestationToCreate.get("address"));
          response.setStatus(Constants.STATUS_CREATED_201);
       } else {
          response.setStatus(Constants.ERROR_CONFLICT_409);
@@ -63,14 +64,27 @@ public class FireStationController {
    }
 
    /**
-    * @param firestationNumber
-    * @param firestationAdress
-    * @return
+    * This method controller is used to update an existing address for other
+    * existing firestation.
+    *
+    * @param firestationMappingToCreate
     */
-   public Map<Integer, FireStation> updateFireStation(
-               final int firestationNumber, final String firestationAdress) {
-      return null;
+   @PutMapping("/firestation")
+   public void updateFireStation(
+               @NotNull @RequestBody final Map<String, String> firestationMappingToCreate,
+               final HttpServletResponse response) {
 
+      boolean isUpdated = fireStationService
+                  .updateFireStation(firestationMappingToCreate);
+
+      if (isUpdated) {
+         LOGGER.info("SUCCESS - UpdateFireStation PUT request -  Firestation number: {}, Address: {}",
+                     firestationMappingToCreate.get("station"),
+                     firestationMappingToCreate.get("address"));
+         response.setStatus(Constants.STATUS_OK_200);
+      } else {
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
+      }
    }
 
    /**

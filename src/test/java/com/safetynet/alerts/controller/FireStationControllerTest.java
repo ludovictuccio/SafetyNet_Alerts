@@ -56,4 +56,28 @@ public class FireStationControllerTest {
                   .content("{\"address\": \"NEW ADDRESS\",\"station\": \"999\"}"))
                   .andExpect(status().isConflict());
    }
+
+   @Test
+   @Tag("PUT")
+   @DisplayName("Update - OK")
+   public void givenAdressMappedWithStationThree_whenUpdateWithStationOne_thenReturnUpdated()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.put("/firestation")
+                  .contentType(APPLICATION_JSON)
+                  .content("{\"address\": \"1509 Culver St\",\"station\": \"1\"}")
+                  .accept(APPLICATION_JSON))
+                  .andDo(MockMvcResultHandlers.print())
+                  .andExpect(status().isOk());
+   }
+
+   @Test
+   @Tag("PUT")
+   @DisplayName("Update - ERROR")
+   public void givenValidAddress_whenUpdateWithUnknowStationNumber_thenReturnNotFound()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.put("/firestation")
+                  .contentType(APPLICATION_JSON)
+                  .content("{\"address\": \"Unknow address\",\"station\": \"3\"}"))
+                  .andExpect(status().isNotFound());
+   }
 }
