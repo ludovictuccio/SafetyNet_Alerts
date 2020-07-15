@@ -84,19 +84,19 @@ https://maven.apache.org/install.html
 
 ## Firestation endpoint
 
-**POST** - http://localhost:8080/firestation >>> add a new address for a firestation number.
+**POST** - http://localhost:8080/firestation >>> add a new address for an existing firestation number. If address already exists for a mapping, impossible add.
 
- <pre><code> Response 201 Created or 409 Conflict (if already existing address mapping)
+ <pre><code> Response 201 Created or 409 Conflict
   {
-        "address": "New address",
-        "station": "2"
+        "station": "1",
+        "address": "New address"
     }</pre></code>
 
 **PUT** - http://localhost:8080/firestation{address} >>> update firestation number for an entered address.
 
 <pre><code>{
-        "address": "New address",
-        "station": "4"
+        "station": "3",
+        "address": "New address"
     }</pre></code>
 
 **DELETE** - http://localhost:8080/firestation{address} >>> delete an address with his firestation number association.

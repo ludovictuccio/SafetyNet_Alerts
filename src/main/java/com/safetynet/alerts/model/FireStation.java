@@ -14,62 +14,55 @@ public class FireStation {
    /**
     * A String HashSet used to group adresses under responsibility.
     */
-   private Set<String> adresses = new HashSet<>();
+   private Set<String> addresses = new HashSet<>();
    /**
     * The fire station number.
     */
-   private int station;
+   private String station;
 
+   /**
+    * Empty class constructor.
+    */
    public FireStation() {
 
    }
 
    /**
+    * Class constructor.
     *
     * @param stationNumber
     */
-   public FireStation(final int stationNumber) {
+   public FireStation(final String stationNumber) {
       this.station = stationNumber;
    }
 
-   public void addAddress(final String newAdress) {
-      adresses.add(newAdress);
+   /**
+    * @param newAddress
+    */
+   public void addAddress(final String newAddress) {
+      addresses.add(newAddress);
    }
 
    /**
     * @return the adresses
     */
    public Set<String> getAdresses() {
-      return adresses;
+      return addresses;
    }
-
-//   /**
-//    * @param stationsAdresses the stations adresses to set
-//    */
-//   public void setAdresses(final String stationsAdresses) {
-//      adresses.add(stationsAdresses);
-//   }
 
    /**
-    * @return the station
+    * @return the station number
     */
-   public int getStation() {
+   public String getStation() {
       return station;
    }
-//
-//   /**
-//    * @param stationNumber the station number to set
-//    */
-//   public void setStation(final int stationNumber) {
-//      this.station = stationNumber;
-//   }
 
    /**
     * A toString class method().
     */
    public String toString() {
-      return "FireStation [adresses="
-                  + adresses
+      return "FireStation [addresses="
+                  + addresses
                   + ", station="
                   + station
                   + "]";

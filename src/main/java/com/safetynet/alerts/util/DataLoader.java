@@ -82,9 +82,9 @@ public class DataLoader {
       });
       // FireStations
       Any anyFireStation = any.get("firestations");
-      Map<Integer, FireStation> firestations = new HashMap<>();
+      Map<String, FireStation> firestations = new HashMap<>();
       anyFireStation.forEach(firestationJson -> {
-         int id = firestationJson.get("station").toInt();
+         String id = firestationJson.get("station").toString();
          String address = firestationJson.get("address").toString();
 
          FireStation firestation = firestations.computeIfAbsent(id,
