@@ -3,6 +3,7 @@ package com.safetynet.alerts.service;
 import java.util.List;
 import java.util.Map;
 
+import com.safetynet.alerts.dto.FireDTO;
 import com.safetynet.alerts.dto.PersonStationCounterDTO;
 import com.safetynet.alerts.model.Person;
 
@@ -39,9 +40,9 @@ public interface IFireStationService {
    List<String> phoneAlert(String firestation);
 
    /**
-    * @param householdAdress
+    * @param address
     */
-   List<Person> fire(String householdAdress);
+   List<FireDTO> fire(String address);
 
    /**
     * @param stationsNumber

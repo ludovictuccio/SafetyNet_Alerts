@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.safetynet.alerts.dto.FireDTO;
 import com.safetynet.alerts.dto.PersonStationCounterDTO;
 import com.safetynet.alerts.dto.PersonStationDTO;
 import com.safetynet.alerts.model.EntitiesInfosStorage;
@@ -233,12 +234,41 @@ public class FireStationService implements IFireStationService {
    }
 
    /**
-    * @param householdAdress
-    * @return
+    * This method service is used to retrieve informations of persons leaving at
+    * the address entered, with the firestation number indication.
+    *
+    * @param address
+    * @return fireDtoPersonsList
     */
-   public List<Person> fire(final String householdAdress) {
-      return null;
+   public List<FireDTO> fire(final String address) {
 
+      Map<String, FireStation> allFirestationsMapping = entitiesInfosStorage
+                  .getFirestations();
+      List<Person> allPersonsList = entitiesInfosStorage.getPersonsList();
+      List<FireDTO> fireDtoPersonsList = new ArrayList<>();
+
+      for (Entry<String, FireStation> entry : allFirestationsMapping
+                  .entrySet()) {
+         FireStation firestation = entry.getValue();
+
+         if (firestation.getAddresses().contains(address)) {
+            String stationNumber = firestation.getStation();
+
+            for (Person person : allPersonsList) {
+               if (person.getAddress().equals(address)) {
+
+                  FireDTO fireDtoPerson = new FireDTO(stationNumber,
+                              person.getFirstName(), person.getLastName(),
+                              person.getMedicalRecord().getAge(),
+                              person.getPhone(),
+                              person.getMedicalRecord().getMedications(),
+                              person.getMedicalRecord().getAllergies());
+                  fireDtoPersonsList.add(fireDtoPerson);
+               }
+            }
+         }
+      }
+      return fireDtoPersonsList;
    }
 
    /**

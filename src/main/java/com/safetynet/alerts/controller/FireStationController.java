@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.safetynet.alerts.constants.Constants;
+import com.safetynet.alerts.dto.FireDTO;
 import com.safetynet.alerts.dto.PersonStationCounterDTO;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.service.IFireStationService;
@@ -166,12 +167,27 @@ public class FireStationController {
    }
 
    /**
-    * @param householdAdress
-    * @return
+    * This method controller is used to retrieve informations of persons leaving
+    * at the address entered, with the firestation number indication.
+    *
+    * @param address
+    * @return fireDtoPersonsList
     */
-   public List<Person> fire(final String householdAdress) {
-      return null;
+   @GetMapping("/fire")
+   public List<FireDTO> fire(
+               @NotNull @RequestParam(value = "address") final String address,
+               final HttpServletResponse response) {
 
+      List<FireDTO> fireDtoPersonsList = fireStationService.fire(address);
+
+      if (!fireDtoPersonsList.isEmpty()) {
+         LOGGER.info("SUCCESS - Fire GET request");
+         response.setStatus(Constants.STATUS_OK_200);
+      } else {
+         LOGGER.error("FAILED - No address founded for: {}.", address);
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
+      }
+      return fireDtoPersonsList;
    }
 
    /**

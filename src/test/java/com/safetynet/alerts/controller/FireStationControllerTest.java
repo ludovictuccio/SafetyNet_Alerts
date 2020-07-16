@@ -1,7 +1,9 @@
 package com.safetynet.alerts.controller;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.DisplayName;
@@ -148,6 +150,28 @@ public class FireStationControllerTest {
                   .accept(MediaType.APPLICATION_JSON))
                   .andDo(MockMvcResultHandlers.print())
                   .andExpect(status().isNotFound());
+   }
+
+   @Test
+   @Tag("Fire")
+   @DisplayName("Fire - OK")
+   public void givenValidAddress_whenFire_thenReturnOk() throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/fire")
+                  .contentType(APPLICATION_JSON)
+                  .param("address", "951 LoneTree Rd"))
+                  .andExpect(status().isOk()).andExpect(content().string(
+                              "[{\"stationNumber\":\"2\",\"firstName\":\"Eric\",\"lastName\":\"Cadigan\",\"age\":74,\"phoneNumber\":\"841-874-7458\",\"medications\":[\"tradoxidine:400mg\"],\"allergies\":[]}]"));
+   }
+
+   @Test
+   @Tag("Fire")
+   @DisplayName("Fire - ERROR")
+   public void givenUnknowAddress_whenFire_thenReturnNotFound()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/fire")
+                  .contentType(APPLICATION_JSON).param("address", "Unknow"))
+                  .andExpect(status().isNotFound())
+                  .andExpect(jsonPath("$.length()", is(0)));
    }
 
 }

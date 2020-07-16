@@ -17,6 +17,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 
+import com.safetynet.alerts.dto.FireDTO;
 import com.safetynet.alerts.dto.PersonStationCounterDTO;
 import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.FireStation;
@@ -387,7 +388,7 @@ public class FireStationServiceTest {
                   "97451", "841-874-6512", "jaboyd@email.com");
       Person person2 = new Person("Eric", "Cadigan", "1509 Culver St", "Culver",
                   "97451", "841-874-7458", "gramps@email.com");
-      Person person3 = new Person("Eric", "Cadigan", "908 73rd St", "Culver",
+      Person person3 = new Person("Tessa", "Carman", "908 73rd St", "Culver",
                   "97451", "841-874-7458", "gramps@email.com");
       personsList.add(person1);
       personsList.add(person2);
@@ -442,4 +443,85 @@ public class FireStationServiceTest {
       assertThat(result.isEmpty()).isTrue();
    }
 
+   @Test
+   @Tag("Fire")
+   @DisplayName("Fire - Valid address")
+   public void givenValidAddress_whenFire_thenReturnCorrectListReturned() {
+      // GIVEN
+      FireStation firestation1 = new FireStation("1");
+      firestation1.addAddress("908 73rd St");
+      FireStation firestation2 = new FireStation("2");
+      firestation2.addAddress("1509 Culver St");
+
+      Map<String, FireStation> firestationsList = new HashMap<String, FireStation>();
+      firestationsList.put("1", firestation1);
+      firestationsList.put("2", firestation2);
+      when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
+
+      List<Person> personsList = new ArrayList<>();
+      MedicalRecord medicalrecordAdult = new MedicalRecord("01/01/1990", null,
+                  null);
+      Person person1 = new Person("John", "Boyd", "1509 Culver St", "Culver",
+                  "97451", "841-874-6512", "jaboyd@email.com",
+                  medicalrecordAdult);
+      Person person2 = new Person("Eric", "Cadigan", "1509 Culver St", "Culver",
+                  "97451", "841-874-7458", "gramps@email.com",
+                  medicalrecordAdult);
+      Person person3 = new Person("Tessa", "Carman", "908 73rd St", "Culver",
+                  "97451", "841-874-7458", "gramps@email.com",
+                  medicalrecordAdult);
+      personsList.add(person1);
+      personsList.add(person2);
+      personsList.add(person3);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      // WHEN
+      List<FireDTO> result = fireStationService.fire("1509 Culver St");
+
+      // THEN
+      assertThat(result).isNotNull();
+      assertThat(result.size()).isEqualTo(2);
+      assertThat(result.toString().contains(person1.getFirstName())).isTrue();
+      assertThat(result.toString().contains(person2.getFirstName())).isTrue();
+      assertThat(result.toString().contains(person3.getFirstName())).isFalse();
+   }
+
+   @Test
+   @Tag("Fire")
+   @DisplayName("Fire - Unknow address - Empty list")
+   public void givenUnknowAddress_whenFire_thenReturnEmptyList() {
+      // GIVEN
+      FireStation firestation1 = new FireStation("1");
+      firestation1.addAddress("908 73rd St");
+      FireStation firestation2 = new FireStation("2");
+      firestation2.addAddress("1509 Culver St");
+
+      Map<String, FireStation> firestationsList = new HashMap<String, FireStation>();
+      firestationsList.put("1", firestation1);
+      firestationsList.put("2", firestation2);
+      when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
+
+      List<Person> personsList = new ArrayList<>();
+      MedicalRecord medicalrecordAdult = new MedicalRecord("01/01/1990", null,
+                  null);
+      Person person1 = new Person("John", "Boyd", "1509 Culver St", "Culver",
+                  "97451", "841-874-6512", "jaboyd@email.com",
+                  medicalrecordAdult);
+      Person person2 = new Person("Eric", "Cadigan", "1509 Culver St", "Culver",
+                  "97451", "841-874-7458", "gramps@email.com",
+                  medicalrecordAdult);
+      Person person3 = new Person("Tessa", "Carman", "908 73rd St", "Culver",
+                  "97451", "841-874-7458", "gramps@email.com",
+                  medicalrecordAdult);
+      personsList.add(person1);
+      personsList.add(person2);
+      personsList.add(person3);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      // WHEN
+      List<FireDTO> result = fireStationService.fire("Unknow address");
+
+      // THEN
+      assertThat(result.isEmpty()).isTrue();
+   }
 }

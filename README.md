@@ -14,7 +14,7 @@
 
 - **Loggers:** the logging properties file is available in *"src/main/resources"*.
 
-- **Tests:** The app has unit tests and integration tests written.
+- **Tests:** the app has unit tests and integration tests written.
 
 ## Installing
 
@@ -32,9 +32,9 @@ https://maven.apache.org/install.html
 
 - the tests from maven: **mvn test**
 
-- coverage jacoco report:**mvn jacoco:report**
+- coverage jacoco report: **mvn jacoco:report**
 
-- checkstyle and findbugs reports:**mvn site**
+- checkstyle and findbugs reports: **mvn site**
 
 - maven surefire plugin: **mvn surefire-report:report**
 
@@ -49,7 +49,7 @@ https://maven.apache.org/install.html
 
 **POST** - http://localhost:8080/person >>> add a new person at the all persons list.
 
-<pre><code>Response 201 Created or 409 Conflict (if already existing person)
+<pre><code>
 	[
 	    {
 	        "firstName": "New",
@@ -63,8 +63,8 @@ https://maven.apache.org/install.html
 	]
 </pre></code>
 **PUT** -  http://localhost:8080/person >>> updates a person's information, except first and last name.
-
-<pre><code> {
+<pre><code>
+		{
 	        "firstName": "John",
 	        "lastName": "Boyd",
 	        "address": "1509 Culver St",
@@ -75,8 +75,8 @@ https://maven.apache.org/install.html
 	    }</pre></code>
 
 **DELETE** -  http://localhost:8080/person >>> delete a person by entering his first and last name.
-
-<pre><code> {
+<pre><code>
+		{
 	        "firstName": "John",
 	        "lastName": "Boyd"
 	    }</pre></code>
@@ -86,15 +86,16 @@ https://maven.apache.org/install.html
 
 **POST** - http://localhost:8080/firestation >>> add a new address for an existing firestation number. If address already exists for a mapping, impossible add.
 
- <pre><code> Response 201 Created or 409 Conflict
-  {
+ <pre><code> 
+	{
         "station": "1",
         "address": "New address"
     }</pre></code>
 
 **PUT** - http://localhost:8080/firestation >>> update firestation number for an entered address.
 
-<pre><code>{
+<pre><code>
+	{
         "station": "1",
         "address": "1509 Culver St"
     }</pre></code>
@@ -105,7 +106,8 @@ https://maven.apache.org/install.html
 
 **POST** - http://localhost:8080/medicalRecord >>> add a new medicalrecord for a person created without medicalrecord.
 
-<pre><code>    {
+<pre><code>
+    {
         "firstName": "John",
         "lastName": "Boyd",
         "birthDate": "03/06/1984",
@@ -131,7 +133,8 @@ https://maven.apache.org/install.html
 
 **GET** - http://localhost:8080/firestation?stationNumber={station_number} >>> returns a persons list covered by a firestation, with name, address and phone number as informations, and a total adults and children counting.
 
-<pre><code>{
+<pre><code>
+{
     "personsStationList": [
         {
             "firstName": "Tony",
@@ -160,13 +163,14 @@ https://maven.apache.org/install.html
     ],
     "totalAdultsNumber": 4,
     "totalChildrenNumber": 0
-}<pre><code>
+}</pre></code>
 
 ## ChildAlert endpoint 
 
 **GET** - http://localhost:8080/childAlert?address={address} >>> returns the household composition for the address entered, only if the household contains children. The informations returned are: firstName, lastName, age.
 
-<pre><code>{
+<pre><code>
+{
     "address": "1509 Culver St",
      [
         {
@@ -213,6 +217,21 @@ Example for: firestation=4
 ## Fire endpoint 
 
 **GET** - http://localhost:8080/fire?address={address} >>> returns the list of persons who live at the address, and the firestation number that serving it. The list must include: name, phone number, age and medical record.
+<pre><code>
+Example for: address=951 LoneTree Rd
+[
+    {
+        "stationNumber": "2",
+        "firstName": "Eric",
+        "lastName": "Cadigan",
+        "age": 74,
+        "phoneNumber": "841-874-7458",
+        "medications": [
+            "tradoxidine:400mg"
+        ],
+        "allergies": []
+    }
+]</pre></code>
 
 ## Flood endpoint 
 
@@ -221,7 +240,8 @@ Example for: firestation=4
 ## PersonInfo endpoint 
 
 **GET** - http://localhost:8080/personInfo?firstName={firstName}&lastName={lastName} >>> returns the name, address, age, email and medical record of all persons with the same last name.
-<pre><code>{
+<pre><code>
+{
     "firstName": "Tessa", "lastName": "Carman",
      [
         {
@@ -239,7 +259,8 @@ Example for: firestation=4
 ## CommunityEmail endpoint 
 
 **GET** - http://localhost:8080/communityEmail?city={city} >>> returns all the person's email addresses who live at the city entered.
-<pre><code>{
+<pre><code>
+{
     "city": "Culver",    
 	["jaboyd@email.com","drk@email.com","tenz@email.com","jaboyd@email.com","jaboyd@email.com","drk@email.com","tenz@email.com","jaboyd@email.com","jaboyd@email.com","tcoop@ymail.com","lily@email.com","soph@email.com","ward@email.com","zarc@email.com","reg@email.com","jpeter@email.com","jpeter@email.com","aly@imail.com","bstel@email.com","ssanw@email.com","bstel@email.com","clivfd@ymail.com","gramps@email.com"]
 }</pre></code>
