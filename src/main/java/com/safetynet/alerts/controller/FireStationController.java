@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.safetynet.alerts.constants.Constants;
 import com.safetynet.alerts.dto.PersonStationCounterDTO;
-import com.safetynet.alerts.model.FireStation;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.service.IFireStationService;
 
@@ -142,6 +141,31 @@ public class FireStationController {
    }
 
    /**
+    * This method controller is used to retrieve phone number of persons covered
+    * by the station.
+    *
+    * @param firestation the station number
+    * @return phoneNumberList
+    */
+   @GetMapping("/phoneAlert")
+   public List<String> phoneAlert(
+               @NotNull @RequestParam(value = "firestation") final String firestation,
+               final HttpServletResponse response) {
+      List<String> phoneNumberList = fireStationService.phoneAlert(firestation);
+
+      if (!phoneNumberList.isEmpty()) {
+         LOGGER.info("SUCCESS - PhoneAlert GET request");
+         response.setStatus(Constants.STATUS_OK_200);
+      } else {
+         LOGGER.error(
+                     "FAILED - No firestation founded for number: {}. Please verify the station number entered.",
+                     firestation);
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
+      }
+      return phoneNumberList;
+   }
+
+   /**
     * @param householdAdress
     * @return
     */
@@ -159,26 +183,4 @@ public class FireStationController {
 
    }
 
-   /**
-    * @param fireStationNumber
-    * @return
-    */
-   public List<String> phoneAlert(final String fireStationNumber) {
-      return null;
-
-   }
-
-   /**
-    * @param phoneNumber
-    * @param responsibleFireStation
-    * @param personsUnderFirestationResponsibility
-    * @return
-    */
-   public List<String> getPhoneAlert(final String phoneNumber,
-               final Map<String, FireStation> responsibleFireStation,
-               final List<Person> personsUnderFirestationResponsibility,
-               final HttpServletResponse response) {
-      return null;
-
-   }
 }

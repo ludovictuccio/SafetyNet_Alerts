@@ -202,6 +202,37 @@ public class FireStationService implements IFireStationService {
    }
 
    /**
+    * This method service is used to retrieve phone number of persons covered by
+    * the station.
+    *
+    * @param firestation the station number
+    * @return phoneNumberList
+    */
+   public List<String> phoneAlert(final String firestation) {
+      Map<String, FireStation> allFirestationsMapping = entitiesInfosStorage
+                  .getFirestations();
+      Set<String> addressesRecovered = new HashSet<>();
+
+      for (Entry<String, FireStation> entry : allFirestationsMapping
+                  .entrySet()) {
+         FireStation firestationToRecover = entry.getValue();
+         if (firestationToRecover.getStation().toString()
+                     .equals(firestation.toString())) {
+            addressesRecovered = firestationToRecover.getAddresses();
+         }
+      }
+      List<Person> allPersonsList = entitiesInfosStorage.getPersonsList();
+      List<String> phoneNumberList = new ArrayList<>();
+
+      for (Person person : allPersonsList) {
+         if (addressesRecovered.contains(person.getAddress())) {
+            phoneNumberList.add(person.getPhone());
+         }
+      }
+      return phoneNumberList;
+   }
+
+   /**
     * @param householdAdress
     * @return
     */
@@ -215,15 +246,6 @@ public class FireStationService implements IFireStationService {
     * @return
     */
    public List<Person> flood(final String stationsNumber) {
-      return null;
-
-   }
-
-   /**
-    * @param fireStationNumber
-    * @return
-    */
-   public List<String> phoneAlert(final String fireStationNumber) {
       return null;
 
    }

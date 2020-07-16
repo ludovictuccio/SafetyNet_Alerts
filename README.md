@@ -201,6 +201,15 @@ https://maven.apache.org/install.html
   
 **GET** - http://localhost:8080/phoneAlert?firestation={firestation_number} >>> returns the list of all the phone numbers of the persons served by the firestation entered. 
 
+<pre><code>
+Example for: firestation=4
+[
+    "841-874-6874",
+    "841-874-9845",
+    "841-874-8888",
+    "841-874-9888"
+]</pre></code>
+
 ## Fire endpoint 
 
 **GET** - http://localhost:8080/fire?address={address} >>> returns the list of persons who live at the address, and the firestation number that serving it. The list must include: name, phone number, age and medical record.

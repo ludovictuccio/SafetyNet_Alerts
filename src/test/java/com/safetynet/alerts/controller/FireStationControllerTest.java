@@ -118,7 +118,31 @@ public class FireStationControllerTest {
    @Test
    @Tag("FirestationNumber")
    @DisplayName("FirestationNumber - ERROR")
-   public void g() throws Exception {
+   public void givenUnknowStationNumber_whenRequest_thenReturnNotFound()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/firestation")
+                  .contentType(APPLICATION_JSON).param("stationNumber", "499")
+                  .accept(MediaType.APPLICATION_JSON))
+                  .andDo(MockMvcResultHandlers.print())
+                  .andExpect(status().isNotFound());
+   }
+
+   @Test
+   @Tag("PhoneAlert")
+   @DisplayName("PhoneAlert - OK")
+   public void givenCorrectStationNumber_whenPhoneAlert_thenReturnOkAndCorrectPhoneNumbers()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/phoneAlert")
+                  .contentType(APPLICATION_JSON).param("firestation", "4"))
+                  .andExpect(status().isOk()).andExpect(content().string(
+                              "[\"841-874-6874\",\"841-874-9845\",\"841-874-8888\",\"841-874-9888\"]"));
+   }
+
+   @Test
+   @Tag("PhoneAlert")
+   @DisplayName("PhoneAlert - ERROR")
+   public void givenUnknowtStationNumber_whenPhoneAlert_thenReturnNotFound()
+               throws Exception {
       this.mockMvc.perform(MockMvcRequestBuilders.get("/firestation")
                   .contentType(APPLICATION_JSON).param("stationNumber", "499")
                   .accept(MediaType.APPLICATION_JSON))

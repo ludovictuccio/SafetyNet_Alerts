@@ -367,4 +367,79 @@ public class FireStationServiceTest {
       assertThat(result.getPersonsStationList()).isNull();
    }
 
+   @Test
+   @Tag("PhoneAlert")
+   @DisplayName("PhoneAlert - Valid station number")
+   public void givenStationTwoWithTwoPersons_whenStationTwoEntry_thenReturnTwoPhoneNumbers() {
+      // GIVEN
+      FireStation firestation1 = new FireStation("1");
+      firestation1.addAddress("908 73rd St");
+      FireStation firestation2 = new FireStation("2");
+      firestation2.addAddress("1509 Culver St");
+
+      Map<String, FireStation> firestationsList = new HashMap<String, FireStation>();
+      firestationsList.put("1", firestation1);
+      firestationsList.put("2", firestation2);
+      when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
+
+      List<Person> personsList = new ArrayList<>();
+      Person person1 = new Person("John", "Boyd", "1509 Culver St", "Culver",
+                  "97451", "841-874-6512", "jaboyd@email.com");
+      Person person2 = new Person("Eric", "Cadigan", "1509 Culver St", "Culver",
+                  "97451", "841-874-7458", "gramps@email.com");
+      Person person3 = new Person("Eric", "Cadigan", "908 73rd St", "Culver",
+                  "97451", "841-874-7458", "gramps@email.com");
+      personsList.add(person1);
+      personsList.add(person2);
+      personsList.add(person3);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      // WHEN
+      List<String> result = fireStationService.phoneAlert("2");
+
+      // THEN
+      assertThat(result).isNotNull();
+      assertThat(result.size()).isEqualTo(2);
+      assertThat(result.contains(person1.getPhone())).isTrue();
+      assertThat(result.contains(person2.getPhone())).isTrue();
+   }
+
+   @Test
+   @Tag("PhoneAlert")
+   @DisplayName("PhoneAlert - Unknow station number")
+   public void givenUnknowStation_whenPhoneAlert_thenReturnEmptyList() {
+      // GIVEN
+      FireStation firestation1 = new FireStation("1");
+      firestation1.addAddress("908 73rd St");
+      firestation1.addAddress("644 Gershwin Cir");
+      FireStation firestation2 = new FireStation("2");
+      firestation2.addAddress("1509 Culver St");
+
+      Map<String, FireStation> firestationsList = new HashMap<String, FireStation>();
+      firestationsList.put("1", firestation1);
+      firestationsList.put("2", firestation2);
+      when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
+
+      List<Person> personsList = new ArrayList<>();
+      MedicalRecord medicalrecordAdult = new MedicalRecord("01/01/1990", null,
+                  null);
+      MedicalRecord medicalrecordChild = new MedicalRecord("01/01/2020", null,
+                  null);
+      Person person1 = new Person("John", "Boyd", "1509 Culver St", "Culver",
+                  "97451", "841-874-6512", "jaboyd@email.com",
+                  medicalrecordAdult);
+      Person person2 = new Person("Eric", "Cadigan", "951 LoneTree Rd",
+                  "Culver", "97451", "841-874-7458", "gramps@email.com",
+                  medicalrecordChild);
+      personsList.add(person1);
+      personsList.add(person2);
+      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      // WHEN
+      List<String> result = fireStationService.phoneAlert("444");
+
+      // THEN
+      assertThat(result.isEmpty()).isTrue();
+   }
+
 }

@@ -34,6 +34,11 @@ public interface IFireStationService {
    PersonStationCounterDTO firestationNumber(String stationNumber);
 
    /**
+    * @param firestation
+    */
+   List<String> phoneAlert(String firestation);
+
+   /**
     * @param householdAdress
     */
    List<Person> fire(String householdAdress);
@@ -42,10 +47,5 @@ public interface IFireStationService {
     * @param stationsNumber
     */
    List<Person> flood(String stationsNumber);
-
-   /**
-    * @param fireStationNumber
-    */
-   List<String> phoneAlert(String fireStationNumber);
 
 }
