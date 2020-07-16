@@ -1,6 +1,6 @@
 package com.safetynet.alerts.dto;
 
-import com.safetynet.alerts.model.MedicalRecord;
+import java.util.List;
 
 /**
  * PersonInfoDTO class.
@@ -18,6 +18,10 @@ public class PersonInfoDTO {
     */
    private String lastName;
    /**
+    * The person's age.
+    */
+   private int age;
+   /**
     * The person's adress.
     */
    private String address;
@@ -34,22 +38,60 @@ public class PersonInfoDTO {
     */
    private String email;
    /**
-    * The person's medical record.
+    * The person's medications list.
     */
-   private MedicalRecord medicalRecord;
+   private List<String> medications;
+   /**
+    * The person's allergies list.
+    */
+   private List<String> allergies;
 
+   /**
+    * @param personsFirstName
+    * @param personsLastName
+    * @param pAge
+    * @param personsAddress
+    * @param personsCity
+    * @param personsZip
+    * @param personsEmail
+    * @param pMedications
+    * @param pAllergies
+    */
    public PersonInfoDTO(final String personsFirstName,
-               final String personsLastName, final String personsAddress,
-               final String personsCity, final String personsZip,
-               final String personsEmail,
-               final MedicalRecord personsMedicalRecord) {
+               final String personsLastName, final int pAge,
+               final String personsAddress, final String personsCity,
+               final String personsZip, final String personsEmail,
+               final List<String> pMedications, final List<String> pAllergies) {
       this.firstName = personsFirstName;
       this.lastName = personsLastName;
+      this.age = pAge;
       this.address = personsAddress;
       this.city = personsCity;
       this.zip = personsZip;
       this.email = personsEmail;
-      this.medicalRecord = personsMedicalRecord;
+      this.medications = pMedications;
+      this.allergies = pAllergies;
+   }
+
+   /**
+    * @return the medications
+    */
+   public List<String> getMedications() {
+      return medications;
+   }
+
+   /**
+    * @return the allergies
+    */
+   public List<String> getAllergies() {
+      return allergies;
+   }
+
+   /**
+    * @return the age
+    */
+   public int getAge() {
+      return age;
    }
 
    /**
@@ -60,24 +102,10 @@ public class PersonInfoDTO {
    }
 
    /**
-    * @param personsFirstName the firstName to set
-    */
-   public void setFirstName(final String personsFirstName) {
-      this.firstName = personsFirstName;
-   }
-
-   /**
     * @return the lastName
     */
    public String getLastName() {
       return lastName;
-   }
-
-   /**
-    * @param personsLastName the lastName to set
-    */
-   public void setLastName(final String personsLastName) {
-      this.lastName = personsLastName;
    }
 
    /**
@@ -88,24 +116,10 @@ public class PersonInfoDTO {
    }
 
    /**
-    * @param personsAddress the address to set
-    */
-   public void setAddress(final String personsAddress) {
-      this.address = personsAddress;
-   }
-
-   /**
     * @return the city
     */
    public String getCity() {
       return city;
-   }
-
-   /**
-    * @param personsCity the city to set
-    */
-   public void setCity(final String personsCity) {
-      this.city = personsCity;
    }
 
    /**
@@ -116,13 +130,6 @@ public class PersonInfoDTO {
    }
 
    /**
-    * @param personsZip the zip to set
-    */
-   public void setZip(final String personsZip) {
-      this.zip = personsZip;
-   }
-
-   /**
     * @return the email
     */
    public String getEmail() {
@@ -130,31 +137,15 @@ public class PersonInfoDTO {
    }
 
    /**
-    * @param personsEmail the email to set
+    * toString method class.
     */
-   public void setEmail(final String personsEmail) {
-      this.email = personsEmail;
-   }
-
-   /**
-    * @return the medicalRecord
-    */
-   public MedicalRecord getMedicalRecord() {
-      return medicalRecord;
-   }
-
-   /**
-    * @param personsMedicalRecord the medicalRecord to set
-    */
-   public void setMedicalRecord(final MedicalRecord personsMedicalRecord) {
-      this.medicalRecord = personsMedicalRecord;
-   }
-
    public String toString() {
-      return "PersonInfoDTO [FirstName="
+      return "PersonInfoDTO [firstName="
                   + firstName
                   + ", lastName="
                   + lastName
+                  + ", age="
+                  + age
                   + ", address="
                   + address
                   + ", city="
@@ -163,8 +154,10 @@ public class PersonInfoDTO {
                   + zip
                   + ", email="
                   + email
-                  + ", medicalRecord="
-                  + medicalRecord
+                  + ", medications="
+                  + medications
+                  + ", allergies="
+                  + allergies
                   + "]";
    }
 

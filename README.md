@@ -241,20 +241,40 @@ Example for: address=951 LoneTree Rd
 
 **GET** - http://localhost:8080/personInfo?firstName={firstName}&lastName={lastName} >>> returns the name, address, age, email and medical record of all persons with the same last name.
 <pre><code>
-{
-    "firstName": "Tessa", "lastName": "Carman",
-     [
-        {
-            "firstName": "Tessa",
-            "lastName": "Carman",
-            "address": "834 Binoc Ave",
-			"city": "Culver",
-			"zip": "97451",
-			"email": "tenz@email.com",
-			"medicalRecord": {"birthdate":"02/18/2012","medications":[],"allergies":[],"age":8}}
-        }
-    ]
-}</pre></code>
+[
+    {
+        "firstName": "John",
+        "lastName": "Boyd",
+        "age": 36,
+        "address": "1509 Culver St",
+        "city": "Culver",
+        "zip": "97451",
+        "email": "jaboyd@email.com",
+        "medications": [
+            "aznol:350mg",
+            "hydrapermazol:100mg"
+        ],
+        "allergies": [
+            "nillacilan"
+        ]
+    },
+	...
+    {
+        "firstName": "Allison",
+        "lastName": "Boyd",
+        "age": 55,
+        "address": "112 Steppes Pl",
+        "city": "Culver",
+        "zip": "97451",
+        "email": "aly@imail.com",
+        "medications": [
+            "aznol:200mg"
+        ],
+        "allergies": [
+            "nillacilan"
+        ]
+    }
+]</pre></code>
 
 ## CommunityEmail endpoint 
 

@@ -173,7 +173,6 @@ public class PersonController {
    public List<String> getCommunityEmail(
                @NotNull @RequestParam(value = "city") final String city,
                final HttpServletResponse response) {
-      LOGGER.debug("GET request received for getCommunityEmail: {}", city);
 
       List<String> communityEmail = personService.communityEmail(city);
 

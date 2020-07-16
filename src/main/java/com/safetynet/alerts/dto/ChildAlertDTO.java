@@ -40,13 +40,6 @@ public class ChildAlertDTO {
    }
 
    /**
-    * @param personsFirstName the firstName to set
-    */
-   public void setFirstName(final String personsFirstName) {
-      this.firstName = personsFirstName;
-   }
-
-   /**
     * @return the lastName
     */
    public String getLastName() {
@@ -54,24 +47,10 @@ public class ChildAlertDTO {
    }
 
    /**
-    * @param personsLastName the lastName to set
-    */
-   public void setLastName(final String personsLastName) {
-      this.lastName = personsLastName;
-   }
-
-   /**
     * @return age
     */
    public int getAge() {
       return age;
-   }
-
-   /**
-    * @param personsAge
-    */
-   public void setAge(final int personsAge) {
-      this.age = personsAge;
    }
 
    public String toString() {

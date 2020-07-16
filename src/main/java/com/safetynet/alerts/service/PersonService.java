@@ -156,8 +156,10 @@ public class PersonService implements IPersonService {
          if (person.getLastName().equals(lastName)) {
             PersonInfoDTO personsInfos = new PersonInfoDTO(
                         person.getFirstName(), person.getLastName(),
-                        person.getAddress(), person.getCity(), person.getZip(),
-                        person.getEmail(), person.getMedicalRecord());
+                        person.getMedicalRecord().getAge(), person.getAddress(),
+                        person.getCity(), person.getZip(), person.getEmail(),
+                        person.getMedicalRecord().getMedications(),
+                        person.getMedicalRecord().getAllergies());
             personsInfosList.add(personsInfos);
          }
       }
@@ -221,7 +223,7 @@ public class PersonService implements IPersonService {
     * @return personsEmail, email addresses List
     */
    public List<String> communityEmail(final String city) {
-      LOGGER.debug("CommunityEmail request initialization");
+
       List<String> personsEmail = new ArrayList<>();
       List<Person> personsList = entitiesInfosStorage.getPersonsList();
 
@@ -230,7 +232,6 @@ public class PersonService implements IPersonService {
             personsEmail.add(person.getEmail());
          }
       }
-      LOGGER.debug("CommunityEmail request successfuly");
       return personsEmail;
    }
 

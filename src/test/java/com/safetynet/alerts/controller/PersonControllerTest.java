@@ -7,8 +7,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -31,6 +34,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 @WebAppConfiguration()
 @AutoConfigureMockMvc
 @ComponentScan({ "com.safetynet.alerts.service", "com.safetynet.alerts.model" })
+@TestMethodOrder(OrderAnnotation.class)
 public class PersonControllerTest {
 
    @Autowired
@@ -111,6 +115,7 @@ public class PersonControllerTest {
    }
 
    @Test
+   @Order(1)
    @Tag("CommunityEmail")
    @DisplayName("CommunityEmail - Valid city entry (Culver) ")
    public void givenCityEntry_whenExistingCity_thenReturnAllPersonsEmailAdressesListForCityPersons()
@@ -118,33 +123,13 @@ public class PersonControllerTest {
       this.mockMvc.perform(MockMvcRequestBuilders.get("/communityEmail")
                   .contentType(APPLICATION_JSON).param("city", "Culver"))
                   .andExpect(status().isOk())
-                  .andExpect(content().string("[\"jaboyd@email.com\","
-                              + "\"drk@email.com\","
-                              + "\"tenz@email.com\","
-                              + "\"jaboyd@email.com\","
-                              + "\"jaboyd@email.com\","
-                              + "\"drk@email.com\","
-                              + "\"tenz@email.com\","
-                              + "\"jaboyd@email.com\","
-                              + "\"jaboyd@email.com\","
-                              + "\"tcoop@ymail.com\","
-                              + "\"lily@email.com\","
-                              + "\"soph@email.com\","
-                              + "\"ward@email.com\","
-                              + "\"zarc@email.com\","
-                              + "\"reg@email.com\","
-                              + "\"jpeter@email.com\","
-                              + "\"jpeter@email.com\","
-                              + "\"aly@imail.com\","
-                              + "\"bstel@email.com\","
-                              + "\"ssanw@email.com\","
-                              + "\"bstel@email.com\","
-                              + "\"clivfd@ymail.com\","
-                              + "\"gramps@email.com\"]"))
+                  .andExpect(content().string(
+                              "[\"jaboyd@email.com\",\"drk@email.com\",\"tenz@email.com\",\"jaboyd@email.com\",\"jaboyd@email.com\",\"drk@email.com\",\"tenz@email.com\",\"jaboyd@email.com\",\"jaboyd@email.com\",\"tcoop@ymail.com\",\"lily@email.com\",\"soph@email.com\",\"ward@email.com\",\"zarc@email.com\",\"reg@email.com\",\"jpeter@email.com\",\"jpeter@email.com\",\"aly@imail.com\",\"bstel@email.com\",\"ssanw@email.com\",\"bstel@email.com\",\"clivfd@ymail.com\",\"gramps@email.com\"]"))
                   .andExpect(jsonPath("$.length()", is(23)));
    }
 
    @Test
+   @Order(2)
    @Tag("CommunityEmail")
    @DisplayName("CommunityEmail - Bad city entry (Los Angeles)")
    public void givenCityEntry_whenIncorrectCity_thenReturnEmptyList()
@@ -165,7 +150,7 @@ public class PersonControllerTest {
                   .param("lastName", "Carman")).andExpect(status().isOk())
                   .andExpect(jsonPath("$.length()", is(1)))
                   .andExpect(content().string(
-                              "[{\"firstName\":\"Tessa\",\"lastName\":\"Carman\",\"address\":\"834 Binoc Ave\",\"city\":\"Culver\",\"zip\":\"97451\",\"email\":\"tenz@email.com\",\"medicalRecord\":{\"birthdate\":\"02/18/2012\",\"medications\":[],\"allergies\":[],\"age\":8}}]"));
+                              "[{\"firstName\":\"Tessa\",\"lastName\":\"Carman\",\"age\":8,\"address\":\"834 Binoc Ave\",\"city\":\"Culver\",\"zip\":\"97451\",\"email\":\"tenz@email.com\",\"medications\":[],\"allergies\":[]}]"));
    }
 
    @Test

@@ -20,7 +20,6 @@ import com.safetynet.alerts.model.Person;
  * AgeCalculator unit tests class.
  *
  * @author Ludovic Tuccio
- *
  */
 public class AgeCalculatorTest {
 

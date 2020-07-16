@@ -46,24 +46,10 @@ public class PersonStationDTO {
    }
 
    /**
-    * @param firstName the firstName to set
-    */
-   public void setFirstName(final String pfirstName) {
-      this.firstName = pfirstName;
-   }
-
-   /**
     * @return the lastName
     */
    public String getLastName() {
       return lastName;
-   }
-
-   /**
-    * @param lastName the lastName to set
-    */
-   public void setLastName(final String plastName) {
-      this.lastName = plastName;
    }
 
    /**
@@ -74,24 +60,10 @@ public class PersonStationDTO {
    }
 
    /**
-    * @param address the address to set
-    */
-   public void setAddress(final String paddress) {
-      this.address = paddress;
-   }
-
-   /**
     * @return the phoneNumber
     */
    public String getPhoneNumber() {
       return phoneNumber;
-   }
-
-   /**
-    * @param phoneNumber the phoneNumber to set
-    */
-   public void setPhoneNumber(final String pphoneNumber) {
-      this.phoneNumber = pphoneNumber;
    }
 
    @Override
