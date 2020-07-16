@@ -3,6 +3,7 @@ package com.safetynet.alerts.service;
 import java.util.List;
 import java.util.Map;
 
+import com.safetynet.alerts.dto.PersonStationCounterDTO;
 import com.safetynet.alerts.model.Person;
 
 /**
@@ -25,13 +26,12 @@ public interface IFireStationService {
    /**
     * @param address
     */
-   public boolean deleteAddressForFireStation(String address);
+   boolean deleteAddressForFireStation(String address);
 
    /**
     * @param stationNumber
-    * @return
     */
-   List<Person> firestationNumber(String stationNumber);
+   PersonStationCounterDTO firestationNumber(String stationNumber);
 
    /**
     * @param householdAdress

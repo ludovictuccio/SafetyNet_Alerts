@@ -1,6 +1,7 @@
 package com.safetynet.alerts.controller;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.DisplayName;
@@ -102,4 +103,27 @@ public class FireStationControllerTest {
                   .andDo(MockMvcResultHandlers.print())
                   .andExpect(status().isNotFound());
    }
+
+   @Test
+   @Tag("FirestationNumber")
+   @DisplayName("FirestationNumber - OK")
+   public void givenExistingStation_whenRequest_thenReturnOkWithGoodInfos()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/firestation")
+                  .contentType(APPLICATION_JSON).param("stationNumber", "1"))
+                  .andExpect(status().isOk()).andExpect(content().string(
+                              "{\"personsStationList\":[{\"firstName\":\"Peter\",\"lastName\":\"Duncan\",\"address\":\"644 Gershwin Cir\",\"phoneNumber\":\"841-874-6512\"},{\"firstName\":\"Reginold\",\"lastName\":\"Walker\",\"address\":\"908 73rd St\",\"phoneNumber\":\"841-874-8547\"},{\"firstName\":\"Jamie\",\"lastName\":\"Peters\",\"address\":\"908 73rd St\",\"phoneNumber\":\"841-874-7462\"},{\"firstName\":\"Brian\",\"lastName\":\"Stelzer\",\"address\":\"947 E. Rose Dr\",\"phoneNumber\":\"841-874-7784\"},{\"firstName\":\"Shawna\",\"lastName\":\"Stelzer\",\"address\":\"947 E. Rose Dr\",\"phoneNumber\":\"841-874-7784\"},{\"firstName\":\"Kendrik\",\"lastName\":\"Stelzer\",\"address\":\"947 E. Rose Dr\",\"phoneNumber\":\"841-874-7784\"}],\"totalAdultsNumber\":5,\"totalChildrenNumber\":1}"));
+   }
+
+   @Test
+   @Tag("FirestationNumber")
+   @DisplayName("FirestationNumber - ERROR")
+   public void g() throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/firestation")
+                  .contentType(APPLICATION_JSON).param("stationNumber", "499")
+                  .accept(MediaType.APPLICATION_JSON))
+                  .andDo(MockMvcResultHandlers.print())
+                  .andExpect(status().isNotFound());
+   }
+
 }

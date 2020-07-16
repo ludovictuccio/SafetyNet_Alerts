@@ -65,17 +65,13 @@ public class AgeCalculator {
     * @return isChild boolean
     */
    public static boolean isChild(final Person person) {
-      LOGGER.debug("IsChild method initialization");
       boolean isChild = false;
       int personsAge = AgeCalculator
                   .ageCalculation(person.getMedicalRecord().getBirthdate());
       if (personsAge > MINOR_AGE_THRESHOLD) {
-         LOGGER.debug("Person = Adult");
       } else {
-         LOGGER.debug("Person = Child");
          isChild = true;
       }
-      LOGGER.debug("IsChild method succes");
       return isChild;
    }
 

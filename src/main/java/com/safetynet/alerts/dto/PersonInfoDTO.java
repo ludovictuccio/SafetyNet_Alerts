@@ -9,8 +9,6 @@ import com.safetynet.alerts.model.MedicalRecord;
  */
 public class PersonInfoDTO {
 
-// int age ? dans medicalrecord ?
-
    /**
     * The person's first name.
     */

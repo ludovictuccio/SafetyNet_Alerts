@@ -55,63 +55,13 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<!-- <exclusions> -->
-			<!-- <exclusion> -->
-			<!-- <groupId>org.springframework.boot</groupId> -->
-			<!-- <artifactId>spring-boot-starter-logging</artifactId> -->
-			<!-- </exclusion> -->
-			<!-- <exclusion> -->
-			<!-- <groupId>org.slf4j</groupId> -->
-			<!-- <artifactId>slf4j-simple</artifactId> -->
-			<!-- </exclusion> -->
-			<!-- </exclusions> -->
+			<artifactId>spring-boot-starter-web</artifactId>			
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<!-- <exclusions> -->
-			<!-- <exclusion> -->
-			<!-- <groupId>org.junit.vintage</groupId> -->
-			<!-- <artifactId>junit-vintage-engine</artifactId> -->
-			<!-- </exclusion> -->
-			<!-- <exclusion> -->
-			<!-- <groupId>junit</groupId> -->
-			<!-- <artifactId>junit</artifactId> -->
-			<!-- </exclusion> -->
-			<!-- </exclusions> -->
-		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.junit.platform</groupId> -->
-		<!-- <artifactId>junit-platform-surefire-provider</artifactId> -->
-		<!-- <version>1.2.0</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework.boot</groupId> -->
-		<!-- <artifactId>spring-boot-devtools</artifactId> -->
-		<!-- <optional>true</optional> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.junit.jupiter</groupId> -->
-		<!-- <artifactId>junit-jupiter-api</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.junit.jupiter</groupId> -->
-		<!-- <artifactId>junit-jupiter-engine</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.junit</groupId> -->
-		<!-- <artifactId>junit5-engine</artifactId> -->
-		<!-- <version>5.0.0-ALPHA</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.h2database</groupId> -->
-		<!-- <artifactId>h2</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
+			<scope>test</scope>			
+		</dependency>	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -235,21 +185,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-failsafe-plugin</artifactId> -->
-			<!-- </plugin> -->
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-site-plugin</artifactId> -->
-			<!-- <version>3.7.1</version> -->
-			<!-- </plugin> -->
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-project-info-reports-plugin</artifactId> -->
-			<!-- <version>3.0.0</version> -->
-			<!-- </plugin> -->
+			</plugin>			
 		</plugins>
 	</build>
 

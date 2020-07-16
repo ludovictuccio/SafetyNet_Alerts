@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.safetynet.alerts.constants.Constants;
+import com.safetynet.alerts.dto.PersonStationCounterDTO;
 import com.safetynet.alerts.model.FireStation;
 import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.service.IFireStationService;
@@ -113,12 +115,30 @@ public class FireStationController {
    }
 
    /**
+    * This method controller is used to retrieve persons covered by the station,
+    * and calculate the number of adults & children.
+    *
     * @param stationNumber
-    * @return
+    * @return firestationDto
     */
-   public List<Person> stationNumber(final int stationNumber) {
-      return null;
+   @GetMapping("/firestation")
+   public PersonStationCounterDTO firestationNumber(
+               @NotNull @RequestParam(value = "stationNumber") final String stationNumber,
+               final HttpServletResponse response) {
 
+      PersonStationCounterDTO firestationDto = fireStationService
+                  .firestationNumber(stationNumber);
+
+      if (firestationDto.getPersonsStationList() != null) {
+         LOGGER.info("SUCCESS - FirestationNumber GET request");
+         response.setStatus(Constants.STATUS_OK_200);
+      } else {
+         LOGGER.error(
+                     "FAILED - No firestation founded for number: {}. Please verify the station number entered.",
+                     stationNumber);
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
+      }
+      return firestationDto;
    }
 
    /**
@@ -134,7 +154,7 @@ public class FireStationController {
     * @param stationsNumber
     * @return
     */
-   public List<Person> flood(final int stationsNumber) {
+   public List<Person> flood(final String stationsNumber) {
       return null;
 
    }
@@ -143,7 +163,7 @@ public class FireStationController {
     * @param fireStationNumber
     * @return
     */
-   public List<String> phoneAlert(final int fireStationNumber) {
+   public List<String> phoneAlert(final String fireStationNumber) {
       return null;
 
    }
@@ -155,7 +175,7 @@ public class FireStationController {
     * @return
     */
    public List<String> getPhoneAlert(final String phoneNumber,
-               final Map<Integer, FireStation> responsibleFireStation,
+               final Map<String, FireStation> responsibleFireStation,
                final List<Person> personsUnderFirestationResponsibility,
                final HttpServletResponse response) {
       return null;

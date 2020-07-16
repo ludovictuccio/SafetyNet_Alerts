@@ -131,6 +131,37 @@ https://maven.apache.org/install.html
 
 **GET** - http://localhost:8080/firestation?stationNumber={station_number} >>> returns a persons list covered by a firestation, with name, address and phone number as informations, and a total adults and children counting.
 
+<pre><code>{
+    "personsStationList": [
+        {
+            "firstName": "Tony",
+            "lastName": "Cooper",
+            "address": "112 Steppes Pl",
+            "phoneNumber": "841-874-6874"
+        },
+        {
+            "firstName": "Lily",
+            "lastName": "Cooper",
+            "address": "489 Manchester St",
+            "phoneNumber": "841-874-9845"
+        },
+        {
+            "firstName": "Ron",
+            "lastName": "Peters",
+            "address": "112 Steppes Pl",
+            "phoneNumber": "841-874-8888"
+        },
+        {
+            "firstName": "Allison",
+            "lastName": "Boyd",
+            "address": "112 Steppes Pl",
+            "phoneNumber": "841-874-9888"
+        }
+    ],
+    "totalAdultsNumber": 4,
+    "totalChildrenNumber": 0
+}<pre><code>
+
 ## ChildAlert endpoint 
 
 **GET** - http://localhost:8080/childAlert?address={address} >>> returns the household composition for the address entered, only if the household contains children. The informations returned are: firstName, lastName, age.

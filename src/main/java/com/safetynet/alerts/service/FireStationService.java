@@ -1,17 +1,23 @@
 package com.safetynet.alerts.service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.safetynet.alerts.dto.PersonStationCounterDTO;
+import com.safetynet.alerts.dto.PersonStationDTO;
 import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.FireStation;
 import com.safetynet.alerts.model.Person;
+import com.safetynet.alerts.util.AgeCalculator;
 
 /**
  * FireStation service class.
@@ -143,12 +149,56 @@ public class FireStationService implements IFireStationService {
    }
 
    /**
+    * This method service is used to retrieve persons covered by the station,
+    * and calculate the number of adults & children.
+    *
     * @param stationNumber
-    * @return
+    * @return firestationDto
     */
-   public List<Person> firestationNumber(final String stationNumber) {
-      return null;
+   public PersonStationCounterDTO firestationNumber(
+               final String stationNumber) {
+      int totalAdultsNumber = 0;
+      int totalChildrenNumber = 0;
+      Map<String, FireStation> allFirestationsMapping = entitiesInfosStorage
+                  .getFirestations();
+      Set<String> addressesRecovered = new HashSet<>();
+      for (Entry<String, FireStation> entry : allFirestationsMapping
+                  .entrySet()) {
+         FireStation firestation = entry.getValue();
 
+         if (firestation.getStation().toString()
+                     .equals(stationNumber.toString())) {
+            addressesRecovered = firestation.getAddresses();
+         }
+      }
+      // Verify addresses recover success
+      if (addressesRecovered.isEmpty()) {
+         PersonStationCounterDTO emptyList = new PersonStationCounterDTO(null,
+                     0, 0);
+         return emptyList;
+      }
+      List<Person> allPersonsList = entitiesInfosStorage.getPersonsList();
+      List<PersonStationDTO> personsUnderResponsibility = new ArrayList<>();
+
+      for (Person person : allPersonsList) {
+         if (addressesRecovered.contains(person.getAddress())) {
+            // Add person
+            PersonStationDTO personStationDto = new PersonStationDTO(
+                        person.getFirstName(), person.getLastName(),
+                        person.getAddress(), person.getPhone());
+            personsUnderResponsibility.add(personStationDto);
+            // Count adults & childen
+            if (!AgeCalculator.isChild(person)) {
+               totalAdultsNumber++;
+            } else {
+               totalChildrenNumber++;
+            }
+         }
+      }
+      PersonStationCounterDTO firestationDto = new PersonStationCounterDTO(
+                  personsUnderResponsibility, totalAdultsNumber,
+                  totalChildrenNumber);
+      return firestationDto;
    }
 
    /**
