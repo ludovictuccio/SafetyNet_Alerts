@@ -6,35 +6,43 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.Before;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 /**
  * FireStationController tests class.
  *
  * @author Ludovic Tuccio
  */
-@WebMvcTest(FireStationController.class)
-@ExtendWith(SpringExtension.class)
-@WebAppConfiguration()
+@SpringBootTest
 @AutoConfigureMockMvc
-@ComponentScan({ "com.safetynet.alerts.service", "com.safetynet.alerts.model" })
+@ExtendWith(SpringExtension.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class FireStationControllerTest {
 
    @Autowired
    private MockMvc mockMvc;
+   @Autowired
+   private WebApplicationContext wac;
+
+   @Before
+   public void setupMockMvc() {
+      mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+   }
 
    @Test
    @Tag("POST")
@@ -51,12 +59,12 @@ public class FireStationControllerTest {
 
    @Test
    @Tag("POST")
-   @DisplayName("AddAddress - ERROR - Nonexistant station")
-   public void givenNonexistantFirestation_whenAdd_thenReturnConflict()
+   @DisplayName("AddAddress - ERROR - Address mapping existing")
+   public void givenExistingMapping_whenAdd_thenReturnConflict()
                throws Exception {
       this.mockMvc.perform(MockMvcRequestBuilders.post("/firestation")
                   .contentType(MediaType.APPLICATION_JSON_VALUE)
-                  .content("{\"address\": \"NEW ADDRESS\",\"station\": \"999\"}"))
+                  .content("{\"address\": \"1509 Culver St\",\"station\": \"3\"}"))
                   .andExpect(status().isConflict());
    }
 

@@ -6,39 +6,43 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.Before;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 /**
  * PersonController tests class.
  *
  * @author Ludovic Tuccio
  */
-@WebMvcTest(PersonController.class)
-@ExtendWith(SpringExtension.class)
-@WebAppConfiguration()
+@SpringBootTest
 @AutoConfigureMockMvc
-@ComponentScan({ "com.safetynet.alerts.service", "com.safetynet.alerts.model" })
-@TestMethodOrder(OrderAnnotation.class)
+@ExtendWith(SpringExtension.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class PersonControllerTest {
 
    @Autowired
    private MockMvc mockMvc;
+   @Autowired
+   private WebApplicationContext wac;
+
+   @Before
+   public void setupMockMvc() {
+      mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+   }
 
    @Test
    @Tag("CreatePerson")
@@ -115,7 +119,6 @@ public class PersonControllerTest {
    }
 
    @Test
-   @Order(1)
    @Tag("CommunityEmail")
    @DisplayName("CommunityEmail - Valid city entry (Culver) ")
    public void givenCityEntry_whenExistingCity_thenReturnAllPersonsEmailAdressesListForCityPersons()
@@ -129,7 +132,6 @@ public class PersonControllerTest {
    }
 
    @Test
-   @Order(2)
    @Tag("CommunityEmail")
    @DisplayName("CommunityEmail - Bad city entry (Los Angeles)")
    public void givenCityEntry_whenIncorrectCity_thenReturnEmptyList()

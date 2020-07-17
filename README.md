@@ -48,7 +48,6 @@ https://maven.apache.org/install.html
 ## Person endpoint
 
 **POST** - http://localhost:8080/person >>> add a new person at the all persons list.
-
 <pre><code>
 	[
 	    {
@@ -72,25 +71,27 @@ https://maven.apache.org/install.html
 	        "zip": "97451",
 	        "phone": "012-345-678",
 	        "email": "NEW-MAIL@email.com"
-	    }</pre></code>
+		}
+		</pre></code>
 
 **DELETE** -  http://localhost:8080/person >>> delete a person by entering his first and last name.
 <pre><code>
 		{
 	        "firstName": "John",
 	        "lastName": "Boyd"
-	    }</pre></code>
-
+		}
+		</pre></code>
 
 ## Firestation endpoint
 
 **POST** - http://localhost:8080/firestation >>> add a new address for an existing firestation number. If address already exists for a mapping, impossible add.
 
- <pre><code> 
+<pre><code> 
 	{
         "station": "1",
         "address": "New address"
-    }</pre></code>
+	}
+	</pre></code>
 
 **PUT** - http://localhost:8080/firestation >>> update firestation number for an entered address.
 
@@ -98,7 +99,8 @@ https://maven.apache.org/install.html
 	{
         "station": "1",
         "address": "1509 Culver St"
-    }</pre></code>
+	}
+</pre></code>
 
 **DELETE** - http://localhost:8080/firestation{address} >>> delete an address with his firestation number association.
 
@@ -204,9 +206,9 @@ https://maven.apache.org/install.html
 ## PhoneAlert endpoint 
   
 **GET** - http://localhost:8080/phoneAlert?firestation={firestation_number} >>> returns the list of all the phone numbers of the persons served by the firestation entered. 
-
 <pre><code>
 Example for: firestation=4
+
 [
     "841-874-6874",
     "841-874-9845",
