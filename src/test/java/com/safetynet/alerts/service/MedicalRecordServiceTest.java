@@ -6,7 +6,6 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -42,9 +41,7 @@ public class MedicalRecordServiceTest {
    private static List<String> medicationsList;
    private static List<String> allergiesList;
 
-   @BeforeAll
-   private void setUpPerTest() {
-
+   static {
       medicationsList = new ArrayList<>();
       medicationsList.add("medication1");
 
