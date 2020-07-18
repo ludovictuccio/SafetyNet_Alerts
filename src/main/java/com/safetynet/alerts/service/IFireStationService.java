@@ -16,43 +16,43 @@ public interface IFireStationService {
 
    /**
     * @param firestationToCreate
-    * @return
+    * @return a boolean
     */
    boolean addAddressForFirestation(Map<String, String> firestationToCreate);
 
    /**
     * @param firestationToUpdate
-    * @return
+    * @return a boolean
     */
    boolean updateAddressForFireStation(Map<String, String> firestationToUpdate);
 
    /**
     * @param address
-    * @return
+    * @return a boolean
     */
    boolean deleteAddressForFireStation(String address);
 
    /**
     * @param stationNumber
-    * @return
+    * @return a PersonStationCounterDTO object
     */
    PersonStationCounterDTO firestationNumber(String stationNumber);
 
    /**
     * @param firestation
-    * @return
+    * @return a String list of phone numbers
     */
    List<String> phoneAlert(String firestation);
 
    /**
     * @param address
-    * @return
+    * @return a FireDTO list
     */
    List<FireDTO> fire(String address);
 
    /**
     * @param stations
-    * @return
+    * @return a FloodDTO list
     */
    List<FloodDTO> flood(List<String> stations);
 

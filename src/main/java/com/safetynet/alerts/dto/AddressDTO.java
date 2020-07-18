@@ -71,29 +71,38 @@ public class AddressDTO {
     * equals method class.
     */
    @Override
-   public boolean equals(Object obj) {
-      if (this == obj)
+   public boolean equals(final Object obj) {
+      if (this == obj) {
          return true;
-      if (obj == null)
+      }
+      if (obj == null) {
          return false;
-      if (getClass() != obj.getClass())
+      }
+      if (getClass() != obj.getClass()) {
          return false;
+      }
       AddressDTO other = (AddressDTO) obj;
       if (address == null) {
-         if (other.address != null)
+         if (other.address != null) {
             return false;
-      } else if (!address.equals(other.address))
+         }
+      } else if (!address.equals(other.address)) {
          return false;
+      }
       if (city == null) {
-         if (other.city != null)
+         if (other.city != null) {
             return false;
-      } else if (!city.equals(other.city))
+         }
+      } else if (!city.equals(other.city)) {
          return false;
+      }
       if (zip == null) {
-         if (other.zip != null)
+         if (other.zip != null) {
             return false;
-      } else if (!zip.equals(other.zip))
+         }
+      } else if (!zip.equals(other.zip)) {
          return false;
+      }
       return true;
    }
 

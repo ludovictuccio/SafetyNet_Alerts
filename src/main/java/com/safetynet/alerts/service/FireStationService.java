@@ -78,7 +78,8 @@ public class FireStationService implements IFireStationService {
             }
          }
          firestationRecovered.addAddress(newAddress);
-         return isAdded = true;
+         isAdded = true;
+         return isAdded;
       } catch (NullPointerException np) {
          throw new NullPointerException(
                      "NullPointerException. Please verify the station number"
@@ -116,7 +117,8 @@ public class FireStationService implements IFireStationService {
                         .contains(address)) {
                firestationsNumber.getAddresses().remove(address);
                firestationNumberRecovered.addAddress(address);
-               return isUpdated = true;
+               isUpdated = true;
+               return isUpdated;
             }
          }
          LOGGER.error("The address entered for: {} does not exist.",
@@ -148,7 +150,8 @@ public class FireStationService implements IFireStationService {
 
          if (firestationsNumber.getAddresses().toString().contains(address)) {
             firestationsNumber.getAddresses().remove(address);
-            return isDeleted = true;
+            isDeleted = true;
+            return isDeleted;
          }
       }
       LOGGER.error("The address entered for: {} does not exist.", address);
@@ -291,8 +294,6 @@ public class FireStationService implements IFireStationService {
       Map<String, FireStation> allFirestationsMapping = entitiesInfosStorage
                   .getFirestations();
       List<Person> allPersonsList = entitiesInfosStorage.getPersonsList();
-      List<HouseholdsFloodDTO> householdsFloodList = new ArrayList<>();
-      Map<AddressDTO, List<PersonFloodDTO>> householdDTO = new HashMap<>();
 
       for (String station : stations) {
 
@@ -312,7 +313,7 @@ public class FireStationService implements IFireStationService {
             return null;
          }
          // Group persons leaving at the station addresses by household
-         householdDTO = new HashMap<>();
+         Map<AddressDTO, List<PersonFloodDTO>> householdDTO = new HashMap<>();
          for (Person person : allPersonsList) {
 
             if (addressesRecovered.contains(person.getAddress())) {
@@ -354,7 +355,7 @@ public class FireStationService implements IFireStationService {
                }
             }
          }
-         householdsFloodList = new ArrayList<>();
+         List<HouseholdsFloodDTO> householdsFloodList = new ArrayList<>();
          for (Entry<AddressDTO, List<PersonFloodDTO>> entry : householdDTO
                      .entrySet()) {
             HouseholdsFloodDTO householdsFloodDTO = new HouseholdsFloodDTO(

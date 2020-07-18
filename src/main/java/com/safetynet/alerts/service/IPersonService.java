@@ -16,38 +16,38 @@ public interface IPersonService {
 
    /**
     * @param personToCreate
-    * @return
+    * @return a Person object
     */
    Person createPerson(Map<String, String> personToCreate);
 
    /**
     * @param personToUpdate
-    * @return
+    * @return boolean
     */
    boolean updatePerson(Person personToUpdate);
 
    /**
     * @param personToDelete
-    * @return
+    * @return boolean
     */
    boolean deletePerson(Person personToDelete);
 
    /**
     * @param firstName
     * @param lastName
-    * @return
+    * @return a List of PersonInfoDTO
     */
    List<PersonInfoDTO> personInfo(String firstName, String lastName);
 
    /**
     * @param address
-    * @return
+    * @return a List of ChildAlertDTO
     */
    List<ChildAlertDTO> childAlert(String address);
 
    /**
     * @param city
-    * @return
+    * @return a List of emails addresses
     */
    List<String> communityEmail(String city);
 }

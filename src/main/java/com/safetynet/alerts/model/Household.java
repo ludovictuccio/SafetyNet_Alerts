@@ -12,27 +12,27 @@ public class Household {
    /**
     * The list of persons by household.
     */
-   private List<Person> householdsComposition;
+   private List<Person> householdComposition;
 
    /**
     * @param personsPerHousehold
     */
    public Household(final List<Person> personsPerHousehold) {
-      this.householdsComposition = personsPerHousehold;
+      this.householdComposition = personsPerHousehold;
    }
 
    /**
     * @return householdsComposition
     */
    public List<Person> getPersonsPerHousehold() {
-      return householdsComposition;
+      return householdComposition;
    }
 
    /**
     * @param personsPerHousehold the personsPerHousehold to set
     */
    public void setPersonsPerHousehold(final List<Person> personsPerHousehold) {
-      this.householdsComposition = personsPerHousehold;
+      this.householdComposition = personsPerHousehold;
    }
 
    /**
@@ -41,7 +41,7 @@ public class Household {
    @Override
    public String toString() {
       return "Household [Household composition="
-                  + householdsComposition
+                  + householdComposition
                   + "]";
    }
 

@@ -46,7 +46,7 @@ https://maven.apache.org/install.html
 
 ## Person endpoint
 
-**POST** - http://localhost:8080/person >>> add a new person at the all persons list.
+**POST** - http://localhost:8080/person >>> add a new person at the all persons list. Conflict if a person has already the same last name and first name.
 <pre><code>
 	[
 	    {
@@ -85,7 +85,8 @@ https://maven.apache.org/install.html
 
 **POST** - http://localhost:8080/firestation >>> add a new address for an existing firestation number. If address already exists for a mapping, impossible add.
 
-<pre><code> 
+<pre><code>
+Example for add a new address for station 1: 
 {
         "station": "1",
         "address": "New address"
@@ -95,6 +96,7 @@ https://maven.apache.org/install.html
 **PUT** - http://localhost:8080/firestation >>> update firestation number for an entered address.
 
 <pre><code>
+Example for: "address": "1509 Culver St" under the responsibility of "station": "3"
 {
         "station": "1",
         "address": "1509 Culver St"
@@ -108,26 +110,37 @@ https://maven.apache.org/install.html
 **POST** - http://localhost:8080/medicalRecord >>> add a new medicalrecord for a person created without medicalrecord.
 
 <pre><code>
+Example for "John Boyd", a person created without medicalrecord: 
     {
         "firstName": "John",
         "lastName": "Boyd",
         "birthDate": "03/06/1984",
         "medications":["aznol:350mg", "hydrapermazol:100mg"],
         "allergies":["nillacilan"]
-    }</pre></code>
+    }
+</pre></code>
 
 **PUT** - http://localhost:8080/medicalRecord >>> update a person's medicalrecord. 
 
 <pre><code>
+Example for add new allergy for an existing person:
     {
         "firstName": "John",
         "lastName": "Boyd",
         "birthDate": "03/06/1984",
         "medications":["aznol:350mg", "hydrapermazol:100mg"],
-        "allergies":["NEW ALLERGIE"] 
-    }</pre></code>
+        "allergies":["NEW ALLERGY"] 
+    }
+</pre></code>
 
 **DELETE** - http://localhost:8080/medicalRecord{firstName}/{lastName} >>> delete a person's medicalrecord.
+<pre><code>
+Example for delete a medicalrecord: 
+    {
+        "firstName": "John",
+        "lastName": "Boyd",
+    }
+</pre></code>
 
 
 ## Firestation number endpoint 
@@ -135,6 +148,7 @@ https://maven.apache.org/install.html
 **GET** - http://localhost:8080/firestation?stationNumber={station_number} >>> returns a persons list covered by a firestation, with name, address and phone number as informations, and a total adults and children counting.
 
 <pre><code>
+Example for: stationNumber= 2
 {
     "personsStationList": [
         {
@@ -171,6 +185,8 @@ https://maven.apache.org/install.html
 **GET** - http://localhost:8080/childAlert?address={address} >>> returns the household composition for the address entered, only if the household contains children. The informations returned are: firstName, lastName, age.
 
 <pre><code>
+Example for: address= 1509 Culver St
+
 {
     "address": "1509 Culver St",
      [
@@ -206,7 +222,7 @@ https://maven.apache.org/install.html
   
 **GET** - http://localhost:8080/phoneAlert?firestation={firestation_number} >>> returns the list of all the phone numbers of the persons served by the firestation entered. 
 <pre><code>
-Example for: firestation=4
+Example for: firestation= 4
 
 [
     "841-874-6874",
@@ -219,7 +235,8 @@ Example for: firestation=4
 
 **GET** - http://localhost:8080/fire?address={address} >>> returns the list of persons who live at the address, and the firestation number that serving it. The list must include: name, phone number, age and medical record.
 <pre><code>
-Example for: address=951 LoneTree Rd
+Example for: address= 951 LoneTree Rd
+
 [
     {
         "stationNumber": "2",
@@ -238,7 +255,8 @@ Example for: address=951 LoneTree Rd
 
 **GET** - http://localhost:8080/flood/stations?stations={a_list_of_station_numbers} >>> returns the list of all the households served by the firestation. It must group persons by address, and include the following information: name, phone number, age and medical record.
 <pre><code>
-Example for: stations=1,4
+Example for: stations= 1,4
+
 [
     {
         "stationNumber": "1",
@@ -330,6 +348,8 @@ Example for: stations=1,4
 
 **GET** - http://localhost:8080/personInfo?firstName={firstName}&lastName={lastName} >>> returns the name, address, age, email and medical record of all persons with the same last name.
 <pre><code>
+Example for: firstName= John & lastName= Boyd
+
 [
     {
         "firstName": "John",
@@ -369,6 +389,8 @@ Example for: stations=1,4
 
 **GET** - http://localhost:8080/communityEmail?city={city} >>> returns all the person's email addresses who live at the city entered.
 <pre><code>
+Example for: city= Culver
+
 {
     "city": "Culver",    
 	["jaboyd@email.com","drk@email.com","tenz@email.com","jaboyd@email.com","jaboyd@email.com","drk@email.com","tenz@email.com","jaboyd@email.com","jaboyd@email.com","tcoop@ymail.com","lily@email.com","soph@email.com","ward@email.com","zarc@email.com","reg@email.com","jpeter@email.com","jpeter@email.com","aly@imail.com","bstel@email.com","ssanw@email.com","bstel@email.com","clivfd@ymail.com","gramps@email.com"]

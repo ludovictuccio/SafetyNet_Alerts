@@ -11,20 +11,20 @@ public interface IMedicalRecordService {
 
    /**
     * @param newMedicalRecord
-    * @return
+    * @return a MedicalRecord object
     */
    MedicalRecord createMedicalRecord(MedicalRecord newMedicalRecord);
 
    /**
     * @param medicalRecord
-    * @return
+    * @return a boolean
     */
    boolean updateMedicalRecord(MedicalRecord medicalRecord);
 
    /**
     * @param firstName
     * @param lastName
-    * @return
+    * @return a boolean
     */
    boolean deleteMedicalRecord(String firstName, String lastName);
 
