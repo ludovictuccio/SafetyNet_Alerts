@@ -37,15 +37,18 @@ public class MedicalRecordServiceTest {
 
    private static final String ADULT_BIRTHDATE = "01/01/1990";
 
-   private MedicalRecord medicalRecordAdult;
+   private static MedicalRecord medicalRecordAdult;
+
+   private static List<String> medicationsList;
+   private static List<String> allergiesList;
 
    @BeforeAll
    private void setUpPerTest() {
 
-      List<String> medicationsList = new ArrayList<>();
+      medicationsList = new ArrayList<>();
       medicationsList.add("medication1");
 
-      List<String> allergiesList = new ArrayList<>();
+      allergiesList = new ArrayList<>();
       allergiesList.add("allergies");
 
       medicalRecordAdult = new MedicalRecord(ADULT_BIRTHDATE, medicationsList,

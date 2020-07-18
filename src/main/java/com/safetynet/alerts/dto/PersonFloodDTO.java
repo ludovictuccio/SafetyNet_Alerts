@@ -36,11 +36,11 @@ public class PersonFloodDTO {
 
    /**
     * @param pFirstName
-    * @param stationNumber
-    * @param firstName
-    * @param lastName
-    * @param phoneNumber
-    * @param medicalrecord
+    * @param plastName
+    * @param pphoneNumber
+    * @param pAge
+    * @param pMedications
+    * @param pAllergies
     */
    public PersonFloodDTO(final String pFirstName, final String plastName,
                final String pphoneNumber, final int pAge,

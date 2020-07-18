@@ -14,7 +14,6 @@ import com.safetynet.alerts.model.Person;
  * Age calculator class, used to determine the person's age.
  *
  * @author Ludovic Tuccio
- *
  */
 public class AgeCalculator {
 
@@ -24,7 +23,7 @@ public class AgeCalculator {
    private static final Logger LOGGER = LogManager
                .getLogger(AgeCalculator.class);
    /**
-    * Minor age threshold; more is considerate as adult person.
+    * Minor age threshold; more is considerate as adult's person.
     */
    private static final int MINOR_AGE_THRESHOLD = 18;
 
@@ -61,15 +60,13 @@ public class AgeCalculator {
     * Method used to determinate adults and children persons.
     *
     * @param person
-    * @throws NullPointerException
     * @return isChild boolean
     */
    public static boolean isChild(final Person person) {
       boolean isChild = false;
       int personsAge = AgeCalculator
                   .ageCalculation(person.getMedicalRecord().getBirthdate());
-      if (personsAge > MINOR_AGE_THRESHOLD) {
-      } else {
+      if (personsAge <= MINOR_AGE_THRESHOLD) {
          isChild = true;
       }
       return isChild;

@@ -41,7 +41,7 @@ public class MedicalRecordController {
     * This method controller is used to create a new medicalrecord with the
     * service method.
     *
-    * @param personToCreate
+    * @param newMedicalRecord
     */
    @PostMapping("/medicalRecord")
    public void createMedicalRecord(
@@ -76,9 +76,9 @@ public class MedicalRecordController {
          LOGGER.info("SUCCESS - Update MedicalRecord PUT request");
          response.setStatus(Constants.STATUS_OK_200);
       } else {
-         LOGGER.error(
-                     "FAILED to update medicalrecord for person: {} {}. Unknow person.",
-                     medicalRecord.getFirstName(), medicalRecord.getLastName());
+         LOGGER.error("FAILED to update medicalrecord for person: {} {}."
+                     + " Unknow person.", medicalRecord.getFirstName(),
+                     medicalRecord.getLastName());
          response.setStatus(Constants.ERROR_NOT_FOUND_404);
       }
    }
@@ -86,7 +86,8 @@ public class MedicalRecordController {
    /**
     * This method controller is used to delete an existing medicalrecord.
     *
-    * @param medicalRecord
+    * @param firstName
+    * @param lastName
     */
    @DeleteMapping("/medicalRecord")
    public void deleteMedicalRecord(
@@ -101,8 +102,8 @@ public class MedicalRecordController {
          LOGGER.info("SUCCESS - Delete MedicalRecord DELETE request");
          response.setStatus(Constants.STATUS_OK_200);
       } else {
-         LOGGER.error(
-                     "FAILED to delete medicalrecord for person: {} {}. Person without medicalrecord or unknow person.",
+         LOGGER.error("FAILED to delete medicalrecord for person: {} {}."
+                     + " Person without medicalrecord or unknow person.",
                      firstName, lastName);
          response.setStatus(Constants.ERROR_NOT_FOUND_404);
       }

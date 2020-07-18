@@ -38,6 +38,7 @@ public class Household {
    /**
     * A toString class method().
     */
+   @Override
    public String toString() {
       return "Household [Household composition="
                   + householdsComposition

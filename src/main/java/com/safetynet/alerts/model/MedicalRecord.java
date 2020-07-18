@@ -32,10 +32,19 @@ public class MedicalRecord {
     */
    private List<String> allergies;
 
+   /**
+    * Empty class constructor.
+    */
    public MedicalRecord() {
-
    }
 
+   /**
+    * @param personsFirstName
+    * @param personsLastName
+    * @param personsBirthdate
+    * @param personMedicationsFollowed
+    * @param personAllergies
+    */
    public MedicalRecord(final String personsFirstName,
                final String personsLastName, final String personsBirthdate,
                final List<String> personMedicationsFollowed,
@@ -127,6 +136,7 @@ public class MedicalRecord {
    /**
     * A toString class method().
     */
+   @Override
    public String toString() {
       return "Medical Record [birthdate="
                   + birthdate

@@ -20,12 +20,12 @@ public class HouseholdsFloodDTO {
 
    /**
     * @param pAddress
-    * @param personsList
+    * @param persons
     */
    public HouseholdsFloodDTO(final AddressDTO pAddress,
-               final List<PersonFloodDTO> personsList) {
+               final List<PersonFloodDTO> persons) {
       this.address = pAddress;
-      this.personsList = personsList;
+      this.personsList = persons;
    }
 
    /**
@@ -50,15 +50,16 @@ public class HouseholdsFloodDTO {
    }
 
    /**
-    * @param personsList the personsList to set
+    * @param persons the personsList to set
     */
-   public void setPersonsList(final List<PersonFloodDTO> personsList) {
-      this.personsList = personsList;
+   public void setPersonsList(final List<PersonFloodDTO> persons) {
+      this.personsList = persons;
    }
 
    /**
     * toString method class.
     */
+   @Override
    public String toString() {
       return "HouseholdsFloodDTO [address="
                   + address

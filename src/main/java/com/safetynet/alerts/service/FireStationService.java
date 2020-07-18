@@ -71,18 +71,18 @@ public class FireStationService implements IFireStationService {
             // For not add the same address already added
             if (firestationsNumber.getAddresses().toString()
                         .contains(newAddress.toString())) {
-               LOGGER.error(
-                           "The address entered for: {} already exists for a mapping. Please delete or update a mapping.",
+               LOGGER.error("The address entered for: {} already exists for "
+                           + "a mapping. Please delete or update a mapping.",
                            firestationMappingToCreate.values());
                return isAdded;
             }
          }
          firestationRecovered.addAddress(newAddress);
          return isAdded = true;
-
       } catch (NullPointerException np) {
          throw new NullPointerException(
-                     "NullPointerException. Please verify the station number entered."
+                     "NullPointerException. Please verify the station number"
+                                 + " entered."
                                  + np);
       }
    }
@@ -124,7 +124,8 @@ public class FireStationService implements IFireStationService {
          return isUpdated;
       } catch (NullPointerException np) {
          throw new NullPointerException(
-                     "NullPointerException. Please verify the station number entered."
+                     "NullPointerException. Please verify the station "
+                                 + "number entered."
                                  + np);
       }
    }
@@ -281,7 +282,7 @@ public class FireStationService implements IFireStationService {
     * station. The list must group persons by address. The information are:
     * name, age, telephone and medical record.
     *
-    * @param stations, a String list
+    * @param stations a String list
     * @return floodDtoList a FloodDTO List
     */
    public List<FloodDTO> flood(final List<String> stations) {

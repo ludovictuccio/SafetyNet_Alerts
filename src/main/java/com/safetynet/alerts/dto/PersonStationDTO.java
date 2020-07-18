@@ -66,6 +66,9 @@ public class PersonStationDTO {
       return phoneNumber;
    }
 
+   /**
+    * toString() method class.
+    */
    @Override
    public String toString() {
       return "PersonStationDTO [firstName="

@@ -24,13 +24,13 @@ public class EntitiesInfosStorage {
    private Map<String, List<Person>> personsPerHousehold;
 
    /**
-    * @param personsList
+    * @param persons
     * @param stations
-    * @param personsPerHousehold
+    * @param households
     */
-   public EntitiesInfosStorage(List<Person> persons,
-               Map<String, FireStation> stations,
-               Map<String, List<Person>> households) {
+   public EntitiesInfosStorage(final List<Person> persons,
+               final Map<String, FireStation> stations,
+               final Map<String, List<Person>> households) {
       this.personsList = persons;
       this.firestations = stations;
       this.personsPerHousehold = households;
@@ -44,7 +44,7 @@ public class EntitiesInfosStorage {
    }
 
    /**
-    * @param personsList the personsList to set
+    * @param persons the personsList to set
     */
    public void setPersonsList(final List<Person> persons) {
       this.personsList = persons;
@@ -58,7 +58,7 @@ public class EntitiesInfosStorage {
    }
 
    /**
-    * @param firestations the firestations to set
+    * @param stations the firestations to set
     */
    public void setFirestations(final Map<String, FireStation> stations) {
       this.firestations = stations;
@@ -72,7 +72,7 @@ public class EntitiesInfosStorage {
    }
 
    /**
-    * @param personsPerHousehold the personsPerHousehold to set
+    * @param households the personsPerHousehold to set
     */
    public void setPersonsPerHousehold(
                final Map<String, List<Person>> households) {
@@ -82,6 +82,7 @@ public class EntitiesInfosStorage {
    /**
     * A toString class method().
     */
+   @Override
    public String toString() {
       return "Infos [Persons list="
                   + personsList

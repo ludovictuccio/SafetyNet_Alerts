@@ -112,6 +112,7 @@ public class FireDTO {
    /**
     * toString method class.
     */
+   @Override
    public String toString() {
       return "FireDTO"
                   + stationNumber

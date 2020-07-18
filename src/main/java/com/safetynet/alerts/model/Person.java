@@ -40,6 +40,9 @@ public class Person {
     */
    private MedicalRecord medicalRecord;
 
+   /**
+    * Empty class constructor.
+    */
    public Person() {
 
    }
@@ -160,10 +163,10 @@ public class Person {
    }
 
    /**
-    * @param zip the zip to set
+    * @param personsZip the zip to set
     */
-   public void setZip(final String zip) {
-      this.zip = zip;
+   public void setZip(final String personsZip) {
+      this.zip = personsZip;
    }
 
    /**
@@ -211,6 +214,7 @@ public class Person {
    /**
     * The toString() method class.
     */
+   @Override
    public String toString() {
       return "Person [firstName="
                   + firstName

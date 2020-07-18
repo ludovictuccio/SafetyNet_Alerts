@@ -139,6 +139,7 @@ public class PersonInfoDTO {
    /**
     * toString method class.
     */
+   @Override
    public String toString() {
       return "PersonInfoDTO [firstName="
                   + firstName

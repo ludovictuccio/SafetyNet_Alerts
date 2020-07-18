@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.regex.Pattern;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -70,8 +71,8 @@ public class PersonService implements IPersonService {
          if (existingPerson.getFirstName().equals(newPerson.getFirstName())
                      && existingPerson.getLastName()
                                  .equals(newPerson.getLastName())) {
-            LOGGER.error(
-                        "FAILED to create the person: {} {}, this person already exists.",
+            LOGGER.error("FAILED to create the person: {} {}, "
+                        + "this person already exists.",
                         newPerson.getFirstName(), newPerson.getLastName());
             return null;
          }
@@ -128,9 +129,9 @@ public class PersonService implements IPersonService {
          Person existingPerson = iter.next();
 
          if (existingPerson.getFirstName()
-                     .matches(personToDelete.getFirstName())
-                     && existingPerson.getLastName()
-                                 .matches(personToDelete.getLastName())) {
+                     .matches(Pattern.quote(personToDelete.getFirstName()))
+                     && existingPerson.getLastName().matches(
+                                 Pattern.quote(personToDelete.getLastName()))) {
             iter.remove();
             isDeleted = true;
          }
@@ -141,7 +142,7 @@ public class PersonService implements IPersonService {
    /**
     * This method service is used to return the persons informations for the
     * same last name entered.
-    * 
+    *
     * @param firstName
     * @param lastName
     * @return personsInfosList, PersonInfoDTO List

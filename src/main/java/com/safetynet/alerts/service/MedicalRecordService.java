@@ -54,8 +54,8 @@ public class MedicalRecordService implements IMedicalRecordService {
             return newMedicalRecord;
          }
       }
-      LOGGER.error(
-                  "FAILED to create the medicalrecord for: {} {}, existant medicalrecord. You must to update it.",
+      LOGGER.error("FAILED to create the medicalrecord for: {} {}, "
+                  + "existant medicalrecord. You must to update it.",
                   newMedicalRecord.getFirstName(),
                   newMedicalRecord.getLastName());
       return null;

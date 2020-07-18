@@ -24,14 +24,14 @@ public class PersonStationCounterDTO {
 
    /**
     * @param persons
-    * @param totalAdultsNumber
-    * @param totalChildrenNumber
+    * @param totalAdults
+    * @param totalChildren
     */
-   public PersonStationCounterDTO(List<PersonStationDTO> persons,
-               int totalAdultsNumber, int totalChildrenNumber) {
+   public PersonStationCounterDTO(final List<PersonStationDTO> persons,
+               final int totalAdults, final int totalChildren) {
       this.personsStationList = persons;
-      this.totalAdultsNumber = totalAdultsNumber;
-      this.totalChildrenNumber = totalChildrenNumber;
+      this.totalAdultsNumber = totalAdults;
+      this.totalChildrenNumber = totalChildren;
    }
 
    /**
@@ -42,7 +42,7 @@ public class PersonStationCounterDTO {
    }
 
    /**
-    * @param personsStationList the personsStationList to set
+    * @param persons the personsStationList to set
     */
    public void setPersonsStationList(final List<PersonStationDTO> persons) {
       this.personsStationList = persons;
@@ -79,6 +79,7 @@ public class PersonStationCounterDTO {
    /**
     * toString method class.
     */
+   @Override
    public String toString() {
       return "PersonStationCounterDTO [Persons="
                   + personsStationList

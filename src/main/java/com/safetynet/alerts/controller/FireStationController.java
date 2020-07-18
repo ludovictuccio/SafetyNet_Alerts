@@ -47,20 +47,21 @@ public class FireStationController {
     * This method controller is used to create a new firestation number/address
     * under responsibility mapping.
     *
-    * @param firestationToCreate
+    * @param stationToCreate
     */
    @PostMapping("/firestation")
    public void addAddressForFirestation(
-               @NotNull @RequestBody final Map<String, String> firestationToCreate,
+               @NotNull @RequestBody final Map<String, String> stationToCreate,
                final HttpServletResponse response) {
 
       boolean isAdded = fireStationService
-                  .addAddressForFirestation(firestationToCreate);
+                  .addAddressForFirestation(stationToCreate);
 
       if (isAdded) {
-         LOGGER.info("SUCCESS - AddAddressForFirestation POST request -  Firestation number: {}, Address: {}",
-                     firestationToCreate.get("station"),
-                     firestationToCreate.get("address"));
+         LOGGER.info("SUCCESS - AddAddressForFirestation POST request "
+                     + "-  Firestation number: {}, Address: {}",
+                     stationToCreate.get("station"),
+                     stationToCreate.get("address"));
          response.setStatus(Constants.STATUS_CREATED_201);
       } else {
          response.setStatus(Constants.ERROR_CONFLICT_409);
@@ -71,20 +72,21 @@ public class FireStationController {
     * This method controller is used to update an existing address for other
     * existing firestation.
     *
-    * @param firestationMappingToCreate
+    * @param mappingToUpdate
     */
    @PutMapping("/firestation")
    public void updateAddressForFireStation(
-               @NotNull @RequestBody final Map<String, String> firestationMappingToCreate,
+               @NotNull @RequestBody final Map<String, String> mappingToUpdate,
                final HttpServletResponse response) {
 
       boolean isUpdated = fireStationService
-                  .updateAddressForFireStation(firestationMappingToCreate);
+                  .updateAddressForFireStation(mappingToUpdate);
 
       if (isUpdated) {
-         LOGGER.info("SUCCESS - UpdateFireStation PUT request -  Firestation number: {}, Address: {}",
-                     firestationMappingToCreate.get("station"),
-                     firestationMappingToCreate.get("address"));
+         LOGGER.info("SUCCESS - UpdateFireStation PUT request "
+                     + "-  Firestation number: {}, Address: {}",
+                     mappingToUpdate.get("station"),
+                     mappingToUpdate.get("address"));
          response.setStatus(Constants.STATUS_OK_200);
       } else {
          response.setStatus(Constants.ERROR_NOT_FOUND_404);
@@ -106,8 +108,8 @@ public class FireStationController {
                   .deleteAddressForFireStation(address);
 
       if (isDeleted) {
-         LOGGER.info("SUCCESS - DeleteFireStation DELETE request -  Address: {}",
-                     address);
+         LOGGER.info("SUCCESS - DeleteFireStation DELETE request "
+                     + "-  Address: {}", address);
          response.setStatus(Constants.STATUS_OK_200);
       } else {
          response.setStatus(Constants.ERROR_NOT_FOUND_404);
@@ -133,8 +135,8 @@ public class FireStationController {
          LOGGER.info("SUCCESS - FirestationNumber GET request");
          response.setStatus(Constants.STATUS_OK_200);
       } else {
-         LOGGER.error(
-                     "FAILED - No firestation founded for number: {}. Please verify the station number entered.",
+         LOGGER.error("FAILED - No firestation founded for number: {}. "
+                     + "Please verify the station number entered.",
                      stationNumber);
          response.setStatus(Constants.ERROR_NOT_FOUND_404);
       }
@@ -158,8 +160,8 @@ public class FireStationController {
          LOGGER.info("SUCCESS - PhoneAlert GET request");
          response.setStatus(Constants.STATUS_OK_200);
       } else {
-         LOGGER.error(
-                     "FAILED - No firestation founded for number: {}. Please verify the station number entered.",
+         LOGGER.error("FAILED - No firestation founded for number: {}. "
+                     + "Please verify the station number entered.",
                      firestation);
          response.setStatus(Constants.ERROR_NOT_FOUND_404);
       }
@@ -194,8 +196,8 @@ public class FireStationController {
     * This method controller is used to recover the households served by the
     * station. The list must group persons by address. The information are:
     * name, age, telephone and medical record.
-    * 
-    * @param stations, List String
+    *
+    * @param stations List String
     * @return flood a FloodDTO List
     */
    @GetMapping("/flood/stations")
