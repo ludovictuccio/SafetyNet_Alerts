@@ -4,7 +4,7 @@
 
 ## Infos
 
-**Author:** Ludovic Tuccio
+- **Author:** Ludovic Tuccio
 
 - **Java version:** 1.8
 
@@ -32,11 +32,10 @@ https://maven.apache.org/install.html
 
 - the tests from maven: **mvn test**
 
-- coverage jacoco report: **mvn jacoco:report**
+- jacoco: **mvn jacoco:report**, report available in *"target/site/jacoco"*.
 
-- checkstyle and findbugs reports: **mvn site**
+- checkstyle, findbugs & surefire: **mvn site**, report available in *"target/site"*.
 
-- maven surefire plugin: **mvn surefire-report:report**
 
 **To test endpoints:**
 <ol>
@@ -63,7 +62,7 @@ https://maven.apache.org/install.html
 </pre></code>
 **PUT** -  http://localhost:8080/person >>> updates a person's information, except first and last name.
 <pre><code>
-		{
+	{
 	        "firstName": "John",
 	        "lastName": "Boyd",
 	        "address": "1509 Culver St",
@@ -71,15 +70,15 @@ https://maven.apache.org/install.html
 	        "zip": "97451",
 	        "phone": "012-345-678",
 	        "email": "NEW-MAIL@email.com"
-		}
+	}
 		</pre></code>
 
 **DELETE** -  http://localhost:8080/person >>> delete a person by entering his first and last name.
 <pre><code>
-		{
+	{
 	        "firstName": "John",
 	        "lastName": "Boyd"
-		}
+	}
 		</pre></code>
 
 ## Firestation endpoint
@@ -87,19 +86,19 @@ https://maven.apache.org/install.html
 **POST** - http://localhost:8080/firestation >>> add a new address for an existing firestation number. If address already exists for a mapping, impossible add.
 
 <pre><code> 
-	{
+{
         "station": "1",
         "address": "New address"
-	}
+}
 	</pre></code>
 
 **PUT** - http://localhost:8080/firestation >>> update firestation number for an entered address.
 
 <pre><code>
-	{
+{
         "station": "1",
         "address": "1509 Culver St"
-	}
+}
 </pre></code>
 
 **DELETE** - http://localhost:8080/firestation{address} >>> delete an address with his firestation number association.
@@ -238,6 +237,94 @@ Example for: address=951 LoneTree Rd
 ## Flood endpoint 
 
 **GET** - http://localhost:8080/flood/stations?stations={a_list_of_station_numbers} >>> returns the list of all the households served by the firestation. It must group persons by address, and include the following information: name, phone number, age and medical record.
+<pre><code>
+Example for: stations=1,4
+[
+    {
+        "stationNumber": "1",
+        "householdList": [
+            {
+                "address": {
+                    "address": "947 E. Rose Dr",
+                    "city": "Culver",
+                    "zip": "97451"
+                },
+                "personsList": [
+                    {
+                        "firstName": "Brian",
+                        "lastName": "Stelzer",
+                        "age": 44,
+                        "medications": [
+                            "ibupurin:200mg",
+                            "hydrapermazol:400mg"
+                        ],
+                        "allergies": [
+                            "nillacilan"
+                        ],
+                        "phoneNumber": "841-874-7784"
+                    }
+					...
+                    {
+                        "firstName": "Kendrik",
+                        "lastName": "Stelzer",
+                        "age": 6,
+                        "medications": [
+                            "noxidian:100mg",
+                            "pharmacol:2500mg"
+                        ],
+                        "allergies": [],
+                        "phoneNumber": "841-874-7784"
+                    }
+                ]
+            }
+            {
+                "address": {
+                    "address": "644 Gershwin Cir",
+                    "city": "Culver",
+                    "zip": "97451"
+                },
+                "personsList": [
+                    {
+                        "firstName": "Peter",
+                        "lastName": "Duncan",
+                        "age": 19,
+                        "medications": [],
+                        "allergies": [
+                            "shellfish"
+                        ],
+                        "phoneNumber": "841-874-6512"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "stationNumber": "4",
+        "householdList": [
+            {
+                "address": {
+                    "address": "489 Manchester St",
+                    "city": "Culver",
+                    "zip": "97451"
+                },
+                "personsList": [
+                    {
+                        "firstName": "Lily",
+                        "lastName": "Cooper",
+                        "age": 26,
+                        "medications": [],
+                        "allergies": [],
+                        "phoneNumber": "841-874-9845"
+                    }
+                ]
+            }
+			...
+                ]
+            }
+        ]
+    }
+]
+</pre></code>
 
 ## PersonInfo endpoint 
 

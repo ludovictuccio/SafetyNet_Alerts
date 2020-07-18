@@ -60,6 +60,7 @@ public class FireStation {
    /**
     * A toString class method().
     */
+   @Override
    public String toString() {
       return "FireStation [addresses="
                   + addresses

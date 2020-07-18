@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.safetynet.alerts.constants.Constants;
 import com.safetynet.alerts.dto.FireDTO;
+import com.safetynet.alerts.dto.FloodDTO;
 import com.safetynet.alerts.dto.PersonStationCounterDTO;
-import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.service.IFireStationService;
 
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
@@ -191,12 +191,28 @@ public class FireStationController {
    }
 
    /**
-    * @param stationsNumber
-    * @return
+    * This method controller is used to recover the households served by the
+    * station. The list must group persons by address. The information are:
+    * name, age, telephone and medical record.
+    * 
+    * @param stations, List String
+    * @return flood a FloodDTO List
     */
-   public List<Person> flood(final String stationsNumber) {
-      return null;
+   @GetMapping("/flood/stations")
+   public List<FloodDTO> flood(
+               @NotNull @RequestParam(value = "stations") final List<String> stations,
+               final HttpServletResponse response) {
 
+      List<FloodDTO> flood = fireStationService.flood(stations);
+
+      if (flood != null) {
+         LOGGER.info("SUCCESS - Flood GET request");
+         response.setStatus(Constants.STATUS_OK_200);
+      } else {
+         LOGGER.error("FAILED - Flood GET request");
+         response.setStatus(Constants.ERROR_NOT_FOUND_404);
+      }
+      return flood;
    }
 
 }

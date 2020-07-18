@@ -6,7 +6,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -35,11 +35,11 @@ public class MedicalRecordServiceTest {
    @Mock
    private EntitiesInfosStorage entitiesInfosStorage;
 
-   private static String adultBirthdate = "01/01/1990";
+   private static final String ADULT_BIRTHDATE = "01/01/1990";
 
-   private static MedicalRecord medicalRecordAdult;
+   private MedicalRecord medicalRecordAdult;
 
-   @BeforeEach
+   @BeforeAll
    private void setUpPerTest() {
 
       List<String> medicationsList = new ArrayList<>();
@@ -48,7 +48,7 @@ public class MedicalRecordServiceTest {
       List<String> allergiesList = new ArrayList<>();
       allergiesList.add("allergies");
 
-      medicalRecordAdult = new MedicalRecord(adultBirthdate, medicationsList,
+      medicalRecordAdult = new MedicalRecord(ADULT_BIRTHDATE, medicationsList,
                   allergiesList);
    }
 
@@ -74,7 +74,7 @@ public class MedicalRecordServiceTest {
       allergiesList.add("allergies");
 
       MedicalRecord newMedicalRecord = new MedicalRecord("Jacob", "Boyd",
-                  adultBirthdate, medicationsList, allergiesList);
+                  ADULT_BIRTHDATE, medicationsList, allergiesList);
       // WHEN
       MedicalRecord result = medicalRecordService
                   .createMedicalRecord(newMedicalRecord);
@@ -105,7 +105,7 @@ public class MedicalRecordServiceTest {
       allergiesList.add("allergies");
 
       MedicalRecord newMedicalRecord = new MedicalRecord("John", "Boyd",
-                  adultBirthdate, medicationsList, allergiesList);
+                  ADULT_BIRTHDATE, medicationsList, allergiesList);
       // WHEN
       MedicalRecord result = medicalRecordService
                   .createMedicalRecord(newMedicalRecord);
@@ -136,7 +136,7 @@ public class MedicalRecordServiceTest {
       allergiesList.add("allergies");
 
       MedicalRecord newMedicalRecord = new MedicalRecord("Unknow", "Person",
-                  adultBirthdate, medicationsList, allergiesList);
+                  ADULT_BIRTHDATE, medicationsList, allergiesList);
       // WHEN
       MedicalRecord result = medicalRecordService
                   .createMedicalRecord(newMedicalRecord);

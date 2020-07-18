@@ -182,4 +182,24 @@ public class FireStationControllerTest {
                   .andExpect(jsonPath("$.length()", is(0)));
    }
 
+   @Test
+   @Tag("Flood")
+   @DisplayName("Flood - OK")
+   public void givenTwoValidStationsEntered_whenFlood_thenReturnOk()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/flood/stations")
+                  .contentType(APPLICATION_JSON).param("stations", "1,4"))
+                  .andExpect(status().isOk());
+   }
+
+   @Test
+   @Tag("Flood")
+   @DisplayName("Flood - ERROR")
+   public void givenUnknowStationEntry_whenFlood_thenReturnNotFound()
+               throws Exception {
+      this.mockMvc.perform(MockMvcRequestBuilders.get("/flood/stations")
+                  .contentType(APPLICATION_JSON).param("stations", "99"))
+                  .andExpect(status().isNotFound());
+   }
+
 }

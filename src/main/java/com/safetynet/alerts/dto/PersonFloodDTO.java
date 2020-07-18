@@ -3,16 +3,12 @@ package com.safetynet.alerts.dto;
 import java.util.List;
 
 /**
- * FireDTO class.
+ * PersonFloodDTO class.
  *
  * @author Ludovic Tuccio
  */
-public class FireDTO {
+public class PersonFloodDTO {
 
-   /**
-    * The firestation number responsible.
-    */
-   private String stationNumber;
    /**
     * The person's first name.
     */
@@ -22,13 +18,13 @@ public class FireDTO {
     */
    private String lastName;
    /**
+    * The person's phone number.
+    */
+   private String phone;
+   /**
     * The person's age.
     */
    private int age;
-   /**
-    * The person's phone number.
-    */
-   private String phoneNumber;
    /**
     * The person's medications list.
     */
@@ -39,25 +35,29 @@ public class FireDTO {
    private List<String> allergies;
 
    /**
-    * @param firestationNumber
-    * @param pfirstName
-    * @param plastName
-    * @param pAge
-    * @param pphoneNumber
-    * @param pMedications
-    * @param pAllergies
+    * @param pFirstName
+    * @param stationNumber
+    * @param firstName
+    * @param lastName
+    * @param phoneNumber
+    * @param medicalrecord
     */
-   public FireDTO(final String firestationNumber, final String pfirstName,
-               final String plastName, final int pAge,
-               final String pphoneNumber, final List<String> pMedications,
-               final List<String> pAllergies) {
-      this.stationNumber = firestationNumber;
-      this.firstName = pfirstName;
-      this.age = pAge;
+   public PersonFloodDTO(final String pFirstName, final String plastName,
+               final String pphoneNumber, final int pAge,
+               final List<String> pMedications, final List<String> pAllergies) {
+      this.firstName = pFirstName;
       this.lastName = plastName;
-      this.phoneNumber = pphoneNumber;
+      this.phone = pphoneNumber;
+      this.age = pAge;
       this.medications = pMedications;
       this.allergies = pAllergies;
+   }
+
+   /**
+    * @return the firstName
+    */
+   public String getFirstName() {
+      return firstName;
    }
 
    /**
@@ -82,20 +82,6 @@ public class FireDTO {
    }
 
    /**
-    * @return the stationNumber
-    */
-   public String getStationNumber() {
-      return stationNumber;
-   }
-
-   /**
-    * @return the firstName
-    */
-   public String getFirstName() {
-      return firstName;
-   }
-
-   /**
     * @return the lastName
     */
    public String getLastName() {
@@ -103,30 +89,30 @@ public class FireDTO {
    }
 
    /**
-    * @return the phoneNumber
+    * @return the phone number
     */
    public String getPhoneNumber() {
-      return phoneNumber;
+      return phone;
    }
 
    /**
     * toString method class.
     */
+   @Override
    public String toString() {
-      return "FireDTO"
-                  + stationNumber
-                  + "[firstName="
+      return "PersonFloodDTO [firstName="
                   + firstName
                   + ", lastName="
                   + lastName
+                  + ", phone="
+                  + phone
                   + ", age="
                   + age
-                  + ", phoneNumber="
-                  + phoneNumber
                   + ", medications="
                   + medications
                   + ", allergies="
                   + allergies
                   + "]";
    }
+
 }

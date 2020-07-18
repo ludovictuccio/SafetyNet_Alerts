@@ -1,6 +1,7 @@
 package com.safetynet.alerts.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,11 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.safetynet.alerts.dto.AddressDTO;
 import com.safetynet.alerts.dto.FireDTO;
+import com.safetynet.alerts.dto.FloodDTO;
+import com.safetynet.alerts.dto.HouseholdsFloodDTO;
+import com.safetynet.alerts.dto.PersonFloodDTO;
 import com.safetynet.alerts.dto.PersonStationCounterDTO;
 import com.safetynet.alerts.dto.PersonStationDTO;
 import com.safetynet.alerts.model.EntitiesInfosStorage;
@@ -272,12 +277,93 @@ public class FireStationService implements IFireStationService {
    }
 
    /**
-    * @param stationsNumber
-    * @return
+    * This method service is used to recover the households served by the
+    * station. The list must group persons by address. The information are:
+    * name, age, telephone and medical record.
+    *
+    * @param stations, a String list
+    * @return floodDtoList a FloodDTO List
     */
-   public List<Person> flood(final String stationsNumber) {
-      return null;
+   public List<FloodDTO> flood(final List<String> stations) {
 
+      List<FloodDTO> floodDtoList = new ArrayList<>();
+      Map<String, FireStation> allFirestationsMapping = entitiesInfosStorage
+                  .getFirestations();
+      List<Person> allPersonsList = entitiesInfosStorage.getPersonsList();
+      List<HouseholdsFloodDTO> householdsFloodList = new ArrayList<>();
+      Map<AddressDTO, List<PersonFloodDTO>> householdDTO = new HashMap<>();
+
+      for (String station : stations) {
+
+         // Recover all the addresses for the entered stations
+         Set<String> addressesRecovered = new HashSet<>();
+         for (Entry<String, FireStation> entry : allFirestationsMapping
+                     .entrySet()) {
+            FireStation firestationToRecover = entry.getValue();
+            if (firestationToRecover.getStation().toString()
+                        .contains(station.toString())) {
+               addressesRecovered = firestationToRecover.getAddresses();
+               break;
+            }
+         }
+         if (addressesRecovered.isEmpty()) {
+            LOGGER.error("No station founded for {}.", station);
+            return null;
+         }
+         // Group persons leaving at the station addresses by household
+         householdDTO = new HashMap<>();
+         for (Person person : allPersonsList) {
+
+            if (addressesRecovered.contains(person.getAddress())) {
+               PersonFloodDTO floodPerson = new PersonFloodDTO(
+                           person.getFirstName(), person.getLastName(),
+                           person.getPhone(),
+                           person.getMedicalRecord().getAge(),
+                           person.getMedicalRecord().getMedications(),
+                           person.getMedicalRecord().getAllergies());
+               AddressDTO addressDto = new AddressDTO(person.getAddress(),
+                           person.getCity(), person.getZip());
+
+               boolean isSameHousehold = false;
+               for (Entry<AddressDTO, List<PersonFloodDTO>> entry : householdDTO
+                           .entrySet()) {
+                  if (entry.getKey().getAddress()
+                              .equals(addressDto.getAddress())
+                              && entry.getKey().getCity()
+                                          .equals(addressDto.getCity())
+                              && entry.getKey().getZip()
+                                          .equals(addressDto.getZip())) {
+                     entry.getValue().add(floodPerson);
+                     isSameHousehold = true;
+                  }
+               }
+               if (!isSameHousehold) {
+                  householdDTO.put(addressDto, new ArrayList<>());
+                  for (Entry<AddressDTO, List<PersonFloodDTO>> entry : householdDTO
+                              .entrySet()) {
+                     if (entry.getKey().getAddress()
+                                 .equals(addressDto.getAddress())
+                                 && entry.getKey().getCity()
+                                             .equals(addressDto.getCity())
+                                 && entry.getKey().getZip()
+                                             .equals(addressDto.getZip())) {
+                        entry.getValue().add(floodPerson);
+                     }
+                  }
+               }
+            }
+         }
+         householdsFloodList = new ArrayList<>();
+         for (Entry<AddressDTO, List<PersonFloodDTO>> entry : householdDTO
+                     .entrySet()) {
+            HouseholdsFloodDTO householdsFloodDTO = new HouseholdsFloodDTO(
+                        entry.getKey(), entry.getValue());
+            householdsFloodList.add(householdsFloodDTO);
+         }
+         FloodDTO flood = new FloodDTO(station, householdsFloodList);
+         floodDtoList.add(flood);
+      }
+      return floodDtoList;
    }
 
 }

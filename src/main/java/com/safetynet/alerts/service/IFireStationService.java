@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.safetynet.alerts.dto.FireDTO;
+import com.safetynet.alerts.dto.FloodDTO;
 import com.safetynet.alerts.dto.PersonStationCounterDTO;
-import com.safetynet.alerts.model.Person;
 
 /**
  * FireStation service interface.
@@ -45,8 +45,8 @@ public interface IFireStationService {
    List<FireDTO> fire(String address);
 
    /**
-    * @param stationsNumber
+    * @param stations
     */
-   List<Person> flood(String stationsNumber);
+   List<FloodDTO> flood(List<String> stations);
 
 }
