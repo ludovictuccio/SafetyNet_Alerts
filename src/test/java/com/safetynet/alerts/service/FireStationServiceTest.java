@@ -460,7 +460,6 @@ public class FireStationServiceTest {
       firestationsList.put("2", firestation2);
       when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
 
-      List<Person> personsList = new ArrayList<>();
       MedicalRecord medicalrecordAdult = new MedicalRecord("01/01/1990", null,
                   null);
       Person person1 = new Person("John", "Boyd", "1509 Culver St", "Culver",
@@ -472,10 +471,17 @@ public class FireStationServiceTest {
       Person person3 = new Person("Tessa", "Carman", "908 73rd St", "Culver",
                   "97451", "841-874-7458", "gramps@email.com",
                   medicalrecordAdult);
-      personsList.add(person1);
-      personsList.add(person2);
-      personsList.add(person3);
-      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
+
+      List<Person> household1 = new ArrayList<>();
+      household1.add(person1);
+      household1.add(person2);
+      List<Person> household2 = new ArrayList<>();
+      household2.add(person3);
+
+      Map<String, List<Person>> households = new HashMap<>();
+      households.put(person1.getAddress(), household1);
+      households.put(person3.getAddress(), household2);
+      when(entitiesInfosStorage.getHouseholds()).thenReturn(households);
 
       // WHEN
       List<FireDTO> result = fireStationService.fire("1509 Culver St");
@@ -502,23 +508,6 @@ public class FireStationServiceTest {
       firestationsList.put("1", firestation1);
       firestationsList.put("2", firestation2);
       when(entitiesInfosStorage.getFirestations()).thenReturn(firestationsList);
-
-      List<Person> personsList = new ArrayList<>();
-      MedicalRecord medicalrecordAdult = new MedicalRecord("01/01/1990", null,
-                  null);
-      Person person1 = new Person("John", "Boyd", "1509 Culver St", "Culver",
-                  "97451", "841-874-6512", "jaboyd@email.com",
-                  medicalrecordAdult);
-      Person person2 = new Person("Eric", "Cadigan", "1509 Culver St", "Culver",
-                  "97451", "841-874-7458", "gramps@email.com",
-                  medicalrecordAdult);
-      Person person3 = new Person("Tessa", "Carman", "908 73rd St", "Culver",
-                  "97451", "841-874-7458", "gramps@email.com",
-                  medicalrecordAdult);
-      personsList.add(person1);
-      personsList.add(person2);
-      personsList.add(person3);
-      when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
 
       // WHEN
       List<FireDTO> result = fireStationService.fire("Unknow address");

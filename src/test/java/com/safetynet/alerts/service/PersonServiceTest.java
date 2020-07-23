@@ -24,7 +24,6 @@ import com.safetynet.alerts.dto.PersonInfoDTO;
 import com.safetynet.alerts.model.EntitiesInfosStorage;
 import com.safetynet.alerts.model.MedicalRecord;
 import com.safetynet.alerts.model.Person;
-import com.safetynet.alerts.util.AgeCalculator;
 
 /**
  * PersonService units tests class.
@@ -156,7 +155,6 @@ public class PersonServiceTest {
       personsList.add(person1);
       personsList.add(person2);
       personsList.add(person3);
-
       when(entitiesInfosStorage.getPersonsList()).thenReturn(personsList);
 
       List<String> personsEmails = personService.communityEmail("Other city");
@@ -169,35 +167,17 @@ public class PersonServiceTest {
    @Tag("ChildAlert")
    @DisplayName("ChildAlert - Adult & child - Same address")
    public void givenChildAndAdultOnTheSameAddress_whenChildAlertAddress_thenReturnTwoHouseholdListSize() {
-      List<ChildAlertDTO> childAlert = new ArrayList<>();
 
       // Child 1 - Good address
       person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
                   "841-874-6512", "jaboyd@email.com", medicalRecordChild);
-      int childAge = AgeCalculator
-                  .ageCalculation(person1.getMedicalRecord().getBirthdate());
-      ChildAlertDTO child1 = new ChildAlertDTO(childAge, person1.getFirstName(),
-                  person1.getLastName());
-      childAlert.add(child1);
-
       // Adult - Good address
       person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
                   "841-874-6513", "drk@email.com", medicalRecordAdult);
-      int adultAge = AgeCalculator
-                  .ageCalculation(person2.getMedicalRecord().getBirthdate());
-      ChildAlertDTO adult1 = new ChildAlertDTO(adultAge, person2.getFirstName(),
-                  person2.getLastName());
-      childAlert.add(adult1);
-
       // Child 2 - Bad address
       person3 = new Person("Eric", "Cadigan", "951 LoneTree Rd", "Culver",
                   "97451", "841-874-7458", "gramps@email.com",
                   medicalRecordChild);
-      int childAge2 = AgeCalculator
-                  .ageCalculation(person3.getMedicalRecord().getBirthdate());
-      ChildAlertDTO child2 = new ChildAlertDTO(childAge2,
-                  person3.getFirstName(), person3.getLastName());
-      childAlert.add(child2);
 
       // Add only same household persons
       List<Person> householdMembersList = new ArrayList<>();
@@ -208,7 +188,6 @@ public class PersonServiceTest {
       households.put(person1.getAddress(), householdMembersList);
       households.put(person2.getAddress(), householdMembersList);
       households.put(person3.getAddress(), householdMembersList);
-
       when(entitiesInfosStorage.getHouseholds()).thenReturn(households);
 
       List<ChildAlertDTO> result = personService.childAlert("1509 Culver St");
@@ -221,25 +200,13 @@ public class PersonServiceTest {
    @Tag("ChildAlert")
    @DisplayName("ChildAlert - Address without children")
    public void givenTwoAdultsOnTheSameAddress_whenChildAlertAddress_thenReturnEmptyList() {
-      List<ChildAlertDTO> childAlert = new ArrayList<>();
 
       // Adult 1
       person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
                   "841-874-6512", "jaboyd@email.com", medicalRecordAdult);
-      int adultAge1 = AgeCalculator
-                  .ageCalculation(person1.getMedicalRecord().getBirthdate());
-      ChildAlertDTO adult1 = new ChildAlertDTO(adultAge1,
-                  person1.getFirstName(), person1.getLastName());
-      childAlert.add(adult1);
-
       // Adult 2
       person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
                   "841-874-6513", "drk@email.com", medicalRecordAdult);
-      int adultAge2 = AgeCalculator
-                  .ageCalculation(person2.getMedicalRecord().getBirthdate());
-      ChildAlertDTO adult2 = new ChildAlertDTO(adultAge2,
-                  person2.getFirstName(), person2.getLastName());
-      childAlert.add(adult2);
 
       List<Person> householdMembersList = new ArrayList<>();
       householdMembersList.add(person1);
@@ -248,7 +215,6 @@ public class PersonServiceTest {
       Map<String, List<Person>> households = new HashMap<>();
       households.put(person1.getAddress(), householdMembersList);
       households.put(person2.getAddress(), householdMembersList);
-
       when(entitiesInfosStorage.getHouseholds()).thenReturn(households);
 
       List<ChildAlertDTO> result = personService.childAlert("1509 Culver St");
@@ -261,25 +227,14 @@ public class PersonServiceTest {
    @Tag("ChildAlert")
    @DisplayName("ChildAlert - Unknow address")
    public void givenUnknowAddressEntered_whenChildAlert_thenReturnEmptyList() {
-      List<ChildAlertDTO> childAlert = new ArrayList<>();
+      // GIVEN
 
       // Adult 1
       person1 = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451",
                   "841-874-6512", "jaboyd@email.com", medicalRecordChild);
-      int adultAge1 = AgeCalculator
-                  .ageCalculation(person1.getMedicalRecord().getBirthdate());
-      ChildAlertDTO adult1 = new ChildAlertDTO(adultAge1,
-                  person1.getFirstName(), person1.getLastName());
-      childAlert.add(adult1);
-
       // Adult 2
       person2 = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451",
                   "841-874-6513", "drk@email.com", medicalRecordAdult);
-      int adultAge2 = AgeCalculator
-                  .ageCalculation(person2.getMedicalRecord().getBirthdate());
-      ChildAlertDTO adult2 = new ChildAlertDTO(adultAge2,
-                  person2.getFirstName(), person2.getLastName());
-      childAlert.add(adult2);
 
       List<Person> householdMembersList = new ArrayList<>();
       householdMembersList.add(person1);
@@ -288,11 +243,12 @@ public class PersonServiceTest {
       Map<String, List<Person>> households = new HashMap<>();
       households.put(person1.getAddress(), householdMembersList);
       households.put(person2.getAddress(), householdMembersList);
-
       when(entitiesInfosStorage.getHouseholds()).thenReturn(households);
 
+      // WHEN
       List<ChildAlertDTO> result = personService.childAlert("Unknow address");
 
+      // THEN
       assertThat(result.size()).isEqualTo(0);
       assertThat(result.isEmpty()).isTrue();
    }

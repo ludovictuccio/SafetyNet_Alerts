@@ -30,9 +30,9 @@ https://maven.apache.org/install.html
 
 **To run :**
 
-- the tests from maven: **mvn test**
+- the tests from maven: 		   **mvn test**
 
-- jacoco: **mvn jacoco:report**, report available in *"target/site/jacoco"*.
+- jacoco report: 				   **mvn jacoco:report**, report available in *"target/site/jacoco"*.
 
 - checkstyle, findbugs & surefire: **mvn site**, report available in *"target/site"*.
 
@@ -86,7 +86,8 @@ https://maven.apache.org/install.html
 **POST** - http://localhost:8080/firestation >>> add a new address for an existing firestation number. If address already exists for a mapping, impossible add.
 
 <pre><code>
-Example for add a new address for station 1: 
+Example for add a new address for station 1:
+ 
 {
         "station": "1",
         "address": "New address"
@@ -97,6 +98,7 @@ Example for add a new address for station 1:
 
 <pre><code>
 Example for: "address": "1509 Culver St" under the responsibility of "station": "3"
+
 {
         "station": "1",
         "address": "1509 Culver St"
@@ -111,6 +113,7 @@ Example for: "address": "1509 Culver St" under the responsibility of "station": 
 
 <pre><code>
 Example for "John Boyd", a person created without medicalrecord: 
+
     {
         "firstName": "John",
         "lastName": "Boyd",
@@ -124,6 +127,7 @@ Example for "John Boyd", a person created without medicalrecord:
 
 <pre><code>
 Example for add new allergy for an existing person:
+
     {
         "firstName": "John",
         "lastName": "Boyd",
@@ -135,7 +139,8 @@ Example for add new allergy for an existing person:
 
 **DELETE** - http://localhost:8080/medicalRecord{firstName}/{lastName} >>> delete a person's medicalrecord.
 <pre><code>
-Example for delete a medicalrecord: 
+Example for delete a medicalrecord:
+ 
     {
         "firstName": "John",
         "lastName": "Boyd",
@@ -149,6 +154,7 @@ Example for delete a medicalrecord:
 
 <pre><code>
 Example for: stationNumber= 2
+
 {
     "personsStationList": [
         {

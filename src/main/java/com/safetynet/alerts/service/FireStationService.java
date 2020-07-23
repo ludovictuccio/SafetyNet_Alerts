@@ -253,19 +253,24 @@ public class FireStationService implements IFireStationService {
 
       Map<String, FireStation> allFirestationsMapping = entitiesInfosStorage
                   .getFirestations();
-      List<Person> allPersonsList = entitiesInfosStorage.getPersonsList();
       List<FireDTO> fireDtoPersonsList = new ArrayList<>();
 
       for (Entry<String, FireStation> entry : allFirestationsMapping
                   .entrySet()) {
          FireStation firestation = entry.getValue();
-
          if (firestation.getAddresses().contains(address)) {
             String stationNumber = firestation.getStation();
 
-            for (Person person : allPersonsList) {
-               if (person.getAddress().equals(address)) {
-
+            // Recover persons by household
+            Map<String, List<Person>> households = entitiesInfosStorage
+                        .getHouseholds();
+            for (Entry<String, List<Person>> entryset : households.entrySet()) {
+               String householdAddress = entryset.getKey();
+               if (!address.equals(householdAddress)) {
+                  continue;
+               }
+               List<Person> householdMembersList = entryset.getValue();
+               for (Person person : householdMembersList) {
                   FireDTO fireDtoPerson = new FireDTO(stationNumber,
                               person.getFirstName(), person.getLastName(),
                               person.getMedicalRecord().getAge(),
