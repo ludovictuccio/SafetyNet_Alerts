@@ -1,0 +1,1640 @@
+[INFO ] 24 juil. 2020 09:24:55 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 15316 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:24:55 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:24:55 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:24:58 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:24:58 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:24:59 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 24 juil. 2020 09:25:06 [main] FireStationServiceTest - Started FireStationServiceTest in 12.201 seconds (JVM running for 18.261)
+[ERROR] 24 juil. 2020 09:25:06 [main] FireStationService - No station founded for 777.
+[ERROR] 24 juil. 2020 09:25:07 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 09:25:07 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 24 juil. 2020 09:25:07 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 24 juil. 2020 09:25:07 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 24 juil. 2020 09:25:08 [main] MedicalRecordServiceTest - Starting MedicalRecordServiceTest on PC-de-Ludo with PID 15316 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:25:08 [main] MedicalRecordServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:25:08 [main] MedicalRecordServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:25:10 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:25:10 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:25:10 [main] DataLoader - Loaded from a Json file : 
+46 persons 
+26 firestations 
+46 medicalrecords
+[INFO ] 24 juil. 2020 09:25:11 [main] MedicalRecordServiceTest - Started MedicalRecordServiceTest in 3.742 seconds (JVM running for 23.097)
+[ERROR] 24 juil. 2020 09:25:11 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[ERROR] 24 juil. 2020 09:25:11 [main] MedicalRecordService - FAILED to create the medicalrecord for: John Boyd, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 09:25:11 [main] PersonServiceTest - Starting PersonServiceTest on PC-de-Ludo with PID 15316 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:25:11 [main] PersonServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:25:11 [main] PersonServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:25:12 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:25:12 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:25:12 [main] DataLoader - Loaded from a Json file : 
+69 persons 
+39 firestations 
+69 medicalrecords
+[INFO ] 24 juil. 2020 09:25:13 [main] PersonServiceTest - Started PersonServiceTest in 1.957 seconds (JVM running for 25.292)
+[DEBUG] 24 juil. 2020 09:25:13 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:25:13 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:25:13 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:25:13 [main] PersonService - PersonInfo request successfuly
+[DEBUG] 24 juil. 2020 09:25:13 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:25:13 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:25:13 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:25:13 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:25:13 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 09:25:13 [main] PersonService - FAILED to create the person: John Boyd, this person already exists.
+[ERROR] 24 juil. 2020 09:25:14 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:25:14 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:25:14 [main] AgeCalculator - Baby with age less than 1 year
+[ERROR] 24 juil. 2020 09:25:14 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[ERROR] 24 juil. 2020 09:25:14 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[INFO ] 24 juil. 2020 09:25:14 [main] DataLoaderTest - Starting DataLoaderTest on PC-de-Ludo with PID 15316 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:25:14 [main] DataLoaderTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:25:14 [main] DataLoaderTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:25:16 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:25:16 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:25:16 [main] DataLoader - Loaded from a Json file : 
+92 persons 
+52 firestations 
+92 medicalrecords
+[INFO ] 24 juil. 2020 09:25:23 [main] DataLoaderTest - Started DataLoaderTest in 8.982 seconds (JVM running for 34.668)
+[DEBUG] 24 juil. 2020 09:25:23 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:25:23 [main] DataLoader - Loaded from a Json file : 
+115 persons 
+65 firestations 
+115 medicalrecords
+[DEBUG] 24 juil. 2020 09:25:23 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:25:23 [main] DataLoader - Loaded from a Json file : 
+138 persons 
+78 firestations 
+138 medicalrecords
+[DEBUG] 24 juil. 2020 09:25:23 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:25:23 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:25:23 [main] DataLoader - Loaded from a Json file : 
+161 persons 
+91 firestations 
+161 medicalrecords
+[INFO ] 24 juil. 2020 09:30:22 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 7368 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:30:22 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:30:22 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:30:24 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:30:24 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:30:24 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 24 juil. 2020 09:30:26 [main] FireStationServiceTest - Started FireStationServiceTest in 5.306 seconds (JVM running for 10.738)
+[ERROR] 24 juil. 2020 09:30:26 [main] FireStationService - No station founded for 777.
+[ERROR] 24 juil. 2020 09:30:26 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 09:30:26 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 24 juil. 2020 09:30:26 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 24 juil. 2020 09:30:26 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 24 juil. 2020 09:30:27 [main] MedicalRecordServiceTest - Starting MedicalRecordServiceTest on PC-de-Ludo with PID 7368 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:30:27 [main] MedicalRecordServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:30:27 [main] MedicalRecordServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:30:27 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:30:27 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:30:27 [main] DataLoader - Loaded from a Json file : 
+46 persons 
+26 firestations 
+46 medicalrecords
+[INFO ] 24 juil. 2020 09:30:28 [main] MedicalRecordServiceTest - Started MedicalRecordServiceTest in 1.236 seconds (JVM running for 12.701)
+[ERROR] 24 juil. 2020 09:30:28 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[ERROR] 24 juil. 2020 09:30:28 [main] MedicalRecordService - FAILED to create the medicalrecord for: John Boyd, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 09:30:28 [main] PersonServiceTest - Starting PersonServiceTest on PC-de-Ludo with PID 7368 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:30:28 [main] PersonServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:30:28 [main] PersonServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:30:29 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:30:29 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:30:29 [main] DataLoader - Loaded from a Json file : 
+69 persons 
+39 firestations 
+69 medicalrecords
+[INFO ] 24 juil. 2020 09:30:29 [main] PersonServiceTest - Started PersonServiceTest in 1.377 seconds (JVM running for 14.25)
+[DEBUG] 24 juil. 2020 09:30:29 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:30:29 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:30:29 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:30:29 [main] PersonService - PersonInfo request successfuly
+[DEBUG] 24 juil. 2020 09:30:29 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:30:29 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:30:29 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:30:29 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:30:29 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 09:30:29 [main] PersonService - FAILED to create the person: John Boyd, this person already exists.
+[ERROR] 24 juil. 2020 09:30:30 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:30:30 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:30:30 [main] AgeCalculator - Baby with age less than 1 year
+[ERROR] 24 juil. 2020 09:30:30 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[ERROR] 24 juil. 2020 09:30:30 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[INFO ] 24 juil. 2020 09:30:30 [main] DataLoaderTest - Starting DataLoaderTest on PC-de-Ludo with PID 7368 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:30:30 [main] DataLoaderTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:30:30 [main] DataLoaderTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:30:31 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:30:31 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:30:31 [main] DataLoader - Loaded from a Json file : 
+92 persons 
+52 firestations 
+92 medicalrecords
+[INFO ] 24 juil. 2020 09:30:33 [main] DataLoaderTest - Started DataLoaderTest in 3.139 seconds (JVM running for 17.755)
+[DEBUG] 24 juil. 2020 09:30:33 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:30:33 [main] DataLoader - Loaded from a Json file : 
+115 persons 
+65 firestations 
+115 medicalrecords
+[DEBUG] 24 juil. 2020 09:30:33 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:30:33 [main] DataLoader - Loaded from a Json file : 
+138 persons 
+78 firestations 
+138 medicalrecords
+[DEBUG] 24 juil. 2020 09:30:33 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:30:33 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:30:33 [main] DataLoader - Loaded from a Json file : 
+161 persons 
+91 firestations 
+161 medicalrecords
+[INFO ] 24 juil. 2020 09:31:13 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 5376 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:31:13 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:31:13 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:31:16 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:31:16 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:31:16 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 24 juil. 2020 09:31:18 [main] FireStationServiceTest - Started FireStationServiceTest in 5.629 seconds (JVM running for 11.501)
+[ERROR] 24 juil. 2020 09:31:18 [main] FireStationService - No station founded for 777.
+[ERROR] 24 juil. 2020 09:31:18 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 09:31:18 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 24 juil. 2020 09:31:19 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 24 juil. 2020 09:31:19 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 24 juil. 2020 09:31:19 [main] MedicalRecordServiceTest - Starting MedicalRecordServiceTest on PC-de-Ludo with PID 5376 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:31:19 [main] MedicalRecordServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:31:19 [main] MedicalRecordServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:31:20 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:31:20 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:31:20 [main] DataLoader - Loaded from a Json file : 
+46 persons 
+26 firestations 
+46 medicalrecords
+[INFO ] 24 juil. 2020 09:31:21 [main] MedicalRecordServiceTest - Started MedicalRecordServiceTest in 1.638 seconds (JVM running for 14.127)
+[ERROR] 24 juil. 2020 09:31:21 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[ERROR] 24 juil. 2020 09:31:21 [main] MedicalRecordService - FAILED to create the medicalrecord for: John Boyd, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 09:31:21 [main] PersonServiceTest - Starting PersonServiceTest on PC-de-Ludo with PID 5376 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:31:21 [main] PersonServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:31:21 [main] PersonServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:31:21 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:31:21 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:31:21 [main] DataLoader - Loaded from a Json file : 
+69 persons 
+39 firestations 
+69 medicalrecords
+[INFO ] 24 juil. 2020 09:31:22 [main] PersonServiceTest - Started PersonServiceTest in 1.058 seconds (JVM running for 15.341)
+[DEBUG] 24 juil. 2020 09:31:22 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:31:22 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:31:22 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:31:22 [main] PersonService - PersonInfo request successfuly
+[DEBUG] 24 juil. 2020 09:31:22 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:31:22 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:31:22 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:31:22 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:31:22 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 09:31:22 [main] PersonService - FAILED to create the person: John Boyd, this person already exists.
+[ERROR] 24 juil. 2020 09:31:22 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:31:22 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:31:22 [main] AgeCalculator - Baby with age less than 1 year
+[ERROR] 24 juil. 2020 09:31:22 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[ERROR] 24 juil. 2020 09:31:22 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[INFO ] 24 juil. 2020 09:31:22 [main] DataLoaderTest - Starting DataLoaderTest on PC-de-Ludo with PID 5376 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:31:22 [main] DataLoaderTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:31:22 [main] DataLoaderTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:31:24 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:31:24 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:31:24 [main] DataLoader - Loaded from a Json file : 
+92 persons 
+52 firestations 
+92 medicalrecords
+[INFO ] 24 juil. 2020 09:31:26 [main] DataLoaderTest - Started DataLoaderTest in 4.273 seconds (JVM running for 19.9)
+[DEBUG] 24 juil. 2020 09:31:26 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:31:26 [main] DataLoader - Loaded from a Json file : 
+115 persons 
+65 firestations 
+115 medicalrecords
+[DEBUG] 24 juil. 2020 09:31:26 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:31:26 [main] DataLoader - Loaded from a Json file : 
+138 persons 
+78 firestations 
+138 medicalrecords
+[DEBUG] 24 juil. 2020 09:31:26 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:31:26 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:31:26 [main] DataLoader - Loaded from a Json file : 
+161 persons 
+91 firestations 
+161 medicalrecords
+[INFO ] 24 juil. 2020 09:41:06 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 1380 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:41:06 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:41:06 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:41:09 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:41:09 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:41:09 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 24 juil. 2020 09:41:12 [main] FireStationServiceTest - Started FireStationServiceTest in 7.582 seconds (JVM running for 15.941)
+[ERROR] 24 juil. 2020 09:41:12 [main] FireStationService - No station founded for 777.
+[ERROR] 24 juil. 2020 09:41:12 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 09:41:12 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 24 juil. 2020 09:41:13 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 24 juil. 2020 09:41:13 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 24 juil. 2020 09:41:13 [main] MedicalRecordServiceTest - Starting MedicalRecordServiceTest on PC-de-Ludo with PID 1380 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:41:13 [main] MedicalRecordServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:41:13 [main] MedicalRecordServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:41:15 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:41:15 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:41:15 [main] DataLoader - Loaded from a Json file : 
+46 persons 
+26 firestations 
+46 medicalrecords
+[INFO ] 24 juil. 2020 09:41:16 [main] MedicalRecordServiceTest - Started MedicalRecordServiceTest in 3.354 seconds (JVM running for 20.1)
+[ERROR] 24 juil. 2020 09:41:16 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[ERROR] 24 juil. 2020 09:41:16 [main] MedicalRecordService - FAILED to create the medicalrecord for: John Boyd, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 09:41:20 [main] PersonServiceTest - Starting PersonServiceTest on PC-de-Ludo with PID 1380 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:41:20 [main] PersonServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:41:20 [main] PersonServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:41:20 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:41:20 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:41:20 [main] DataLoader - Loaded from a Json file : 
+69 persons 
+39 firestations 
+69 medicalrecords
+[INFO ] 24 juil. 2020 09:41:21 [main] PersonServiceTest - Started PersonServiceTest in 5.279 seconds (JVM running for 25.47)
+[DEBUG] 24 juil. 2020 09:41:22 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:41:22 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:41:22 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:41:22 [main] PersonService - PersonInfo request successfuly
+[DEBUG] 24 juil. 2020 09:41:22 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:41:22 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:41:22 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:41:22 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:41:22 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 09:41:22 [main] PersonService - FAILED to create the person: John Boyd, this person already exists.
+[ERROR] 24 juil. 2020 09:41:22 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:41:22 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:41:22 [main] AgeCalculator - Baby with age less than 1 year
+[ERROR] 24 juil. 2020 09:41:22 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[ERROR] 24 juil. 2020 09:41:22 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[INFO ] 24 juil. 2020 09:41:22 [main] DataLoaderTest - Starting DataLoaderTest on PC-de-Ludo with PID 1380 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:41:22 [main] DataLoaderTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:41:22 [main] DataLoaderTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:41:24 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:41:24 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:41:24 [main] DataLoader - Loaded from a Json file : 
+92 persons 
+52 firestations 
+92 medicalrecords
+[INFO ] 24 juil. 2020 09:41:27 [main] DataLoaderTest - Started DataLoaderTest in 4.945 seconds (JVM running for 30.923)
+[DEBUG] 24 juil. 2020 09:41:27 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:41:27 [main] DataLoader - Loaded from a Json file : 
+115 persons 
+65 firestations 
+115 medicalrecords
+[DEBUG] 24 juil. 2020 09:41:27 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:41:27 [main] DataLoader - Loaded from a Json file : 
+138 persons 
+78 firestations 
+138 medicalrecords
+[DEBUG] 24 juil. 2020 09:41:27 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:41:27 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:41:27 [main] DataLoader - Loaded from a Json file : 
+161 persons 
+91 firestations 
+161 medicalrecords
+[INFO ] 24 juil. 2020 09:42:07 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 868 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:42:07 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:42:07 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:42:09 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:42:09 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:42:09 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 24 juil. 2020 09:42:16 [main] FireStationServiceTest - Started FireStationServiceTest in 9.636 seconds (JVM running for 15.443)
+[ERROR] 24 juil. 2020 09:42:17 [main] FireStationService - No station founded for 777.
+[ERROR] 24 juil. 2020 09:42:17 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 09:42:17 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 24 juil. 2020 09:42:17 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 24 juil. 2020 09:42:17 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 24 juil. 2020 09:42:18 [main] MedicalRecordServiceTest - Starting MedicalRecordServiceTest on PC-de-Ludo with PID 868 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:42:18 [main] MedicalRecordServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:42:18 [main] MedicalRecordServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:42:18 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:42:18 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:42:18 [main] DataLoader - Loaded from a Json file : 
+46 persons 
+26 firestations 
+46 medicalrecords
+[INFO ] 24 juil. 2020 09:42:19 [main] MedicalRecordServiceTest - Started MedicalRecordServiceTest in 1.756 seconds (JVM running for 18.407)
+[ERROR] 24 juil. 2020 09:42:19 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[ERROR] 24 juil. 2020 09:42:19 [main] MedicalRecordService - FAILED to create the medicalrecord for: John Boyd, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 09:42:20 [main] PersonServiceTest - Starting PersonServiceTest on PC-de-Ludo with PID 868 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:42:20 [main] PersonServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:42:20 [main] PersonServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:42:20 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:42:20 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:42:20 [main] DataLoader - Loaded from a Json file : 
+69 persons 
+39 firestations 
+69 medicalrecords
+[INFO ] 24 juil. 2020 09:42:22 [main] PersonServiceTest - Started PersonServiceTest in 2.084 seconds (JVM running for 20.904)
+[DEBUG] 24 juil. 2020 09:42:22 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:42:22 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:42:22 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:42:22 [main] PersonService - PersonInfo request successfuly
+[DEBUG] 24 juil. 2020 09:42:22 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:42:22 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:42:22 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:42:22 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:42:22 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 09:42:22 [main] PersonService - FAILED to create the person: John Boyd, this person already exists.
+[ERROR] 24 juil. 2020 09:42:22 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:42:22 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:42:22 [main] AgeCalculator - Baby with age less than 1 year
+[ERROR] 24 juil. 2020 09:42:22 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[ERROR] 24 juil. 2020 09:42:22 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[INFO ] 24 juil. 2020 09:42:22 [main] DataLoaderTest - Starting DataLoaderTest on PC-de-Ludo with PID 868 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:42:22 [main] DataLoaderTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:42:22 [main] DataLoaderTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:42:29 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:42:29 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:42:29 [main] DataLoader - Loaded from a Json file : 
+92 persons 
+52 firestations 
+92 medicalrecords
+[INFO ] 24 juil. 2020 09:42:35 [main] DataLoaderTest - Started DataLoaderTest in 13.139 seconds (JVM running for 34.609)
+[DEBUG] 24 juil. 2020 09:42:35 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:42:35 [main] DataLoader - Loaded from a Json file : 
+115 persons 
+65 firestations 
+115 medicalrecords
+[DEBUG] 24 juil. 2020 09:42:36 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:42:36 [main] DataLoader - Loaded from a Json file : 
+138 persons 
+78 firestations 
+138 medicalrecords
+[DEBUG] 24 juil. 2020 09:42:36 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:42:36 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:42:36 [main] DataLoader - Loaded from a Json file : 
+161 persons 
+91 firestations 
+161 medicalrecords
+[INFO ] 24 juil. 2020 09:44:07 [main] SafetyNetAlertsApplicationTests - Starting SafetyNetAlertsApplicationTests on PC-de-Ludo with PID 6340 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:44:07 [main] SafetyNetAlertsApplicationTests - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:44:07 [main] SafetyNetAlertsApplicationTests - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:44:10 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:44:10 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:44:11 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 24 juil. 2020 09:44:15 [main] SafetyNetAlertsApplicationTests - Started SafetyNetAlertsApplicationTests in 8.472 seconds (JVM running for 12.838)
+[INFO ] 24 juil. 2020 09:44:16 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 6340 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:44:16 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:44:16 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:44:16 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:44:16 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:44:17 [main] DataLoader - Loaded from a Json file : 
+46 persons 
+26 firestations 
+46 medicalrecords
+[INFO ] 24 juil. 2020 09:44:17 [main] FireStationServiceTest - Started FireStationServiceTest in 1.106 seconds (JVM running for 15.304)
+[ERROR] 24 juil. 2020 09:44:17 [main] FireStationService - No station founded for 777.
+[ERROR] 24 juil. 2020 09:44:18 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 09:44:18 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 24 juil. 2020 09:44:18 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 24 juil. 2020 09:44:18 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 24 juil. 2020 09:44:18 [main] MedicalRecordServiceTest - Starting MedicalRecordServiceTest on PC-de-Ludo with PID 6340 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:44:18 [main] MedicalRecordServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:44:18 [main] MedicalRecordServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:44:18 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:44:18 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:44:18 [main] DataLoader - Loaded from a Json file : 
+69 persons 
+39 firestations 
+69 medicalrecords
+[INFO ] 24 juil. 2020 09:44:19 [main] MedicalRecordServiceTest - Started MedicalRecordServiceTest in 1.109 seconds (JVM running for 17.222)
+[ERROR] 24 juil. 2020 09:44:19 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[ERROR] 24 juil. 2020 09:44:19 [main] MedicalRecordService - FAILED to create the medicalrecord for: John Boyd, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 09:44:19 [main] PersonServiceTest - Starting PersonServiceTest on PC-de-Ludo with PID 6340 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:44:19 [main] PersonServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:44:19 [main] PersonServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:44:20 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:44:20 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:44:20 [main] DataLoader - Loaded from a Json file : 
+92 persons 
+52 firestations 
+92 medicalrecords
+[INFO ] 24 juil. 2020 09:44:21 [main] PersonServiceTest - Started PersonServiceTest in 1.55 seconds (JVM running for 19.006)
+[DEBUG] 24 juil. 2020 09:44:21 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:44:21 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:44:21 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:44:21 [main] PersonService - PersonInfo request successfuly
+[DEBUG] 24 juil. 2020 09:44:21 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:44:21 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:44:21 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:44:21 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:44:21 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 09:44:21 [main] PersonService - FAILED to create the person: John Boyd, this person already exists.
+[ERROR] 24 juil. 2020 09:44:21 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:44:21 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:44:21 [main] AgeCalculator - Baby with age less than 1 year
+[ERROR] 24 juil. 2020 09:44:21 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[ERROR] 24 juil. 2020 09:44:21 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:44:21 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:44:21 [main] DataLoader - Loaded from a Json file : 
+115 persons 
+65 firestations 
+115 medicalrecords
+[DEBUG] 24 juil. 2020 09:44:21 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:44:21 [main] DataLoader - Loaded from a Json file : 
+138 persons 
+78 firestations 
+138 medicalrecords
+[DEBUG] 24 juil. 2020 09:44:21 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:44:21 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:44:21 [main] DataLoader - Loaded from a Json file : 
+161 persons 
+91 firestations 
+161 medicalrecords
+[INFO ] 24 juil. 2020 09:52:33 [main] SafetyNetAlertsApplicationTests - Starting SafetyNetAlertsApplicationTests on PC-de-Ludo with PID 568 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:52:33 [main] SafetyNetAlertsApplicationTests - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:52:33 [main] SafetyNetAlertsApplicationTests - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:52:39 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:52:39 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:52:39 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 24 juil. 2020 09:52:45 [main] SafetyNetAlertsApplicationTests - Started SafetyNetAlertsApplicationTests in 12.454 seconds (JVM running for 16.917)
+[INFO ] 24 juil. 2020 09:52:49 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 568 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:52:49 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:52:49 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:52:50 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:52:50 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:52:50 [main] DataLoader - Loaded from a Json file : 
+46 persons 
+26 firestations 
+46 medicalrecords
+[INFO ] 24 juil. 2020 09:52:51 [main] FireStationServiceTest - Started FireStationServiceTest in 3.411 seconds (JVM running for 23.178)
+[ERROR] 24 juil. 2020 09:52:51 [main] FireStationService - No station founded for 777.
+[ERROR] 24 juil. 2020 09:52:53 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 09:52:53 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 24 juil. 2020 09:52:53 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 24 juil. 2020 09:52:53 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 24 juil. 2020 09:52:54 [main] MedicalRecordServiceTest - Starting MedicalRecordServiceTest on PC-de-Ludo with PID 568 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:52:54 [main] MedicalRecordServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:52:54 [main] MedicalRecordServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:52:54 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:52:54 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:52:54 [main] DataLoader - Loaded from a Json file : 
+69 persons 
+39 firestations 
+69 medicalrecords
+[INFO ] 24 juil. 2020 09:52:55 [main] MedicalRecordServiceTest - Started MedicalRecordServiceTest in 0.982 seconds (JVM running for 26.611)
+[ERROR] 24 juil. 2020 09:52:55 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[ERROR] 24 juil. 2020 09:52:55 [main] MedicalRecordService - FAILED to create the medicalrecord for: John Boyd, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 09:52:55 [main] PersonServiceTest - Starting PersonServiceTest on PC-de-Ludo with PID 568 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:52:55 [main] PersonServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:52:55 [main] PersonServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:52:55 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:52:55 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:52:55 [main] DataLoader - Loaded from a Json file : 
+92 persons 
+52 firestations 
+92 medicalrecords
+[INFO ] 24 juil. 2020 09:52:56 [main] PersonServiceTest - Started PersonServiceTest in 1.107 seconds (JVM running for 27.944)
+[DEBUG] 24 juil. 2020 09:52:56 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:52:56 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:52:56 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:52:56 [main] PersonService - PersonInfo request successfuly
+[DEBUG] 24 juil. 2020 09:52:56 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:52:56 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:52:56 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:52:56 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:52:56 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 09:52:56 [main] PersonService - FAILED to create the person: John Boyd, this person already exists.
+[ERROR] 24 juil. 2020 09:52:56 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:52:56 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:52:56 [main] AgeCalculator - Baby with age less than 1 year
+[ERROR] 24 juil. 2020 09:52:56 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[ERROR] 24 juil. 2020 09:52:56 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:52:56 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:52:56 [main] DataLoader - Loaded from a Json file : 
+115 persons 
+65 firestations 
+115 medicalrecords
+[DEBUG] 24 juil. 2020 09:52:56 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:52:56 [main] DataLoader - Loaded from a Json file : 
+138 persons 
+78 firestations 
+138 medicalrecords
+[DEBUG] 24 juil. 2020 09:52:57 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:52:57 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:52:57 [main] DataLoader - Loaded from a Json file : 
+161 persons 
+91 firestations 
+161 medicalrecords
+[INFO ] 24 juil. 2020 09:55:56 [main] SafetyNetAlertsApplicationTests - Starting SafetyNetAlertsApplicationTests on PC-de-Ludo with PID 4384 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:55:56 [main] SafetyNetAlertsApplicationTests - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:55:56 [main] SafetyNetAlertsApplicationTests - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:56:00 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:56:00 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:56:00 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 24 juil. 2020 09:56:06 [main] SafetyNetAlertsApplicationTests - Started SafetyNetAlertsApplicationTests in 11.45 seconds (JVM running for 16.257)
+[INFO ] 24 juil. 2020 09:56:08 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 4384 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:56:08 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:56:08 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:56:09 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:56:09 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:56:09 [main] DataLoader - Loaded from a Json file : 
+46 persons 
+26 firestations 
+46 medicalrecords
+[INFO ] 24 juil. 2020 09:56:10 [main] FireStationServiceTest - Started FireStationServiceTest in 1.53 seconds (JVM running for 19.614)
+[ERROR] 24 juil. 2020 09:56:10 [main] FireStationService - No station founded for 777.
+[ERROR] 24 juil. 2020 09:56:11 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 09:56:11 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 24 juil. 2020 09:56:11 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 24 juil. 2020 09:56:11 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 24 juil. 2020 09:56:12 [main] MedicalRecordServiceTest - Starting MedicalRecordServiceTest on PC-de-Ludo with PID 4384 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:56:12 [main] MedicalRecordServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:56:12 [main] MedicalRecordServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:56:12 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:56:12 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:56:12 [main] DataLoader - Loaded from a Json file : 
+69 persons 
+39 firestations 
+69 medicalrecords
+[INFO ] 24 juil. 2020 09:56:13 [main] MedicalRecordServiceTest - Started MedicalRecordServiceTest in 1.251 seconds (JVM running for 22.701)
+[ERROR] 24 juil. 2020 09:56:13 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[ERROR] 24 juil. 2020 09:56:13 [main] MedicalRecordService - FAILED to create the medicalrecord for: John Boyd, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 09:56:13 [main] PersonServiceTest - Starting PersonServiceTest on PC-de-Ludo with PID 4384 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:56:13 [main] PersonServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:56:13 [main] PersonServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:56:13 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:56:13 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:56:13 [main] DataLoader - Loaded from a Json file : 
+92 persons 
+52 firestations 
+92 medicalrecords
+[INFO ] 24 juil. 2020 09:56:15 [main] PersonServiceTest - Started PersonServiceTest in 1.583 seconds (JVM running for 24.437)
+[DEBUG] 24 juil. 2020 09:56:15 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:56:15 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:56:15 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:56:15 [main] PersonService - PersonInfo request successfuly
+[DEBUG] 24 juil. 2020 09:56:15 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:56:15 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:56:15 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:56:15 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:56:15 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 09:56:15 [main] PersonService - FAILED to create the person: John Boyd, this person already exists.
+[ERROR] 24 juil. 2020 09:56:15 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:56:15 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:56:15 [main] AgeCalculator - Baby with age less than 1 year
+[ERROR] 24 juil. 2020 09:56:15 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[ERROR] 24 juil. 2020 09:56:15 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:56:15 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:56:15 [main] DataLoader - Loaded from a Json file : 
+115 persons 
+65 firestations 
+115 medicalrecords
+[DEBUG] 24 juil. 2020 09:56:15 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:56:15 [main] DataLoader - Loaded from a Json file : 
+138 persons 
+78 firestations 
+138 medicalrecords
+[DEBUG] 24 juil. 2020 09:56:15 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:56:15 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:56:15 [main] DataLoader - Loaded from a Json file : 
+161 persons 
+91 firestations 
+161 medicalrecords
+[INFO ] 24 juil. 2020 09:56:43 [main] SafetyNetAlertsApplicationTests - Starting SafetyNetAlertsApplicationTests on PC-de-Ludo with PID 572 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:56:43 [main] SafetyNetAlertsApplicationTests - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:56:43 [main] SafetyNetAlertsApplicationTests - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:56:47 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:56:47 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:56:47 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 24 juil. 2020 09:56:51 [main] SafetyNetAlertsApplicationTests - Started SafetyNetAlertsApplicationTests in 8.518 seconds (JVM running for 12.816)
+[INFO ] 24 juil. 2020 09:56:53 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 572 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:56:53 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:56:53 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:56:53 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:56:53 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:56:53 [main] DataLoader - Loaded from a Json file : 
+46 persons 
+26 firestations 
+46 medicalrecords
+[INFO ] 24 juil. 2020 09:56:54 [main] FireStationServiceTest - Started FireStationServiceTest in 1.1 seconds (JVM running for 15.226)
+[ERROR] 24 juil. 2020 09:56:54 [main] FireStationService - No station founded for 777.
+[ERROR] 24 juil. 2020 09:56:55 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 09:56:55 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 24 juil. 2020 09:56:55 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 24 juil. 2020 09:56:55 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 24 juil. 2020 09:56:55 [main] MedicalRecordServiceTest - Starting MedicalRecordServiceTest on PC-de-Ludo with PID 572 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:56:55 [main] MedicalRecordServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:56:55 [main] MedicalRecordServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:56:56 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:56:56 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:56:56 [main] DataLoader - Loaded from a Json file : 
+69 persons 
+39 firestations 
+69 medicalrecords
+[INFO ] 24 juil. 2020 09:56:57 [main] MedicalRecordServiceTest - Started MedicalRecordServiceTest in 1.712 seconds (JVM running for 18.569)
+[ERROR] 24 juil. 2020 09:56:57 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[ERROR] 24 juil. 2020 09:56:57 [main] MedicalRecordService - FAILED to create the medicalrecord for: John Boyd, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 09:56:57 [main] PersonServiceTest - Starting PersonServiceTest on PC-de-Ludo with PID 572 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:56:57 [main] PersonServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:56:57 [main] PersonServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:56:58 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:56:58 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:56:58 [main] DataLoader - Loaded from a Json file : 
+92 persons 
+52 firestations 
+92 medicalrecords
+[INFO ] 24 juil. 2020 09:56:59 [main] PersonServiceTest - Started PersonServiceTest in 1.936 seconds (JVM running for 20.834)
+[DEBUG] 24 juil. 2020 09:56:59 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:56:59 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:56:59 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:56:59 [main] PersonService - PersonInfo request successfuly
+[DEBUG] 24 juil. 2020 09:56:59 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:56:59 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:56:59 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:56:59 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:56:59 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 09:56:59 [main] PersonService - FAILED to create the person: John Boyd, this person already exists.
+[ERROR] 24 juil. 2020 09:57:00 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:57:00 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:57:00 [main] AgeCalculator - Baby with age less than 1 year
+[ERROR] 24 juil. 2020 09:57:00 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[ERROR] 24 juil. 2020 09:57:00 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:57:00 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:57:00 [main] DataLoader - Loaded from a Json file : 
+115 persons 
+65 firestations 
+115 medicalrecords
+[DEBUG] 24 juil. 2020 09:57:00 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:57:00 [main] DataLoader - Loaded from a Json file : 
+138 persons 
+78 firestations 
+138 medicalrecords
+[DEBUG] 24 juil. 2020 09:57:00 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:57:00 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:57:00 [main] DataLoader - Loaded from a Json file : 
+161 persons 
+91 firestations 
+161 medicalrecords
+[INFO ] 24 juil. 2020 09:57:25 [main] SafetyNetAlertsApplicationTests - Starting SafetyNetAlertsApplicationTests on PC-de-Ludo with PID 6012 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:57:25 [main] SafetyNetAlertsApplicationTests - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:57:25 [main] SafetyNetAlertsApplicationTests - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:57:28 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:57:28 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:57:28 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 24 juil. 2020 09:57:31 [main] SafetyNetAlertsApplicationTests - Started SafetyNetAlertsApplicationTests in 7.447 seconds (JVM running for 11.733)
+[INFO ] 24 juil. 2020 09:57:33 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 6012 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:57:33 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:57:33 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:57:33 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:57:33 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:57:33 [main] DataLoader - Loaded from a Json file : 
+46 persons 
+26 firestations 
+46 medicalrecords
+[INFO ] 24 juil. 2020 09:57:34 [main] FireStationServiceTest - Started FireStationServiceTest in 1.083 seconds (JVM running for 14.227)
+[ERROR] 24 juil. 2020 09:57:34 [main] FireStationService - No station founded for 777.
+[ERROR] 24 juil. 2020 09:57:34 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 09:57:34 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 24 juil. 2020 09:57:35 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 24 juil. 2020 09:57:35 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 24 juil. 2020 09:57:35 [main] MedicalRecordServiceTest - Starting MedicalRecordServiceTest on PC-de-Ludo with PID 6012 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:57:35 [main] MedicalRecordServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:57:35 [main] MedicalRecordServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:57:36 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:57:36 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:57:36 [main] DataLoader - Loaded from a Json file : 
+69 persons 
+39 firestations 
+69 medicalrecords
+[INFO ] 24 juil. 2020 09:57:36 [main] MedicalRecordServiceTest - Started MedicalRecordServiceTest in 1.702 seconds (JVM running for 16.708)
+[ERROR] 24 juil. 2020 09:57:36 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[ERROR] 24 juil. 2020 09:57:36 [main] MedicalRecordService - FAILED to create the medicalrecord for: John Boyd, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 09:57:37 [main] PersonServiceTest - Starting PersonServiceTest on PC-de-Ludo with PID 6012 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 09:57:37 [main] PersonServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 09:57:37 [main] PersonServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 09:57:38 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 09:57:38 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:57:38 [main] DataLoader - Loaded from a Json file : 
+92 persons 
+52 firestations 
+92 medicalrecords
+[INFO ] 24 juil. 2020 09:57:38 [main] PersonServiceTest - Started PersonServiceTest in 1.191 seconds (JVM running for 18.709)
+[DEBUG] 24 juil. 2020 09:57:38 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:57:38 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:57:38 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:57:38 [main] PersonService - PersonInfo request successfuly
+[DEBUG] 24 juil. 2020 09:57:39 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 09:57:39 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:57:39 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:57:39 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 09:57:39 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 09:57:39 [main] PersonService - FAILED to create the person: John Boyd, this person already exists.
+[ERROR] 24 juil. 2020 09:57:39 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:57:39 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 09:57:39 [main] AgeCalculator - Baby with age less than 1 year
+[ERROR] 24 juil. 2020 09:57:39 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[ERROR] 24 juil. 2020 09:57:39 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 09:57:39 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:57:39 [main] DataLoader - Loaded from a Json file : 
+115 persons 
+65 firestations 
+115 medicalrecords
+[DEBUG] 24 juil. 2020 09:57:39 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:57:39 [main] DataLoader - Loaded from a Json file : 
+138 persons 
+78 firestations 
+138 medicalrecords
+[DEBUG] 24 juil. 2020 09:57:39 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:57:39 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 09:57:39 [main] DataLoader - Loaded from a Json file : 
+161 persons 
+91 firestations 
+161 medicalrecords
+[INFO ] 24 juil. 2020 10:00:37 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:00:37 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:00:37 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:00:43 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:00:43 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:00:44 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 24 juil. 2020 10:00:51 [main] FireStationControllerIT - Started FireStationControllerIT in 15.147 seconds (JVM running for 24.538)
+[INFO ] 24 juil. 2020 10:00:52 [main] FireStationController - SUCCESS - Fire GET request
+[INFO ] 24 juil. 2020 10:00:53 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:00:53 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:00:53 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:00:54 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:00:54 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:00:54 [main] DataLoader - Loaded from a Json file : 
+46 persons 
+26 firestations 
+46 medicalrecords
+[INFO ] 24 juil. 2020 10:00:56 [main] FireStationControllerIT - Started FireStationControllerIT in 2.804 seconds (JVM running for 28.984)
+[INFO ] 24 juil. 2020 10:00:56 [main] FireStationController - SUCCESS - FirestationNumber GET request
+[INFO ] 24 juil. 2020 10:00:56 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:00:56 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:00:56 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:00:57 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:00:57 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:00:57 [main] DataLoader - Loaded from a Json file : 
+69 persons 
+39 firestations 
+69 medicalrecords
+[INFO ] 24 juil. 2020 10:00:58 [main] FireStationControllerIT - Started FireStationControllerIT in 2.6 seconds (JVM running for 31.71)
+[INFO ] 24 juil. 2020 10:00:58 [main] FireStationController - SUCCESS - DeleteFireStation DELETE request -  Address: 29 15th St
+[INFO ] 24 juil. 2020 10:00:58 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:00:58 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:00:58 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:02 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:02 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:02 [main] DataLoader - Loaded from a Json file : 
+92 persons 
+52 firestations 
+92 medicalrecords
+[INFO ] 24 juil. 2020 10:01:04 [main] FireStationControllerIT - Started FireStationControllerIT in 5.268 seconds (JVM running for 37.022)
+[INFO ] 24 juil. 2020 10:01:04 [main] FireStationController - SUCCESS - PhoneAlert GET request
+[INFO ] 24 juil. 2020 10:01:04 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:04 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:04 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:04 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:04 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:04 [main] DataLoader - Loaded from a Json file : 
+115 persons 
+65 firestations 
+115 medicalrecords
+[INFO ] 24 juil. 2020 10:01:06 [main] FireStationControllerIT - Started FireStationControllerIT in 1.875 seconds (JVM running for 38.979)
+[INFO ] 24 juil. 2020 10:01:06 [main] FireStationController - SUCCESS - Flood GET request
+[INFO ] 24 juil. 2020 10:01:06 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:06 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:06 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:06 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:06 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:06 [main] DataLoader - Loaded from a Json file : 
+138 persons 
+78 firestations 
+138 medicalrecords
+[INFO ] 24 juil. 2020 10:01:08 [main] FireStationControllerIT - Started FireStationControllerIT in 2.189 seconds (JVM running for 41.24)
+[ERROR] 24 juil. 2020 10:01:08 [main] FireStationService - The address entered for: [1509 Culver St, 3] already exists for a mapping. Please delete or update a mapping.
+[INFO ] 24 juil. 2020 10:01:08 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:08 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:08 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:09 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:09 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:09 [main] DataLoader - Loaded from a Json file : 
+161 persons 
+91 firestations 
+161 medicalrecords
+[INFO ] 24 juil. 2020 10:01:09 [main] FireStationControllerIT - Started FireStationControllerIT in 1.572 seconds (JVM running for 42.899)
+[INFO ] 24 juil. 2020 10:01:10 [main] FireStationController - SUCCESS - AddAddressForFirestation POST request -  Firestation number: 1, Address: NEW ADDRESS
+[INFO ] 24 juil. 2020 10:01:10 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:10 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:10 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:10 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:10 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:10 [main] DataLoader - Loaded from a Json file : 
+184 persons 
+104 firestations 
+184 medicalrecords
+[INFO ] 24 juil. 2020 10:01:11 [main] FireStationControllerIT - Started FireStationControllerIT in 1.63 seconds (JVM running for 44.561)
+[ERROR] 24 juil. 2020 10:01:11 [main] FireStationController - FAILED - No firestation founded for number: 499. Please verify the station number entered.
+[INFO ] 24 juil. 2020 10:01:11 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:11 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:11 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:12 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:12 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:12 [main] DataLoader - Loaded from a Json file : 
+207 persons 
+117 firestations 
+207 medicalrecords
+[INFO ] 24 juil. 2020 10:01:13 [main] FireStationControllerIT - Started FireStationControllerIT in 1.645 seconds (JVM running for 46.229)
+[ERROR] 24 juil. 2020 10:01:13 [main] FireStationService - The address entered for: [Unknow address, 3] does not exist.
+[INFO ] 24 juil. 2020 10:01:13 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:13 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:13 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:13 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:13 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:13 [main] DataLoader - Loaded from a Json file : 
+230 persons 
+130 firestations 
+230 medicalrecords
+[INFO ] 24 juil. 2020 10:01:14 [main] FireStationControllerIT - Started FireStationControllerIT in 1.44 seconds (JVM running for 47.685)
+[ERROR] 24 juil. 2020 10:01:14 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 10:01:14 [main] FireStationController - FAILED - Flood GET request
+[INFO ] 24 juil. 2020 10:01:14 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:14 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:14 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:15 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:15 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:15 [main] DataLoader - Loaded from a Json file : 
+253 persons 
+143 firestations 
+253 medicalrecords
+[INFO ] 24 juil. 2020 10:01:16 [main] FireStationControllerIT - Started FireStationControllerIT in 1.501 seconds (JVM running for 49.203)
+[ERROR] 24 juil. 2020 10:01:16 [main] FireStationController - FAILED - No address founded for: Unknow.
+[INFO ] 24 juil. 2020 10:01:16 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:16 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:16 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:17 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:17 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:17 [main] DataLoader - Loaded from a Json file : 
+276 persons 
+156 firestations 
+276 medicalrecords
+[INFO ] 24 juil. 2020 10:01:17 [main] FireStationControllerIT - Started FireStationControllerIT in 1.489 seconds (JVM running for 50.85)
+[ERROR] 24 juil. 2020 10:01:17 [main] FireStationController - FAILED - No firestation founded for number: 499. Please verify the station number entered.
+[INFO ] 24 juil. 2020 10:01:18 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:18 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:18 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:18 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:18 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:18 [main] DataLoader - Loaded from a Json file : 
+299 persons 
+169 firestations 
+299 medicalrecords
+[INFO ] 24 juil. 2020 10:01:19 [main] FireStationControllerIT - Started FireStationControllerIT in 1.663 seconds (JVM running for 52.556)
+[INFO ] 24 juil. 2020 10:01:19 [main] FireStationController - SUCCESS - UpdateFireStation PUT request -  Firestation number: 1, Address: 1509 Culver St
+[INFO ] 24 juil. 2020 10:01:19 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:19 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:19 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:20 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:20 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:20 [main] DataLoader - Loaded from a Json file : 
+322 persons 
+182 firestations 
+322 medicalrecords
+[INFO ] 24 juil. 2020 10:01:21 [main] FireStationControllerIT - Started FireStationControllerIT in 1.706 seconds (JVM running for 54.283)
+[ERROR] 24 juil. 2020 10:01:21 [main] FireStationService - The address entered for: Los angeles does not exist.
+[INFO ] 24 juil. 2020 10:01:23 [main] MedicalRecordControllerIT - Starting MedicalRecordControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:23 [main] MedicalRecordControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:23 [main] MedicalRecordControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:24 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:24 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:24 [main] DataLoader - Loaded from a Json file : 
+345 persons 
+195 firestations 
+345 medicalrecords
+[INFO ] 24 juil. 2020 10:01:25 [main] MedicalRecordControllerIT - Started MedicalRecordControllerIT in 3.866 seconds (JVM running for 58.662)
+[INFO ] 24 juil. 2020 10:01:25 [main] MedicalRecordController - SUCCESS - Update MedicalRecord PUT request
+[INFO ] 24 juil. 2020 10:01:26 [main] MedicalRecordControllerIT - Starting MedicalRecordControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:26 [main] MedicalRecordControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:26 [main] MedicalRecordControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:26 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:26 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:26 [main] DataLoader - Loaded from a Json file : 
+368 persons 
+208 firestations 
+368 medicalrecords
+[INFO ] 24 juil. 2020 10:01:27 [main] MedicalRecordControllerIT - Started MedicalRecordControllerIT in 1.748 seconds (JVM running for 60.669)
+[ERROR] 24 juil. 2020 10:01:27 [main] MedicalRecordController - FAILED to delete medicalrecord for person: Unknow Person. Person without medicalrecord or unknow person.
+[INFO ] 24 juil. 2020 10:01:27 [main] MedicalRecordControllerIT - Starting MedicalRecordControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:27 [main] MedicalRecordControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:27 [main] MedicalRecordControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:28 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:28 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:28 [main] DataLoader - Loaded from a Json file : 
+391 persons 
+221 firestations 
+391 medicalrecords
+[INFO ] 24 juil. 2020 10:01:29 [main] MedicalRecordControllerIT - Started MedicalRecordControllerIT in 1.718 seconds (JVM running for 62.441)
+[ERROR] 24 juil. 2020 10:01:29 [main] MedicalRecordController - FAILED to update medicalrecord for person: UNKNOW PERSON. Unknow person.
+[INFO ] 24 juil. 2020 10:01:29 [main] MedicalRecordControllerIT - Starting MedicalRecordControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:29 [main] MedicalRecordControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:29 [main] MedicalRecordControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:30 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:30 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:30 [main] DataLoader - Loaded from a Json file : 
+414 persons 
+234 firestations 
+414 medicalrecords
+[INFO ] 24 juil. 2020 10:01:30 [main] MedicalRecordControllerIT - Started MedicalRecordControllerIT in 1.364 seconds (JVM running for 63.831)
+[ERROR] 24 juil. 2020 10:01:30 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 10:01:31 [main] MedicalRecordControllerIT - Starting MedicalRecordControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:31 [main] MedicalRecordControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:31 [main] MedicalRecordControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:31 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:31 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:31 [main] DataLoader - Loaded from a Json file : 
+437 persons 
+247 firestations 
+437 medicalrecords
+[INFO ] 24 juil. 2020 10:01:32 [main] MedicalRecordControllerIT - Started MedicalRecordControllerIT in 1.403 seconds (JVM running for 65.258)
+[INFO ] 24 juil. 2020 10:01:32 [main] MedicalRecordController - SUCCESS - Delete MedicalRecord DELETE request
+[INFO ] 24 juil. 2020 10:01:32 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:32 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:32 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:32 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:32 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:32 [main] DataLoader - Loaded from a Json file : 
+460 persons 
+260 firestations 
+460 medicalrecords
+[INFO ] 24 juil. 2020 10:01:33 [main] PersonControllerIT - Started PersonControllerIT in 1.422 seconds (JVM running for 66.771)
+[ERROR] 24 juil. 2020 10:01:33 [main] PersonController - No person founded for: Unknow Person
+[INFO ] 24 juil. 2020 10:01:34 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:34 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:34 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:34 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:34 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:34 [main] DataLoader - Loaded from a Json file : 
+483 persons 
+273 firestations 
+483 medicalrecords
+[INFO ] 24 juil. 2020 10:01:35 [main] PersonControllerIT - Started PersonControllerIT in 1.887 seconds (JVM running for 68.715)
+[ERROR] 24 juil. 2020 10:01:35 [main] PersonController - FAILED - No person's email adresses founded for: Los Angeles
+[INFO ] 24 juil. 2020 10:01:35 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:35 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:35 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:36 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:36 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:36 [main] DataLoader - Loaded from a Json file : 
+506 persons 
+286 firestations 
+506 medicalrecords
+[INFO ] 24 juil. 2020 10:01:37 [main] PersonControllerIT - Started PersonControllerIT in 1.389 seconds (JVM running for 70.156)
+[INFO ] 24 juil. 2020 10:01:37 [main] PersonController - SUCCESS - DeletePerson DELETE request
+[INFO ] 24 juil. 2020 10:01:37 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:37 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:37 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:38 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:38 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:38 [main] DataLoader - Loaded from a Json file : 
+529 persons 
+299 firestations 
+529 medicalrecords
+[INFO ] 24 juil. 2020 10:01:39 [main] PersonControllerIT - Started PersonControllerIT in 2.097 seconds (JVM running for 72.277)
+[INFO ] 24 juil. 2020 10:01:39 [main] PersonController - SUCCESS - CommunityEmail GET request
+[INFO ] 24 juil. 2020 10:01:39 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:39 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:39 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:39 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:39 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:39 [main] DataLoader - Loaded from a Json file : 
+552 persons 
+312 firestations 
+552 medicalrecords
+[INFO ] 24 juil. 2020 10:01:41 [main] PersonControllerIT - Started PersonControllerIT in 1.619 seconds (JVM running for 73.923)
+[DEBUG] 24 juil. 2020 10:01:41 [main] PersonController - GET request received for getChildAlert: 1509 Culver St
+[DEBUG] 24 juil. 2020 10:01:41 [main] PersonService - ChildAlert request initialization
+[INFO ] 24 juil. 2020 10:01:41 [main] PersonController - SUCCESS - ChildAlert GET request
+[INFO ] 24 juil. 2020 10:01:41 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:41 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:41 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:41 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:41 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:41 [main] DataLoader - Loaded from a Json file : 
+575 persons 
+325 firestations 
+575 medicalrecords
+[INFO ] 24 juil. 2020 10:01:42 [main] PersonControllerIT - Started PersonControllerIT in 1.495 seconds (JVM running for 75.447)
+[ERROR] 24 juil. 2020 10:01:42 [main] PersonService - FAILED to create the person: Roger Boyd, this person already exists.
+[INFO ] 24 juil. 2020 10:01:42 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:42 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:42 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:43 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:43 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:43 [main] DataLoader - Loaded from a Json file : 
+598 persons 
+338 firestations 
+598 medicalrecords
+[INFO ] 24 juil. 2020 10:01:44 [main] PersonControllerIT - Started PersonControllerIT in 1.82 seconds (JVM running for 77.302)
+[INFO ] 24 juil. 2020 10:01:44 [main] PersonController - SUCCESS - UpdatePerson PUT request
+[INFO ] 24 juil. 2020 10:01:44 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:44 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:44 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:45 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:45 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:45 [main] DataLoader - Loaded from a Json file : 
+621 persons 
+351 firestations 
+621 medicalrecords
+[INFO ] 24 juil. 2020 10:01:46 [main] PersonControllerIT - Started PersonControllerIT in 2.003 seconds (JVM running for 79.382)
+[INFO ] 24 juil. 2020 10:01:46 [main] PersonController - SUCCESS - CreatePerson POST request for Ludovic Tuccio
+[INFO ] 24 juil. 2020 10:01:46 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:46 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:46 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:47 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:47 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:47 [main] DataLoader - Loaded from a Json file : 
+644 persons 
+364 firestations 
+644 medicalrecords
+[INFO ] 24 juil. 2020 10:01:48 [main] PersonControllerIT - Started PersonControllerIT in 1.613 seconds (JVM running for 81.061)
+[DEBUG] 24 juil. 2020 10:01:48 [main] PersonController - GET request received for getChildAlert: Unknow
+[DEBUG] 24 juil. 2020 10:01:48 [main] PersonService - ChildAlert request initialization
+[ERROR] 24 juil. 2020 10:01:48 [main] PersonController - FAILED - No household with child founded for: Unknow
+[INFO ] 24 juil. 2020 10:01:48 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:48 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:48 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:48 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:48 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:48 [main] DataLoader - Loaded from a Json file : 
+667 persons 
+377 firestations 
+667 medicalrecords
+[INFO ] 24 juil. 2020 10:01:49 [main] PersonControllerIT - Started PersonControllerIT in 1.595 seconds (JVM running for 82.689)
+[ERROR] 24 juil. 2020 10:01:49 [main] PersonController - No person founded for: UNKNOW PERSON
+[INFO ] 24 juil. 2020 10:01:49 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:49 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:49 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:50 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:50 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:50 [main] DataLoader - Loaded from a Json file : 
+690 persons 
+390 firestations 
+690 medicalrecords
+[INFO ] 24 juil. 2020 10:01:51 [main] PersonControllerIT - Started PersonControllerIT in 1.972 seconds (JVM running for 84.683)
+[DEBUG] 24 juil. 2020 10:01:51 [main] PersonController - GET request received for personInfos: Carman
+[DEBUG] 24 juil. 2020 10:01:51 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 10:01:51 [main] PersonService - PersonInfo request successfuly
+[INFO ] 24 juil. 2020 10:01:51 [main] PersonController - SUCCESS - personInfos GET request
+[INFO ] 24 juil. 2020 10:01:51 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:51 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:51 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:52 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:52 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:52 [main] DataLoader - Loaded from a Json file : 
+713 persons 
+403 firestations 
+713 medicalrecords
+[INFO ] 24 juil. 2020 10:01:53 [main] PersonControllerIT - Started PersonControllerIT in 1.539 seconds (JVM running for 86.25)
+[DEBUG] 24 juil. 2020 10:01:53 [main] PersonController - GET request received for personInfos: Unknow
+[DEBUG] 24 juil. 2020 10:01:53 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 10:01:53 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 10:01:53 [main] PersonController - FAILED - No person's founded for last name: Unknow
+[INFO ] 24 juil. 2020 10:01:54 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:54 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:54 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:54 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:54 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:54 [main] DataLoader - Loaded from a Json file : 
+736 persons 
+416 firestations 
+736 medicalrecords
+[INFO ] 24 juil. 2020 10:01:54 [main] FireStationServiceTest - Started FireStationServiceTest in 0.869 seconds (JVM running for 87.9)
+[ERROR] 24 juil. 2020 10:01:55 [main] FireStationService - No station founded for 777.
+[ERROR] 24 juil. 2020 10:01:55 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 10:01:55 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 24 juil. 2020 10:01:55 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 24 juil. 2020 10:01:55 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 24 juil. 2020 10:01:55 [main] MedicalRecordServiceTest - Starting MedicalRecordServiceTest on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:55 [main] MedicalRecordServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:55 [main] MedicalRecordServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:55 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:55 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:55 [main] DataLoader - Loaded from a Json file : 
+759 persons 
+429 firestations 
+759 medicalrecords
+[INFO ] 24 juil. 2020 10:01:56 [main] MedicalRecordServiceTest - Started MedicalRecordServiceTest in 0.979 seconds (JVM running for 89.457)
+[ERROR] 24 juil. 2020 10:01:56 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[ERROR] 24 juil. 2020 10:01:56 [main] MedicalRecordService - FAILED to create the medicalrecord for: John Boyd, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 10:01:56 [main] PersonServiceTest - Starting PersonServiceTest on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:56 [main] PersonServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:56 [main] PersonServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:57 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:57 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:57 [main] DataLoader - Loaded from a Json file : 
+782 persons 
+442 firestations 
+782 medicalrecords
+[INFO ] 24 juil. 2020 10:01:58 [main] PersonServiceTest - Started PersonServiceTest in 1.468 seconds (JVM running for 91.071)
+[DEBUG] 24 juil. 2020 10:01:58 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 10:01:58 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 10:01:58 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 10:01:58 [main] PersonService - PersonInfo request successfuly
+[DEBUG] 24 juil. 2020 10:01:58 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 10:01:58 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 10:01:58 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 10:01:58 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 10:01:58 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 10:01:58 [main] PersonService - FAILED to create the person: John Boyd, this person already exists.
+[ERROR] 24 juil. 2020 10:01:58 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 10:01:58 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 10:01:58 [main] AgeCalculator - Baby with age less than 1 year
+[ERROR] 24 juil. 2020 10:01:58 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[ERROR] 24 juil. 2020 10:01:58 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[INFO ] 24 juil. 2020 10:01:58 [main] DataLoaderTest - Starting DataLoaderTest on PC-de-Ludo with PID 1208 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:01:58 [main] DataLoaderTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:01:58 [main] DataLoaderTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:01:58 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:01:58 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:58 [main] DataLoader - Loaded from a Json file : 
+805 persons 
+455 firestations 
+805 medicalrecords
+[INFO ] 24 juil. 2020 10:01:59 [main] DataLoaderTest - Started DataLoaderTest in 1.216 seconds (JVM running for 92.481)
+[DEBUG] 24 juil. 2020 10:01:59 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:59 [main] DataLoader - Loaded from a Json file : 
+828 persons 
+468 firestations 
+828 medicalrecords
+[DEBUG] 24 juil. 2020 10:01:59 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:59 [main] DataLoader - Loaded from a Json file : 
+851 persons 
+481 firestations 
+851 medicalrecords
+[DEBUG] 24 juil. 2020 10:01:59 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:59 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:01:59 [main] DataLoader - Loaded from a Json file : 
+874 persons 
+494 firestations 
+874 medicalrecords
+[INFO ] 24 juil. 2020 10:03:45 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:03:45 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:03:45 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:03:48 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:03:48 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:03:48 [main] DataLoader - Loaded from a Json file : 
+23 persons 
+13 firestations 
+23 medicalrecords
+[INFO ] 24 juil. 2020 10:03:53 [main] FireStationControllerIT - Started FireStationControllerIT in 8.604 seconds (JVM running for 15.82)
+[INFO ] 24 juil. 2020 10:03:53 [main] FireStationController - SUCCESS - Fire GET request
+[INFO ] 24 juil. 2020 10:03:54 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:03:54 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:03:54 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:03:55 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:03:55 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:03:55 [main] DataLoader - Loaded from a Json file : 
+46 persons 
+26 firestations 
+46 medicalrecords
+[INFO ] 24 juil. 2020 10:03:57 [main] FireStationControllerIT - Started FireStationControllerIT in 3.239 seconds (JVM running for 20.178)
+[INFO ] 24 juil. 2020 10:03:57 [main] FireStationController - SUCCESS - FirestationNumber GET request
+[INFO ] 24 juil. 2020 10:03:57 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:03:57 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:03:57 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:03:58 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:03:58 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:03:58 [main] DataLoader - Loaded from a Json file : 
+69 persons 
+39 firestations 
+69 medicalrecords
+[INFO ] 24 juil. 2020 10:04:00 [main] FireStationControllerIT - Started FireStationControllerIT in 2.38 seconds (JVM running for 22.728)
+[INFO ] 24 juil. 2020 10:04:00 [main] FireStationController - SUCCESS - DeleteFireStation DELETE request -  Address: 29 15th St
+[INFO ] 24 juil. 2020 10:04:00 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:00 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:00 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:02 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:02 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:02 [main] DataLoader - Loaded from a Json file : 
+92 persons 
+52 firestations 
+92 medicalrecords
+[INFO ] 24 juil. 2020 10:04:03 [main] FireStationControllerIT - Started FireStationControllerIT in 3.429 seconds (JVM running for 26.205)
+[INFO ] 24 juil. 2020 10:04:03 [main] FireStationController - SUCCESS - PhoneAlert GET request
+[INFO ] 24 juil. 2020 10:04:03 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:03 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:03 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:04 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:04 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:04 [main] DataLoader - Loaded from a Json file : 
+115 persons 
+65 firestations 
+115 medicalrecords
+[INFO ] 24 juil. 2020 10:04:05 [main] FireStationControllerIT - Started FireStationControllerIT in 1.937 seconds (JVM running for 28.175)
+[INFO ] 24 juil. 2020 10:04:05 [main] FireStationController - SUCCESS - Flood GET request
+[INFO ] 24 juil. 2020 10:04:05 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:05 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:05 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:06 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:06 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:06 [main] DataLoader - Loaded from a Json file : 
+138 persons 
+78 firestations 
+138 medicalrecords
+[INFO ] 24 juil. 2020 10:04:07 [main] FireStationControllerIT - Started FireStationControllerIT in 2.08 seconds (JVM running for 30.296)
+[ERROR] 24 juil. 2020 10:04:07 [main] FireStationService - The address entered for: [1509 Culver St, 3] already exists for a mapping. Please delete or update a mapping.
+[INFO ] 24 juil. 2020 10:04:07 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:07 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:07 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:08 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:08 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:08 [main] DataLoader - Loaded from a Json file : 
+161 persons 
+91 firestations 
+161 medicalrecords
+[INFO ] 24 juil. 2020 10:04:09 [main] FireStationControllerIT - Started FireStationControllerIT in 1.848 seconds (JVM running for 32.245)
+[INFO ] 24 juil. 2020 10:04:09 [main] FireStationController - SUCCESS - AddAddressForFirestation POST request -  Firestation number: 1, Address: NEW ADDRESS
+[INFO ] 24 juil. 2020 10:04:09 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:09 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:09 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:10 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:10 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:10 [main] DataLoader - Loaded from a Json file : 
+184 persons 
+104 firestations 
+184 medicalrecords
+[INFO ] 24 juil. 2020 10:04:11 [main] FireStationControllerIT - Started FireStationControllerIT in 1.853 seconds (JVM running for 34.133)
+[ERROR] 24 juil. 2020 10:04:11 [main] FireStationController - FAILED - No firestation founded for number: 499. Please verify the station number entered.
+[INFO ] 24 juil. 2020 10:04:11 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:11 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:11 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:12 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:12 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:12 [main] DataLoader - Loaded from a Json file : 
+207 persons 
+117 firestations 
+207 medicalrecords
+[INFO ] 24 juil. 2020 10:04:13 [main] FireStationControllerIT - Started FireStationControllerIT in 2.191 seconds (JVM running for 36.357)
+[ERROR] 24 juil. 2020 10:04:13 [main] FireStationService - The address entered for: [Unknow address, 3] does not exist.
+[INFO ] 24 juil. 2020 10:04:13 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:13 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:13 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:14 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:14 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:14 [main] DataLoader - Loaded from a Json file : 
+230 persons 
+130 firestations 
+230 medicalrecords
+[INFO ] 24 juil. 2020 10:04:15 [main] FireStationControllerIT - Started FireStationControllerIT in 1.766 seconds (JVM running for 38.149)
+[ERROR] 24 juil. 2020 10:04:15 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 10:04:15 [main] FireStationController - FAILED - Flood GET request
+[INFO ] 24 juil. 2020 10:04:15 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:15 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:15 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:16 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:16 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:16 [main] DataLoader - Loaded from a Json file : 
+253 persons 
+143 firestations 
+253 medicalrecords
+[INFO ] 24 juil. 2020 10:04:17 [main] FireStationControllerIT - Started FireStationControllerIT in 1.756 seconds (JVM running for 39.924)
+[ERROR] 24 juil. 2020 10:04:17 [main] FireStationController - FAILED - No address founded for: Unknow.
+[INFO ] 24 juil. 2020 10:04:17 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:17 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:17 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:18 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:18 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:18 [main] DataLoader - Loaded from a Json file : 
+276 persons 
+156 firestations 
+276 medicalrecords
+[INFO ] 24 juil. 2020 10:04:19 [main] FireStationControllerIT - Started FireStationControllerIT in 1.873 seconds (JVM running for 41.981)
+[ERROR] 24 juil. 2020 10:04:19 [main] FireStationController - FAILED - No firestation founded for number: 499. Please verify the station number entered.
+[INFO ] 24 juil. 2020 10:04:19 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:19 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:19 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:19 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:19 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:19 [main] DataLoader - Loaded from a Json file : 
+299 persons 
+169 firestations 
+299 medicalrecords
+[INFO ] 24 juil. 2020 10:04:20 [main] FireStationControllerIT - Started FireStationControllerIT in 1.463 seconds (JVM running for 43.506)
+[INFO ] 24 juil. 2020 10:04:20 [main] FireStationController - SUCCESS - UpdateFireStation PUT request -  Firestation number: 1, Address: 1509 Culver St
+[INFO ] 24 juil. 2020 10:04:20 [main] FireStationControllerIT - Starting FireStationControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:20 [main] FireStationControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:20 [main] FireStationControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:21 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:21 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:21 [main] DataLoader - Loaded from a Json file : 
+322 persons 
+182 firestations 
+322 medicalrecords
+[INFO ] 24 juil. 2020 10:04:22 [main] FireStationControllerIT - Started FireStationControllerIT in 1.841 seconds (JVM running for 45.37)
+[ERROR] 24 juil. 2020 10:04:22 [main] FireStationService - The address entered for: Los angeles does not exist.
+[INFO ] 24 juil. 2020 10:04:22 [main] MedicalRecordControllerIT - Starting MedicalRecordControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:22 [main] MedicalRecordControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:22 [main] MedicalRecordControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:23 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:23 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:23 [main] DataLoader - Loaded from a Json file : 
+345 persons 
+195 firestations 
+345 medicalrecords
+[INFO ] 24 juil. 2020 10:04:24 [main] MedicalRecordControllerIT - Started MedicalRecordControllerIT in 2.127 seconds (JVM running for 47.544)
+[INFO ] 24 juil. 2020 10:04:24 [main] MedicalRecordController - SUCCESS - Update MedicalRecord PUT request
+[INFO ] 24 juil. 2020 10:04:24 [main] MedicalRecordControllerIT - Starting MedicalRecordControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:24 [main] MedicalRecordControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:24 [main] MedicalRecordControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:25 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:25 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:25 [main] DataLoader - Loaded from a Json file : 
+368 persons 
+208 firestations 
+368 medicalrecords
+[INFO ] 24 juil. 2020 10:04:26 [main] MedicalRecordControllerIT - Started MedicalRecordControllerIT in 1.703 seconds (JVM running for 49.328)
+[ERROR] 24 juil. 2020 10:04:26 [main] MedicalRecordController - FAILED to delete medicalrecord for person: Unknow Person. Person without medicalrecord or unknow person.
+[INFO ] 24 juil. 2020 10:04:26 [main] MedicalRecordControllerIT - Starting MedicalRecordControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:26 [main] MedicalRecordControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:26 [main] MedicalRecordControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:27 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:27 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:27 [main] DataLoader - Loaded from a Json file : 
+391 persons 
+221 firestations 
+391 medicalrecords
+[INFO ] 24 juil. 2020 10:04:28 [main] MedicalRecordControllerIT - Started MedicalRecordControllerIT in 1.699 seconds (JVM running for 51.045)
+[ERROR] 24 juil. 2020 10:04:28 [main] MedicalRecordController - FAILED to update medicalrecord for person: UNKNOW PERSON. Unknow person.
+[INFO ] 24 juil. 2020 10:04:28 [main] MedicalRecordControllerIT - Starting MedicalRecordControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:28 [main] MedicalRecordControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:28 [main] MedicalRecordControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:28 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:28 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:28 [main] DataLoader - Loaded from a Json file : 
+414 persons 
+234 firestations 
+414 medicalrecords
+[INFO ] 24 juil. 2020 10:04:29 [main] MedicalRecordControllerIT - Started MedicalRecordControllerIT in 1.608 seconds (JVM running for 52.677)
+[ERROR] 24 juil. 2020 10:04:29 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 10:04:30 [main] MedicalRecordControllerIT - Starting MedicalRecordControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:30 [main] MedicalRecordControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:30 [main] MedicalRecordControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:30 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:30 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:30 [main] DataLoader - Loaded from a Json file : 
+437 persons 
+247 firestations 
+437 medicalrecords
+[INFO ] 24 juil. 2020 10:04:31 [main] MedicalRecordControllerIT - Started MedicalRecordControllerIT in 1.607 seconds (JVM running for 54.305)
+[INFO ] 24 juil. 2020 10:04:31 [main] MedicalRecordController - SUCCESS - Delete MedicalRecord DELETE request
+[INFO ] 24 juil. 2020 10:04:31 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:31 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:31 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:32 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:32 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:32 [main] DataLoader - Loaded from a Json file : 
+460 persons 
+260 firestations 
+460 medicalrecords
+[INFO ] 24 juil. 2020 10:04:32 [main] PersonControllerIT - Started PersonControllerIT in 1.358 seconds (JVM running for 55.698)
+[ERROR] 24 juil. 2020 10:04:32 [main] PersonController - No person founded for: Unknow Person
+[INFO ] 24 juil. 2020 10:04:33 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:33 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:33 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:33 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:33 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:33 [main] DataLoader - Loaded from a Json file : 
+483 persons 
+273 firestations 
+483 medicalrecords
+[INFO ] 24 juil. 2020 10:04:34 [main] PersonControllerIT - Started PersonControllerIT in 1.758 seconds (JVM running for 57.484)
+[ERROR] 24 juil. 2020 10:04:34 [main] PersonController - FAILED - No person's email adresses founded for: Los Angeles
+[INFO ] 24 juil. 2020 10:04:34 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:34 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:34 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:35 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:35 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:35 [main] DataLoader - Loaded from a Json file : 
+506 persons 
+286 firestations 
+506 medicalrecords
+[INFO ] 24 juil. 2020 10:04:36 [main] PersonControllerIT - Started PersonControllerIT in 1.843 seconds (JVM running for 59.359)
+[INFO ] 24 juil. 2020 10:04:36 [main] PersonController - SUCCESS - DeletePerson DELETE request
+[INFO ] 24 juil. 2020 10:04:36 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:36 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:36 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:37 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:37 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:37 [main] DataLoader - Loaded from a Json file : 
+529 persons 
+299 firestations 
+529 medicalrecords
+[INFO ] 24 juil. 2020 10:04:38 [main] PersonControllerIT - Started PersonControllerIT in 1.692 seconds (JVM running for 61.076)
+[INFO ] 24 juil. 2020 10:04:38 [main] PersonController - SUCCESS - CommunityEmail GET request
+[INFO ] 24 juil. 2020 10:04:38 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:38 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:38 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:38 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:38 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:38 [main] DataLoader - Loaded from a Json file : 
+552 persons 
+312 firestations 
+552 medicalrecords
+[INFO ] 24 juil. 2020 10:04:39 [main] PersonControllerIT - Started PersonControllerIT in 1.46 seconds (JVM running for 62.557)
+[DEBUG] 24 juil. 2020 10:04:39 [main] PersonController - GET request received for getChildAlert: 1509 Culver St
+[DEBUG] 24 juil. 2020 10:04:39 [main] PersonService - ChildAlert request initialization
+[INFO ] 24 juil. 2020 10:04:39 [main] PersonController - SUCCESS - ChildAlert GET request
+[INFO ] 24 juil. 2020 10:04:39 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:39 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:39 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:40 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:40 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:40 [main] DataLoader - Loaded from a Json file : 
+575 persons 
+325 firestations 
+575 medicalrecords
+[INFO ] 24 juil. 2020 10:04:41 [main] PersonControllerIT - Started PersonControllerIT in 1.829 seconds (JVM running for 64.412)
+[ERROR] 24 juil. 2020 10:04:41 [main] PersonService - FAILED to create the person: Roger Boyd, this person already exists.
+[INFO ] 24 juil. 2020 10:04:41 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:41 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:41 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:42 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:42 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:42 [main] DataLoader - Loaded from a Json file : 
+598 persons 
+338 firestations 
+598 medicalrecords
+[INFO ] 24 juil. 2020 10:04:43 [main] PersonControllerIT - Started PersonControllerIT in 1.923 seconds (JVM running for 66.371)
+[INFO ] 24 juil. 2020 10:04:43 [main] PersonController - SUCCESS - UpdatePerson PUT request
+[INFO ] 24 juil. 2020 10:04:43 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:43 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:43 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:44 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:44 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:44 [main] DataLoader - Loaded from a Json file : 
+621 persons 
+351 firestations 
+621 medicalrecords
+[INFO ] 24 juil. 2020 10:04:45 [main] PersonControllerIT - Started PersonControllerIT in 1.557 seconds (JVM running for 67.951)
+[INFO ] 24 juil. 2020 10:04:45 [main] PersonController - SUCCESS - CreatePerson POST request for Ludovic Tuccio
+[INFO ] 24 juil. 2020 10:04:45 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:45 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:45 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:45 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:45 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:45 [main] DataLoader - Loaded from a Json file : 
+644 persons 
+364 firestations 
+644 medicalrecords
+[INFO ] 24 juil. 2020 10:04:46 [main] PersonControllerIT - Started PersonControllerIT in 1.546 seconds (JVM running for 69.526)
+[DEBUG] 24 juil. 2020 10:04:46 [main] PersonController - GET request received for getChildAlert: Unknow
+[DEBUG] 24 juil. 2020 10:04:46 [main] PersonService - ChildAlert request initialization
+[ERROR] 24 juil. 2020 10:04:46 [main] PersonController - FAILED - No household with child founded for: Unknow
+[INFO ] 24 juil. 2020 10:04:46 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:46 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:46 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:47 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:47 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:47 [main] DataLoader - Loaded from a Json file : 
+667 persons 
+377 firestations 
+667 medicalrecords
+[INFO ] 24 juil. 2020 10:04:48 [main] PersonControllerIT - Started PersonControllerIT in 1.525 seconds (JVM running for 71.072)
+[ERROR] 24 juil. 2020 10:04:48 [main] PersonController - No person founded for: UNKNOW PERSON
+[INFO ] 24 juil. 2020 10:04:48 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:48 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:48 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:48 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:48 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:48 [main] DataLoader - Loaded from a Json file : 
+690 persons 
+390 firestations 
+690 medicalrecords
+[INFO ] 24 juil. 2020 10:04:49 [main] PersonControllerIT - Started PersonControllerIT in 1.597 seconds (JVM running for 72.688)
+[DEBUG] 24 juil. 2020 10:04:49 [main] PersonController - GET request received for personInfos: Carman
+[DEBUG] 24 juil. 2020 10:04:49 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 10:04:49 [main] PersonService - PersonInfo request successfuly
+[INFO ] 24 juil. 2020 10:04:49 [main] PersonController - SUCCESS - personInfos GET request
+[INFO ] 24 juil. 2020 10:04:50 [main] PersonControllerIT - Starting PersonControllerIT on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:50 [main] PersonControllerIT - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:50 [main] PersonControllerIT - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:50 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:50 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:50 [main] DataLoader - Loaded from a Json file : 
+713 persons 
+403 firestations 
+713 medicalrecords
+[INFO ] 24 juil. 2020 10:04:51 [main] PersonControllerIT - Started PersonControllerIT in 1.794 seconds (JVM running for 74.505)
+[DEBUG] 24 juil. 2020 10:04:51 [main] PersonController - GET request received for personInfos: Unknow
+[DEBUG] 24 juil. 2020 10:04:51 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 10:04:51 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 10:04:51 [main] PersonController - FAILED - No person's founded for last name: Unknow
+[INFO ] 24 juil. 2020 10:04:52 [main] FireStationServiceTest - Starting FireStationServiceTest on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:52 [main] FireStationServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:52 [main] FireStationServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:52 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:52 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:52 [main] DataLoader - Loaded from a Json file : 
+736 persons 
+416 firestations 
+736 medicalrecords
+[INFO ] 24 juil. 2020 10:04:53 [main] FireStationServiceTest - Started FireStationServiceTest in 0.708 seconds (JVM running for 75.831)
+[ERROR] 24 juil. 2020 10:04:53 [main] FireStationService - No station founded for 777.
+[ERROR] 24 juil. 2020 10:04:53 [main] FireStationService - No station founded for 99.
+[ERROR] 24 juil. 2020 10:04:53 [main] FireStationService - The address entered for: [908 73rd St, 2] already exists for a mapping. Please delete or update a mapping.
+[ERROR] 24 juil. 2020 10:04:53 [main] FireStationService - The address entered for: [Unknow address, 2] does not exist.
+[ERROR] 24 juil. 2020 10:04:53 [main] FireStationService - The address entered for: Unknow address does not exist.
+[INFO ] 24 juil. 2020 10:04:53 [main] MedicalRecordServiceTest - Starting MedicalRecordServiceTest on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:53 [main] MedicalRecordServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:53 [main] MedicalRecordServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:53 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:53 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:53 [main] DataLoader - Loaded from a Json file : 
+759 persons 
+429 firestations 
+759 medicalrecords
+[INFO ] 24 juil. 2020 10:04:54 [main] MedicalRecordServiceTest - Started MedicalRecordServiceTest in 0.748 seconds (JVM running for 76.929)
+[ERROR] 24 juil. 2020 10:04:54 [main] MedicalRecordService - FAILED to create the medicalrecord for: Unknow Person, existant medicalrecord. You must to update it.
+[ERROR] 24 juil. 2020 10:04:54 [main] MedicalRecordService - FAILED to create the medicalrecord for: John Boyd, existant medicalrecord. You must to update it.
+[INFO ] 24 juil. 2020 10:04:54 [main] PersonServiceTest - Starting PersonServiceTest on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:54 [main] PersonServiceTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:54 [main] PersonServiceTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:54 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:54 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:54 [main] DataLoader - Loaded from a Json file : 
+782 persons 
+442 firestations 
+782 medicalrecords
+[INFO ] 24 juil. 2020 10:04:54 [main] PersonServiceTest - Started PersonServiceTest in 0.654 seconds (JVM running for 77.711)
+[DEBUG] 24 juil. 2020 10:04:54 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 10:04:55 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 10:04:55 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 10:04:55 [main] PersonService - PersonInfo request successfuly
+[DEBUG] 24 juil. 2020 10:04:55 [main] PersonService - ChildAlert request initialization
+[DEBUG] 24 juil. 2020 10:04:55 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 10:04:55 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 10:04:55 [main] PersonService - PersonInfo request - initialization
+[DEBUG] 24 juil. 2020 10:04:55 [main] PersonService - PersonInfo request successfuly
+[ERROR] 24 juil. 2020 10:04:55 [main] PersonService - FAILED to create the person: John Boyd, this person already exists.
+[ERROR] 24 juil. 2020 10:04:55 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[DEBUG] 24 juil. 2020 10:04:55 [main] AgeCalculator - Baby with age less than 1 year
+[DEBUG] 24 juil. 2020 10:04:55 [main] AgeCalculator - Baby with age less than 1 year
+[ERROR] 24 juil. 2020 10:04:55 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[ERROR] 24 juil. 2020 10:04:55 [main] AgeCalculator - Person's bithdate invalid (in the future)
+[INFO ] 24 juil. 2020 10:04:55 [main] DataLoaderTest - Starting DataLoaderTest on PC-de-Ludo with PID 584 (started by Ludo in C:\Users\Ludo\eclipse-workspace-EE\SafetyNet_Alerts)
+[DEBUG] 24 juil. 2020 10:04:55 [main] DataLoaderTest - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+[INFO ] 24 juil. 2020 10:04:55 [main] DataLoaderTest - The following profiles are active: dev
+[DEBUG] 24 juil. 2020 10:04:55 [main] SafetyNetAlertsApplication - Loading Data File
+[DEBUG] 24 juil. 2020 10:04:55 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:55 [main] DataLoader - Loaded from a Json file : 
+805 persons 
+455 firestations 
+805 medicalrecords
+[INFO ] 24 juil. 2020 10:04:56 [main] DataLoaderTest - Started DataLoaderTest in 1.394 seconds (JVM running for 79.249)
+[DEBUG] 24 juil. 2020 10:04:56 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:56 [main] DataLoader - Loaded from a Json file : 
+828 persons 
+468 firestations 
+828 medicalrecords
+[DEBUG] 24 juil. 2020 10:04:56 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:56 [main] DataLoader - Loaded from a Json file : 
+851 persons 
+481 firestations 
+851 medicalrecords
+[DEBUG] 24 juil. 2020 10:04:56 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:56 [main] DataLoader - ReadJsonFile initialization
+[DEBUG] 24 juil. 2020 10:04:56 [main] DataLoader - Loaded from a Json file : 
+874 persons 
+494 firestations 
+874 medicalrecords
