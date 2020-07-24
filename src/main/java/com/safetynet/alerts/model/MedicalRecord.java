@@ -133,18 +133,4 @@ public class MedicalRecord {
       this.allergies = personAllergies;
    }
 
-   /**
-    * A toString class method().
-    */
-   @Override
-   public String toString() {
-      return "Medical Record [birthdate="
-                  + birthdate
-                  + ", medications="
-                  + medications
-                  + ", allergies="
-                  + allergies
-                  + "]";
-   }
-
 }

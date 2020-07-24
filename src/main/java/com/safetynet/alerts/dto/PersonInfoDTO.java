@@ -136,30 +136,4 @@ public class PersonInfoDTO {
       return email;
    }
 
-   /**
-    * toString method class.
-    */
-   @Override
-   public String toString() {
-      return "PersonInfoDTO [firstName="
-                  + firstName
-                  + ", lastName="
-                  + lastName
-                  + ", age="
-                  + age
-                  + ", address="
-                  + address
-                  + ", city="
-                  + city
-                  + ", zip="
-                  + zip
-                  + ", email="
-                  + email
-                  + ", medications="
-                  + medications
-                  + ", allergies="
-                  + allergies
-                  + "]";
-   }
-
 }

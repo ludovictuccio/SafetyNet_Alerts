@@ -24,7 +24,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 /**
- * FireStationController tests class.
+ * FireStationController integration tests class.
  *
  * @author Ludovic Tuccio
  */
@@ -32,7 +32,7 @@ import org.springframework.web.context.WebApplicationContext;
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-public class FireStationControllerTest {
+public class FireStationControllerIT {
 
    @Autowired
    private MockMvc mockMvc;

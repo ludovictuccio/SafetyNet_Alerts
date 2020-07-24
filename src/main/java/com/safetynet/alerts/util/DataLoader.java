@@ -128,7 +128,8 @@ public class DataLoader {
    }
 
    /**
-    * Method used to search a person with name in person's list.
+    * Method used to search a person with first name & last name in person's
+    * list.
     *
     * @param firstName
     * @param lastName

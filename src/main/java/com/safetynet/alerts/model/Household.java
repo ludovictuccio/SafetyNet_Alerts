@@ -35,14 +35,4 @@ public class Household {
       this.householdComposition = personsPerHousehold;
    }
 
-   /**
-    * A toString class method().
-    */
-   @Override
-   public String toString() {
-      return "Household [Household composition="
-                  + householdComposition
-                  + "]";
-   }
-
 }

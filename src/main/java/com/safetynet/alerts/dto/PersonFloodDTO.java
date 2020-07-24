@@ -95,24 +95,4 @@ public class PersonFloodDTO {
       return phone;
    }
 
-   /**
-    * toString method class.
-    */
-   @Override
-   public String toString() {
-      return "PersonFloodDTO [firstName="
-                  + firstName
-                  + ", lastName="
-                  + lastName
-                  + ", phone="
-                  + phone
-                  + ", age="
-                  + age
-                  + ", medications="
-                  + medications
-                  + ", allergies="
-                  + allergies
-                  + "]";
-   }
-
 }

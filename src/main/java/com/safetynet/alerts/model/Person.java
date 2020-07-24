@@ -211,28 +211,4 @@ public class Person {
       this.medicalRecord = personsMedicalRecord;
    }
 
-   /**
-    * The toString() method class.
-    */
-   @Override
-   public String toString() {
-      return "Person [firstName="
-                  + firstName
-                  + ", lastName="
-                  + lastName
-                  + ", address="
-                  + address
-                  + ", city="
-                  + city
-                  + ", zip="
-                  + zip
-                  + ", phone="
-                  + phone
-                  + ", email="
-                  + email
-                  + ", medicalRecord="
-                  + medicalRecord
-                  + "]";
-   }
-
 }

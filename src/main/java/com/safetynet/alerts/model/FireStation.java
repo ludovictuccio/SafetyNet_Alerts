@@ -57,16 +57,4 @@ public class FireStation {
       return station;
    }
 
-   /**
-    * A toString class method().
-    */
-   @Override
-   public String toString() {
-      return "FireStation [addresses="
-                  + addresses
-                  + ", station="
-                  + station
-                  + "]";
-   }
-
 }

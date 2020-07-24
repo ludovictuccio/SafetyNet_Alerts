@@ -109,25 +109,4 @@ public class FireDTO {
       return phoneNumber;
    }
 
-   /**
-    * toString method class.
-    */
-   @Override
-   public String toString() {
-      return "FireDTO"
-                  + stationNumber
-                  + "[firstName="
-                  + firstName
-                  + ", lastName="
-                  + lastName
-                  + ", age="
-                  + age
-                  + ", phoneNumber="
-                  + phoneNumber
-                  + ", medications="
-                  + medications
-                  + ", allergies="
-                  + allergies
-                  + "]";
-   }
 }

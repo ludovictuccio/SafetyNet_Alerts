@@ -36,36 +36,10 @@ public class HouseholdsFloodDTO {
    }
 
    /**
-    * @param pAddress the address to set
-    */
-   public void setAddress(final AddressDTO pAddress) {
-      this.address = pAddress;
-   }
-
-   /**
     * @return the personsList
     */
    public List<PersonFloodDTO> getPersonsList() {
       return personsList;
-   }
-
-   /**
-    * @param persons the personsList to set
-    */
-   public void setPersonsList(final List<PersonFloodDTO> persons) {
-      this.personsList = persons;
-   }
-
-   /**
-    * toString method class.
-    */
-   @Override
-   public String toString() {
-      return "HouseholdsFloodDTO [address="
-                  + address
-                  + ", personsList="
-                  + personsList
-                  + "]";
    }
 
 }

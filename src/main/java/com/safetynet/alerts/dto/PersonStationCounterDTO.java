@@ -42,13 +42,6 @@ public class PersonStationCounterDTO {
    }
 
    /**
-    * @param persons the personsStationList to set
-    */
-   public void setPersonsStationList(final List<PersonStationDTO> persons) {
-      this.personsStationList = persons;
-   }
-
-   /**
     * @return totalAdultsNumber
     */
    public int getTotalAdultsNumber() {
@@ -56,38 +49,10 @@ public class PersonStationCounterDTO {
    }
 
    /**
-    * @param adultsNumber
-    */
-   public void setTotalAdultsNumber(final int adultsNumber) {
-      this.totalAdultsNumber = adultsNumber;
-   }
-
-   /**
     * @return totalChildrenNumber
     */
    public int getTotalChildrenNumber() {
       return totalChildrenNumber;
-   }
-
-   /**
-    * @param childrenNumber
-    */
-   public void setTotalChildrenNumber(final int childrenNumber) {
-      this.totalChildrenNumber = childrenNumber;
-   }
-
-   /**
-    * toString method class.
-    */
-   @Override
-   public String toString() {
-      return "PersonStationCounterDTO [Persons="
-                  + personsStationList
-                  + " , Total adults="
-                  + totalAdultsNumber
-                  + ", Total children="
-                  + totalChildrenNumber
-                  + "]";
    }
 
 }

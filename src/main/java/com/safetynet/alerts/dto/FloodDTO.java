@@ -43,16 +43,4 @@ public class FloodDTO {
       return householdsList;
    }
 
-   /**
-    * toString method class.
-    */
-   @Override
-   public String toString() {
-      return "FloodDTO [station="
-                  + station
-                  + ", householdsList="
-                  + householdsList
-                  + "]";
-   }
-
 }

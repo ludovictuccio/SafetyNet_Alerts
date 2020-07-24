@@ -489,9 +489,6 @@ public class FireStationServiceTest {
       // THEN
       assertThat(result).isNotNull();
       assertThat(result.size()).isEqualTo(2);
-      assertThat(result.toString().contains(person1.getFirstName())).isTrue();
-      assertThat(result.toString().contains(person2.getFirstName())).isTrue();
-      assertThat(result.toString().contains(person3.getFirstName())).isFalse();
    }
 
    @Test
@@ -556,9 +553,6 @@ public class FireStationServiceTest {
 
       // THEN
       assertThat(result).isNotNull();
-      assertThat(result.toString().contains(person1.getFirstName())).isTrue();
-      assertThat(result.toString().contains(person2.getFirstName())).isTrue();
-      assertThat(result.toString().contains(person3.getFirstName())).isFalse();
       assertThat(result.get(0).getStationNumber()).isEqualTo("2");
    }
 
@@ -606,9 +600,6 @@ public class FireStationServiceTest {
 
       // THEN
       assertThat(result).isNotNull();
-      assertThat(result.toString().contains(person1.getFirstName())).isFalse();
-      assertThat(result.toString().contains(person2.getFirstName())).isTrue();
-      assertThat(result.toString().contains(person3.getFirstName())).isTrue();
       assertThat(result.get(0).getStationNumber()).isEqualTo("1");
       assertThat(result.get(1).getStationNumber()).isEqualTo("3");
    }

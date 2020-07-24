@@ -28,13 +28,13 @@ https://maven.apache.org/install.html
 
 ## Testing
 
-**To run :**
+**Launch :**
+ 
+- **mvn test** : for launch tests
 
-- the tests from maven: 		   **mvn test**
+- **mvn jacoco:report** : for jacoco coverage report (available in *"target/site/jacoco"*).
 
-- jacoco report: 				   **mvn jacoco:report**, report available in *"target/site/jacoco"*.
-
-- checkstyle, findbugs & surefire: **mvn site**, report available in *"target/site"*.
+- **mvn site** : for checkstyle, findbugs & surefire reports (available in *"target/site"*).
 
 
 **To test endpoints:**

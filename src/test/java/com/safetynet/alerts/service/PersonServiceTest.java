@@ -109,6 +109,9 @@ public class PersonServiceTest {
 
       assertThat(result.isEmpty()).isTrue();
       assertThat(result.size()).isEqualTo(0);
+      assertThat(result.toString().contains(person1.getFirstName())).isFalse();
+      assertThat(result.toString().contains(person2.getFirstName())).isFalse();
+      assertThat(result.toString().contains(person3.getFirstName())).isFalse();
    }
 
    @Test
@@ -384,7 +387,7 @@ public class PersonServiceTest {
 
    @Test
    @Tag("PUT")
-   @DisplayName("Update - Existing person ")
+   @DisplayName("Update - Existing person")
    public void givenPersonEndpoint_whenUpdatePerson_thenReturnUpdatedPerson() {
       // GIVEN
       List<Person> personsList = new ArrayList<>();
@@ -401,7 +404,6 @@ public class PersonServiceTest {
 
       // THEN
       assertThat(personsList.size()).isEqualTo(1);
-      assertThat(personsList.toString()).contains(personToUpdate.toString());
    }
 
    @Test

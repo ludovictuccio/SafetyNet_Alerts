@@ -53,20 +53,4 @@ public class ChildAlertDTO {
       return age;
    }
 
-   /**
-    * toString() method class.
-    */
-   @Override
-   public String toString() {
-      return "ChildAlertDTO"
-                  + " [FirstName="
-                  + firstName
-                  + ", LastName="
-                  + lastName
-                  + ", Age="
-                  + age
-                  + " years old"
-                  + "]";
-   }
-
 }

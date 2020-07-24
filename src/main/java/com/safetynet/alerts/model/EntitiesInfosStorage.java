@@ -79,18 +79,4 @@ public class EntitiesInfosStorage {
       this.personsPerHousehold = households;
    }
 
-   /**
-    * A toString class method().
-    */
-   @Override
-   public String toString() {
-      return "Infos [Persons list="
-                  + personsList
-                  + ", firestations="
-                  + firestations
-                  + ", persons per household="
-                  + personsPerHousehold
-                  + "]";
-   }
-
 }
