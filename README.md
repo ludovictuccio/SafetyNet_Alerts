@@ -8,7 +8,7 @@
 
 - **Java version:** 1.8
 
-- **Actuators in service:** healt, info, httptrace & metrics
+- **Actuators in service:** health, info, httptrace & metrics
 
 - **JSON data:** available in *"src/main/resources/data"*, and it's **loaded from application.properties** in *"src/main/resources"*.
 
